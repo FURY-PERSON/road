@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/FURY-PERSON/road#readme",
   "devDependencies": {
+    "@types/html-webpack-plugin": "^3.2.6",
     "@types/node": "^18.11.18",
-    "@types/webpack": "^5.28.0",
     "html-webpack-plugin": "^5.5.0",
     "ts-loader": "^9.4.2",
     "ts-node": "^10.9.1",
