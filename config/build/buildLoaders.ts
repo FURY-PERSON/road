@@ -7,6 +7,21 @@ export function buildLoaders(): webpack.RuleSetRule[] {
     use: 'ts-loader',
     exclude: /node_modules/,
   }
+
+  const stylesLoader = {
+    test: /\.s[ac]ss$/i,
+    use: [
+      "style-loader",
+      "css-loader",
+      {
+        loader: "sass-loader",
+        options: {
+          // Prefer `dart-sass`
+          implementation: require("sass"),
+        },
+      },
+    ],
+  }
   
-  return [typescriptLoader]
+  return [typescriptLoader, stylesLoader]
 }
