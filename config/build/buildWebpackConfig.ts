@@ -13,7 +13,7 @@ export function buildWebpackConfig(options: BuildOption): webpack.Configuration 
     mode: mode,
     entry: paths.entry,
     module: {
-      rules: buildLoaders(),
+      rules: buildLoaders(options),
     },
     resolve: buildResolvers(),
     plugins: buildPlugins(options),

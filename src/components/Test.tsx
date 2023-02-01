@@ -1,6 +1,7 @@
-import "../styles.scss";
+import styles from "./styles.module.scss";
+
 export const Test = () => {
   return(
-    <div>AAAAAAAAAA</div>
+    <div className={styles.sdsdsd}>AAAAAAAAAA</div>
   )
 }
