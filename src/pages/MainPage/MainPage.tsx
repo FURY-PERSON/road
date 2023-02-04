@@ -1,5 +1,7 @@
+import styles from "./styles.module.scss";
+
 export const MainPage = () => {
   return (
-    <div>MAin</div>
+    <div className={styles.main}>MAin</div>
   )
 }
