@@ -1,4 +1,4 @@
-export default () => {
+export const AboutPage = () => {
   return (
     <div>AboutPage</div>
   )
