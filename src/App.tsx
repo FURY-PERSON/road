@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
 import { Route, Routes } from 'react-router-dom';
+import { classNames } from './helpers/classNames/classNames';
 import { AboutPageAsync } from './pages/AboutPage/AboutPage.async';
 import { MainPageAsync } from './pages/MainPage/MainPage.async';
 import "./styles/index.scss"
@@ -12,7 +13,7 @@ function App() {
   const {theme, toggleTheme} = useTheme();
 
   return (
-    <div className={`app ${theme}`}>
+    <div className={classNames('app', {}, [theme])}>
       <button onClick={toggleTheme} type="button">Change Theme</button>
       <BrowserRouter>
           <Link to="/">To Main</Link>
