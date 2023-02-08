@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from "./ThemeContext"
+import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from "../model/ThemeContext"
 
 interface ThemeProviderProps {
   children?: JSX.Element | JSX.Element[]
