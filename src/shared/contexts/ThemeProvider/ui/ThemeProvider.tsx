@@ -5,7 +5,7 @@ interface ThemeProviderProps {
   children?: JSX.Element | JSX.Element[]
 }
 
-const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme.Light || Theme.Light;
+const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || Theme.Light;
 
 export const ThemeProvider = (props: ThemeProviderProps) => {
   const {children} = props;
