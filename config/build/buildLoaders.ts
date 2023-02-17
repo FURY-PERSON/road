@@ -5,6 +5,11 @@ import { BuildOption } from './types/config';
 export function buildLoaders(options: BuildOption): webpack.RuleSetRule[] {
   const {isDev} = options;
 
+  const svgLoader = {
+    test: /\.svg$/,
+    use: ['@svgr/webpack'],
+  }
+
   const typescriptLoader = {
     test: /\.tsx?$/,
     use: 'ts-loader',
@@ -12,7 +17,7 @@ export function buildLoaders(options: BuildOption): webpack.RuleSetRule[] {
   }
 
   const stylesLoader = {
-    test: /\.s|[ac]ss$/i,
+    test: /\.(sc|sa|c)ss$/,
     use: [
       isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       {
@@ -35,5 +40,5 @@ export function buildLoaders(options: BuildOption): webpack.RuleSetRule[] {
     ],
   }
   
-  return [typescriptLoader, stylesLoader]
+  return [svgLoader, typescriptLoader, stylesLoader]
 }

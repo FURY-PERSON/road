@@ -4,6 +4,9 @@ import "./styles/index.scss"
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { AppRouter } from 'app/providers/router';
 import { Navbar } from 'widgets/Navbar';
+import Icon from "shared/assets/icons/arrow-thin-left-icon.svg"
+
+console.log(Icon)
 
 function App() {
   const {theme, toggleTheme} = useTheme();
@@ -11,6 +14,7 @@ function App() {
   return (
     <div className={classNames('app', {}, [theme])}>
       <button onClick={toggleTheme} type="button">Change Theme</button>
+      <Icon />
       <BrowserRouter>
           <Navbar />
           <AppRouter />
