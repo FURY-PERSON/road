@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { ThemeSwitcher } from 'features/ThemeSwitcher';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import cls from "./Navbar.module.scss";
@@ -12,8 +12,12 @@ export const Navbar = (props: NavbarProps) => {
 
   return (
     <div className={classNames(cls.Navbar, {} , [className])}>
-      <AppLink to="/">To Main</AppLink>
-      <AppLink to="/about">To About</AppLink>
+      <ThemeSwitcher />
+
+      <div>
+        <AppLink to="/">To Main</AppLink>
+        <AppLink to="/about">To About</AppLink>
+      </div>
     </div>
   );
 };
