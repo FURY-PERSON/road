@@ -28,4 +28,6 @@ Preferences: Configure User Snippets -> typescript (in the VS Code)
 	"description": "Создать React-компонент по умолчанию. Импортируется scss-модуль и функция для работы с классами classnames."
 	}
 }
-```
+```  
+  
+  ## http://localhost:3000/?showtranslations to see translations

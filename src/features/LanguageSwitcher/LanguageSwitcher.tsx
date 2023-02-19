@@ -14,7 +14,7 @@ export const LanguageSwitcher:FC<LanguageSwitcherProps> = memo((props) => {
 
   const {t} = useTranslation();
 
-  const toggleLanguage = () => {
+  const toggleLanguage = () => { 
     i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru')
   }
 
