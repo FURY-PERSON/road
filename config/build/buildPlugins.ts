@@ -2,6 +2,7 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import  MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { BuildOption } from './types/config';
+import  ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
 export function buildPlugins({paths, isDev}: BuildOption): webpack.WebpackPluginInstance[] {
   return [
@@ -15,6 +16,7 @@ export function buildPlugins({paths, isDev}: BuildOption): webpack.WebpackPlugin
     }),
     new webpack.DefinePlugin({
       __IS__DEV__: isDev
-    })
-  ]
+    }),
+    isDev && new ReactRefreshWebpackPlugin()
+  ].filter(Boolean)
 }
