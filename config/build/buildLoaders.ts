@@ -3,6 +3,17 @@ import webpack from 'webpack';
 import { BuildOption } from './types/config';
 import ReactRefreshTypeScript from 'react-refresh-typescript';
 
+const i18nExtractPlugin = [
+  'i18next-extract',
+  {
+    locales: ['en', 'ru'],
+    keyAsDefaultValue: false,
+    saveMissing: true,
+    keySeparator: null, 
+    outputPath: 'public/locales/{{locale}}/{{ns}}.json',
+  },
+]
+
 export function buildLoaders(options: BuildOption): webpack.RuleSetRule[] {
   const {isDev} = options;
 
@@ -18,21 +29,17 @@ export function buildLoaders(options: BuildOption): webpack.RuleSetRule[] {
 
   const babelLoader = {
     test: /\.(js|jsx|ts|tsx)$/,
-    exclude: '/node_modules/',
+    exclude: /node_modules/,
     use: {
       loader: 'babel-loader',
       options: {
         presets: ['@babel/preset-env'],
-/*         plugins: [
-          "i18next-extract",
-          {
-            locales: ['ru', 'en'],
-            keyAsDefaultValue: true
-          }
-        ] */
-      }
-    }
-  }
+        plugins: [
+/*           i18nExtractPlugin */
+          ],
+        },
+      },
+    };
 
   const typescriptLoader = {
     test: /\.tsx?$/,

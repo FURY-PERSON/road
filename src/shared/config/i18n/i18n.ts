@@ -13,6 +13,7 @@ i18n
   .init({
     lng: "ru",
     fallbackLng: 'ru',
+    saveMissing: true,
     debug: __IS__DEV__ ? true : false,
 
     interpolation: {
