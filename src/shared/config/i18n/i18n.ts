@@ -9,6 +9,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
+    lng: "ru",
     fallbackLng: 'ru',
     debug: __IS__DEV__ ? true : false,
 
@@ -20,5 +21,8 @@ i18n
     }
   });
 
+i18n.on('languageChanged', (language) => {
+  document.documentElement.lang = language
+})
 
 export default i18n;

@@ -20,7 +20,7 @@ export const LanguageSwitcher:FC<LanguageSwitcherProps> = memo((props) => {
 
   return (
       <div className={classNames(cls.LanguageSwitcher, {}, [className])}>
-        <Button onClick={toggleLanguage}>{t('about page')}</Button>
+        <Button onClick={toggleLanguage}>{t('change language')}</Button>
       </div>
   );
 })
