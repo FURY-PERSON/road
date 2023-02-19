@@ -1,3 +1,4 @@
+import { LanguageSwitcher } from 'features/LanguageSwitcher';
 import { ThemeSwitcher } from 'features/ThemeSwitcher';
 import { memo, FC, useState } from 'react';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
@@ -21,6 +22,7 @@ export const Sidebar:FC<SidebarProps> = memo((props) => {
 
         <div className={cls.switchers}>
           <ThemeSwitcher />
+          <LanguageSwitcher className={cls.lng} />
         </div>
       </div>
   );

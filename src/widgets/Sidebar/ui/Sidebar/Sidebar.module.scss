@@ -16,4 +16,8 @@
   display: flex;
   justify-content: center;
   width: 100%;
+
+  > .lng {
+    margin-left: 20px;
+  }
 }
