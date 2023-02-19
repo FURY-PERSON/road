@@ -9,3 +9,15 @@
   color: var(--primary-color);
   min-height: 100vh;
 }
+
+.content {
+  display: flex;
+  height: calc(100vh - var(--navbar-height));
+  flex-direction: row;
+  flex: 1;
+}
+
+.page {
+  flex-grow: 1;
+  padding: 20px;
+}

@@ -4,6 +4,7 @@ import "./styles/index.scss"
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { AppRouter } from 'app/providers/router';
 import { Navbar } from 'widgets/Navbar';
+import { Sidebar } from 'widgets/Sidebar';
 
 function App() {
   const {theme} = useTheme();
@@ -12,7 +13,10 @@ function App() {
     <div className={classNames('app', {}, [theme])}>
       <BrowserRouter>
           <Navbar />
-          <AppRouter />
+          <div className='content'>
+            <Sidebar />
+            <AppRouter />
+          </div>
       </BrowserRouter>
     </div>
   );
