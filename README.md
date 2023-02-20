@@ -30,4 +30,6 @@ Preferences: Configure User Snippets -> typescript (in the VS Code)
 }
 ```  
   
-  ## http://localhost:3000/?showtranslations to see translations
+## http://localhost:3000/?showtranslations to see translations  
+	  
+### highly recommend to add shortcut for lint and stylelint fix 

@@ -1,11 +1,11 @@
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 14px;
 }
 
 
@@ -44,12 +44,15 @@ dd {
 body {
   min-height: 100vh;
   scroll-behavior: smooth;
-  text-rendering: optimizeSpeed;
+  text-rendering: optimizespeed;
   line-height: 1.5;
 }
 
-ul[class],
-ol[class] {
+ul[class]{
+  list-style: none;
+}
+
+ol[class]  {
   list-style: none;
 }
 
@@ -67,31 +70,31 @@ a:not([class]) {
 }
 
 img {
-  max-width: 100%;
   display: block;
+  max-width: 100%;
 }
 
 input,
 button,
 textarea,
 select {
-  outline: none;
   font: inherit;
+  outline: none;
 }
 
 button {
   padding: 0;
-  border: none;
   color: inherit;
-  background-color: transparent;
   cursor: pointer;
+  background-color: transparent;
+  border: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
   * {
+    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 }
