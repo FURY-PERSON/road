@@ -2,6 +2,7 @@ module.exports = {
 	env: {
 		browser: true,
 		es2021: true,
+		"jest/globals": true
 	},
 	extends: [
 		'eslint:recommended',
@@ -21,6 +22,7 @@ module.exports = {
 		'react',
 		'@typescript-eslint',
 		'i18next',
+		'jest'
 	],
 	rules: {
 		indent: [2, 'tab'],
@@ -42,17 +44,20 @@ module.exports = {
 		'comma-dangle': 'warn',
 		'no-trailing-spaces': 'off',
 		'import/extensions': 'off',
+		'max-len': [1, {
+			ignoreComments: true, tabWidth: 2, code: 100, ignoreStrings: true, ignoreUrls: true, 
+		}],
 		'i18next/no-literal-string': ['error', { markupOnly: true }],
 		'linebreak-style': [
 			'error',
 			'unix',
 		],
 		quotes: [
-			'error',
+			'warn',
 			'single',
 		],
 		semi: [
-			'error',
+			'warn',
 			'always',
 		],
 	},
