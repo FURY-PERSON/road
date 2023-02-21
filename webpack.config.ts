@@ -7,8 +7,8 @@ const paths: BuildPaths = {
   build: path.resolve(__dirname, 'build'),
   html: path.resolve(__dirname, 'public', 'index.html'),
   entry: path.resolve(__dirname, 'src', 'index.tsx'),
-  src: path.resolve(__dirname, 'src')
-}
+  src: path.resolve(__dirname, 'src'),
+};
 
 export default function (env: BuildEnv): webpack.Configuration {
   const mode = env.mode || 'development';
@@ -20,5 +20,5 @@ export default function (env: BuildEnv): webpack.Configuration {
     paths,
     isDev,
     port,
-  })
+  });
 }
