@@ -3,7 +3,6 @@ module.exports = {
     browser: true,
     es2021: true,
     jest: true,
-    JSX: true,
   },
   extends: [
     'eslint:recommended',
@@ -39,6 +38,7 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'import/no-unresolved': 'off',
     'pace-infix-ops': 'off',
+    'object-curly-spacing': 'warn',
     'react/jsx-props-no-spreading': 'warn',
     'react/require-default-props': 'off',
     'react/react-in-jsx-scope': 'off',
