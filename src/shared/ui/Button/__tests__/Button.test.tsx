@@ -1,9 +1,15 @@
 import { render, screen } from '@testing-library/react';
-import { Button } from '../Button';
+import { renderWithProviders } from 'shared/lib/helpers/tests/renderWithProviders/renderWithProviders';
+import { Button, ThemeVariant } from '../Button';
 
-describe('classNames', () => {
-  test('only first param', () => {
-    render(<Button>Test</Button>);
-    expect(screen.getByText('Test')).toBeInTheDocument()
+describe('Button', () => {
+  test('Simple example', () => {
+    renderWithProviders(<Button>Test</Button>);
+    expect(screen.getByText('Test')).toBeInTheDocument();
+  });
+
+  test('With variant', () => {
+    renderWithProviders(<Button variant={ThemeVariant.CLEAR}>Test</Button>);
+    expect(screen.getByText('Test')).toHaveClass(ThemeVariant.CLEAR);
   });
 });

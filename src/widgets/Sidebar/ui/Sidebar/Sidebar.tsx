@@ -9,21 +9,24 @@ interface SidebarProps {
 }
 
 export const Sidebar:FC<SidebarProps> = memo((props) => {
-	const { className } = props;
-	const [collapsed, serCollapsed] = useState(false);
+  const { className } = props;
+  const [collapsed, serCollapsed] = useState(false);
 
-	const onToggle = () => {
-		serCollapsed((value) => !value);
-	};
+  const onToggle = () => {
+    serCollapsed((value) => !value);
+  };
 
-	return (
-		<div className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}>
-			<button onClick={onToggle} type="button">toggle</button>
+  return (
+    <div 
+      data-testid="sidebar"
+      className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}
+    >
+      <button data-testid="sidebar-toggle" onClick={onToggle} type="button">toggle</button>
 
-			<div className={cls.switchers}>
-				<ThemeSwitcher />
-				<LanguageSwitcher className={cls.lng} />
-			</div>
-		</div>
-	);
+      <div className={cls.switchers}>
+        <ThemeSwitcher />
+        <LanguageSwitcher className={cls.lng} />
+      </div>
+    </div>
+  );
 });

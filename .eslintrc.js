@@ -11,8 +11,6 @@ module.exports = {
     'airbnb',
     'plugin:i18next/recommended',
   ],
-  overrides: [
-  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
@@ -24,7 +22,7 @@ module.exports = {
     'i18next',
     'jest',
     'eslint-plugin-jest',
-    'jest-dom'
+    'jest-dom',
   ],
   rules: {
     indent: [1, 2],
@@ -70,4 +68,12 @@ module.exports = {
   globals: {
     __IS__DEV__: true,
   },
+  overrides: [
+    {
+      files: ['**/src/**/*.test.{ts,tsx}'],
+      rules: {
+        'i18next/no-literal-string': 'off',
+      },
+    },
+  ],
 };
