@@ -38,6 +38,7 @@ module.exports = {
     'pace-infix-ops': 'off',
     'object-curly-spacing': 'warn',
     'no-multiple-empty-lines': 'warn',
+    'eol-last': 'warn',
     'react/jsx-props-no-spreading': 'warn',
     'react/require-default-props': 'off',
     'react/react-in-jsx-scope': 'off',

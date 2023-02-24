@@ -4,7 +4,8 @@ import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import cls from './Button.module.scss';
 
 export enum ThemeVariant {
-  CLEAR = 'clear'
+  CLEAR = 'clear',
+  OUTLINE = 'outline'
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

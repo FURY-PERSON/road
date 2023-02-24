@@ -1,1 +1,1 @@
-export {SvgLoaderType, SvgLoader} from "./ui/SvgLoader"
+export { SvgLoaderType, SvgLoader } from './ui/SvgLoader';
