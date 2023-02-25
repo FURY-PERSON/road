@@ -1,6 +1,8 @@
-import { Story } from "@storybook/react";
-import "app/styles/index.scss";
+import { Story } from '@storybook/react';
+import 'app/styles/index.scss';
 
-export const StyleDecorator = (Story: Story) => {
-  return <Story />
-}
+export const StyleDecorator = (Story: Story) => (
+  <div style={{height: '100vh'}}>
+    <Story />
+  </div>
+);

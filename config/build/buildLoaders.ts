@@ -2,7 +2,7 @@
 import webpack from 'webpack';
 import ReactRefreshTypeScript from 'react-refresh-typescript';
 import { BuildOption } from './types/config';
-import { buildCssLoader } from './loaders/buildLoaders';
+import { buildCssLoader, buildSvgLoader } from './loaders/buildLoaders';
 
 const i18nExtractPlugin = [
   'i18next-extract',
@@ -18,10 +18,7 @@ const i18nExtractPlugin = [
 export function buildLoaders(options: BuildOption): webpack.RuleSetRule[] {
   const { isDev } = options;
 
-  const svgLoader = {
-    test: /\.svg$/,
-    use: ['@svgr/webpack'],
-  };
+  const svgLoader = buildSvgLoader();
 
   const pngLoader = {
     test: /\.(png|jpg|gif)$/i,

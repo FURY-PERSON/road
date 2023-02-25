@@ -14,17 +14,17 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  children: 'children'
+  children: 'children',
 };
 
 export const Clear = Template.bind({});
 Clear.args = {
   children: 'children',
-  variant: ThemeVariant.CLEAR
+  variant: ThemeVariant.CLEAR,
 };
 
 export const Outline = Template.bind({});
 Outline.args = {
   children: 'children',
-  variant: ThemeVariant.OUTLINE
+  variant: ThemeVariant.OUTLINE,
 };

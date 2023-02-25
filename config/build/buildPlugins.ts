@@ -4,6 +4,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOption } from './types/config';
+import { buildDefinePlugin } from './plugins/buildPlugins';
 
 export function buildPlugins({ paths, isDev, analyze }: BuildOption): webpack.WebpackPluginInstance[] {
   return [
@@ -15,9 +16,7 @@ export function buildPlugins({ paths, isDev, analyze }: BuildOption): webpack.We
       filename: 'css/[name].[contenthash].css',
       chunkFilename: 'css/[name].[contenthash].css',
     }),
-    new webpack.DefinePlugin({
-      __IS__DEV__: isDev,
-    }),
+    buildDefinePlugin(isDev),
     isDev && new ReactRefreshWebpackPlugin(),
     analyze && new BundleAnalyzerPlugin(),
   ].filter(Boolean);

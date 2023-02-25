@@ -7,14 +7,14 @@ interface NavbarProps {
 }
 
 export function Navbar(props: NavbarProps) {
-	const { className } = props;
+  const { className } = props;
 
-	return (
-		<div className={classNames(cls.Navbar, {}, [className])}>
-			<div>
-				<AppLink to="/">To Main</AppLink>
-				<AppLink to="/about">To About</AppLink>
-			</div>
-		</div>
-	);
+  return (
+    <div className={classNames(cls.Navbar, {}, [className])}>
+      <div>
+        <AppLink to="/">To Main</AppLink>
+        <AppLink to="/about">To About</AppLink>
+      </div>
+    </div>
+  );
 }

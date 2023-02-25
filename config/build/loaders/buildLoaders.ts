@@ -25,5 +25,11 @@ export function buildCssLoader(isDev: boolean) {
       },
     ],
   };
+}
 
+export function buildSvgLoader() {
+  return {
+    test: /\.svg$/,
+    use: ['@svgr/webpack'],
+  };
 }
