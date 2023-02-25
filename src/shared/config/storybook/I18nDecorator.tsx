@@ -1,9 +1,8 @@
 import { Story } from '@storybook/react';
 import { Suspense, useEffect } from 'react';
 import { I18nextProvider } from 'react-i18next';
-import i18n from '../i18n/i18nforStorybook';
 
-export const I18nDecorator = (Story: Story, context) => {
+export const I18nDecorator = (i18n) => (Story: Story, context) => {
   const { locale } = context.globals;
 
   useEffect(() => {
