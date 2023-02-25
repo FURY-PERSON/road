@@ -7,6 +7,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  parameters: {
+    loki: { skip: true },
+  },
 } as ComponentMeta<typeof SvgLoader>;
 
 const Template: ComponentStory<typeof SvgLoader> = (args) => <SvgLoader {...args} />;

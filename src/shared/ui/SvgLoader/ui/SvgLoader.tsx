@@ -17,11 +17,11 @@ const SvgLoaderMap: Record<SvgLoaderType, FC> = {
 };
 
 export const SvgLoader:FC<SvgLoaderProps> = memo((props) => {
-  const { className, type = SvgLoaderType.CAT_BLUE, ...otherProps} = props;
+  const { className, type = SvgLoaderType.CAT_BLUE, ...otherProps } = props;
 
   return (
     <div className={classNames(cls.SvgLoader, {}, [className])}>
-      {SvgLoaderMap[type]({...otherProps})}
+      {SvgLoaderMap[type]({ ...otherProps })}
     </div>
   );
 });
