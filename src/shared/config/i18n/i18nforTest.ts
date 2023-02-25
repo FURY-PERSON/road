@@ -1,11 +1,12 @@
 import i18nForTests from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import { SupportedLanguages } from './types';
 
 i18nForTests
   .use(initReactI18next)
   .init({
-    lng: 'en',
-    fallbackLng: 'en',
+    lng: SupportedLanguages.EN,
+    fallbackLng: SupportedLanguages.EN,
     ns: ['translationsNS'],
     defaultNS: 'translationsNS',
 

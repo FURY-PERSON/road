@@ -4,6 +4,7 @@ import { initReactI18next } from 'react-i18next';
 import Backend from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { i18nextPlugin as translationCheckPlugin } from 'translation-check';
+import { SupportedLanguages } from './types';
 
 i18n
   .use(__IS__DEV__ ? translationCheckPlugin : null)
@@ -11,8 +12,8 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    lng: 'ru',
-    fallbackLng: 'ru',
+    lng: SupportedLanguages.RU,
+    fallbackLng: SupportedLanguages.EN,
     saveMissing: true,
     debug: !!__IS__DEV__,
 
