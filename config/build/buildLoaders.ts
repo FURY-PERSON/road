@@ -1,4 +1,3 @@
-
 import webpack from 'webpack';
 import ReactRefreshTypeScript from 'react-refresh-typescript';
 import { BuildOption } from './types/config';
@@ -55,8 +54,7 @@ export function buildLoaders(options: BuildOption): webpack.RuleSetRule[] {
     exclude: /node_modules/,
   };
 
-  const stylesLoader = buildCssLoader(isDev)
-
+  const stylesLoader = buildCssLoader(isDev);
 
   return [
     pngLoader,

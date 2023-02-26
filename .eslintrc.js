@@ -43,6 +43,7 @@ module.exports = {
     'react/require-default-props': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
+    'react/destructuring-assignment': 'off',
     'import/no-extraneous-dependencies': 'off',
     'no-shadow': 'off',
     'no-underscore-dangle': 'off',

@@ -2,5 +2,8 @@
   "change language": "Change language",
   "page not found": "Page not found",
   "unexpected error": "Unexpected error",
-  "reload the page": "Reload the page"
+  "reload the page": "Reload the page",
+  "toggle": "Toggle",
+  "to main": "To main",
+  "to about": "To about"
 }

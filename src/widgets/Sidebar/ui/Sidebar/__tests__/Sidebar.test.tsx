@@ -10,7 +10,7 @@ describe('Sidebar', () => {
 
   test('Test toggle', () => {
     renderWithProviders(<Sidebar />);
-    const toggleButton = screen.getByTestId('sidebar-toggle')
+    const toggleButton = screen.getByTestId('sidebar-toggle');
     fireEvent.click(toggleButton);
     expect(screen.getByTestId('sidebar')).toHaveClass('collapsed');
   });

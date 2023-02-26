@@ -17,8 +17,8 @@ i18nForTests
     },
     resources: {
       en: {},
-      ru: {}
-    }
+      ru: {},
+    },
   });
 
 export default i18nForTests;

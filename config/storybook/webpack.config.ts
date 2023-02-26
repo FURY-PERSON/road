@@ -2,7 +2,7 @@ import webpack, { RuleSetRule } from 'webpack';
 import path from 'path';
 import { BuildPaths } from '../build/types/config';
 import { buildCssLoader, buildSvgLoader } from '../build/loaders/buildLoaders';
-import { buildDefinePlugin } from '../build/plugins/buildPlugins';
+import { buildDefinePlugin, miniCssExtractPlugin } from '../build/plugins/buildPlugins';
 
 export default ({ config }: {config: webpack.Configuration}) => {
   const isDev = config.mode === 'development';
@@ -27,6 +27,7 @@ export default ({ config }: {config: webpack.Configuration}) => {
     return rule;
   });
   
+  config.plugins.push(miniCssExtractPlugin());
   config.module.rules.push(buildSvgLoader());
   config.plugins.push(buildDefinePlugin(isDev));
 

@@ -12,7 +12,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    lng: SupportedLanguages.RU,
+    lng: SupportedLanguages.EN,
     fallbackLng: SupportedLanguages.EN,
     saveMissing: true,
     debug: !!__IS__DEV__,
