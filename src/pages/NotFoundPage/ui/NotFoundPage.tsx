@@ -9,11 +9,11 @@ interface NotFoundPageProps {
 
 export const NotFoundPage:FC<NotFoundPageProps> = memo((props) => {
   const { className } = props;
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div className={classNames(cls.NotFoundPage, {}, [className])}>
       {t('page not found')}
     </div>
   );
-})
+});

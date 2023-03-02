@@ -1,22 +1,44 @@
 import { memo, FC, ButtonHTMLAttributes } from 'react';
-import { useTheme } from 'shared/contexts/ThemeProvider';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import cls from './Button.module.scss';
 
+export enum ButtonVariant {
+  CLEAR = 'clear',
+  OUTLINE = 'outline',
+  BACKGROUND = 'background',
+  BACKGROUND_INVERTED = 'backgroundInverted'
+}
+
+export enum ButtonSize {
+  SMALL = 'small',
+  MEDIUM = 'medium',
+  LARGE = 'large'
+}
+
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
-  variant?: ThemeVariant
+  variant?: ButtonVariant;
+  square?: boolean,
+  size?: ButtonSize
 }
 
 export const Button:FC<ButtonProps> = memo((props) => {
- const { className, children, variant = ThemeVariant.CLEAR, ...otherProps } = props;
- const {theme} = useTheme();
+  const {
+    className, children, square, 
+    size = ButtonSize.SMALL, variant = ButtonVariant.CLEAR, ...otherProps 
+  } = props;
 
- return (
-    <button {...otherProps} className={classNames(cls.Button, {}, [className, cls[variant]])}>{children}</button>
- );
-})
+  const mods: Record<string, boolean> = {
+    [cls.square]: square,
+  };
 
-export enum ThemeVariant {
-  CLEAR = 'clear'
-}
+  return (
+    <button 
+      {...otherProps} 
+      type="button" 
+      className={classNames(cls.Button, mods, [className, cls[variant], cls[size]])}
+    >
+      {children}
+    </button>
+  );
+});

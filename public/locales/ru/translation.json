@@ -1,4 +1,10 @@
 {
   "change language": "Сменить язык",
-  "page not found": "Страница не найдена"
+  "change language short": "Ru",
+  "page not found": "Страница не найдена",
+  "unexpected error": "Неожиданная ошибка",
+  "reload the page": "Перезагрузить страницу",
+  "toggle": "Переключить",
+  "to main": "На главную",
+  "to about": "На страницу о нас"
 }

@@ -3,7 +3,6 @@ module.exports = {
     browser: true,
     es2021: true,
     jest: true,
-    JSX: true,
   },
   extends: [
     'eslint:recommended',
@@ -11,8 +10,6 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'airbnb',
     'plugin:i18next/recommended',
-  ],
-  overrides: [
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -25,6 +22,7 @@ module.exports = {
     'i18next',
     'jest',
     'eslint-plugin-jest',
+    'jest-dom',
   ],
   rules: {
     indent: [1, 2],
@@ -36,13 +34,18 @@ module.exports = {
     'react/function-component-definition': 'off',
     'no-unused-vars': 'off',
     'import/prefer-default-export': 'off',
-    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'import/no-unresolved': 'off',
     'pace-infix-ops': 'off',
-    'react/jsx-props-no-spreading': 'warn',
+    'object-curly-spacing': 'warn',
+    'react/jsx-props-no-spreading': 'off',
+    'no-multiple-empty-lines': 'warn',
+    'eol-last': 'warn',
+    'object-shorthand': 'warn',
     'react/require-default-props': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
+    'react/destructuring-assignment': 'off',
+    'import/no-extraneous-dependencies': 'off',
     'no-shadow': 'off',
     'no-underscore-dangle': 'off',
     'comma-dangle': 'warn',
@@ -68,4 +71,12 @@ module.exports = {
   globals: {
     __IS__DEV__: true,
   },
+  overrides: [
+    {
+      files: ['**/src/**/*.test.{ts,tsx}'],
+      rules: {
+        'i18next/no-literal-string': 'off',
+      },
+    },
+  ],
 };
