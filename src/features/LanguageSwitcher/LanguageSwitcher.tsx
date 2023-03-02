@@ -7,10 +7,11 @@ import cls from './LanguageSwitcher.module.scss';
 
 interface LanguageSwitcherProps {
   className?: string;
+  short?: boolean
 }
 
 export const LanguageSwitcher:FC<LanguageSwitcherProps> = memo((props) => {
-  const { className } = props;
+  const { className, short = false } = props;
 
   const { t } = useTranslation();
 
@@ -23,7 +24,9 @@ export const LanguageSwitcher:FC<LanguageSwitcherProps> = memo((props) => {
       data-testid="LanguageSwitcher"
       className={classNames(cls.LanguageSwitcher, {}, [className])}
     >
-      <Button onClick={toggleLanguage}>{t('change language')}</Button>
+      <Button onClick={toggleLanguage}>
+        {short ? t('change language short') : t('change language')}
+      </Button>
     </div>
   );
 });

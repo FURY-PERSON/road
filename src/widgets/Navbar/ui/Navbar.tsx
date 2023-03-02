@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import cls from './Navbar.module.scss';
@@ -14,8 +15,7 @@ export function Navbar(props: NavbarProps) {
   return (
     <div className={classNames(cls.Navbar, {}, [className])}>
       <div>
-        <AppLink to="/">{t('to main')}</AppLink>
-        <AppLink to="/about">{t('to about')}</AppLink>
+        <AppLink to={RoutePath.main}>{t('to main')}</AppLink>
       </div>
     </div>
   );

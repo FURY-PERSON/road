@@ -1,23 +1,77 @@
 .Sidebar {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: var(--sidebar-width);
   height: calc(100vh - var(--navbar-height));
   background-color: var(--invert-bg-color);
   transition: 0.1s;
+
+  > .collapseBtn {
+    position: absolute;
+    right: -40px;
+    bottom: 40px; 
+  }
+
+  > .links {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 12px 24px;
+
+    > .item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      > .link {
+        white-space: nowrap;
+        opacity: 1;
+        transition: opacity 0.2s linear;
+      }
+
+      > .icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 12px;
+        fill: var(--primary-color);
+      }
+    }
+
+  }
+
+  > .switchers {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+  }
 }
+
 
 .collapsed {
   width: var(--sidebar-width-collapsed);
-}
 
-.switchers {
-  position: absolute;
-  bottom: 20px;
-  display: flex;
-  justify-content: center;
-  width: 100%;
+  .links {
+    > .item {
+      > .link {
+        width: 0;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.1s linear;
+      }
 
-  > .lng {
-    margin-left: 20px;
+      > .icon {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .switchers {
+    flex-direction: column;
+    align-items: center;
   }
 }

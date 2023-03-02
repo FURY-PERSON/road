@@ -1,17 +1,60 @@
 .Button {
+  padding: 10px;
   color: var(--primary-color);
   cursor: pointer;
 }
 
 .clear {
+  padding: 0;
   background: none;
   border: none;
   outline: none;
 }
 
 .outline {
-  padding: 10px;
   color: var(--primary-color);
   background-color: transparent;
   border: 1px solid var(--primary-color);
+}
+
+.background {
+  color: var(--primary-color);
+  background-color: var(--bg-color);
+  border: none;
+}
+
+.backgroundInverted {
+  color: var(--invert-primary-color);
+  background-color: var(--invert-bg-color);
+}
+
+.small {
+  font: var(--font-m);
+}
+
+.medium {
+  font: var(--font-l);
+}
+
+.large {
+  font: var(--font-xl);
+}
+
+.square {
+  padding: 0;
+
+  &.small {
+    width: var(--font-line-m);
+    height: var(--font-line-m);
+  }
+
+  &.medium {
+    width: var(--font-line-l);
+    height: var(--font-line-l);
+  }
+
+  &.large {
+    width: var(--font-line-xl);
+    height: var(--font-line-xl);
+  }
 }

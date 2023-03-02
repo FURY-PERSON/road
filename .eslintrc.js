@@ -40,6 +40,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'no-multiple-empty-lines': 'warn',
     'eol-last': 'warn',
+    'object-shorthand': 'warn',
     'react/require-default-props': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',

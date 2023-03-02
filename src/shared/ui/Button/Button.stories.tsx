@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Button, ThemeVariant } from './Button';
+import { Button, ButtonSize, ButtonVariant } from './Button';
 
 export default {
   title: 'Shared/Button',
@@ -12,19 +12,62 @@ export default {
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Default = Template.bind({});
+Default.args = {
   children: 'children',
 };
 
 export const Clear = Template.bind({});
 Clear.args = {
   children: 'children',
-  variant: ThemeVariant.CLEAR,
+  variant: ButtonVariant.CLEAR,
 };
 
 export const Outline = Template.bind({});
 Outline.args = {
   children: 'children',
-  variant: ThemeVariant.OUTLINE,
+  variant: ButtonVariant.OUTLINE,
+};
+
+export const Background = Template.bind({});
+Background.args = {
+  children: 'children',
+  variant: ButtonVariant.BACKGROUND,
+};
+
+export const BackgroundInverted = Template.bind({});
+BackgroundInverted.args = {
+  children: 'children',
+  variant: ButtonVariant.BACKGROUND_INVERTED,
+};
+
+export const Square = Template.bind({});
+Square.args = {
+  children: '>',
+  variant: ButtonVariant.BACKGROUND_INVERTED,
+  square: true,
+};
+
+export const SquareSmall = Template.bind({});
+SquareSmall.args = {
+  children: '>',
+  square: true,
+  variant: ButtonVariant.BACKGROUND_INVERTED,
+  size: ButtonSize.SMALL,
+};
+
+export const SquareMedium = Template.bind({});
+SquareMedium.args = {
+  children: '>',
+  square: true,
+  variant: ButtonVariant.BACKGROUND_INVERTED,
+  size: ButtonSize.MEDIUM,
+};
+
+export const SquareLarge = Template.bind({});
+SquareLarge.args = {
+  children: '>',
+  square: true,
+  variant: ButtonVariant.BACKGROUND_INVERTED,
+  size: ButtonSize.LARGE,
 };
