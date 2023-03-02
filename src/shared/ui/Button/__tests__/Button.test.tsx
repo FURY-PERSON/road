@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { renderWithProviders } from 'shared/lib/helpers/tests/renderWithProviders/renderWithProviders';
-import { Button, ThemeVariant } from '../Button';
+import { Button, ButtonVariant } from '../Button';
 
 describe('Button', () => {
   test('Simple example', () => {
@@ -9,7 +9,7 @@ describe('Button', () => {
   });
 
   test('With variant', () => {
-    renderWithProviders(<Button variant={ThemeVariant.CLEAR}>Test</Button>);
-    expect(screen.getByText('Test')).toHaveClass(ThemeVariant.CLEAR);
+    renderWithProviders(<Button variant={ButtonVariant.CLEAR}>Test</Button>);
+    expect(screen.getByText('Test')).toHaveClass(ButtonVariant.CLEAR);
   });
 });
