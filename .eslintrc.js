@@ -10,6 +10,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'airbnb',
     'plugin:i18next/recommended',
+    'plugin:react-hooks/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -23,6 +24,7 @@ module.exports = {
     'jest',
     'eslint-plugin-jest',
     'jest-dom',
+    'react-hooks',
   ],
   rules: {
     indent: [1, 2],
@@ -49,6 +51,10 @@ module.exports = {
     'no-shadow': 'off',
     'no-underscore-dangle': 'off',
     'comma-dangle': 'warn',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
     'no-trailing-spaces': 'off',
     'import/extensions': 'off',
     'max-len': [1, {
@@ -73,7 +79,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['**/src/**/*.test.{ts,tsx}'],
+      files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
       rules: {
         'i18next/no-literal-string': 'off',
       },

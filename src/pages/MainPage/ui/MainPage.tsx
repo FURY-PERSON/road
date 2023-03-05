@@ -5,6 +5,8 @@ export const MainPage = () => {
   const { t } = useTranslation('main');
 
   return (
-    <div className={styles.main}>{t('about page')}</div>
+    <div className={styles.main}>
+      <div>{t('about page')}</div>
+    </div>
   );
 };
