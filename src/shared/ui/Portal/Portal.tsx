@@ -11,5 +11,5 @@ const defaultRoot = document.querySelector('.app') ?? document.body;
 export const Portal:FC<PortalProps> = memo((props) => {
   const { children, element = defaultRoot } = props;
 
-  return createPortal(children, element)
+  return createPortal(children, element);
 });

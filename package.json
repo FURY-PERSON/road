@@ -11,7 +11,7 @@
     "lint:ts:fix": "eslint '**/*.{ts,tsx}' --fix",
     "lint:scss:check": "npx stylelint '**/*.scss'",
     "lint:scss:fix": "npx stylelint '**/*.scss' --fix",
-    "test:unit": "jest --config './config/jest/jest.config.ts'",
+    "test:unit": "jest --silent --config './config/jest/jest.config.ts'",
     "test:ui": "npx loki test",
     "test:ui:approve": "npx loki approve",
     "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
@@ -102,12 +102,14 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.3",
     "i18next": "^22.4.10",
     "i18next-browser-languagedetector": "^7.0.1",
     "i18next-http-backend": "^2.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^12.1.5",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.0"
   },
   "loki": {

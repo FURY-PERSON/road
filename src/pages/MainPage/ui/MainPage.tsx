@@ -1,3 +1,4 @@
+import { Counter } from 'entities/Counter';
 import { useTranslation } from 'react-i18next';
 import styles from './styles.module.scss';
 
@@ -7,6 +8,7 @@ export const MainPage = () => {
   return (
     <div className={styles.main}>
       <div>{t('about page')}</div>
+      <Counter />
     </div>
   );
 };

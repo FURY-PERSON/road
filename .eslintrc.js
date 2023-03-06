@@ -42,6 +42,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'no-multiple-empty-lines': 'warn',
     'eol-last': 'warn',
+    'import/order': 'warn',
     'object-shorthand': 'warn',
     'react/require-default-props': 'off',
     'react/react-in-jsx-scope': 'off',
@@ -79,10 +80,8 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
-      rules: {
-        'i18next/no-literal-string': 'off',
-      },
+      files: ['src/**/*.slice.ts'],
+      rules: { 'no-param-reassign': ['error', { props: false }] }
     },
   ],
 };
