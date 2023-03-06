@@ -4,14 +4,18 @@ import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { AppRouter } from 'app/providers/router';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import { PageLoader } from 'widgets/PageLoader';
 
 function App() {
   const { theme } = useTheme();
 
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme])
+
   return (
-    <div className={classNames('app', {}, [theme])}>
+    <div className={classNames('app', {}, [])}>
       <Suspense fallback={<PageLoader />}>
         <BrowserRouter>
           <Navbar />
