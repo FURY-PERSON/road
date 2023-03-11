@@ -29,6 +29,7 @@ i18n.use(initReactI18next)
     react: { useSuspense: false },
     supportedLngs,
     resources,
+    parseMissingKeyHandler: (key: string) => `No translation found for "${key}"`,
   });
 
 export default i18n;

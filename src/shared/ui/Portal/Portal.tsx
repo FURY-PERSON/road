@@ -1,15 +1,24 @@
-import { memo, FC, ReactNode } from 'react';
+import {
+  memo, FC, ReactNode, useRef, useState, useEffect, 
+} from 'react';
 import { createPortal } from 'react-dom';
 
 interface PortalProps {
   children: ReactNode
-  element?: HTMLElement
 }
 
-const defaultRoot = document.querySelector('.app') ?? document.body;
+const defaultRoot = (document.querySelector('.app') ?? document.body)as HTMLDivElement;
 
 export const Portal:FC<PortalProps> = memo((props) => {
-  const { children, element = defaultRoot } = props;
+  const { children } = props;
 
-  return createPortal(children, element);
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    ref.current = defaultRoot;
+    setMounted(true);
+  }, []);
+
+  return mounted && ref.current ? createPortal(children, ref.current) : null; // to load chunk async
 });

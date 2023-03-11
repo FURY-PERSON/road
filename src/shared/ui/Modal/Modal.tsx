@@ -9,14 +9,14 @@ interface ModalProps {
   className?: string;
   children?: ReactNode;
   open: boolean;
-  onClose?: () => void
+  onClose?: () => void,
 }
 
 const ANIMATION_DELAY = 300;
 
 export const Modal:FC<ModalProps> = memo((props) => {
   const {
-    className, children, open, onClose, 
+    className, children, open, onClose,
   } = props;
 
   const [isClosing, setIsClosing] = useState(false);

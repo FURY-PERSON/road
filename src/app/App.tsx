@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     document.body.className = theme;
-  }, [theme])
+  }, [theme]);
 
   return (
     <div className={classNames('app', {}, [])}>
