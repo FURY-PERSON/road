@@ -12,4 +12,9 @@
     margin-top: 24px;
     margin-left: auto;
   }
+
+  > .error {
+    margin: 12px 0;
+    color: var(--invert-primary-color)
+  }
 }

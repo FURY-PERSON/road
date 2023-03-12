@@ -71,3 +71,9 @@ SquareLarge.args = {
   variant: ButtonVariant.BACKGROUND_INVERTED,
   size: ButtonSize.LARGE,
 };
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  children: 'children',
+  disabled: true
+};

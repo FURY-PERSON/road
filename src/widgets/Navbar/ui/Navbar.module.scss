@@ -5,4 +5,13 @@
   width: 100%;
   height: var(--navbar-height);
   background-color: var(--invert-bg-color);
+
+  > .inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 24px;
+  }
 }

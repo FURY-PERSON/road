@@ -7,5 +7,8 @@
   "toggle": "Toggle",
   "to main": "To main",
   "to about": "To about",
-  "apply": "apply"
+  "apply": "apply",
+  "auth form": "auth form",
+  "login": "login",
+  "logout": "logout"
 }

@@ -6,13 +6,17 @@ import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
 import { Suspense, useEffect } from 'react';
 import { PageLoader } from 'widgets/PageLoader';
+import { useDispatch } from 'react-redux';
+import { userActions } from 'entities/User';
 
 function App() {
   const { theme } = useTheme();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     document.body.className = theme;
-  }, [theme]);
+    dispatch(userActions.initAuthData());
+  }, [theme, dispatch]);
 
   return (
     <div className={classNames('app', {}, [])}>

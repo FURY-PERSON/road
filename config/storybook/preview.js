@@ -39,7 +39,7 @@ export const globalTypes = {
  };
 
 addDecorator(StyleDecorator);
-addDecorator(StoreDecorator);
+addDecorator(StoreDecorator());
 addDecorator(ThemeDecorator(Theme.Light));
 addDecorator(RouterDecorator);
 addDecorator(I18nDecorator(i18n));
