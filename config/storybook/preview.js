@@ -3,6 +3,7 @@ import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator
 import { ThemeDecorator } from '../../src/shared/config/storybook/ThemeDecorator';
 import { I18nDecorator } from '../../src/shared/config/storybook/I18nDecorator';
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator';
+import { StoreDecorator } from '../../src/shared/config/storybook/StoreDecorator';
 import { Theme } from '../../src/shared/contexts/ThemeProvider';
 import i18n from '../../src/shared/config/i18n/i18nforStorybook.ts';
 import { SupportedLanguages } from '../../src/shared/config/i18n/types';
@@ -38,6 +39,7 @@ export const globalTypes = {
  };
 
 addDecorator(StyleDecorator);
+addDecorator(StoreDecorator());
 addDecorator(ThemeDecorator(Theme.Light));
 addDecorator(RouterDecorator);
 addDecorator(I18nDecorator(i18n));

@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 import { Navbar } from './Navbar';
 
 export default {
@@ -11,7 +12,17 @@ export default {
 
 const Template: ComponentStory<typeof Navbar> = (args) => <Navbar {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const LoggedOut = Template.bind({});
+LoggedOut.args = {
+
+};
+
+export const LoggedIn = Template.bind({});
+LoggedIn.decorators = [StoreDecorator({
+  user: {
+    authData: {}
+  }
+})]
+LoggedIn.args = {
 
 };

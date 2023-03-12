@@ -19,6 +19,7 @@ i18nForTests
       en: {},
       ru: {},
     },
+    parseMissingKeyHandler: (key: string) => `No translation found for "${key}"`,
   });
 
 export default i18nForTests;

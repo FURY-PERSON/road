@@ -23,6 +23,7 @@ i18n
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
+    parseMissingKeyHandler: (key: string) => (__IS__DEV__ ? `No translation found for "${key}"` : key),
   });
 
 i18n.on('languageChanged', (language) => {
