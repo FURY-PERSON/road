@@ -16,10 +16,10 @@ Default.args = {
 };
 
 export const Error = Template.bind({});
-Error.decorators =  [StoreDecorator({
+Error.decorators = [StoreDecorator({
   loginForm: {
-    error: 'error'
-  }
+    error: 'error',
+  },
 })];
 Error.args = {
   
@@ -27,7 +27,7 @@ Error.args = {
 
 
 export const Pending = Template.bind({});
-Pending.decorators =  [StoreDecorator({
+Pending.decorators = [StoreDecorator({
   loginForm: {
     isLoading: true
   }

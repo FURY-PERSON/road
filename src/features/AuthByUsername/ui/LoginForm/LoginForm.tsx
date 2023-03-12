@@ -1,19 +1,26 @@
 import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername';
 import { loginActions } from 'features/AuthByUsername/model/slice/login.slice';
-import { memo, FC, useCallback } from 'react';
+import {
+  memo, FC, useCallback,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { Button, ButtonVariant } from 'shared/ui/Button/Button';
 import { TextInput } from 'shared/ui/TextInput/TextInput';
 import { getLoginState } from 'features/AuthByUsername/model/selectors/getLoginState/getLoginState';
-import cls from './LoginForm.module.scss';
-import type {} from 'redux-thunk/extend-redux';
 import { Text, TextVariant } from 'shared/ui/Text/Text';
+import { DynamicModuleLoader, ReducersList } from 'shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
+import cls from './LoginForm.module.scss';
+import { loginReducer } from '../../model/slice/login.slice';
 
 interface LoginFormProps {
   className?: string;
 }
+
+const initialReducers: ReducersList = {
+  loginForm: loginReducer,
+};
 
 export const LoginForm:FC<LoginFormProps> = memo((props) => {
   const { className } = props;
@@ -37,17 +44,19 @@ export const LoginForm:FC<LoginFormProps> = memo((props) => {
   }, [dispatch, password, username]);
 
   return (
-    <div className={classNames(cls.LoginForm, {}, [className])}>
-      <Text title={t('auth form')} />
+    <DynamicModuleLoader reducers={initialReducers}>
+      <div className={classNames(cls.LoginForm, {}, [className])}>
+        <Text title={t('auth form')} />
 
-      <TextInput onChange={onChangeUsername} value={username} className={cls.input} />
-      <TextInput onChange={onChangePassword} value={password} className={cls.input} />
+        <TextInput onChange={onChangeUsername} value={username} className={cls.input} />
+        <TextInput onChange={onChangePassword} value={password} className={cls.input} />
 
-      {error  
-        ? <Text title={error} variant={TextVariant.ERROR} className={cls.error} />
-        : null }
+        {error  
+          ? <Text title={error} variant={TextVariant.ERROR} className={cls.error} />
+          : null }
 
-      <Button onClick={onLoginClick} disabled={isLoading} className={cls.button} variant={ButtonVariant.OUTLINE}>{t('apply')}</Button>
-    </div>
+        <Button onClick={onLoginClick} disabled={isLoading} className={cls.button} variant={ButtonVariant.OUTLINE}>{t('apply')}</Button>
+      </div>
+    </DynamicModuleLoader>
   );
 });

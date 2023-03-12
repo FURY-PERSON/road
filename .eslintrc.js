@@ -59,7 +59,7 @@ module.exports = {
     'no-trailing-spaces': 'off',
     'import/extensions': 'off',
     'max-len': [1, {
-      ignoreComments: true, tabWidth: 2, code: 100, ignoreStrings: true, ignoreUrls: true, 
+      ignoreComments: true, tabWidth: 2, code: 130, ignoreStrings: true, ignoreUrls: true, 
     }],
     'i18next/no-literal-string': ['error', { markupOnly: true }],
     'linebreak-style': [
