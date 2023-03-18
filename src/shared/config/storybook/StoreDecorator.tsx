@@ -6,7 +6,7 @@ import { loginReducer } from 'features/AuthByUsername/model/slice/login.slice';
 
 const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
   loginForm: loginReducer,
-  profile: profileReducer
+  profile: profileReducer,
 };
 
 export const StoreDecorator = (

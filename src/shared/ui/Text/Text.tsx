@@ -9,8 +9,8 @@ export enum TextVariant {
 
 interface TextProps {
   className?: string;
-  title?: string;
-  text?: string
+  title?: string | null;
+  text?: string | null
   variant?: TextVariant
 }
 

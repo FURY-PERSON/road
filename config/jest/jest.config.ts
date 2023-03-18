@@ -49,7 +49,7 @@ export default {
 
   globals: {
     __IS__DEV__: true,
-    __API__: true
+    __API__: true,
   },
 
   // Indicates whether the coverage information should be collected while executing the test

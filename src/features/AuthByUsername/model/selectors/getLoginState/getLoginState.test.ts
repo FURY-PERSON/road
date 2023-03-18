@@ -9,7 +9,7 @@ describe('Get login state', () => {
         error: 'error',
         isLoading: true,
         password: '1234',
-        username: 'username'
+        login: 'login'
       }
     };
 
@@ -17,7 +17,7 @@ describe('Get login state', () => {
       error: 'error',
       isLoading: true,
       password: '1234',
-      username: 'username'
+      login: 'login'
     });
   });
 

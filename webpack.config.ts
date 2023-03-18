@@ -23,6 +23,6 @@ export default function (env: BuildEnv): webpack.Configuration {
     isDev,
     port,
     analyze,
-    apiUrl
+    apiUrl,
   });
 }

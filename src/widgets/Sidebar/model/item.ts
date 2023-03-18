@@ -12,7 +12,7 @@ export interface ISidebarItem {
   Icon: React.FC<React.SVGProps<SVGSVGElement>>
 }
 
-export const SidebarItemList: ISidebarItem[] = [
+export const getSidebarItemList = (userLogin: string):ISidebarItem[] => [
   {
     path: RoutePath.main,
     Icon: HomeIcon,
@@ -24,7 +24,7 @@ export const SidebarItemList: ISidebarItem[] = [
     text: 'to about',
   },
   {
-    path: RoutePath.profile,
+    path: `${RoutePath.profile}/${userLogin}`,
     Icon: ProfileIcon,
     text: 'to profile',
   },

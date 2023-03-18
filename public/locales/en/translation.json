@@ -11,5 +11,6 @@
   "apply": "apply",
   "auth form": "auth form",
   "login": "login",
-  "logout": "logout"
+  "logout": "logout",
+  "edit": "edit"
 }

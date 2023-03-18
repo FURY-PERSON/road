@@ -5,7 +5,7 @@ import { User, userActions } from 'entities/User';
 import { USER_LOCALSTORAGE_KEY } from 'shared/constant/localstorage';
 
 interface LoginByUsernameProps {
-  username: string,
+  login: string,
   password: string
 }
 

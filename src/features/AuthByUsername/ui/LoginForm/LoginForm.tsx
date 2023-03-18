@@ -30,7 +30,7 @@ export const LoginForm:FC<LoginFormProps> = memo((props) => {
   const dispatch = useAppDispatch();
 
   const {
-    username, password, isLoading, error, 
+    login, password, isLoading, error, 
   } = useSelector(getLoginState);
 
   const onChangeUsername = useCallback((value: string) => {
@@ -42,18 +42,18 @@ export const LoginForm:FC<LoginFormProps> = memo((props) => {
   }, [dispatch]);
 
   const onLoginClick = useCallback(async () => {
-    const result = await dispatch(loginByUsername({ password, username }));
+    const result = await dispatch(loginByUsername({ password, login }));
     if (result.meta.requestStatus === 'fulfilled') {
       onSuccess();
     }
-  }, [dispatch, password, username, onSuccess]);
+  }, [dispatch, password, login, onSuccess]);
 
   return (
     <DynamicModuleLoader reducers={initialReducers}>
       <div className={classNames(cls.LoginForm, {}, [className])}>
         <Text title={t('auth form')} />
 
-        <TextInput onChange={onChangeUsername} value={username} className={cls.input} />
+        <TextInput onChange={onChangeUsername} value={login} className={cls.input} />
         <TextInput onChange={onChangePassword} value={password} className={cls.input} />
 
         {error  
