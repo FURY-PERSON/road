@@ -44,6 +44,7 @@ module.exports = {
     'eol-last': 'warn',
     'import/order': 'warn',
     'object-shorthand': 'warn',
+    'react/self-closing-comp': 'off',
     'react/require-default-props': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',

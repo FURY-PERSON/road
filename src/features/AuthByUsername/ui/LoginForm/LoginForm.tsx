@@ -11,11 +11,13 @@ import { TextInput } from 'shared/ui/TextInput/TextInput';
 import { getLoginState } from 'features/AuthByUsername/model/selectors/getLoginState/getLoginState';
 import { Text, TextVariant } from 'shared/ui/Text/Text';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import cls from './LoginForm.module.scss';
 import { loginReducer } from '../../model/slice/login.slice';
 
 interface LoginFormProps {
   className?: string;
+  onSuccess: () => void
 }
 
 const initialReducers: ReducersList = {
@@ -23,9 +25,9 @@ const initialReducers: ReducersList = {
 };
 
 export const LoginForm:FC<LoginFormProps> = memo((props) => {
-  const { className } = props;
+  const { className, onSuccess } = props;
   const { t } = useTranslation();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const {
     username, password, isLoading, error, 
@@ -39,9 +41,12 @@ export const LoginForm:FC<LoginFormProps> = memo((props) => {
     dispatch(loginActions.setPassword(value));
   }, [dispatch]);
 
-  const onLoginClick = useCallback(() => {
-    dispatch(loginByUsername({ password, username }));
-  }, [dispatch, password, username]);
+  const onLoginClick = useCallback(async () => {
+    const result = await dispatch(loginByUsername({ password, username }));
+    if (result.meta.requestStatus === 'fulfilled') {
+      onSuccess();
+    }
+  }, [dispatch, password, username, onSuccess]);
 
   return (
     <DynamicModuleLoader reducers={initialReducers}>

@@ -14,7 +14,7 @@ interface ModalProps {
 
 const ANIMATION_DELAY = 300;
 
-export const Modal:FC<ModalProps> = memo((props) => {
+export const Modal:FC<ModalProps> = (props) => {
   const {
     className, children, open, onClose,
   } = props;
@@ -22,7 +22,7 @@ export const Modal:FC<ModalProps> = memo((props) => {
   const [isClosing, setIsClosing] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const closeHandler = useCallback(() => {
+  const closeHandler = () => {
     if (!onClose) return;
 
     setIsClosing(true);
@@ -30,7 +30,7 @@ export const Modal:FC<ModalProps> = memo((props) => {
       onClose();
       setIsClosing(false);
     }, ANIMATION_DELAY);
-  }, [onClose]); 
+  }; 
 
   const onContentClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -41,13 +41,13 @@ export const Modal:FC<ModalProps> = memo((props) => {
     [cls.closing]: isClosing,
   };
 
-  const onKeyDown = useCallback((e: KeyboardEvent) => {
-    if (e.key === 'Escape') {
-      closeHandler();
-    }
-  }, [closeHandler]);
-
   useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeHandler();
+      }
+    };
+
     if (open) {
       window.addEventListener('keydown', onKeyDown);
     }
@@ -56,7 +56,7 @@ export const Modal:FC<ModalProps> = memo((props) => {
       clearTimeout(timerRef.current);
       window.removeEventListener('keydown', onKeyDown);
     };
-  }, [open, onKeyDown]);
+  }, [open]);
 
   return (
     <Portal>
@@ -69,4 +69,4 @@ export const Modal:FC<ModalProps> = memo((props) => {
       </div>
     </Portal>
   );
-});
+};

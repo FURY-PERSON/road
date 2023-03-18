@@ -18,7 +18,7 @@ export const LoginModal:FC<LoginModalProps> = memo((props) => {
     <Modal open={open} onClose={onClose}>
       <div className={classNames(cls.LoginModal, {}, [className])}>
         <Suspense fallback={<SvgLoader />}>
-          <LoginFormAsync />
+          <LoginFormAsync onSuccess={onClose} />
         </Suspense>
       </div>
     </Modal>
