@@ -13,6 +13,8 @@ export default ({ config }: {config: webpack.Configuration}) => {
     html: '',
     src: path.resolve(__dirname, '..', '..', 'src'),
   };
+
+  const apiUrl = 'http://localhost:8000';
   
   config.resolve.modules.push(paths.src);
   config.resolve.extensions.push('.ts', '.tsx');
@@ -29,7 +31,7 @@ export default ({ config }: {config: webpack.Configuration}) => {
   
   config.plugins.push(miniCssExtractPlugin());
   config.module.rules.push(buildSvgLoader());
-  config.plugins.push(buildDefinePlugin(isDev));
+  config.plugins.push(buildDefinePlugin(isDev, apiUrl));
 
   config.module.rules.push(buildCssLoader(isDev));
   return config;

@@ -5,14 +5,16 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOption } from './types/config';
 import { buildDefinePlugin, miniCssExtractPlugin } from './plugins/buildPlugins';
 
-export function buildPlugins({ paths, isDev, analyze }: BuildOption): webpack.WebpackPluginInstance[] {
+export function buildPlugins({
+  paths, isDev, analyze, apiUrl, 
+}: BuildOption): webpack.WebpackPluginInstance[] {
   return [
     new HtmlWebpackPlugin({
       template: paths.html,
     }),
     new webpack.ProgressPlugin(),
     miniCssExtractPlugin(),
-    buildDefinePlugin(isDev),
+    buildDefinePlugin(isDev, apiUrl),
     isDev && new ReactRefreshWebpackPlugin(),
     analyze && new BundleAnalyzerPlugin(),
   ].filter(Boolean);

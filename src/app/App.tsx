@@ -1,4 +1,3 @@
-import { BrowserRouter } from 'react-router-dom';
 import { useTheme } from 'shared/contexts/ThemeProvider';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { AppRouter } from 'app/providers/router';
@@ -21,13 +20,11 @@ function App() {
   return (
     <div className={classNames('app', {}, [])}>
       <Suspense fallback={<PageLoader />}>
-        <BrowserRouter>
-          <Navbar />
-          <div className="content">
-            <Sidebar />
-            <AppRouter />
-          </div>
-        </BrowserRouter>
+        <Navbar />
+        <div className="content">
+          <Sidebar />
+          <AppRouter />
+        </div>
       </Suspense>
     </div>
   );
