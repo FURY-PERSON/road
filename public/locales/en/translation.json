@@ -7,8 +7,10 @@
   "toggle": "Toggle",
   "to main": "To main",
   "to about": "To about",
+  "to profile": "to profile",
   "apply": "apply",
   "auth form": "auth form",
   "login": "login",
-  "logout": "logout"
+  "logout": "logout",
+  "edit": "edit"
 }

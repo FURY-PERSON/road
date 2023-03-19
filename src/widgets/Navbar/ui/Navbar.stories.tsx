@@ -20,7 +20,10 @@ LoggedOut.args = {
 export const LoggedIn = Template.bind({});
 LoggedIn.decorators = [StoreDecorator({
   user: {
-    authData: {}
+    authData: {
+      id: '1',
+      login: '23'
+    }
   }
 })]
 LoggedIn.args = {

@@ -4,7 +4,7 @@ import { LoginSchema } from '../types/login.schema';
 
 const initialState: LoginSchema = {
   isLoading: false,
-  username: '',
+  login: '',
   password: '',
 };
 
@@ -13,7 +13,7 @@ export const loginSlice = createSlice({
   initialState,
   reducers: {
     setUsername(state, action: PayloadAction<string>) {
-      state.username = action.payload;
+      state.login = action.payload;
     },
     setPassword(state, action: PayloadAction<string>) {
       state.password = action.payload;
@@ -27,6 +27,8 @@ export const loginSlice = createSlice({
       })
       .addCase(loginByUsername.fulfilled, (state, action) => {
         state.error = '';
+        state.password = '';
+        state.login = '';
         state.isLoading = false;
       })
       .addCase(loginByUsername.rejected, (state, action) => {

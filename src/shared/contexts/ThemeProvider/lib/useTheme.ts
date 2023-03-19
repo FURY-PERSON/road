@@ -12,11 +12,11 @@ export const useTheme = ():IUseTheme => {
   const toggle = () => {
     const newTheme = theme === Theme.Light ? Theme.Dark : Theme.Light;
     localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
-    setTheme(newTheme);
+    setTheme?.(newTheme);
   };
 
   return {
-    theme,
+    theme: theme || Theme.Light,
     toggleTheme: toggle,
   };
 };

@@ -1,7 +1,8 @@
 import { AboutPage } from 'pages/AboutPage';
 import { MainPage } from 'pages/MainPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
-import { RouteProps } from 'react-router-dom';
+import { ProfilePage } from 'pages/ProfilePage';
+import { Route, RouteProps } from 'react-router-dom';
 import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
 
 export const routeConfig: Array<RouteProps> = [
@@ -13,6 +14,11 @@ export const routeConfig: Array<RouteProps> = [
     path: RoutePath[AppRoutes.ABOUT],
     element: <AboutPage />,
   },
+  {
+    path: RoutePath[AppRoutes.PROFILE],
+    element: <ProfilePage />,
+  },
+
   {
     path: RoutePath[AppRoutes.NOTFOUND],
     element: <NotFoundPage />,

@@ -1,9 +1,10 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
 
-export function buildDefinePlugin(isDev: boolean) {
+export function buildDefinePlugin(isDev: boolean, apiUrl: string) {
   return new webpack.DefinePlugin({
-    __IS__DEV__: isDev,
+    __IS__DEV__: JSON.stringify(isDev),
+    __API__: JSON.stringify(apiUrl),
   });
 }
 

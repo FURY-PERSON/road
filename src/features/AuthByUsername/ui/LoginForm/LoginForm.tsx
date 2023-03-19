@@ -1,27 +1,36 @@
 import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername';
 import { loginActions } from 'features/AuthByUsername/model/slice/login.slice';
-import { memo, FC, useCallback } from 'react';
+import {
+  memo, FC, useCallback,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { Button, ButtonVariant } from 'shared/ui/Button/Button';
 import { TextInput } from 'shared/ui/TextInput/TextInput';
 import { getLoginState } from 'features/AuthByUsername/model/selectors/getLoginState/getLoginState';
-import cls from './LoginForm.module.scss';
-import type {} from 'redux-thunk/extend-redux';
 import { Text, TextVariant } from 'shared/ui/Text/Text';
+import { DynamicModuleLoader, ReducersList } from 'shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import cls from './LoginForm.module.scss';
+import { loginReducer } from '../../model/slice/login.slice';
 
 interface LoginFormProps {
   className?: string;
+  onSuccess: () => void
 }
 
+const initialReducers: ReducersList = {
+  loginForm: loginReducer,
+};
+
 export const LoginForm:FC<LoginFormProps> = memo((props) => {
-  const { className } = props;
+  const { className, onSuccess } = props;
   const { t } = useTranslation();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const {
-    username, password, isLoading, error, 
+    login, password, isLoading, error, 
   } = useSelector(getLoginState);
 
   const onChangeUsername = useCallback((value: string) => {
@@ -32,22 +41,27 @@ export const LoginForm:FC<LoginFormProps> = memo((props) => {
     dispatch(loginActions.setPassword(value));
   }, [dispatch]);
 
-  const onLoginClick = useCallback(() => {
-    dispatch(loginByUsername({ password, username }));
-  }, [dispatch, password, username]);
+  const onLoginClick = useCallback(async () => {
+    const result = await dispatch(loginByUsername({ password, login }));
+    if (result.meta.requestStatus === 'fulfilled') {
+      onSuccess();
+    }
+  }, [dispatch, password, login, onSuccess]);
 
   return (
-    <div className={classNames(cls.LoginForm, {}, [className])}>
-      <Text title={t('auth form')} />
+    <DynamicModuleLoader reducers={initialReducers}>
+      <div className={classNames(cls.LoginForm, {}, [className])}>
+        <Text title={t('auth form')} />
 
-      <TextInput onChange={onChangeUsername} value={username} className={cls.input} />
-      <TextInput onChange={onChangePassword} value={password} className={cls.input} />
+        <TextInput onChange={onChangeUsername} value={login} className={cls.input} />
+        <TextInput onChange={onChangePassword} value={password} className={cls.input} />
 
-      {error  
-        ? <Text title={error} variant={TextVariant.ERROR} className={cls.error} />
-        : null }
+        {error  
+          ? <Text title={error} variant={TextVariant.ERROR} className={cls.error} />
+          : null }
 
-      <Button onClick={onLoginClick} disabled={isLoading} className={cls.button} variant={ButtonVariant.OUTLINE}>{t('apply')}</Button>
-    </div>
+        <Button onClick={onLoginClick} disabled={isLoading} className={cls.button} variant={ButtonVariant.OUTLINE}>{t('apply')}</Button>
+      </div>
+    </DynamicModuleLoader>
   );
 });

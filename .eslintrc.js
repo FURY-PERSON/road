@@ -41,9 +41,12 @@ module.exports = {
     'object-curly-spacing': 'warn',
     'react/jsx-props-no-spreading': 'off',
     'no-multiple-empty-lines': 'warn',
+    'keyword-spacing': 'warn',
+    'no-undef': 'off',
     'eol-last': 'warn',
     'import/order': 'warn',
     'object-shorthand': 'warn',
+    'react/self-closing-comp': 'off',
     'react/require-default-props': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
@@ -59,7 +62,7 @@ module.exports = {
     'no-trailing-spaces': 'off',
     'import/extensions': 'off',
     'max-len': [1, {
-      ignoreComments: true, tabWidth: 2, code: 100, ignoreStrings: true, ignoreUrls: true, 
+      ignoreComments: true, tabWidth: 2, code: 130, ignoreStrings: true, ignoreUrls: true, 
     }],
     'i18next/no-literal-string': ['error', { markupOnly: true }],
     'linebreak-style': [
@@ -77,6 +80,7 @@ module.exports = {
   },
   globals: {
     __IS__DEV__: true,
+    __API__: true
   },
   overrides: [
     {

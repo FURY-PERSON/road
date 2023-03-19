@@ -1,14 +1,15 @@
 import { LanguageSwitcher } from 'features/LanguageSwitcher';
 import { ThemeSwitcher } from 'features/ThemeSwitcher';
-import { memo, FC, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import {
+  memo, FC, useState, useMemo, 
+} from 'react';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { Button, ButtonSize, ButtonVariant } from 'shared/ui/Button/Button';
-import HomeIcon from 'shared/assets/icons/home.svg';
-import BookIcon from 'shared/assets/icons/book.svg';
+import { useSelector } from 'react-redux';
+import { getUserLogin } from 'entities/User';
 import cls from './Sidebar.module.scss';
+import { getSidebarItemList } from '../../model/item';
+import { SidebarItem } from '../SidebarItem/SidebarItem';
 
 interface SidebarProps {
   className?: string;
@@ -17,11 +18,13 @@ interface SidebarProps {
 export const Sidebar:FC<SidebarProps> = memo((props) => {
   const { className } = props;
   const [collapsed, serCollapsed] = useState(false);
-  const { t } = useTranslation();
+  const userLogin = useSelector(getUserLogin);
 
   const onToggle = () => {
     serCollapsed((value) => !value);
   };
+
+  const SidebarItemList = useMemo(() => getSidebarItemList(userLogin), [userLogin]);
 
   return (
     <div 
@@ -29,14 +32,9 @@ export const Sidebar:FC<SidebarProps> = memo((props) => {
       className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}
     >
       <div className={cls.links}>
-        <AppLink className={cls.item} to={RoutePath.main}>
-          <HomeIcon className={cls.icon} />
-          <span className={cls.link}>{t('to main')}</span>
-        </AppLink>
-        <AppLink className={cls.item} to={RoutePath.about}>
-          <BookIcon className={cls.icon} />
-          <span className={cls.link}>{t('to about')}</span>
-        </AppLink>
+        {SidebarItemList.map((item) => (
+          <SidebarItem key={item.path} item={item} collapsed={collapsed} />
+        ))}
       </div>
 
       <Button 
