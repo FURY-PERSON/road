@@ -8,14 +8,22 @@ import { buildDefinePlugin, miniCssExtractPlugin } from './plugins/buildPlugins'
 export function buildPlugins({
   paths, isDev, analyze, apiUrl, 
 }: BuildOption): webpack.WebpackPluginInstance[] {
-  return [
+  const plugins = [
     new HtmlWebpackPlugin({
       template: paths.html,
     }),
     new webpack.ProgressPlugin(),
     miniCssExtractPlugin(),
     buildDefinePlugin(isDev, apiUrl),
-    isDev && new ReactRefreshWebpackPlugin(),
-    analyze && new BundleAnalyzerPlugin(),
-  ].filter(Boolean);
+  ];
+
+  if (isDev) {
+    plugins.push(new ReactRefreshWebpackPlugin());
+  }
+
+  if (analyze) {
+    plugins.push(new BundleAnalyzerPlugin());
+  }
+
+  return plugins;
 }

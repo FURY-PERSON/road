@@ -1,5 +1,5 @@
 import { memo, FC, ButtonHTMLAttributes } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
 import cls from './Button.module.scss';
 
 export enum ButtonVariant {
@@ -28,7 +28,7 @@ export const Button:FC<ButtonProps> = memo((props) => {
     size = ButtonSize.SMALL, variant = ButtonVariant.CLEAR, ...otherProps 
   } = props;
 
-  const mods: Record<string, boolean> = {
+  const mods: Mods = {
     [cls.square]: square,
     [cls.disabled]: disabled,
   };

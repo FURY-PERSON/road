@@ -41,6 +41,8 @@ module.exports = {
     'object-curly-spacing': 'warn',
     'react/jsx-props-no-spreading': 'off',
     'no-multiple-empty-lines': 'warn',
+    'keyword-spacing': 'warn',
+    'no-undef': 'off',
     'eol-last': 'warn',
     'import/order': 'warn',
     'object-shorthand': 'warn',

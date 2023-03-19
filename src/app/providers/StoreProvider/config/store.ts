@@ -1,15 +1,18 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
+import {
+  CombinedState, configureStore, Reducer, ReducersMapObject, 
+} from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 import { api } from 'shared/api/api';
+import { ReducersList } from 'shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
 import { createReducerManager } from './reducerManager';
 import { StateSchema } from './stateTypes';
 
 // initialState - for tests
 export function createReduxStore(
   initialState?: StateSchema, 
-  asyncReducers?: ReducersMapObject<StateSchema>,
+  asyncReducers?: ReducersList,
 ) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
@@ -19,7 +22,7 @@ export function createReduxStore(
 
   const reducerManager = createReducerManager(rootReducers);
   const store = configureStore({
-    reducer: reducerManager.reduce,
+    reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
     devTools: __IS__DEV__,
     preloadedState: initialState,
     middleware: (defaultMiddleware) => defaultMiddleware({

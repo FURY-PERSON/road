@@ -5,8 +5,8 @@ import { User, userActions } from 'entities/User';
 import { USER_LOCALSTORAGE_KEY } from 'shared/constant/localstorage';
 
 interface LoginByUsernameProps {
-  login: string,
-  password: string
+  login?: string,
+  password?: string
 }
 
 export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, ThunkConfig<string>>(
@@ -26,7 +26,7 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, Thun
       return response.data;
     } catch (error) {
       const typedError = error as AxiosError;
-      return thunkAPI.rejectWithValue(typedError.response.statusText || typedError.message);
+      return thunkAPI.rejectWithValue(typedError.response?.statusText || typedError.message);
     }
   },
 );

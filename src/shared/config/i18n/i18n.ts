@@ -6,8 +6,11 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import { i18nextPlugin as translationCheckPlugin } from 'translation-check';
 import { SupportedLanguages } from './types';
 
+if (__IS__DEV__) {
+  i18n.use(translationCheckPlugin);
+}
+
 i18n
-  .use(__IS__DEV__ ? translationCheckPlugin : null)
   .use(Backend)
   .use(LanguageDetector)
   .use(initReactI18next)

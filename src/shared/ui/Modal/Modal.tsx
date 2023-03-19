@@ -1,7 +1,7 @@
 import React, {
-  memo, FC, ReactNode, useState, useRef, useEffect, useCallback, 
+  memo, FC, ReactNode, useState, useRef, useEffect, useCallback, MutableRefObject, 
 } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
 import { Portal } from '../Portal/Portal';
 import cls from './Modal.module.scss';
 
@@ -20,7 +20,7 @@ export const Modal:FC<ModalProps> = (props) => {
   } = props;
 
   const [isClosing, setIsClosing] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout> | undefined>;
 
   const closeHandler = () => {
     if (!onClose) return;
@@ -36,7 +36,7 @@ export const Modal:FC<ModalProps> = (props) => {
     e.stopPropagation();
   };
 
-  const wrapperMods: Record<string, boolean> = {
+  const wrapperMods: Mods = {
     [cls.open]: open,
     [cls.closing]: isClosing,
   };
