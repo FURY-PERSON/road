@@ -1,0 +1,69 @@
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Profile } from 'entities/Profile';
+import { getProfile } from '../services/getProfileData/getProfileData';
+import { updateProfile } from '../services/updateProfileData/updateProfileData';
+import { ProfileSchema } from '../types/editableProfileCard';
+
+const initialState: ProfileSchema = {
+  isLoading: false,
+  error: undefined,
+  data: undefined,
+  readonly: true,
+  form: undefined,
+};
+
+export const profileSlice = createSlice({
+  name: 'profile',
+  initialState,
+  reducers: {
+    setReadOnly(state, action: PayloadAction<boolean>) {
+      state.readonly = action.payload;
+    },
+    cancelEdit(state) {
+      state.readonly = true;
+      state.form = state.data;
+    },
+    updateProfile(state, action: PayloadAction<Profile>) {
+      state.form = {
+        ...state.form,
+        ...action.payload,
+      };
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getProfile.pending, (state) => {
+        state.error = undefined;
+        state.isLoading = true;
+      })
+      .addCase(getProfile.fulfilled, (state, action) => {
+        state.error = '';
+        state.data = action.payload;
+        state.form = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(getProfile.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(updateProfile.pending, (state) => {
+        state.error = undefined;
+        state.isLoading = true;
+      })
+      .addCase(updateProfile.fulfilled, (state, action) => {
+        state.error = '';
+        state.data = action.payload;
+        state.form = action.payload;
+        state.readonly = true;
+        state.isLoading = false;
+      })
+      .addCase(updateProfile.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      });
+  },
+});
+
+// Action creators are generated for each case reducer function
+export const { actions: profileActions } = profileSlice;
+export const { reducer: profileReducer } = profileSlice;

@@ -22,7 +22,9 @@
     {
       "id": 1,
       "login": "admin",
-      "password": "123"
+      "password": "123",
+      "firstName": "Misha",
+      "lastName": "RRR"
     }
   ],
   "profile": { "name": "typicode" }

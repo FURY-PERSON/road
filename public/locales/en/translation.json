@@ -12,5 +12,7 @@
   "auth form": "auth form",
   "login": "login",
   "logout": "logout",
-  "edit": "edit"
+  "edit": "edit",
+  "cancel": "cancel",
+  "save": "save"
 }

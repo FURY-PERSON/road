@@ -3,9 +3,9 @@ import {
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { CounterSchema } from 'entities/Counter';
-import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthByUsername';
+import { ProfileSchema } from 'features/EditableProfileCard';
 
 export interface StateSchema {
   counter: CounterSchema,
@@ -35,5 +35,6 @@ export interface ThunkExtra {
 
 export interface ThunkConfig<T> {
   rejectValue: T, 
-  extra: ThunkExtra
+  extra: ThunkExtra,
+  state: StateSchema
 }

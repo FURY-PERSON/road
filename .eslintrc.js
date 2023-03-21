@@ -43,9 +43,9 @@ module.exports = {
     'no-multiple-empty-lines': 'warn',
     'keyword-spacing': 'warn',
     'no-undef': 'off',
+    'object-shorthand': 'off',
     'eol-last': 'warn',
     'import/order': 'warn',
-    'object-shorthand': 'warn',
     'react/self-closing-comp': 'off',
     'react/require-default-props': 'off',
     'react/react-in-jsx-scope': 'off',
@@ -80,12 +80,12 @@ module.exports = {
   },
   globals: {
     __IS__DEV__: true,
-    __API__: true
+    __API__: true,
   },
   overrides: [
     {
       files: ['src/**/*.slice.ts'],
-      rules: { 'no-param-reassign': ['error', { props: false }] }
+      rules: { 'no-param-reassign': ['error', { props: false }] },
     },
   ],
 };
