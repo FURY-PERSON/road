@@ -3,8 +3,10 @@ import { ThunkConfig } from 'app/providers/StoreProvider';
 import { AxiosError } from 'axios';
 import { Profile } from 'entities/Profile';
 import { getProfileForm } from '../../selectors/getProfileForm/getProfileForm';
+import { ProfileValidationError } from '../../types/editableProfileCard';
+import { validateProfileForm } from '../validateProfileForm/validateProfileForm';
 
-export const updateProfile = createAsyncThunk<Profile, void, ThunkConfig<string>>(
+export const updateProfile = createAsyncThunk<Profile, void, ThunkConfig<ProfileValidationError[] | string>>(
   'profile/updateProfile',
   async (_, thunkAPI) => {
     const {
@@ -13,11 +15,17 @@ export const updateProfile = createAsyncThunk<Profile, void, ThunkConfig<string>
     try {
       const formData = getProfileForm(getState());
 
+      const errors = validateProfileForm(formData);
+
+      if (errors.length) {
+        return rejectWithValue(errors);
+      }
+
       const response = await extra.api.put<Profile>('/users', formData, { params: { login: formData?.login } });
       const profile = response.data[0];
 
       if (!profile) {
-        return rejectWithValue('Profile do not updated');
+        return rejectWithValue('Profile not found');
       }
 
       return profile;
