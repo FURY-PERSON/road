@@ -24,5 +24,6 @@ export default function (env: BuildEnv): webpack.Configuration {
     port,
     analyze,
     apiUrl,
+    project: 'main',
   });
 }

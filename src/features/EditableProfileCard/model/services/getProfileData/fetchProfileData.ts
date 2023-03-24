@@ -3,12 +3,12 @@ import { ThunkConfig } from 'app/providers/StoreProvider';
 import { AxiosError } from 'axios';
 import { Profile } from 'entities/Profile';
 
-interface getProfileProps {
+interface fetchProfileProps {
   login?: string
 }
 
-export const getProfile = createAsyncThunk<Profile, getProfileProps, ThunkConfig<string>>(
-  'profile/getProfile',
+export const fetchProfile = createAsyncThunk<Profile, fetchProfileProps, ThunkConfig<string>>(
+  'profile/fetchProfile',
   async (data, thunkAPI) => {
     const {
       extra, rejectWithValue, 
@@ -19,7 +19,7 @@ export const getProfile = createAsyncThunk<Profile, getProfileProps, ThunkConfig
       }
 
       const response = await extra.api.get<Profile>('/users', { params: { login: data?.login } });
-      const profile = response.data[0];
+      const profile = Array.isArray(response.data) ? response.data[0] : response.data; // TODO DELETE WHEN USE REAL BE
 
       if (!profile) {
         return rejectWithValue('Profile not found');

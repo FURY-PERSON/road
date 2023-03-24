@@ -1,6 +1,5 @@
 import { Profile } from 'entities/Profile';
 
-
 export enum ProfileValidationError {
   USER_DATA = 'USER_DATA',
   NO_DATA = 'NO_DATA',

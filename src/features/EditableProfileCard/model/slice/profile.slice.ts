@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Profile } from 'entities/Profile';
-import { getProfile } from '../services/getProfileData/getProfileData';
+import { fetchProfile } from '../services/getProfileData/fetchProfileData';
 import { updateProfile } from '../services/updateProfileData/updateProfileData';
 import { ProfileSchema } from '../types/editableProfileCard';
 
@@ -35,17 +35,17 @@ export const profileSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getProfile.pending, (state) => {
+      .addCase(fetchProfile.pending, (state) => {
         state.error = undefined;
         state.isLoading = true;
       })
-      .addCase(getProfile.fulfilled, (state, action) => {
+      .addCase(fetchProfile.fulfilled, (state, action) => {
         state.error = '';
         state.data = action.payload;
         state.form = action.payload;
         state.isLoading = false;
       })
-      .addCase(getProfile.rejected, (state, action) => {
+      .addCase(fetchProfile.rejected, (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
       })
