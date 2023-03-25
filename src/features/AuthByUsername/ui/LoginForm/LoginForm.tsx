@@ -52,7 +52,6 @@ export const LoginForm:FC<LoginFormProps> = memo((props) => {
     <DynamicModuleLoader reducers={initialReducers}>
       <div className={classNames(cls.LoginForm, {}, [className])}>
         <Text title={t('auth form')} />
-
         <TextInput onChange={onChangeUsername} value={login} className={cls.input} />
         <TextInput onChange={onChangePassword} value={password} className={cls.input} />
 
