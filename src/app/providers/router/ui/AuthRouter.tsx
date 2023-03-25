@@ -1,16 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
 import { Suspense } from 'react';
 import { PageLoader } from 'widgets/PageLoader/ui/PageLoader';
-import { appRouteConfig } from '../config/appRouterConfig';
+import { authRouteConfig } from '../config/authRouteConfig';
 
-export const AppRouter = () => (
+export const AuthRouter = () => (
   <Suspense fallback={<PageLoader />}>
     <div className="page">
       <Routes>
-        {appRouteConfig.map((route) => <Route {...route} />)}
+        {authRouteConfig.map((route) => <Route {...route} />)}
       </Routes>
     </div>
   </Suspense>
 );
 
-export default AppRouter;
+export default AuthRouter;
