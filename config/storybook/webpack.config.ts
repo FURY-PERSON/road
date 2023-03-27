@@ -17,7 +17,7 @@ export default ({ config }: {config: webpack.Configuration}) => {
     src: path.resolve(__dirname, '..', '..', 'src'),
   };
 
-  const apiUrl = 'http://localhost:8000';
+  const apiUrl = 'http://localhost:3005/api/';
   
   config.resolve!.modules!.push(paths.src);
   config.resolve!.extensions!.push('.ts', '.tsx');

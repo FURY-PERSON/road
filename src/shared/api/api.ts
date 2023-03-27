@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { USER_LOCALSTORAGE_KEY } from 'shared/constant/localstorage';
+import { ACCESS_TOKEN_LOCALSTORAGE_KEY } from 'shared/constant/localstorage';
 
 export const api = axios.create({
   baseURL: __API__,
@@ -11,7 +11,7 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use(async (config) => {
-  const accessToken = await localStorage.getItem(USER_LOCALSTORAGE_KEY);
+  const accessToken = localStorage.getItem(ACCESS_TOKEN_LOCALSTORAGE_KEY);
 
   // eslint-disable-next-line no-param-reassign
   // @ts-expect-error axios type error

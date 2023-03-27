@@ -4,12 +4,14 @@ import {
 import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
 import cls from './TextInput.module.scss';
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'placeholder'>
 
 interface TextInputProps extends HTMLInputProps {
   className?: string;
   value?: string,
-  onChange?: (value: string) => void
+  onChange?: (value: string) => void,
+  placeholder?: string | null,
+  label?: string | null
 }
 
 export const TextInput:FC<TextInputProps> = memo((props) => {
@@ -18,6 +20,8 @@ export const TextInput:FC<TextInputProps> = memo((props) => {
     value,
     onChange,
     readOnly,
+    placeholder,
+    label,
     ...otherProps
   } = props;
 
@@ -31,7 +35,10 @@ export const TextInput:FC<TextInputProps> = memo((props) => {
 
   return (
     <div className={classNames(cls.TextInput, mods, [className])}>
-      <input {...otherProps} type="text" value={value} readOnly={readOnly} onChange={onChangeHandler} />
+      {label
+        ? <div className={cls.label}>{label}</div>
+        : null}
+      <input {...otherProps} type="text" value={value} readOnly={readOnly} placeholder={placeholder || ''} onChange={onChangeHandler} />
     </div>
   );
 });

@@ -1,10 +1,21 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import { StateSchema } from "app/providers/StoreProvider";
-import axios from "axios";
-import { userActions } from "entities/User";
+import axios, { AxiosError } from "axios";
+import { AuthTokens, User, userActions } from "entities/User";
 import { TestAsyncThunk } from "shared/lib/helpers/tests/TestAsyncThunk/TestAsyncThunk";
+import { LoginSchema } from "../../types/login.schema";
 import { loginByUsername } from "./loginByUsername";
 
+const tokens: AuthTokens = {
+  accessToken: 'asdasd',
+  refreshToken: 'sdfsdfsdf'
+};
+const user: User = {
+  login: 'admin',
+  id: 'sdfsdf'
+}
+
+const userForm: DeepPartial<LoginSchema> = {login: 'admin', password: '12345'}
 
 describe('Get login state', () => {
 /*   let dispatch: Dispatch;
@@ -38,16 +49,55 @@ describe('Get login state', () => {
     expect(result.meta.requestStatus).toBe('rejected');
   }); */
 
-  test('403 from server', async () => {
-    const userValue = {login: 'admin', id: '1'}
-    const thunk = new TestAsyncThunk(loginByUsername);
-    thunk.api.post.mockReturnValue(Promise.resolve({data: userValue}))
+  test('success', async () => {
+    const thunk = new TestAsyncThunk(loginByUsername, {
+      loginForm: userForm
+    });
+    thunk.api.post.mockReturnValue(Promise.resolve({data: {user: user, tokens: tokens}}))
 
-    const result = await thunk.callThunk({login: 'admin', password: '1'})
+    const result = await thunk.callThunk()
 
-    expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData({login: 'admin', id: '1'}))
     expect(thunk.api.post).toHaveBeenCalled();
+    expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(tokens))
+    expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setUserData(user))
     expect(result.meta.requestStatus).toBe('fulfilled');
+  });
+
+/*   test('server axios error', async () => {
+    const thunk = new TestAsyncThunk(loginByUsername, {
+      loginForm: userForm
+    });
+
+    const error = new AxiosError("Unauthorized","401",{} as any,{},
+    {
+      data: { message: 'Axios Error from server' },
+      status:401,
+      statusText:'Unauthorized',
+      headers:{},
+      config:{} as any
+    })
+
+    thunk.api.post.mockRejectedValueOnce(error)
+
+    const result = await thunk.callThunk()
+
+    expect(thunk.api.post).toBeCalled();
+    expect(result.meta.requestStatus).toBe('rejected');
+    expect(result.payload).toBe('Axios Error from server');
+  }); */
+
+  test('server not axios error', async () => {
+    const thunk = new TestAsyncThunk(loginByUsername, {
+      loginForm: userForm
+    });
+    const err = new Error('Not Axios Error from server');
+    thunk.api.post.mockRejectedValueOnce(Promise.resolve(err))
+
+    const result = await thunk.callThunk()
+
+    expect(thunk.api.post).toBeCalled();
+    expect(result.meta.requestStatus).toBe('rejected');
+    expect(result.payload).toBe('Unexpected login error');
   });
 
 });

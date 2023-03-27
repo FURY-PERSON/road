@@ -1,7 +1,8 @@
 export enum TranslationNamespaces {
   TRANSLATION = 'translation', 
   MAIN = 'main', 
-  ABOUT = 'about'
+  ABOUT = 'about',
+  AUTH = 'auth'
 }
 
 export enum SupportedLanguages {

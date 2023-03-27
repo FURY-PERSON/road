@@ -14,5 +14,8 @@
   "logout": "logout",
   "edit": "edit",
   "cancel": "cancel",
-  "save": "save"
+  "save": "save",
+  "student": "student",
+  "worker": "worker",
+  "admin": "admin"
 }

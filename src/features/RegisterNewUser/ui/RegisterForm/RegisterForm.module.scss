@@ -1,0 +1,25 @@
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 320px;
+
+  > .input {
+    margin-top: 16px;
+  }
+
+  > .button {
+    margin-top: 24px;
+    margin-left: auto;
+  }
+
+  > .error {
+    margin: 12px 0;
+    color: var(--invert-primary-color)
+  }
+  
+  > .login {
+    margin-top: 36px;
+    color: var(--primary-color);
+  }
+}

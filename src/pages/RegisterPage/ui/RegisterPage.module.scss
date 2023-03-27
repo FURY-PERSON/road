@@ -1,0 +1,15 @@
+.registerPage {
+  display: flex;
+	flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  > .inner {
+    width: 100%;
+    max-width: 360px;
+    padding: 36px;
+    background-color: var(--invert-bg-color);
+    border-radius: 8px;
+  }
+}

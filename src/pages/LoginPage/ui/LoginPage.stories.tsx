@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { LoginPage } from './LoginPage';
 
 export default {
-   title: 'shared/LoginPage',
+   title: 'pages/LoginPage',
    component: LoginPage,
    argTypes: {
       backgroundColor: { control: 'color' },
