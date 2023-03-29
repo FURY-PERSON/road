@@ -3,6 +3,12 @@ export interface User {
   login: string
 }
 
+export interface AuthTokens {
+  refreshToken: string,
+  accessToken: string
+}
+
 export interface UserSchema {
-  authData?: User
+  authData?: AuthTokens,
+  userData?: User
 }

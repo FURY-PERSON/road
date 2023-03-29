@@ -12,6 +12,8 @@ import { getLoginState } from 'features/AuthByUsername/model/selectors/getLoginS
 import { Text, TextVariant } from 'shared/ui/Text/Text';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
 import cls from './LoginForm.module.scss';
 import { loginReducer } from '../../model/slice/login.slice';
 
@@ -26,7 +28,7 @@ const initialReducers: ReducersList = {
 
 export const LoginForm:FC<LoginFormProps> = memo((props) => {
   const { className, onSuccess } = props;
-  const { t } = useTranslation();
+  const { t } = useTranslation('auth');
   const dispatch = useAppDispatch();
 
   const {
@@ -42,11 +44,11 @@ export const LoginForm:FC<LoginFormProps> = memo((props) => {
   }, [dispatch]);
 
   const onLoginClick = useCallback(async () => {
-    const result = await dispatch(loginByUsername({ password, login }));
+    const result = await dispatch(loginByUsername());
     if (result.meta.requestStatus === 'fulfilled') {
       onSuccess();
     }
-  }, [dispatch, password, login, onSuccess]);
+  }, [dispatch, onSuccess]);
 
   return (
     <DynamicModuleLoader reducers={initialReducers}>
@@ -60,6 +62,11 @@ export const LoginForm:FC<LoginFormProps> = memo((props) => {
           : null }
 
         <Button onClick={onLoginClick} disabled={isLoading} className={cls.button} variant={ButtonVariant.OUTLINE}>{t('apply')}</Button>
+
+        <AppLink className={cls.register} to={RoutePath[AppRoutes.REGISTER]}>
+          {`${t('do not have an account')}? ${t('register new')}`}
+        </AppLink>
+
       </div>
     </DynamicModuleLoader>
   );

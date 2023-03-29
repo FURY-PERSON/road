@@ -23,8 +23,3 @@ WithSize.args = {
   src: AvatarImg,
   size: 100
 };
-
-export const WithoutImage = Template.bind({});
-WithoutImage.args = {
-
-};

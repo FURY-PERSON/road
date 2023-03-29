@@ -1,11 +1,23 @@
 import { AboutPage } from 'pages/AboutPage';
+import { LoginPage } from 'pages/LoginPage';
 import { MainPage } from 'pages/MainPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { ProfilePage } from 'pages/ProfilePage';
-import { Route, RouteProps } from 'react-router-dom';
+import { RegisterPage } from 'pages/RegisterPage';
+import { RouteProps } from 'react-router-dom';
 import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { RequireAuth } from '../ui/RequireAuth';
 
-export const routeConfig: Array<RouteProps> = [
+export const appRouteConfig: Array<RouteProps> = [
+  {
+    path: RoutePath[AppRoutes.REGISTER],
+    element: <RegisterPage />,
+  },
+  {
+    path: RoutePath[AppRoutes.LOGIN],
+    element: <LoginPage />,
+  },
+
   {
     path: RoutePath[AppRoutes.MAIN],
     element: <MainPage />,
@@ -16,9 +28,8 @@ export const routeConfig: Array<RouteProps> = [
   },
   {
     path: `${RoutePath[AppRoutes.PROFILE]}/:login`,
-    element: <ProfilePage />,
+    element: <RequireAuth><ProfilePage /></RequireAuth>,
   },
-
   {
     path: RoutePath[AppRoutes.NOTFOUND],
     element: <NotFoundPage />,

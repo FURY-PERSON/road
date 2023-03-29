@@ -1,32 +1,40 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { AxiosError } from 'axios';
-import { User, userActions } from 'entities/User';
-import { USER_LOCALSTORAGE_KEY } from 'shared/constant/localstorage';
+import { AuthTokens, User, userActions } from 'entities/User';
 
-interface LoginByUsernameProps {
-  login?: string,
-  password?: string
+interface LoginResponse {
+  user: User,
+  tokens: AuthTokens
 }
 
-export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, ThunkConfig<string>>(
-  'users/loginByUsername',
-  async (data, thunkAPI) => {
-    const { extra, dispatch, rejectWithValue } = thunkAPI;
+export const loginByUsername = createAsyncThunk<User, void, ThunkConfig<string>>(
+  'authByUsername/loginByUsername',
+  async (_, thunkAPI) => {
+    const {
+      extra, dispatch, rejectWithValue, getState, 
+    } = thunkAPI;
     try {
-      const response = await extra.api.post<User>('/login', data);
-      const user = response.data;
+      const formState = getState().loginForm;
+      
+      const response = await extra.api.post<LoginResponse>('auth/login', {
+        login: formState?.login,
+        password: formState?.password,
+      });
+      
+      const { user, tokens } = response.data;
 
       if (!user) {
         return rejectWithValue('User not found');
       }
-
-      localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(user));
-      dispatch(userActions.setAuthData(user));
-      return response.data;
+      dispatch(userActions.setAuthData(tokens));
+      dispatch(userActions.setUserData(user));
+      return user;
     } catch (error) {
-      const typedError = error as AxiosError;
-      return thunkAPI.rejectWithValue(typedError.response?.statusText || typedError.message);
+      if (error instanceof AxiosError<{message: string}>) {
+        return thunkAPI.rejectWithValue(error.response?.data.message || error.response?.statusText);
+      }
+      return thunkAPI.rejectWithValue('Unexpected login error');
     }
   },
 );

@@ -9,7 +9,7 @@ export interface SelectOption {
 
 interface SelectProps {
     className?: string;
-    label?: string;
+    label?: string | null;
     options?: SelectOption[];
     value?: string;
     onChange?: (value: string) => void;
