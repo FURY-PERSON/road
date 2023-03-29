@@ -20,10 +20,12 @@ export const userSlice = createSlice({
       const accessToken = localStorage.getItem(ACCESS_TOKEN_LOCALSTORAGE_KEY);
       const refreshToken = localStorage.getItem(REFRESH_TOKEN_LOCALSTORAGE_KEY);
       
-      state.authData = {
-        accessToken: accessToken || '',
-        refreshToken: refreshToken || '',
-      };
+      if (accessToken || refreshToken) {
+        state.authData = {
+          accessToken: accessToken || '',
+          refreshToken: refreshToken || '',
+        };
+      }
     },
     logout(state) {
       state.authData = undefined;

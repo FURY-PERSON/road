@@ -59,12 +59,13 @@ export const registerSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(registerNewUser.fulfilled, (state) => {
-        state.error = '';
+        state.error = undefined;
         state.validationError = undefined;
         state.form = initialForm;
         state.isLoading = false;
       })
       .addCase(registerNewUser.rejected, (state, action) => {
+        console.log(action.payload)
         if (Array.isArray(action.payload)) {
           state.validationError = action.payload;
         } else {

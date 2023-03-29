@@ -1,3 +1,7 @@
 .SvgLoader {
   
 }
+
+*[loki-test] .SvgLoader {
+  visibility: hidden;
+}

@@ -45,5 +45,9 @@ export const validateForm = (form?: RegisterForm): ValidationError[] => {
     errors.add(ValidationError.USER_DATA); 
   }
 
+  if (password !== confirmPassword) {
+    errors.add(ValidationError.PASSWORD_MATCH); 
+  }
+
   return Array.from(errors);
 };
