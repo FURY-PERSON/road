@@ -31,7 +31,6 @@ export const loginByUsername = createAsyncThunk<User, void, ThunkConfig<string>>
       dispatch(userActions.setUserData(user));
       return user;
     } catch (error) {
-      console.log(error, error instanceof AxiosError<{message: string}>);
       if (error instanceof AxiosError<{message: string}>) {
         return thunkAPI.rejectWithValue(error.response?.data.message || error.response?.statusText);
       }
