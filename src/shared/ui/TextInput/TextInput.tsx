@@ -1,7 +1,7 @@
 import {
   memo, FC, InputHTMLAttributes, ChangeEvent, 
 } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
 import cls from './TextInput.module.scss';
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
@@ -17,6 +17,7 @@ export const TextInput:FC<TextInputProps> = memo((props) => {
     className,
     value,
     onChange,
+    readOnly,
     ...otherProps
   } = props;
 
@@ -24,9 +25,13 @@ export const TextInput:FC<TextInputProps> = memo((props) => {
     onChange?.(event.target.value);
   };
 
+  const mods: Mods = {
+    [cls.readOnly]: readOnly,
+  };
+
   return (
-    <div className={classNames(cls.TextInput, {}, [className])}>
-      <input {...otherProps} type="text" value={value} onChange={onChangeHandler} />
+    <div className={classNames(cls.TextInput, mods, [className])}>
+      <input {...otherProps} type="text" value={value} readOnly={readOnly} onChange={onChangeHandler} />
     </div>
   );
 });

@@ -15,7 +15,7 @@ export const routeConfig: Array<RouteProps> = [
     element: <AboutPage />,
   },
   {
-    path: RoutePath[AppRoutes.PROFILE],
+    path: `${RoutePath[AppRoutes.PROFILE]}/:login`,
     element: <ProfilePage />,
   },
 

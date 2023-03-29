@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start: dev": "webpack serve --env port=3000 mode=development",
+    "start:dev:front": "webpack serve --env port=3000 mode=development",
+    "start:dev:project": "concurrently \"npm run start:dev:front\" \"npm run mock-server:start\"",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
     "lint:ts:check": "eslint '**/*.{ts,tsx}'",
@@ -21,7 +22,7 @@
     "analyze:dev": "webpack --env mode=development analyze=1",
     "documentation:storybook:dev": "start-storybook -p 6006 -c ./config/storybook",
     "documentation:storybook:build": "build-storybook -c ./config/storybook",
-    "mock server:start": "node ./json-server/index.js",
+    "mock-server:start": "node ./json-server/index.js",
     "prepare": "husky install"
   },
   "repository": {
@@ -65,6 +66,7 @@
     "@typescript-eslint/parser": "^5.52.0",
     "babel-loader": "^9.1.2",
     "babel-plugin-i18next-extract": "^0.9.0",
+    "concurrently": "^7.6.0",
     "css-loader": "^6.7.3",
     "eslint": "^8.34.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -79,6 +81,7 @@
     "jest": "^29.4.3",
     "jest-environment-jsdom": "^29.4.3",
     "json-server": "^0.17.2",
+    "kill-port": "^2.0.1",
     "loki": "^0.31.0",
     "mini-css-extract-plugin": "^2.7.2",
     "open": "^8.4.2",

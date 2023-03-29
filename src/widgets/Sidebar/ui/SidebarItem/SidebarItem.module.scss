@@ -4,6 +4,7 @@
   align-items: center;
 
   > .link {
+    color: var(--primary-color);
     white-space: nowrap;
     opacity: 1;
     transition: opacity 0.2s linear;

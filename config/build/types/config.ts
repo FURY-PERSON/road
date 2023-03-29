@@ -20,5 +20,6 @@ export interface BuildOption {
   isDev: boolean,
   port: number,
   analyze: boolean,
-  apiUrl: string
+  apiUrl: string,
+  project: 'storybook' | 'main' | 'jest'
 }

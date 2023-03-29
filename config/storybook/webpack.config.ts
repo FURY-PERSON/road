@@ -35,7 +35,7 @@ export default ({ config }: {config: webpack.Configuration}) => {
   
   config.plugins!.push(miniCssExtractPlugin());
   config.module!.rules.push(buildSvgLoader());
-  config.plugins!.push(buildDefinePlugin(isDev, apiUrl));
+  config.plugins!.push(buildDefinePlugin({ isDev, apiUrl, project: 'storybook' }));
 
   config.module!.rules.push(buildCssLoader(isDev));
   return config;

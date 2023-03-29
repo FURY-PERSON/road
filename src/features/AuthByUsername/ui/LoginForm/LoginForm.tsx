@@ -4,7 +4,7 @@ import {
   memo, FC, useCallback,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { Button, ButtonVariant } from 'shared/ui/Button/Button';
 import { TextInput } from 'shared/ui/TextInput/TextInput';
@@ -52,7 +52,6 @@ export const LoginForm:FC<LoginFormProps> = memo((props) => {
     <DynamicModuleLoader reducers={initialReducers}>
       <div className={classNames(cls.LoginForm, {}, [className])}>
         <Text title={t('auth form')} />
-
         <TextInput onChange={onChangeUsername} value={login} className={cls.input} />
         <TextInput onChange={onChangePassword} value={password} className={cls.input} />
 
