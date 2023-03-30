@@ -26,7 +26,7 @@ export const getSidebarItemList = (userLogin?: string):ISidebarItem[] => [
     text: i18n.t('to about'),
   },
   {
-    path: `${RoutePath.profile}/${userLogin}`,
+    path: `${RoutePath.profile}${userLogin}`,
     Icon: ProfileIcon,
     text: i18n.t('to profile'),
   },

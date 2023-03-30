@@ -1,4 +1,4 @@
-import { Role } from 'entities/Role';
+import { RoleName } from 'entities/Role';
 import { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -79,7 +79,7 @@ export const RegisterForm: FC<RegisterFormProps> = (props) => {
   }, [dispatch]);
 
   const onChangeRole = useCallback((role: string) => {
-    dispatch(registerActions.setRole(role as Role));
+    dispatch(registerActions.setRole(role as RoleName));
   }, [dispatch]);
 
   const onLoginClick = useCallback(async () => {

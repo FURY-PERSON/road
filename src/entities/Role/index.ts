@@ -1,1 +1,1 @@
-export { Role } from './types/role';
+export { type Role, RoleName } from './types/role';

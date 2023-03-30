@@ -1,16 +1,25 @@
 import { StateSchema } from "app/providers/StoreProvider";
-import { PermissionName } from "entities/Permission/model/types/permission";
-import { Role } from "entities/Role";
+import { PermissionName } from "entities/Permission";
+import { RoleName } from "entities/Role";
 import { AuthTokens, User } from "../../types/user";
 import { getUserData } from "./getUserData";
 
 const user: User = {
-  firstName: 'firstName',
-  id: '123',
-  lastName: 'lastName',
-  login: 'login',
-  permissions: [PermissionName.STUDENT],
-  role: Role.STUDENT, 
+  login: 'admin',
+  id: '23',
+  firstName: 'first',
+  lastName: 'last',
+  permissions: [
+    {
+      description: 'desc',
+      id: '123',
+      name: PermissionName.ADMIN
+    }
+  ],
+  role: {
+    description: 'desc',
+    name: RoleName.STUDENT
+  },
 }
 
 const authData: AuthTokens = {

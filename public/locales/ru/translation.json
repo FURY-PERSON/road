@@ -10,7 +10,6 @@
   "to profile": "На страницу профиля",
   "to news": "новости",
   "apply": "принять",
-  "auth form": "форма авторизации",
   "login": "Войти",
   "logout": "выйти",
   "edit": "редактировать",
@@ -18,5 +17,7 @@
   "save": "сохранить",
   "student": "студент",
   "worker": "рабочий",
-  "admin": "админ"
+  "admin": "админ",
+  "you have not enough permissions": "у вас недостаточно прав",
+  "connect with your manager": "свяжитесь с вашим администратором"
 }

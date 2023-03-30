@@ -6,7 +6,7 @@ import { Sidebar } from 'widgets/Sidebar';
 import { Suspense, useLayoutEffect } from 'react';
 import { PageLoader } from 'widgets/PageLoader';
 import { useDispatch } from 'react-redux';
-import { userActions } from 'entities/User';
+import { refreshAuthData, userActions } from 'entities/User';
 
 function App() {
   const { theme } = useTheme();
@@ -15,6 +15,7 @@ function App() {
   useLayoutEffect(() => {
     document.body.className = theme;
     dispatch(userActions.initAuthData());
+    dispatch(refreshAuthData());
   }, [theme, dispatch]);
 
   return (

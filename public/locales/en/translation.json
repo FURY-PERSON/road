@@ -10,7 +10,6 @@
   "to profile": "to profile",
   "to news": "to news",
   "apply": "apply",
-  "auth form": "auth form",
   "login": "login",
   "logout": "logout",
   "edit": "edit",
@@ -18,5 +17,7 @@
   "save": "save",
   "student": "student",
   "worker": "worker",
-  "admin": "admin"
+  "admin": "admin",
+  "you have not enough permissions": "you have not enough permissions",
+  "connect with your manager": "connect with your manager"
 }

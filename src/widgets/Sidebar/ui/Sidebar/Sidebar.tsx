@@ -25,7 +25,6 @@ export const Sidebar:FC<SidebarProps> = memo((props) => {
   const onToggle = () => {
     serCollapsed((value) => !value);
   };
-
   const SidebarItemList = useMemo(() => getSidebarItemList(userLogin), [userLogin, t]);
 
   return (

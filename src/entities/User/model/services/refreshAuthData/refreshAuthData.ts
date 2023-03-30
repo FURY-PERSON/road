@@ -1,25 +1,28 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { AxiosError } from 'axios';
-import { AuthTokens, User, userActions } from 'entities/User';
+import { AuthTokens, User } from 'entities/User';
 
-interface LoginResponse {
+interface RefreshResponse {
   user: User,
   tokens: AuthTokens
 }
 
-export const loginByUsername = createAsyncThunk<User, void, ThunkConfig<string>>(
-  'authByUsername/loginByUsername',
+export const refreshAuthData = createAsyncThunk<{user: User, tokens: AuthTokens}, void, ThunkConfig<string>>(
+  'user/refreshAuthData',
   async (_, thunkAPI) => {
     const {
-      extra, dispatch, rejectWithValue, getState, 
+      extra, rejectWithValue, getState, 
     } = thunkAPI;
     try {
-      const formState = getState().loginForm;
+      const userState = getState().user;
+
+      if (!userState.authData?.refreshToken) {
+        return rejectWithValue('User not authorized');
+      }
       
-      const response = await extra.api.post<LoginResponse>('auth/login', {
-        login: formState?.login,
-        password: formState?.password,
+      const response = await extra.api.post<RefreshResponse>('auth/refresh', {
+        refreshToken: userState.authData.refreshToken,
       });
       
       const { user, tokens } = response.data;
@@ -28,9 +31,11 @@ export const loginByUsername = createAsyncThunk<User, void, ThunkConfig<string>>
         return rejectWithValue('User not found');
       }
 
-      dispatch(userActions.setAuthData(tokens));
-      dispatch(userActions.setUserData(user));
-      return user;
+      if (!tokens) {
+        return rejectWithValue('Tokens do not provided');
+      }
+
+      return { user, tokens };
     } catch (error) {
       if (error instanceof AxiosError<{message: string}>) {
         return thunkAPI.rejectWithValue(error.response?.data.message || error.response?.statusText || error.message);

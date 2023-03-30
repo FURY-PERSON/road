@@ -1,9 +1,9 @@
 import { getUserAuthData, userActions } from 'entities/User';
-import { LoginModal } from 'features/AuthByUsername';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { useNavigate } from 'react-router-dom';
+import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { Button } from 'shared/ui/Button/Button';
@@ -18,22 +18,11 @@ export function Navbar(props: NavbarProps) {
   const { t } = useTranslation();
   const authData = useSelector(getUserAuthData);
   const dispatch = useDispatch();
-
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    if (authData) {
-      setOpen(false);
-    }
-  }, [authData]);
-
-  const onClose = useCallback(() => {
-    setOpen(false);
-  }, []);
+  const navigator = useNavigate();
 
   const onLoginClick = useCallback(() => {
-    setOpen(true);
-  }, []);
+    navigator(RoutePath[AppRoutes.LOGIN]);
+  }, [navigator]);
 
   const onLogout = useCallback(() => {
     dispatch(userActions.logout());
@@ -47,7 +36,6 @@ export function Navbar(props: NavbarProps) {
 
           <Button onClick={onLoginClick}>{t('login')}</Button>
         </div>
-        <LoginModal open={open} onClose={onClose} />
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Role } from 'entities/Role';
+import { RoleName } from 'entities/Role';
 import { registerNewUser } from '../services/registerNewUser/registerNewUser';
 import { RegisterForm, RegisterSchema } from '../types/register.schema';
 
@@ -44,7 +44,7 @@ export const registerSlice = createSlice({
     setPhone(state, action: PayloadAction<string>) {
       state.form.phone = action.payload;
     },
-    setRole(state, action: PayloadAction<Role>) {
+    setRole(state, action: PayloadAction<RoleName>) {
       state.form.role = action.payload;
     },
     setEmail(state, action: PayloadAction<string>) {
@@ -65,7 +65,6 @@ export const registerSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(registerNewUser.rejected, (state, action) => {
-        console.log(action.payload)
         if (Array.isArray(action.payload)) {
           state.validationError = action.payload;
         } else {

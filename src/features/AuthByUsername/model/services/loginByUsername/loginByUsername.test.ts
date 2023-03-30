@@ -1,6 +1,8 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import { StateSchema } from "app/providers/StoreProvider";
 import axios, { AxiosError } from "axios";
+import { PermissionName } from "entities/Permission";
+import { RoleName } from "entities/Role";
 import { AuthTokens, User, userActions } from "entities/User";
 import { TestAsyncThunk } from "shared/lib/helpers/tests/TestAsyncThunk/TestAsyncThunk";
 import { LoginSchema } from "../../types/login.schema";
@@ -12,8 +14,22 @@ const tokens: AuthTokens = {
 };
 const user: User = {
   login: 'admin',
-  id: 'sdfsdf'
+  id: '23',
+  firstName: 'first',
+  lastName: 'last',
+  permissions: [
+    {
+      description: 'desc',
+      id: '123',
+      name: PermissionName.ADMIN
+    }
+  ],
+  role: {
+    description: 'desc',
+    name: RoleName.STUDENT
+  },
 }
+
 
 const userForm: DeepPartial<LoginSchema> = {login: 'admin', password: '12345'}
 

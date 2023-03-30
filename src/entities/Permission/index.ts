@@ -1,1 +1,1 @@
-export { Permission } from './model/types/permission';
+export { type Permission, PermissionName } from './model/types/permission';

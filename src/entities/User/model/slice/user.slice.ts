@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ACCESS_TOKEN_LOCALSTORAGE_KEY, REFRESH_TOKEN_LOCALSTORAGE_KEY } from 'shared/constant/localstorage';
+import { refreshAuthData } from '../services/refreshAuthData/refreshAuthData';
 import { AuthTokens, User, UserSchema } from '../types/user';
 
 const initialState: UserSchema = {};
@@ -33,6 +34,26 @@ export const userSlice = createSlice({
       localStorage.removeItem(ACCESS_TOKEN_LOCALSTORAGE_KEY);
       localStorage.removeItem(REFRESH_TOKEN_LOCALSTORAGE_KEY);
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(refreshAuthData.pending, (state, action) => {
+        state.error = undefined;
+        state.isLoading = true;
+      })
+      .addCase(refreshAuthData.fulfilled, (state, action) => {
+        state.error = '';
+        state.isLoading = false;
+        state.userData = action.payload.user;
+        state.authData = action.payload.tokens;
+      })
+      .addCase(refreshAuthData.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+        state.authData = undefined;
+        localStorage.removeItem(ACCESS_TOKEN_LOCALSTORAGE_KEY);
+        localStorage.removeItem(REFRESH_TOKEN_LOCALSTORAGE_KEY);
+      });
   },
 });
 

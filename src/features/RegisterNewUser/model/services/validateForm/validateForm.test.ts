@@ -1,4 +1,4 @@
-import { Role } from "entities/Role";
+import { RoleName } from "entities/Role/types/role";
 import { ValidationError } from "../../types/error";
 import { RegisterForm } from "../../types/register.schema";
 import { validateForm } from "./validateForm";
@@ -11,7 +11,7 @@ const form:RegisterForm = {
   lastName: 'last',
   login: 'admin',
   phone: '+37533455644',
-  role: Role.ADMIN
+  role: RoleName.ADMIN
 }
 
 describe('register validateForm', () => {

@@ -1,5 +1,5 @@
 import { StateSchema } from "app/providers/StoreProvider";
-import { Role } from "entities/Role";
+import { RoleName } from "entities/Role";
 import { initialForm } from "../../slice/register.slice";
 import { RegisterForm } from "../../types/register.schema";
 import { getRegisterForm } from "./getRegisterForm";
@@ -14,7 +14,7 @@ describe('getRegisterForm', () => {
       login: 'admin',
       password: '12345',
       phone: '+37533455644',
-      role: Role.ADMIN
+      role: RoleName.ADMIN
     }
     const state: DeepPartial<StateSchema> = {
       registerForm: {

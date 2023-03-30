@@ -1,4 +1,5 @@
-import { Role } from "entities/Role";
+import { PermissionName } from "entities/Permission";
+import { RoleName } from "entities/Role";
 import { AuthTokens, User, userActions } from "entities/User";
 import { TestAsyncThunk } from "shared/lib/helpers/tests/TestAsyncThunk/TestAsyncThunk";
 import { ValidationError } from "../../types/error";
@@ -13,11 +14,24 @@ const form:RegisterForm = {
   login: 'admin',
   password: '12345',
   phone: '+37533455644',
-  role: Role.ADMIN
+  role: RoleName.ADMIN
 }
 const user: User = {
   login: 'admin',
-  id: '23'
+  id: '23',
+  firstName: 'first',
+  lastName: 'last',
+  permissions: [
+    {
+      description: 'desc',
+      id: '123',
+      name: PermissionName.ADMIN
+    }
+  ],
+  role: {
+    description: 'desc',
+    name: RoleName.STUDENT
+  },
 }
 
 const tokens: AuthTokens = {

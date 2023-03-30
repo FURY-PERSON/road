@@ -1,4 +1,5 @@
 import { Role } from 'entities/Role';
+import { RoleName } from 'entities/Role/types/role';
 import { ValidationError } from './error';
 
 export interface RegisterForm {
@@ -8,7 +9,7 @@ export interface RegisterForm {
   lastName?: string;
   phone?: string;
   password?: string;
-  role?: Role | ''
+  role?: RoleName | ''
   confirmPassword?: string
 }
 

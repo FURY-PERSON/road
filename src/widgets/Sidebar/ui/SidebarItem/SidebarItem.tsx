@@ -11,7 +11,6 @@ interface SidebarItemProps {
 
 export const SidebarItem:FC<SidebarItemProps> = memo((props) => {
   const { item, collapsed } = props;
-
   return (
     <AppLink className={classNames(cls.SidebarItem, { [cls.collapsed]: collapsed })} to={item.path}>
       <item.Icon className={cls.icon} />
