@@ -1,6 +1,15 @@
+import { PermissionName } from 'entities/Permission/model/types/permission';
+import { Role } from 'entities/Role';
+
 export interface User {
   id: string,
-  login: string
+  login: string,
+  firstName: string,
+  lastName: string,
+  phone?: string,
+  email?: string,
+  role: Role,
+  permissions: PermissionName[]
 }
 
 export interface AuthTokens {
