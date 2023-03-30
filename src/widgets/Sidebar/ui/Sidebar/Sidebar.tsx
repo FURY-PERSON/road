@@ -7,6 +7,7 @@ import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { Button, ButtonSize, ButtonVariant } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
 import { getUserLogin } from 'entities/User';
+import { useTranslation } from 'react-i18next';
 import cls from './Sidebar.module.scss';
 import { getSidebarItemList } from '../../model/item';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
@@ -19,12 +20,13 @@ export const Sidebar:FC<SidebarProps> = memo((props) => {
   const { className } = props;
   const [collapsed, serCollapsed] = useState(false);
   const userLogin = useSelector(getUserLogin);
+  const { t } = useTranslation();
 
   const onToggle = () => {
     serCollapsed((value) => !value);
   };
 
-  const SidebarItemList = useMemo(() => getSidebarItemList(userLogin), [userLogin]);
+  const SidebarItemList = useMemo(() => getSidebarItemList(userLogin), [userLogin, t]);
 
   return (
     <div 

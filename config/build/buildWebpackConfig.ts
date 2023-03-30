@@ -20,6 +20,7 @@ export function buildWebpackConfig(options: BuildOption): webpack.Configuration 
       filename: '[name].[contenthash].js',
       path: paths.build,
       clean: true,
+      publicPath: '/',
     },
     devServer: isDev ? buildDevServer(options) : undefined,
     devtool: isDev ? 'inline-source-map' : undefined,
