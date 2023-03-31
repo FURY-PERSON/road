@@ -3,7 +3,9 @@ import { ACCESS_TOKEN_LOCALSTORAGE_KEY, REFRESH_TOKEN_LOCALSTORAGE_KEY } from 's
 import { refreshAuthData } from '../services/refreshAuthData/refreshAuthData';
 import { AuthTokens, User, UserSchema } from '../types/user';
 
-const initialState: UserSchema = {};
+const initialState: UserSchema = {
+  _inited: false
+};
 
 export const userSlice = createSlice({
   name: 'user',
@@ -42,12 +44,14 @@ export const userSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(refreshAuthData.fulfilled, (state, action) => {
+        state._inited = true;
         state.error = '';
         state.isLoading = false;
         state.userData = action.payload.user;
         state.authData = action.payload.tokens;
       })
       .addCase(refreshAuthData.rejected, (state, action) => {
+        state._inited = true;
         state.error = action.payload;
         state.isLoading = false;
         state.authData = undefined;

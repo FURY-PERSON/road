@@ -1,4 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { PermissionName } from 'entities/Permission';
+import { RoleName } from 'entities/Role';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 import { Navbar } from './Navbar';
 
@@ -23,6 +25,23 @@ LoggedIn.decorators = [StoreDecorator({
     authData: {
       accessToken: 'sdfsf',
       refreshToken: 'sdfdsf'
+    },
+    userData: {
+      login: 'admin',
+      id: '23',
+      firstName: 'first',
+      lastName: 'last',
+      permissions: [
+        {
+          description: 'desc',
+          id: '123',
+          name: PermissionName.ADMIN
+        }
+      ],
+      role: {
+        description: 'desc',
+        name: RoleName.STUDENT
+      },
     }
   }
 })]

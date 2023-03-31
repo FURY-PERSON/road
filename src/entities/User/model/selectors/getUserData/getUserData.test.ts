@@ -22,21 +22,15 @@ const user: User = {
   },
 }
 
-const authData: AuthTokens = {
-  accessToken: 'sdaf',
-  refreshToken: 'sdf'
-}
-
-describe('getUserPermissions', () => {
+describe('getUserData', () => {
   test('should return user data', () => {
     const state: DeepPartial<StateSchema> = {
       user: {
         userData: user,
-        authData: authData
       }
     };
 
-    expect(getUserData(state as StateSchema)).toEqual({userData: user, authData: authData});
+    expect(getUserData(state as StateSchema)).toEqual(user);
   });
 
   test('should work with empty state', () => {
@@ -46,6 +40,6 @@ describe('getUserPermissions', () => {
       }
     };
 
-    expect(getUserData(state as StateSchema)).toEqual({});
+    expect(getUserData(state as StateSchema)).toEqual(undefined);
   });
 });

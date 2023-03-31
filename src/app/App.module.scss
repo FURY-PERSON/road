@@ -1,7 +1,6 @@
-.switchers {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+.loader {
   display: flex;
-  flex-direction: row;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
 }

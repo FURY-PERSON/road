@@ -1,4 +1,4 @@
-import { Permission, PermissionName } from 'entities/Permission';
+import { Permission } from 'entities/Permission';
 import { Role } from 'entities/Role';
 
 export interface User {
@@ -22,4 +22,6 @@ export interface UserSchema {
   userData?: User,
   isLoading?: boolean,
   error?: string
+
+  _inited: boolean
 }

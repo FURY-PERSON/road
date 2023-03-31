@@ -1,5 +1,5 @@
-import { getUserAuthData, userActions } from 'entities/User';
-import { useCallback, useEffect, useState } from 'react';
+import { getUserData, userActions } from 'entities/User';
+import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -16,7 +16,7 @@ interface NavbarProps {
 export function Navbar(props: NavbarProps) {
   const { className } = props;
   const { t } = useTranslation();
-  const authData = useSelector(getUserAuthData);
+  const user = useSelector(getUserData);
   const dispatch = useDispatch();
   const navigator = useNavigate();
 
@@ -28,7 +28,7 @@ export function Navbar(props: NavbarProps) {
     dispatch(userActions.logout());
   }, [dispatch]);
 
-  if (!authData) {
+  if (!user) {
     return (
       <div className={classNames(cls.Navbar, {}, [className])}>
         <div className={cls.inner}>
