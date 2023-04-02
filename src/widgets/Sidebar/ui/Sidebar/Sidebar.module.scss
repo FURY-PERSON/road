@@ -11,7 +11,8 @@
   > .collapseBtn {
     position: absolute;
     right: -40px;
-    bottom: 40px; 
+    bottom: 40px;
+    z-index: 100; 
     color: var(--primary-color);
   }
 

@@ -23,6 +23,7 @@ export const refreshAuthData = createAsyncThunk<{user: User, tokens: AuthTokens}
       
       const response = await extra.api.post<RefreshResponse>('auth/refresh', {
         refreshToken: userState.authData.refreshToken,
+        accessToken: userState.authData.accessToken,
       });
       
       const { user, tokens } = response.data;

@@ -1,3 +1,15 @@
 .main {
   font: var(--font-l);
 }
+
+.notFound {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  
+  &__text {
+    font: var(--font-l);
+    color: var(--red-dark)
+  }
+}

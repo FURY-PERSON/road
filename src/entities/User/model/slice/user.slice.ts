@@ -49,6 +49,8 @@ export const userSlice = createSlice({
         state.isLoading = false;
         state.userData = action.payload.user;
         state.authData = action.payload.tokens;
+        localStorage.setItem(ACCESS_TOKEN_LOCALSTORAGE_KEY, action.payload.tokens.accessToken);
+        localStorage.setItem(REFRESH_TOKEN_LOCALSTORAGE_KEY, action.payload.tokens.refreshToken);
       })
       .addCase(refreshAuthData.rejected, (state, action) => {
         state._inited = true;
