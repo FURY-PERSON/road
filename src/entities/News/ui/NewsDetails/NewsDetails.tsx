@@ -1,29 +1,37 @@
 import { memo, FC, useLayoutEffect } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { SvgLoader } from 'shared/ui/SvgLoader';
-import { Text, TextVariant } from 'shared/ui/Text/Text';
+import { Text, TextSize, TextVariant } from 'shared/ui/Text/Text';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { getNewsDetailsLoading } from '../../model/selectors/getNewsDetailsLoading/getNewsDetailsLoading';
-import { newsDetailsReducer } from '../../model/slice/newsDetails.slice';
 import { fetchNewsById } from '../../model/services/fetchNewsById/fetchNewsById';
 import cls from './NewsDetails.module.scss';
 import { getNewsDetailsError } from '../../model/selectors/getNewsDetailsError/getNewsDetailsError';
 import { getNewsDetailsData } from '../../model/selectors/getNewsDetailsData/getNewsDetailsData';
+import { NewsBlock, NewsBlockType } from '../../model/types/news';
+import { NewsTextComponent } from '../NewsTextComponent/NewsTextComponent';
+import { NewsCodeBlockComponent } from '../NewsCodeBlockComponent/NewsCodeBlockComponent';
+import { NewsImageComponent } from '../NewsImageComponent/NewsImageComponent';
 
-interface NewsDetailsProps {
+export interface NewsDetailsProps {
   className?: string;
   id: string
 }
 
-const reducers: ReducersList = {
-  newsDetails: newsDetailsReducer,
+const renderBlock = (block: NewsBlock) => {
+  switch (block.type) {
+  case NewsBlockType.TEXT:
+    return <NewsTextComponent key={block.id} className={cls.block} block={block} />;
+  case NewsBlockType.CODE:
+    return <NewsCodeBlockComponent key={block.id} className={cls.block} block={block} />;
+  case NewsBlockType.IMAGE:
+    return <NewsImageComponent key={block.id} className={cls.block} block={block} />;
+  default: return null;
+  }
 };
 
 export const NewsDetails:FC<NewsDetailsProps> = memo((props) => {
-  const { className, id } = props;
+  const { id } = props;
   const dispatch = useAppDispatch();
 
   const isLoading = useSelector(getNewsDetailsLoading);
@@ -31,15 +39,15 @@ export const NewsDetails:FC<NewsDetailsProps> = memo((props) => {
   const news = useSelector(getNewsDetailsData);
 
   useLayoutEffect(() => {
+    if (__PROJECT__ === 'storybook') return;
+    
     dispatch(fetchNewsById({ id }));
   }, [dispatch, id]);
 
-  let content;
-
-  if (!isLoading) {
-    content = (
+  if (isLoading) {
+    return (
       <div className={cls.loading}>
-        <Skeleton className={cls.avatar} width={200} height={200} borderRadius="50%" />
+        <Skeleton className={cls.image} width={200} height={200} borderRadius="50%" />
         <Skeleton className={cls.skeleton} width={300} height={32} />
         <Skeleton className={cls.skeleton} width={600} height={24} />
         <Skeleton className={cls.skeleton} width="100%" height={200} />
@@ -47,24 +55,27 @@ export const NewsDetails:FC<NewsDetailsProps> = memo((props) => {
         <Skeleton className={cls.skeleton} width="100%" height={200} />
         <Skeleton className={cls.skeleton} width="100%" height={200} />
       </div>
-    );  
-  } else if (error) {
-    content = (
+    );
+  }
+
+  if (error) {
+    return (
       <div className={cls.error}>
         <Text variant={TextVariant.ERROR} title={error} />
       </div>
-    );  
-  } else {
-    content = (
-      <div></div>
     );
   }
 
   return (
-    <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <div className={classNames(cls.NewsDetails, {}, [className])}>
-        {content}
-      </div>
-    </DynamicModuleLoader>
+    <>
+      {news?.imageUrl
+        ? <img className={cls.image} src={news.imageUrl} alt="news" />
+        : null}
+
+      <Text className={cls.title} size={TextSize.XL} title={news?.title} text={news?.subTitle} />
+      <Text className={cls.createdAt} text={news?.createdAt} />
+
+      {news?.blocks.map((block) => renderBlock(block))}
+    </>
   );
 });

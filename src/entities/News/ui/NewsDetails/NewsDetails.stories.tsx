@@ -1,9 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { NewsBlockType, NewsType } from 'entities/News/model/types/news';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
-import { NewsDetailsPage } from './NewsDetailsPage';
+
+import { NewsDetailsContainer as NewsDetails } from './NewsDetails.container';
 import MewsImg from "shared/assets/tests/newsImage.jpeg"
-import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
 
 const blocks = [
   {type: NewsBlockType.TEXT, title: "Карасик)", paragraphs: [
@@ -30,14 +30,14 @@ const blocks = [
 ]
 
 export default {
-  title: 'pages/NewsDetailsPage',
-  component: NewsDetailsPage,
-  parameters: {
+  title: 'entities/NewsDetails',
+  component: NewsDetails,
+  args: {
     id: 'b4cbe2ad-ae76-437c-89e3-a94a03c8b274'
   }
-} as ComponentMeta<typeof NewsDetailsPage>;
+} as ComponentMeta<typeof NewsDetails>;
 
-const Template: ComponentStory<typeof NewsDetailsPage> = (args) => <NewsDetailsPage />;
+const Template: ComponentStory<typeof NewsDetails> = (args) => <NewsDetails {...args} />;
 
 export const Default = Template.bind({});
 Default.decorators = [StoreDecorator({
@@ -61,6 +61,26 @@ Default.decorators = [StoreDecorator({
   }
 })]
 Default.args = {
+  
+};
+
+export const Loading = Template.bind({});
+Loading.decorators = [StoreDecorator({
+  newsDetails: {
+    isLoading: true
+  }
+})]
+Loading.args = {
+  
+};
+
+export const Error = Template.bind({});
+Error.decorators = [StoreDecorator({
+  newsDetails: {
+    error: 'Error text'
+  }
+})]
+Error.args = {
   
 };
 

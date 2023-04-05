@@ -1,5 +1,6 @@
 import { Story } from '@storybook/react';
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
+import { newsDetailsReducer } from 'entities/News/model/slice/newsDetails.slice';
 import { loginReducer } from 'features/AuthByUsername/model/slice/login.slice';
 import { profileReducer } from 'features/EditableProfileCard';
 import { registerReducer } from 'features/RegisterNewUser/model/slice/register.slice';
@@ -9,6 +10,7 @@ const defaultAsyncReducers: ReducersList = {
   loginForm: loginReducer,
   profile: profileReducer,
   registerForm: registerReducer,
+  newsDetails: newsDetailsReducer
 };
 
 export const StoreDecorator = (

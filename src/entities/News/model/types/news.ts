@@ -1,13 +1,13 @@
 import { User } from "entities/User";
 
 export enum NewsBlockType {
-  IMAGE = 'image',
-  TEXT = 'text',
-  CODE = 'code'
+  IMAGE = 'NewsImageBlock',
+  TEXT = 'NewsTextBlock',
+  CODE = 'NewsCodeBlock'
 }
 
 export interface NewsBlockBase {
-  id: string;
+  id: string
   type: NewsBlockType 
 }
 
@@ -40,6 +40,7 @@ export interface News {
   imageName?: string,
   imageUrl?: string,
   author: Omit<User, 'permissions' | 'role'>
-  type: NewsType
+  type: NewsType,
+  createdAt: string,
   blocks: Array<NewsBlock>
 }

@@ -1,5 +1,16 @@
 .NewsDetails {
-  flex: 1
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  > .title {
+    align-self: center;
+    margin-top: 24px;
+  }
+
+  > .createdAt {
+    margin-top: 8px;
+  }
 }
 
 .loading {
@@ -16,10 +27,14 @@
   color: var(--red-dark);
 }
 
-.avatar {
+.image {
   margin: 0 auto;
 }
 
 .skeleton {
   margin-top: 16px;
+}
+
+.block {
+  margin-top: 36px;
 }

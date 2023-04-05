@@ -21,6 +21,7 @@ body {
   display: flex;
   flex: 1;
   flex-direction: row;
+  width: 100%;
   height: calc(100vh - var(--navbar-height));
 }
 

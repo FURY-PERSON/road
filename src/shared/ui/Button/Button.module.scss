@@ -2,6 +2,17 @@
   padding: 10px;
   color: var(--primary-color);
   cursor: pointer;
+  transition: transform 0.07s linear;
+
+  &:hover {
+    transition: transform 0.07s linear;
+    transform: scale(1.04);
+  }
+
+  &:active {
+    transition: transform 0.07s linear;
+    transform: scale(0.97);
+  }
 }
 
 .clear {

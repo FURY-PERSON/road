@@ -1,12 +1,10 @@
 .Text {
   > .title {
-    font: var(--font-l);
     color: var(--primary-color);
   }
 
   > .text {
-    font: var(--font-l);
-    color: var(--secondary-color);
+    color: var(--primary-color);
   }
 }
 
@@ -26,7 +24,36 @@
   }
 
   > .text {
-    font: var(--font-l);
     color: var(--red-light);
+  }
+}
+
+.size_m {
+  > .title {
+    font: var(--font-m)
+  }
+
+  > .text {
+    font: var(--font-m)
+  }
+}
+
+.size_l {
+  > .title {
+    font: var(--font-l)
+  }
+
+  > .text {
+    font: var(--font-m)
+  }
+}
+
+.size_xl {
+  > .title {
+    font: var(--font-xl)
+  }
+
+  > .text {
+    font: var(--font-l)
   }
 }
