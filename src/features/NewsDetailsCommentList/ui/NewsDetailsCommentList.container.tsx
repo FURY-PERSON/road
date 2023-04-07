@@ -17,8 +17,8 @@ export const NewsDetailsCommentListContainer:FC<NewsDetailsCommentListProps> = m
   const dispatch = useAppDispatch();
 
   useInitialEffect(() => {
-    dispatch(fetchCommentsByNewsId(newsId))
-  })
+    dispatch(fetchCommentsByNewsId(newsId));
+  });
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>

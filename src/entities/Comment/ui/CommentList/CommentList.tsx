@@ -19,7 +19,9 @@ export const CommentList:FC<CommentListProps> = memo((props) => {
 
   if (isLoading) {
     return (
-      <SvgLoader />
+      <div className={cls.loader}>
+        <SvgLoader />
+      </div>
     );
   }
 

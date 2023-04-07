@@ -20,5 +20,6 @@
   "admin": "admin",
   "you have not enough permissions": "you have not enough permissions",
   "connect with your manager": "connect with your manager",
-  "there are no comments": "there are no comments"
+  "there are no comments": "there are no comments",
+  "send": "send"
 }

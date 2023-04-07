@@ -5,6 +5,7 @@ import { AxiosInstance } from 'axios';
 import { CounterSchema } from 'entities/Counter';
 import { NewsDetailsSchema } from 'entities/News';
 import { UserSchema } from 'entities/User';
+import { AddCommentFormSchema } from 'features/AddNewComment';
 import { LoginSchema } from 'features/AuthByUsername';
 import { ProfileSchema } from 'features/EditableProfileCard';
 import { NewsDetailsCommentsSchema } from 'features/NewsDetailsCommentList';
@@ -19,7 +20,8 @@ export interface StateSchema {
   registerForm?: RegisterSchema,
   profile?: ProfileSchema,
   newsDetails?: NewsDetailsSchema,
-  newsDetailsComments?: NewsDetailsCommentsSchema
+  newsDetailsComments?: NewsDetailsCommentsSchema,
+  addCommentForm?: AddCommentFormSchema
 }
 
 export type StateSchemaKey = keyof StateSchema;

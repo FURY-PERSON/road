@@ -1,16 +1,14 @@
 import { LanguageSwitcher } from 'features/LanguageSwitcher';
 import { ThemeSwitcher } from 'features/ThemeSwitcher';
 import {
-  memo, FC, useState, useMemo, 
+  memo, FC, useState, useCallback, 
 } from 'react';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { Button, ButtonSize, ButtonVariant } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
-import { getUserLogin } from 'entities/User';
-import { useTranslation } from 'react-i18next';
 import cls from './Sidebar.module.scss';
-import { getSidebarItemList } from '../../model/item';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
+import { getSidebarItemList } from '../../model/selectors/getSidebarItemList/getSidebarItemList';
 
 interface SidebarProps {
   className?: string;
@@ -19,13 +17,12 @@ interface SidebarProps {
 export const Sidebar:FC<SidebarProps> = memo((props) => {
   const { className } = props;
   const [collapsed, serCollapsed] = useState(false);
-  const userLogin = useSelector(getUserLogin);
-  const { t } = useTranslation();
 
-  const onToggle = () => {
+  const sidebarItemList = useSelector(getSidebarItemList);
+
+  const onToggle = useCallback(() => {
     serCollapsed((value) => !value);
-  };
-  const SidebarItemList = useMemo(() => getSidebarItemList(userLogin), [userLogin, t]);
+  }, []);
 
   return (
     <div 
@@ -33,7 +30,7 @@ export const Sidebar:FC<SidebarProps> = memo((props) => {
       className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}
     >
       <div className={cls.links}>
-        {SidebarItemList.map((item) => (
+        {sidebarItemList.map((item) => (
           <SidebarItem key={item.path} item={item} collapsed={collapsed} />
         ))}
       </div>

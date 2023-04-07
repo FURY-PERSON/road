@@ -22,6 +22,7 @@ export const TextInput:FC<TextInputProps> = memo((props) => {
     readOnly,
     placeholder,
     label,
+    type,
     ...otherProps
   } = props;
 
@@ -38,7 +39,7 @@ export const TextInput:FC<TextInputProps> = memo((props) => {
       {label
         ? <div className={cls.label}>{label}</div>
         : null}
-      <input {...otherProps} type="text" value={value} readOnly={readOnly} placeholder={placeholder || ''} onChange={onChangeHandler} />
+      <input {...otherProps} type={type || 'text'} value={value} readOnly={readOnly} placeholder={placeholder || ''} onChange={onChangeHandler} />
     </div>
   );
 });

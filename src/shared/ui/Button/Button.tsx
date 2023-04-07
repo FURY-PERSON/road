@@ -1,5 +1,6 @@
 import { memo, FC, ButtonHTMLAttributes } from 'react';
 import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
+import { SvgLoader } from '../SvgLoader';
 import cls from './Button.module.scss';
 
 export enum ButtonVariant {
@@ -20,12 +21,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   square?: boolean,
   size?: ButtonSize,
+  isLoading?: boolean
 }
 
 export const Button:FC<ButtonProps> = memo((props) => {
   const {
     className, children, square, disabled,
-    size = ButtonSize.SMALL, variant = ButtonVariant.CLEAR, ...otherProps 
+    size = ButtonSize.SMALL, variant = ButtonVariant.CLEAR, isLoading, ...otherProps 
   } = props;
 
   const mods: Mods = {
@@ -40,7 +42,7 @@ export const Button:FC<ButtonProps> = memo((props) => {
       disabled={disabled}
       className={classNames(cls.Button, mods, [className, cls[variant], cls[size]])}
     >
-      {children}
+      {isLoading === true ? <SvgLoader /> : children}
     </button>
   );
 });

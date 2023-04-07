@@ -8,7 +8,7 @@ interface fetchProfileProps {
 }
 
 export const fetchProfile = createAsyncThunk<Profile, fetchProfileProps, ThunkConfig<string>>(
-  'profile/fetchProfile',
+  'profile/fetchProfileData',
   async (data, thunkAPI) => {
     const {
       extra, rejectWithValue, 
@@ -18,7 +18,7 @@ export const fetchProfile = createAsyncThunk<Profile, fetchProfileProps, ThunkCo
         return rejectWithValue('Profile login do not provided');
       }
 
-      const response = await extra.api.get<Profile>('/users', { params: { login: data?.login } });
+      const response = await extra.api.get<Profile>(`/users/${data?.login}`);
       const profile = response.data; 
 
       if (!profile) {

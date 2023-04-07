@@ -55,7 +55,7 @@ export const LoginForm:FC<LoginFormProps> = memo((props) => {
       <div className={classNames(cls.LoginForm, {}, [className])}>
         <Text title={t('auth form')} />
         <TextInput onChange={onChangeUsername} value={login} className={cls.input} />
-        <TextInput onChange={onChangePassword} value={password} className={cls.input} />
+        <TextInput type="password" onChange={onChangePassword} value={password} className={cls.input} />
 
         {error  
           ? <Text title={error} variant={TextVariant.ERROR} className={cls.error} />

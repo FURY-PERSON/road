@@ -1,6 +1,7 @@
 import { memo, FC } from 'react';
+import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { Comment } from '../../model/types/comment';
 import cls from './CommentCard.module.scss';
@@ -15,10 +16,10 @@ export const CommentCard:FC<CommentCardProps> = memo((props) => {
 
   return (
     <div className={classNames(cls.CommentCard, {}, [className])}>
-      <div className={cls.header}>
+      <AppLink to={`${RoutePath[AppRoutes.PROFILE]}${comment.author?.login}`} className={cls.header}>
         {/*         <Avatar size={30} src={comment.author.imageUrl}/> */}
         <Text size={TextSize.L} title={comment.author?.login} />
-      </div>
+      </AppLink>
 
       <Text className={cls.title} size={TextSize.L} title={comment.title} text={comment.subTitle} />
       <Text className={cls.text} size={TextSize.M} text={comment.mainText} />

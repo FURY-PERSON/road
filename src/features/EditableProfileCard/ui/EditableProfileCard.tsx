@@ -13,7 +13,7 @@ import { getProfileForm } from '../model/selectors/getProfileForm/getProfileForm
 import { getProfileLoading } from '../model/selectors/getProfileLoading/getProfileLoading';
 import { getProfileReadonly } from '../model/selectors/getProfileReadonly/getProfileReadonly';
 import { getProfileValidationErrors } from '../model/selectors/getProfileValidationErrors/getProfileValidationErrors';
-import { fetchProfile } from '../model/services/getProfileData/fetchProfileData';
+import { fetchProfile } from '../model/services/fetchProfileData/fetchProfileData';
 import { profileActions } from '../model/slice/profile.slice';
 import { ProfileValidationError } from '../model/types/editableProfileCard';
 import cls from './EditableProfileCard.module.scss';

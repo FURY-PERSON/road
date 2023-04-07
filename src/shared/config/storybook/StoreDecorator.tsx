@@ -1,6 +1,7 @@
 import { Story } from '@storybook/react';
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
 import { newsDetailsReducer } from 'entities/News/model/slice/newsDetails.slice';
+import { addCommentFormReducer } from 'features/AddNewComment/model/slice/addCommentForm.slice';
 import { loginReducer } from 'features/AuthByUsername/model/slice/login.slice';
 import { profileReducer } from 'features/EditableProfileCard';
 import { newsDetailsCommentsReducer } from 'features/NewsDetailsCommentList/model/slice/newsDetailsComments.slice';
@@ -12,7 +13,8 @@ const defaultAsyncReducers: ReducersList = {
   profile: profileReducer,
   registerForm: registerReducer,
   newsDetails: newsDetailsReducer,
-  newsDetailsComments: newsDetailsCommentsReducer
+  newsDetailsComments: newsDetailsCommentsReducer,
+  addCommentForm: addCommentFormReducer,
 };
 
 export const StoreDecorator = (

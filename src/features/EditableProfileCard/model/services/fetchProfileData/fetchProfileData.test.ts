@@ -2,7 +2,7 @@ import { TestAsyncThunk } from "shared/lib/helpers/tests/TestAsyncThunk/TestAsyn
 import { fetchProfile } from "./fetchProfileData";
 
 
-describe('fetchProfile', () => {
+describe('fetchProfile data', () => {
   test('success', async () => {
     const profileValue = {login: 'admin', firstName: 'firstName', lastName: 'lastName'}
     const thunk = new TestAsyncThunk(fetchProfile);
