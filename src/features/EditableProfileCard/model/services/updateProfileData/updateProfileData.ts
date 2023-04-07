@@ -22,7 +22,7 @@ export const updateProfile = createAsyncThunk<Profile, void, ThunkConfig<Profile
       }
 
       const response = await extra.api.put<Profile>('/users', formData, { params: { login: formData?.login } });
-      const profile = Array.isArray(response.data) ? response.data[0] : response.data; // TODO delete with real BE
+      const profile = response.data;
 
       if (!profile) {
         return rejectWithValue('Profile not found');

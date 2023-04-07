@@ -1,5 +1,9 @@
 .main {
   font: var(--font-l);
+
+  > .comments {
+    margin-top: 36px;
+  }
 }
 
 .notFound {

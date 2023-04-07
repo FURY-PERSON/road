@@ -5,6 +5,7 @@ import {
 import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { SvgLoader } from 'shared/ui/SvgLoader';
 import { Text, TextVariant } from 'shared/ui/Text/Text';
 import { getProfileError } from '../model/selectors/getProfileError/getProfileError';
@@ -38,13 +39,9 @@ export const EditableProfileCard:FC<EditableProfileCardProps> = memo((props) => 
   const validationErrors = useSelector(getProfileValidationErrors);
   const readOnly = useSelector(getProfileReadonly);
 
-  useEffect(() => {
-    if (__PROJECT__ === 'storybook') return;
-    
-    if (login) {
-      dispatch(fetchProfile({ login: login }));
-    }
-  }, [dispatch, login]);
+  useInitialEffect(() => {
+    dispatch(fetchProfile({ login: login }));
+  });
 
   const onChangeFirstName = useCallback((value: string) => {
     dispatch(profileActions.updateProfile({ firstName: value }));

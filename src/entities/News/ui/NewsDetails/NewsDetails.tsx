@@ -1,8 +1,9 @@
-import { memo, FC, useLayoutEffect } from 'react';
+import { memo, FC } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { Text, TextSize, TextVariant } from 'shared/ui/Text/Text';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { getNewsDetailsLoading } from '../../model/selectors/getNewsDetailsLoading/getNewsDetailsLoading';
 import { fetchNewsById } from '../../model/services/fetchNewsById/fetchNewsById';
 import cls from './NewsDetails.module.scss';
@@ -38,11 +39,9 @@ export const NewsDetails:FC<NewsDetailsProps> = memo((props) => {
   const error = useSelector(getNewsDetailsError);
   const news = useSelector(getNewsDetailsData);
 
-  useLayoutEffect(() => {
-    if (__PROJECT__ === 'storybook') return;
-    
+  useInitialEffect(() => {
     dispatch(fetchNewsById({ id }));
-  }, [dispatch, id]);
+  });
 
   if (isLoading) {
     return (

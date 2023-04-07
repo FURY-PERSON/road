@@ -19,5 +19,6 @@
   "worker": "рабочий",
   "admin": "админ",
   "you have not enough permissions": "у вас недостаточно прав",
-  "connect with your manager": "свяжитесь с вашим администратором"
+  "connect with your manager": "свяжитесь с вашим администратором",
+  "there are no comments": "нет комментариев"
 }

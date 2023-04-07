@@ -7,6 +7,7 @@ import { NewsDetailsSchema } from 'entities/News';
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthByUsername';
 import { ProfileSchema } from 'features/EditableProfileCard';
+import { NewsDetailsCommentsSchema } from 'features/NewsDetailsCommentList';
 import { RegisterSchema } from 'features/RegisterNewUser/model/types/register.schema';
 
 export interface StateSchema {
@@ -17,7 +18,8 @@ export interface StateSchema {
   loginForm?: LoginSchema,
   registerForm?: RegisterSchema,
   profile?: ProfileSchema,
-  newsDetails?: NewsDetailsSchema
+  newsDetails?: NewsDetailsSchema,
+  newsDetailsComments?: NewsDetailsCommentsSchema
 }
 
 export type StateSchemaKey = keyof StateSchema;

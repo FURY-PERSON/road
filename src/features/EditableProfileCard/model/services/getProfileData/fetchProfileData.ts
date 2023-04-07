@@ -14,12 +14,12 @@ export const fetchProfile = createAsyncThunk<Profile, fetchProfileProps, ThunkCo
       extra, rejectWithValue, 
     } = thunkAPI;
     try {
-      if (!data.login) {
+      if (!data?.login) {
         return rejectWithValue('Profile login do not provided');
       }
 
       const response = await extra.api.get<Profile>('/users', { params: { login: data?.login } });
-      const profile = Array.isArray(response.data) ? response.data[0] : response.data; // TODO DELETE WHEN USE REAL BE
+      const profile = response.data; 
 
       if (!profile) {
         return rejectWithValue('Profile not found');
