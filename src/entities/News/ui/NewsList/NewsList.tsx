@@ -9,12 +9,12 @@ interface NewsListProps {
   className?: string;
   news: News[],
   isLoading?: boolean,
-  variant?: NewsListVariant
+  variant: NewsListVariant
 }
 
 export const NewsList:FC<NewsListProps> = memo((props) => {
   const {
-    className, isLoading, news, variant = NewsListVariant.LIST, 
+    className, isLoading, news, variant, 
   } = props;
 
   if (isLoading) {

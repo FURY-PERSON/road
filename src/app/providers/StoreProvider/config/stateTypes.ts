@@ -10,6 +10,7 @@ import { LoginSchema } from 'features/AuthByUsername';
 import { ProfileSchema } from 'features/EditableProfileCard';
 import { NewsDetailsCommentsSchema } from 'features/NewsDetailsCommentList';
 import { RegisterSchema } from 'features/RegisterNewUser/model/types/register.schema';
+import { NewsPageSchema } from 'pages/NewsPage/model/types/newsPageSchema';
 
 export interface StateSchema {
   counter: CounterSchema,
@@ -22,6 +23,7 @@ export interface StateSchema {
   newsDetails?: NewsDetailsSchema,
   newsDetailsComments?: NewsDetailsCommentsSchema,
   addCommentForm?: AddCommentFormSchema
+  newsPage?: NewsPageSchema
 }
 
 export type StateSchemaKey = keyof StateSchema;

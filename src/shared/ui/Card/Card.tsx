@@ -9,7 +9,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode
 }
 
-export const Card:FC<CardProps> = memo((props) => {
+export const Card:FC<CardProps> = (props) => {
   const { className, children, ...otherProps } = props;
 
   return (
@@ -17,4 +17,4 @@ export const Card:FC<CardProps> = memo((props) => {
       {children}
     </div>
   );
-});
+};
