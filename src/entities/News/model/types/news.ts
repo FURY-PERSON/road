@@ -1,4 +1,4 @@
-import { User } from "entities/User";
+import { User } from 'entities/User';
 
 export enum NewsBlockType {
   IMAGE = 'NewsImageBlock',
@@ -43,4 +43,9 @@ export interface News {
   type: NewsType,
   createdAt: string,
   blocks: Array<NewsBlock>
+}
+
+export enum NewsListVariant {
+  BLOCK = 'block',
+  LIST = 'list'
 }

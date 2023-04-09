@@ -4,7 +4,7 @@ import { refreshAuthData } from '../services/refreshAuthData/refreshAuthData';
 import { AuthTokens, User, UserSchema } from '../types/user';
 
 const initialState: UserSchema = {
-  _inited: false
+  _inited: false,
 };
 
 export const userSlice = createSlice({

@@ -54,6 +54,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
     'no-plusplus': 'off',
+    'react/jsx-one-expression-per-line': 'off',
     'react/destructuring-assignment': 'off',
     'import/no-extraneous-dependencies': 'off',
     'no-shadow': 'off',

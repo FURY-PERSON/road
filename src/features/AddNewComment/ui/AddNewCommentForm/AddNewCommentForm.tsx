@@ -31,7 +31,7 @@ export const AddNewCommentForm:FC<AddNewCommentFormProps> = memo((props) => {
   }, [dispatch]);
 
   const onSendClick = useCallback(() => {
-    onSendComment()
+    onSendComment();
   }, [onSendComment]);
   
   return (

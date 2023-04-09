@@ -20,7 +20,7 @@ export const sendNewsComment = createAsyncThunk<Comment, SendCommentProps, Thunk
         return rejectWithValue('Not enough data provided');
       }
       
-      const response = await extra.api.post<Comment>(`comment/news`, {
+      const response = await extra.api.post<Comment>('comment/news', {
         mainText: formState?.text,
         relatedEntityId: id,
       });

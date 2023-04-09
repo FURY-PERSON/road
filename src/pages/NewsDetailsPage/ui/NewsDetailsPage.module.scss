@@ -1,6 +1,10 @@
 .main {
   font: var(--font-l);
 
+  > .back {
+    margin-bottom: 12px;
+  }
+
   > .comments {
     margin-top: 36px;
   }

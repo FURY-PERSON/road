@@ -23,7 +23,7 @@ interface TextProps {
 
 export const Text:FC<TextProps> = memo((props) => {
   const {
-    className, text, title, variant = TextVariant.PRIMARY, size = TextSize.L
+    className, text, title, variant = TextVariant.PRIMARY, size = TextSize.L,
   } = props;
 
   return (
