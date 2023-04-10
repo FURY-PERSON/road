@@ -3,6 +3,7 @@ import { memo, FC } from 'react';
 import { useParams } from 'react-router-dom';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
+import { Page } from 'shared/ui/Page/Page';
 import { ProfilePageParam } from '../model/types';
 import cls from './ProfilePage.module.scss';
 
@@ -21,9 +22,9 @@ export const ProfilePage:FC<ProfilePageProps> = memo((props) => {
 
   return (
     <DynamicModuleLoader removeAfterUnmount reducers={moduleReducer}>
-      <div className={classNames(cls.ProfilePage, {}, [className])}>
+      <Page className={classNames(cls.ProfilePage, {}, [className])}>
         <EditableProfileCard login={login} />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 });

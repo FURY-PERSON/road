@@ -1,4 +1,4 @@
-import { memo, FC } from 'react';
+import { memo, FC, useMemo } from 'react';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { News, NewsListVariant } from '../../model/types/news';
 import { NewsListItem } from '../NewsListItem/NewsListItem';
@@ -17,19 +17,15 @@ export const NewsList:FC<NewsListProps> = memo((props) => {
     className, isLoading, news, variant, 
   } = props;
 
-  if (isLoading) {
-    const skeletonAmount = variant === NewsListVariant.LIST ? 3 : 12;
-
-    return (
-      <div className={classNames(cls.NewsList, {}, [className])}>
-        {new Array(skeletonAmount).fill(0).map((s, i) => <NewsListItemLoader key={i} variant={variant} />)}
-      </div>
-    );
-  }
+  const skeletonAmount = useMemo(() => (variant === NewsListVariant.LIST ? 3 : 12), [variant]);
 
   return (
     <div className={classNames(cls.NewsList, {}, [className])}>
-      {news.map((item) => <NewsListItem key={item.id} variant={variant} news={item} />)}
+      {news?.map((item) => <NewsListItem key={item.id} variant={variant} news={item} />)}
+
+      {isLoading
+        ? new Array(skeletonAmount).fill(0).map((s, i) => <NewsListItemLoader key={i} variant={variant} />)
+        : null }
     </div>
   );
 });

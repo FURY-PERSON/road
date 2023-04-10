@@ -5,4 +5,8 @@ export interface NewsPageSchema extends EntityState<News> {
   isLoading?: boolean,
   error?: string,
   view: NewsListVariant
+
+  page: number;
+  limit: number;
+  hasMore: boolean
 }

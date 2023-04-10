@@ -3,6 +3,7 @@ import { FC, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
+import { Page } from 'shared/ui/Page/Page';
 import cls from './LoginPage.module.scss';
 
 interface LoginPageProps {
@@ -18,10 +19,10 @@ export const LoginPage: FC<LoginPageProps> = (props) => {
   }, [navigator]);
 
   return (
-    <div className={classNames(cls.loginPage, {}, [className])}>
+    <Page className={classNames(cls.loginPage, {}, [className])}>
       <div className={cls.inner}>
         <LoginForm onSuccess={onSuccessLogin} />
       </div>
-    </div>
+    </Page>
   );
 };

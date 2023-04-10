@@ -5,11 +5,9 @@ import { appRouteConfig } from '../config/appRouterConfig';
 
 export const AppRouter = () => (
   <Suspense fallback={<PageLoader />}>
-    <div className="page">
-      <Routes>
-        {appRouteConfig.map((route) => <Route {...route} />)}
-      </Routes>
-    </div>
+    <Routes>
+      {appRouteConfig.map((route) => <Route {...route} />)}
+    </Routes>
   </Suspense>
 );
 

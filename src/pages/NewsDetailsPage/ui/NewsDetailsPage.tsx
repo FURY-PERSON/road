@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { Page } from 'shared/ui/Page/Page';
 import { Text } from 'shared/ui/Text/Text';
 import cls from './NewsDetailsPage.module.scss';
 
@@ -31,7 +32,7 @@ export const NewsDetailsPage = () => {
   }
 
   return (
-    <div className={cls.main}>
+    <Page className={cls.main}>
       <AppLink to={RoutePath[AppRoutes.NEWS_DETAILS]} className={cls.back}>{t('back to list')}</AppLink>
 
       <NewsDetails id={id} />
@@ -40,6 +41,6 @@ export const NewsDetailsPage = () => {
 
       <AddNewCommentFormAsync onSendComment={onNewsCommentSend} />
       <NewsDetailsCommentList newsId={id} className={cls.comments} />
-    </div>
+    </Page>
   );
 };

@@ -5,11 +5,13 @@ import { useSelector } from 'react-redux';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { Page } from 'shared/ui/Page/Page';
 import { Text, TextVariant } from 'shared/ui/Text/Text';
 import { getNewsPageError } from '../model/selectors/getNewsPageError/getNewsPageError';
 import { getNewsPageListView } from '../model/selectors/getNewsPageListView/getNewsPageListView';
 import { getNewsPageLoading } from '../model/selectors/getNewsPageLoading/getNewsPageLoading';
 import { fetchNewsList } from '../model/services/fetchNewsList/fetchNewsList';
+import { fetchNextNewsPage } from '../model/services/fetchNextNewsPage/fetchNextNewsPage';
 import { getNews, newsPageActions, newsPageReducer } from '../model/slice/newsPage.slice';
 import styles from './NewsPage.module.scss';
 
@@ -22,13 +24,17 @@ export const NewsPage = () => {
   const dispatch = useAppDispatch();
 
   useInitialEffect(() => {
-    dispatch(fetchNewsList());
+    dispatch(fetchNewsList({ page: 1 }));
   });
 
   const news = useSelector(getNews.selectAll);
   const isLoading = useSelector(getNewsPageLoading);
   const view = useSelector(getNewsPageListView);
   const error = useSelector(getNewsPageError);
+
+  const loadNextPage = useCallback(() => {
+    dispatch(fetchNextNewsPage());
+  }, [dispatch]);
 
   const onChangeView = useCallback((view: NewsListVariant) => {
     dispatch(newsPageActions.setView(view));
@@ -40,11 +46,11 @@ export const NewsPage = () => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={styles.main}>
+      <Page onScrollEnd={loadNextPage} className={styles.main}>
         <NewsViewSelector view={view} onViewClick={onChangeView} />
-
+ 
         <NewsList variant={view} news={news} isLoading={isLoading} />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };
