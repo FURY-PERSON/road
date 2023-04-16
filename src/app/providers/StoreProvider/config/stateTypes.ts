@@ -11,10 +11,12 @@ import { ProfileSchema } from 'features/EditableProfileCard';
 import { NewsDetailsCommentsSchema } from 'features/NewsDetailsCommentList';
 import { RegisterSchema } from 'features/RegisterNewUser/model/types/register.schema';
 import { NewsPageSchema } from 'pages/NewsPage/model/types/newsPageSchema';
+import { SaveScrollSchema } from 'widgets/SaveScroll';
 
 export interface StateSchema {
   counter: CounterSchema,
   user: UserSchema,
+  saveScroll: SaveScrollSchema,
 
   // async reducers
   loginForm?: LoginSchema,

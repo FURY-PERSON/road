@@ -6,6 +6,7 @@ import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 import { api } from 'shared/api/api';
 import { ReducersList } from 'shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
+import { saveScrollReducer } from 'widgets/SaveScroll';
 import { createReducerManager } from './reducerManager';
 import { StateSchema } from './stateTypes';
 
@@ -18,6 +19,7 @@ export function createReduxStore(
     ...asyncReducers,
     counter: counterReducer,
     user: userReducer,
+    saveScroll: saveScrollReducer,
   };
 
   const reducerManager = createReducerManager(rootReducers);
