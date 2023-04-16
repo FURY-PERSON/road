@@ -10,10 +10,10 @@ import { Text, TextVariant } from 'shared/ui/Text/Text';
 import { getNewsPageError } from '../model/selectors/getNewsPageError/getNewsPageError';
 import { getNewsPageListView } from '../model/selectors/getNewsPageListView/getNewsPageListView';
 import { getNewsPageLoading } from '../model/selectors/getNewsPageLoading/getNewsPageLoading';
-import { fetchNewsList } from '../model/services/fetchNewsList/fetchNewsList';
 import { fetchNextNewsPage } from '../model/services/fetchNextNewsPage/fetchNextNewsPage';
 import { getNews, newsPageActions, newsPageReducer } from '../model/slice/newsPage.slice';
 import styles from './NewsPage.module.scss';
+import { initNewsPage } from '../model/services/initNewsPage/initNewsPage';
 
 const reducers: ReducersList = {
   newsPage: newsPageReducer,
@@ -24,7 +24,7 @@ export const NewsPage = () => {
   const dispatch = useAppDispatch();
 
   useInitialEffect(() => {
-    dispatch(fetchNewsList({ page: 1 }));
+    dispatch(initNewsPage());
   });
 
   const news = useSelector(getNews.selectAll);
@@ -45,7 +45,7 @@ export const NewsPage = () => {
   }
 
   return (
-    <DynamicModuleLoader reducers={reducers}>
+    <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
       <Page onScrollEnd={loadNextPage} className={styles.main}>
         <NewsViewSelector view={view} onViewClick={onChangeView} />
  

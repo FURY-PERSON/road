@@ -25,6 +25,7 @@ export const newsPageSlice = createSlice({
     hasMore: false,
     limit: defaultLimit,
     page: 1,
+    _inited: false,
   }),
   reducers: {
     setView(state, action: PayloadAction<NewsListVariant>) {
@@ -46,6 +47,7 @@ export const newsPageSlice = createSlice({
         state.isLoading = false;
         newsAdapter.addMany(state, action.payload.news);
         state.hasMore = action.payload.totalPage > state.page;
+        state._inited = true;
       })
       .addCase(fetchNewsList.rejected, (state, action) => {
         state.error = action.payload;

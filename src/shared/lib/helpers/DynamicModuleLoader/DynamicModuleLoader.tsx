@@ -22,10 +22,16 @@ export const DynamicModuleLoader:FC<DynamicModuleLoaderProps> = (props) => {
   const store = useStore() as ReduxStoreWithManager;
 
   useLayoutEffect(() => {
+    const mountedReducers = store.reducerManager?.getMountedReducers();
+
     Object.entries(reducers).forEach(([reducerName, reducer]) => {
-      store.reducerManager?.add(reducerName as StateSchemaKey, reducer);
-      if (__IS__DEV__) {
-        dispatch({ type: `@APP_INIT ${reducerName} reducer` });
+      const mounted = mountedReducers?.[reducerName];
+
+      if (!mounted) {
+        store.reducerManager?.add(reducerName as StateSchemaKey, reducer);
+        if (__IS__DEV__) {
+          dispatch({ type: `@APP_INIT ${reducerName} reducer` });
+        }
       }
     });
 

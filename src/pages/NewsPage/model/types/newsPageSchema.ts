@@ -9,4 +9,6 @@ export interface NewsPageSchema extends EntityState<News> {
   page: number;
   limit: number;
   hasMore: boolean
+
+  _inited?: boolean
 }
