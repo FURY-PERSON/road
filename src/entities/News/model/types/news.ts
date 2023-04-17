@@ -29,7 +29,8 @@ export interface NewsCodeBlock extends NewsBlockBase {
 export type NewsBlock = NewsImageBlock | NewsTextBlock | NewsCodeBlock
 
 export enum NewsType {
-  WARNING = 'warning'
+  WARNING = 'warning',
+  ALL = 'all'
 }
 
 export interface News {
@@ -48,4 +49,9 @@ export interface News {
 export enum NewsListVariant {
   BLOCK = 'block',
   LIST = 'list'
+}
+
+export enum NewsSort {
+  TITLE = 'title',
+  CREATED = 'createdAt'
 }

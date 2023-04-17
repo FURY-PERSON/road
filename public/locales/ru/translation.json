@@ -21,5 +21,13 @@
   "you have not enough permissions": "у вас недостаточно прав",
   "connect with your manager": "свяжитесь с вашим администратором",
   "there are no comments": "нет комментариев",
-  "send": "отправить"
+  "send": "отправить",
+  "sort by": "сортировать по",
+  "order by": "упорядочить по",
+  "ascending": "возрастанию",
+  "descending": "возрастанию",
+  "title": "заголовок",
+  "date": "дата",
+  "warning": "предупреждение",
+  "all": "все"
 }

@@ -1,0 +1,21 @@
+.NewsPageFilter {
+  > .sortWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    > .sortSelects {
+      display: flex;
+      flex-direction: column;
+      row-gap: 24px;
+    }
+  }
+
+  > .search {
+    margin-top: 16px;
+  }
+
+  > .type {
+    margin-top: 24px;
+  }
+}

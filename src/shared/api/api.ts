@@ -1,5 +1,12 @@
+import { appStore } from 'app/providers/StoreProvider/ui/StoreProvider';
 import axios from 'axios';
-import { ACCESS_TOKEN_LOCALSTORAGE_KEY } from 'shared/constant/localstorage';
+import { AuthTokens, User, userActions } from 'entities/User';
+import { ACCESS_TOKEN_LOCALSTORAGE_KEY, REFRESH_TOKEN_LOCALSTORAGE_KEY } from 'shared/constant/localstorage';
+
+interface RefreshResponse {
+  user: User,
+  tokens: AuthTokens
+}
 
 export const api = axios.create({
   baseURL: __API__,
@@ -7,7 +14,7 @@ export const api = axios.create({
     Accept: 'application/json',
     'Content-Type': 'application/json',
     Authorization: undefined,
-    'Access-Control-Expose-Headers': "*"
+    'Access-Control-Expose-Headers': '*',
   },
 });
 
@@ -31,15 +38,21 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    if (error.response?.status === 401 && error.config && !originalRequest._isRetry) {
+    if (error.response?.status === 403 && error.config && !originalRequest._isRetry) {
       originalRequest._isRetry = true;
-      const refreshToken = '';
+      const accessToken = localStorage.getItem(ACCESS_TOKEN_LOCALSTORAGE_KEY);
+      const refreshToken = localStorage.getItem(REFRESH_TOKEN_LOCALSTORAGE_KEY);
 
-      if (refreshToken) {
-        /*         const response = await AuthController.test({});
+      if (refreshToken && accessToken) {
+        const response = await api.post<RefreshResponse>('auth/refresh', {
+          accessToken, refreshToken,
+        });
+
         if (response) {
+          appStore.dispatch(userActions.setAuthData(response.data.tokens));
+          appStore.dispatch(userActions.setUserData(response.data.user));
           return api.request(originalRequest);
-        } */
+        }
       }
     }
     throw error;

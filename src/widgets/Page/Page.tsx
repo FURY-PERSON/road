@@ -44,7 +44,6 @@ export const Page:FC<PageProps> = (props) => {
 
   const onScroll = useThrottle((event: UIEvent<HTMLDivElement>) => {
     if (!saveScroll) return;
-    console.log(111);
     dispatch(saveScrollActions.setScrollPosition({
       path: pathname,
       position: event.currentTarget.scrollTop,
@@ -54,7 +53,13 @@ export const Page:FC<PageProps> = (props) => {
   return (
     <div onScroll={onScroll} ref={pageRef} className={classNames(cls.Page, {}, [className])}>
       {children}
-      <div ref={triggerRef}></div>
+      {onScrollEnd
+        ? (
+          <div className={cls.triggerWrapper}>
+            <div className={cls.trigger} ref={triggerRef}></div>
+          </div>
+        )
+        : null}
     </div>
   );
 };

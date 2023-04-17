@@ -1,0 +1,12 @@
+.Tabs {
+  display: flex;
+  gap: 12px;
+
+  > .tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 70px;
+    cursor: pointer;
+  }
+}

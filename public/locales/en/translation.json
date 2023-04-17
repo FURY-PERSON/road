@@ -21,5 +21,13 @@
   "you have not enough permissions": "you have not enough permissions",
   "connect with your manager": "connect with your manager",
   "there are no comments": "there are no comments",
-  "send": "send"
+  "send": "send",
+  "sort by": "sort by",
+  "order by": "order by",
+  "ascending": "ascending",
+  "descending": "descending",
+  "title": "title",
+  "date": "date",
+  "warning": "warning",
+  "all": "all"
 }

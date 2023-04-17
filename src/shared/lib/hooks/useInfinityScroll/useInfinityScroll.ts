@@ -8,25 +8,28 @@ export interface IUseInfinityScroll {
 
 export function useInfinityScroll({ callback, triggerRef, wrapperRef }: IUseInfinityScroll) {
   useEffect(() => {
-    const wrapper = wrapperRef.current;
     const trigger = triggerRef.current;
-
-    const options = {
-      root: wrapper,
-      rootMargin: '0px',
-      threshold: 1.0,
-    };
-
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        callback?.();
-      }
-    }, options);
-
-    observer.observe(trigger);
+    let observer
+    if (trigger) {
+      const wrapper = wrapperRef.current;
+  
+      const options = {
+        root: wrapper,
+        rootMargin: '0px',
+        threshold: 1.0,
+      };
+  
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          callback?.();
+        }
+      }, options);
+  
+      observer.observe(trigger);
+    }
 
     return () => {
-      if (trigger) {
+      if (observer && trigger) {
         observer.unobserve(trigger);
       }
     };
