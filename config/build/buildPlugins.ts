@@ -2,6 +2,7 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import CopyPlugin from 'copy-webpack-plugin';
 import { BuildOption } from './types/config';
 import { buildDefinePlugin, miniCssExtractPlugin } from './plugins/buildPlugins';
 
@@ -15,6 +16,11 @@ export function buildPlugins(options: BuildOption): webpack.WebpackPluginInstanc
     new webpack.ProgressPlugin(),
     miniCssExtractPlugin(),
     buildDefinePlugin(options),
+    new CopyPlugin({
+      patterns: [
+        { from: paths.locales, to: paths.buildLocales },
+      ],
+    }),
   ];
 
   if (isDev) {

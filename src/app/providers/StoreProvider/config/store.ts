@@ -16,7 +16,7 @@ export function createReduxStore(
   asyncReducers?: ReducersList,
 ) {
   const rootReducers: ReducersMapObject<StateSchema> = {
-    ...asyncReducers,
+    ...asyncReducers as any, // TODO fix types
     counter: counterReducer,
     user: userReducer,
     saveScroll: saveScrollReducer,
