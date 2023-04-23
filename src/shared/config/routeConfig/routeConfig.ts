@@ -6,6 +6,8 @@ export enum AppRoutes {
   REGISTER = 'register',
   NEWS = 'news',
   NEWS_DETAILS = 'news_details',
+  NEWS_CREATE = 'news_create',
+  NEWS_EDIT = 'news_edit',
 
   NOTFOUND = '404'
 }
@@ -17,7 +19,9 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.LOGIN]: '/login',
   [AppRoutes.REGISTER]: '/register',
   [AppRoutes.NEWS]: '/news',
-  [AppRoutes.NEWS_DETAILS]: '/news/', // also id
+  [AppRoutes.NEWS_DETAILS]: '/news/', // + id
+  [AppRoutes.NEWS_CREATE]: '/news/create',
+  [AppRoutes.NEWS_EDIT]: '/news/:id/edit',
 
   [AppRoutes.NOTFOUND]: '*',
 };

@@ -9,6 +9,7 @@ import { RegisterPage } from 'pages/RegisterPage';
 import { RouteProps } from 'react-router-dom';
 import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { RequireAuth } from '../ui/RequireAuth';
+import { NewsEditPage } from 'pages/NewsEditPage';
 
 export const appRouteConfig: Array<RouteProps> = [
   {
@@ -39,6 +40,14 @@ export const appRouteConfig: Array<RouteProps> = [
   {
     path: `${RoutePath[AppRoutes.NEWS_DETAILS]}:id`,
     element: <RequireAuth><NewsDetailsPage /></RequireAuth>,
+  },
+  {
+    path: `${RoutePath[AppRoutes.NEWS_CREATE]}`,
+    element: <RequireAuth><NewsEditPage /></RequireAuth>,
+  },
+  {
+    path: `${RoutePath[AppRoutes.NEWS_EDIT]}`,
+    element: <RequireAuth><NewsEditPage /></RequireAuth>,
   },
 
   {

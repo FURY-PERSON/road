@@ -37,6 +37,11 @@ export const getSidebarItemList = createSelector<any, ISidebarItem[]>(
           Icon: NewsIcon,
           text: i18n.t('to news'),
         },
+        {
+          path: RoutePath.news_create,
+          Icon: NewsIcon,
+          text: i18n.t('create news'),
+        },
       );
     }
 

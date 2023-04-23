@@ -4,13 +4,12 @@ import { fetchCommentsByNewsId, NewsDetailsCommentList } from 'features/NewsDeta
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
-import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { Page } from 'widgets/Page/Page';
 import { Text } from 'shared/ui/Text/Text';
 import { NewsRecommendationList } from 'features/NewsRecommendationList';
 import cls from './NewsDetailsPage.module.scss';
+import { NewsDetailsPageHeader } from '../NewsDetailsPageHeader/NewsDetailsPageHeader';
 
 export const NewsDetailsPage = () => {
   const { id } = useParams<{id: string}>();
@@ -34,8 +33,8 @@ export const NewsDetailsPage = () => {
 
   return (
     <Page className={cls.main}>
-      <AppLink to={RoutePath[AppRoutes.NEWS_DETAILS]} className={cls.back}>{t('back to list')}</AppLink>
-
+      <NewsDetailsPageHeader />
+      
       <NewsDetails id={id} />
 
       <Text title={t('comments')} />
