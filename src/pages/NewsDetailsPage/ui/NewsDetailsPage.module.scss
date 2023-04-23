@@ -8,6 +8,16 @@
   > .comments {
     margin-top: 36px;
   }
+
+  > .recommendationsTitle {
+    margin-top: 36px;
+  }
+
+  > .recommendations {
+    flex-wrap: nowrap;
+    margin-top: 18px;
+    overflow-x: scroll;
+  }
 }
 
 .notFound {

@@ -12,6 +12,22 @@ body {
   }
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--card-bg);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+}
+
 .app {
   min-height: 100vh;
   background: var(--bg-color);

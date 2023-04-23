@@ -9,6 +9,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { Page } from 'widgets/Page/Page';
 import { Text } from 'shared/ui/Text/Text';
+import { NewsRecommendationList } from 'features/NewsRecommendationList';
 import cls from './NewsDetailsPage.module.scss';
 
 export const NewsDetailsPage = () => {
@@ -38,9 +39,11 @@ export const NewsDetailsPage = () => {
       <NewsDetails id={id} />
 
       <Text title={t('comments')} />
-
       <AddNewCommentFormAsync onSendComment={onNewsCommentSend} />
       <NewsDetailsCommentList newsId={id} className={cls.comments} />
+
+      <Text className={cls.recommendationsTitle} title={t('recommendations')} />
+      <NewsRecommendationList className={cls.recommendations} />
     </Page>
   );
 };
