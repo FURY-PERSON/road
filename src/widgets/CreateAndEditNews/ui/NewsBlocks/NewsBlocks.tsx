@@ -23,27 +23,27 @@ export const NewsBlocks:FC<NewsBlocksProps> = memo((props) => {
 
   const onCodeBlockChange = useCallback((localBlockId: string) => (code: string) => {
     dispatch(createAndEditNewsActions.updateBlockCode({ localBlockId, code }));
-  }, []);
+  }, [dispatch]);
 
   const onImageBlockImageChange = useCallback((localBlockId: string) => (image?: string) => {
     dispatch(createAndEditNewsActions.updateImageBlockImage({ localBlockId, image: image || '' }));
-  }, []);
+  }, [dispatch]);
   const onImageBlockImageRemove = useCallback((localBlockId: string) => () => {
     dispatch(createAndEditNewsActions.updateImageBlockImage({ localBlockId, image: '' }));
-  }, []);
+  }, [dispatch]);
   const onImageBlockTitleChange = useCallback((localBlockId: string) => (title: string) => {
     dispatch(createAndEditNewsActions.updateImageBlockTitle({ localBlockId, title }));
-  }, []);
+  }, [dispatch]);
 
   const onTextBlockParagraphAdd = useCallback((localBlockId: string) => () => {
     dispatch(createAndEditNewsActions.addParagraphToParagraphsBlock({ localBlockId }));
-  }, []);
-  const onTextBlockParagraphChange = useCallback((localBlockId: string) => (sequenceNum: number, text: string) => {
-    dispatch(createAndEditNewsActions.updateTextBlockParagraphText({ localBlockId, sequenceNum, text }));
-  }, []);
+  }, [dispatch]);
+  const onTextBlockParagraphChange = useCallback((localBlockId: string) => (paragraphId: string, text: string) => {
+    dispatch(createAndEditNewsActions.updateTextBlockParagraphText({ localBlockId, paragraphId, text }));
+  }, [dispatch]);
   const onTextBlockTitleChange = useCallback((localBlockId: string) => (title: string) => {
     dispatch(createAndEditNewsActions.updateTextBlockTitle({ localBlockId, title }));
-  }, []);
+  }, [dispatch]);
 
   const codeBlockHandlers: (localBlockId: string) => EditableNewsBlockCodeHandlers = useCallback((localBlockId: string) => ({
     onCodeChange: onCodeBlockChange(localBlockId),

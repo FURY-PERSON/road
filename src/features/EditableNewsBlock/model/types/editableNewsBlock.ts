@@ -11,7 +11,7 @@ export type EditableNewsBlockCode = Partial<Omit<NewsCodeBlock, 'id'>> & {localI
 export interface EditableNewsBlockTextHandlers {
   onAddParagraph?: () => void
   onTitleChange?: (title: string) => void
-  onParagraphChange?: (paragraphSequencyNum: number, text: string) => void
+  onParagraphChange?: (paragraphId: string, text: string) => void
 }
 
 export interface EditableNewsBlockCodeHandlers {

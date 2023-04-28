@@ -52,7 +52,7 @@ export const createAndEditNewsSlice = createSlice({
       if (updatedBlock) {
         createAndEditNewsBlockAdapter.updateOne(state, { 
           id: payload.localBlockId, 
-          changes: { paragraphs: updatedBlock.paragraphs ? [...updatedBlock.paragraphs, {localId: getUniqueId(), text: ''}] : [{localId: getUniqueId(), text: ''}] } as EditableNewsBlockText, 
+          changes: { paragraphs: updatedBlock.paragraphs ? [...updatedBlock.paragraphs, { localId: getUniqueId(), text: '' }] : [{ localId: getUniqueId(), text: '' }] } as EditableNewsBlockText, 
         });
       }
     },
@@ -62,16 +62,16 @@ export const createAndEditNewsSlice = createSlice({
         changes: { title: payload.title } as EditableNewsBlockText, 
       });
     },
-    updateTextBlockParagraphText(state, { payload }: PayloadAction<{localBlockId: string, sequenceNum: number, text: string}>) {
+    updateTextBlockParagraphText(state, { payload }: PayloadAction<{localBlockId: string, paragraphId: string, text: string}>) {
       const updatedBlock = state.entities[payload.localBlockId] as EditableNewsBlockText | undefined;
 
       if (updatedBlock) {
         createAndEditNewsBlockAdapter.updateOne(state, { 
           id: payload.localBlockId, 
           changes: {
-            paragraphs: updatedBlock.paragraphs?.map((paragraph, index) => {
-              if (index === payload.sequenceNum) {
-                return payload.text;
+            paragraphs: updatedBlock.paragraphs?.map((paragraph) => {
+              if (paragraph.localId === payload.paragraphId) {
+                return { ...paragraph, text: payload.text };
               }
               return paragraph;
             }), 

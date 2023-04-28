@@ -15,8 +15,8 @@ export const EditableTextBlock:FC<EditableTextBlockProps> = memo((props) => {
     className, item, onAddParagraph, onParagraphChange, onTitleChange, 
   } = props;
 
-  const changeParagraphHandler = useCallback((paragraphSequencyNum: number) => (text: string) => {
-    onParagraphChange?.(paragraphSequencyNum, text);
+  const changeParagraphHandler = useCallback((paragraphId: string) => (text: string) => {
+    onParagraphChange?.(paragraphId, text);
   }, [onParagraphChange]);
 
   return (
@@ -24,7 +24,7 @@ export const EditableTextBlock:FC<EditableTextBlockProps> = memo((props) => {
       <TextInput value={item.title} onChange={onTitleChange} />
 
       {item.paragraphs?.map((paragraph, index) => (
-        <TextInput key={paragraph.localId} value={paragraph.text} onChange={changeParagraphHandler(index)} />
+        <TextInput key={paragraph.localId} value={paragraph.text} onChange={changeParagraphHandler(paragraph.localId)} />
       ))}
 
       <Button onClick={onAddParagraph} variant={ButtonVariant.CLEAR}>Add paragraph</Button>
