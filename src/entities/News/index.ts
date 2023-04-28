@@ -7,3 +7,6 @@ export { NewsListVariant, NewsType } from './model/types/news';
 export { NewsViewSelector } from './ui/NewsViewSelector/NewsViewSelector';
 export { NewsSort } from './model/types/news';
 export { getNewsDetailsData } from './model/selectors/getNewsDetailsData/getNewsDetailsData';
+export {
+  NewsBlockType, type NewsBlock, type NewsImageBlock, type NewsTextBlock, type NewsCodeBlock, 
+} from './model/types/news';

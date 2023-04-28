@@ -19,7 +19,7 @@ export interface NewsImageBlock extends NewsBlockBase {
 export interface NewsTextBlock extends NewsBlockBase {
   type: NewsBlockType.TEXT;
   title?: string,
-  paragraphs: Array<string>
+  paragraphs: Array<{localId: string, text: string}>
 }
 export interface NewsCodeBlock extends NewsBlockBase {
   type: NewsBlockType.CODE;

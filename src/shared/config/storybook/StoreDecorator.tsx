@@ -9,6 +9,7 @@ import { newsRecommendationListReducer } from 'features/NewsRecommendationList/m
 import { registerReducer } from 'features/RegisterNewUser/model/slice/register.slice';
 import { newsPageReducer } from 'pages/NewsPage/model/slice/newsPage.slice';
 import { ReducersList } from 'shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
+import { createAndEditNewsReducer } from 'widgets/CreateAndEditNews/model/slice/createAndEditNews.slice';
 
 const defaultAsyncReducers: ReducersList = {
   loginForm: loginReducer,
@@ -18,7 +19,8 @@ const defaultAsyncReducers: ReducersList = {
   newsDetailsComments: newsDetailsCommentsReducer,
   addCommentForm: addCommentFormReducer,
   newsPage: newsPageReducer,
-  newsRecommendationList: newsRecommendationListReducer
+  newsRecommendationList: newsRecommendationListReducer,
+  createAndEditNews: createAndEditNewsReducer
 };
 
 export const StoreDecorator = (
