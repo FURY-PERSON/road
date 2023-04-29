@@ -4,5 +4,14 @@
   "author": "author",
   "read more": "read more",
   "back to list": "back to list",
-  "edit": "edit"
+  "edit": "edit",
+  "title": "title",
+  "subTitle": "sub title",
+  "mainText": "main text",
+  "add paragraph": "add paragraph",
+  "paragraphs": "paragraphs",
+  "code block": "code block",
+  "text block": "text block",
+  "image block": "image block",
+  "image subtitle": "image subtitle"
 }

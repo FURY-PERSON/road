@@ -31,5 +31,6 @@
   "warning": "warning",
   "all": "all",
   "recommendations": "recommendations",
-  "create news": "create news"
+  "create news": "create news",
+  "remove": "remove"
 }

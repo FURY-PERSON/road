@@ -6,9 +6,11 @@ import { EditableTextBlock } from '../EditableTextBlock/EditableTextBlock';
 import { EditableImageBlock } from '../EditableImageBlock/EditableImageBlock';
 import { EditableCodeBlock } from '../EditableCodeBlock/EditableCodeBlock';
 import { isTextBlock, isCodeBlock, isImageBlock } from '../../model/lib/editableNewsBlock';
+import { Text } from 'shared/ui/Text/Text';
 
 export interface EditableNewsBlockComponentProps {
   item: EditableNewsBlock,
+  className?: string
   textBlockHandlers?: EditableNewsBlockTextHandlers
   codeBlockHandlers?: EditableNewsBlockCodeHandlers
   imageBlockHandlers?: EditableNewsBlockImageHandlers
@@ -16,20 +18,23 @@ export interface EditableNewsBlockComponentProps {
 
 export const EditableNewsBlockComponent:FC<EditableNewsBlockComponentProps> = memo((props) => {
   const {
-    item, codeBlockHandlers, imageBlockHandlers, textBlockHandlers, 
+    item, codeBlockHandlers, imageBlockHandlers, textBlockHandlers, className,
   } = props;
 
   if (isImageBlock(item)) {
-    return <EditableImageBlock item={item} {...imageBlockHandlers} />;
+    return <EditableImageBlock item={item} {...imageBlockHandlers} className={className} />;
   }
 
   if (isTextBlock(item)) {
-    return <EditableTextBlock item={item} {...textBlockHandlers} />;
+    return <EditableTextBlock item={item} {...textBlockHandlers} className={className} />;
   }
 
   if (isCodeBlock(item)) {
-    return <EditableCodeBlock item={item} {...codeBlockHandlers} />;
+    return <EditableCodeBlock item={item} {...codeBlockHandlers} className={className} />;
   }
 
-  return <div>Errror</div>;
+  if (__IS__DEV__) {
+    return <Text title={`Unexpected block item ${JSON.stringify(item)}`} />
+  } 
+  return null;
 });

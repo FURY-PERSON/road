@@ -12,10 +12,11 @@ import { createAndEditNewsActions, getCreateAndEditNews } from '../../model/slic
 
 interface NewsBlocksProps {
   className?: string;
+  blockClassName?: string
 }
 
 export const NewsBlocks:FC<NewsBlocksProps> = memo((props) => {
-  const { className } = props;
+  const { className, blockClassName } = props;
 
   const dispatch = useAppDispatch();
 
@@ -67,6 +68,7 @@ export const NewsBlocks:FC<NewsBlocksProps> = memo((props) => {
         <EditableNewsBlockComponent 
           item={block} 
           key={block.localId} 
+          className={blockClassName}
           codeBlockHandlers={codeBlockHandlers(block.localId)} 
           imageBlockHandlers={imageBlockHandlers(block.localId)} 
           textBlockHandlers={textBlockHandlers(block.localId)}

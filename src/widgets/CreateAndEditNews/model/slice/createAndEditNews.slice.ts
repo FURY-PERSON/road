@@ -24,6 +24,18 @@ export const createAndEditNewsSlice = createSlice({
     isEdit: false,
   }),
   reducers: {
+    setNewsTitle(state, action: PayloadAction<string | undefined>) {
+      state.form.title = action.payload;
+    },
+    setNewsSubTitle(state, action: PayloadAction<string | undefined>) {
+      state.form.subTitle = action.payload;
+    },
+    setNewsMainText(state, action: PayloadAction<string | undefined>) {
+      state.form.mainText = action.payload;
+    },
+    setNewsMainImage(state, action: PayloadAction<string | undefined>) {
+      state.form.image = action.payload;
+    },
     addBlock(state, action: PayloadAction<NewsBlockType>) {
       createAndEditNewsBlockAdapter.addOne(state, { localId: getUniqueId(), type: action.payload });
     },
@@ -90,8 +102,19 @@ export const createAndEditNewsSlice = createSlice({
         state.error = '';
         state.isLoading = false;
         state.item = action.payload;
+        state.form = action.payload;
+        state.form.image = action.payload.imageUrl;
         state.isEdit = true;
-        createAndEditNewsBlockAdapter.setAll(state, action.payload.blocks.map((block) => ({ ...block, localId: block.id })));
+        createAndEditNewsBlockAdapter.setAll(state, action.payload.blocks.map((block) => {
+          if (block.type === NewsBlockType.TEXT) {
+            return { 
+              ...block, 
+              localId: block.id, 
+              paragraphs: block.paragraphs.map((paragraph) => ({ localId: getUniqueId(), text: paragraph })), 
+            };
+          }
+          return { ...block, localId: block.id };
+        }));
       })
       .addCase(initCreateAndEditNews.rejected, (state, action) => {
         state.error = action.payload;

@@ -1,3 +1,26 @@
 .EditableNewsMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  > .image {
+    width: 100%;
+    margin-top: 24px;
+  }
   
+  > .title {
+    width: 100%;
+    margin-top: 36px;
+  }
+
+  > .subTitle {
+    width: 70%;
+    margin-top: 18px;
+  }
+
+  > .mainText {
+    width: 100%;
+    margin-top: 32px;
+  }
 }

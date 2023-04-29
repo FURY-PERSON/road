@@ -4,5 +4,14 @@
   "author": "автор",
   "read more": "читать далее",
   "back to list": "назад к списку",
-  "edit": "редактировать"
+  "edit": "редактировать",
+  "title": "заголовок",
+  "subTitle": "подзаголовок",
+  "mainText": "главный текст",
+  "add paragraph": "добавить параграф",
+  "paragraphs": "параграфы",
+  "code block": "блок кода",
+  "text block": "блок текста",
+  "image block": "блок картинки",
+  "image subtitle": "подпись к картинке"
 }

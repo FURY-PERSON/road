@@ -1,8 +1,10 @@
-import {
-  memo, FC, useState, ChangeEvent, 
-} from 'react';
+import { memo, FC } from 'react';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { TextInput } from 'shared/ui/TextInput/TextInput';
+import { ImageInput } from 'shared/ui/ImageInput/ImageInput';
+import { Card } from 'shared/ui/Card/Card';
+import { Text, TextSize } from 'shared/ui/Text/Text';
+import { useTranslation } from 'react-i18next';
 import cls from './EditableImageBlock.module.scss';
 import { EditableNewsBlockImage, EditableNewsBlockImageHandlers } from '../../model/types/editableNewsBlock';
 
@@ -16,33 +18,19 @@ export const EditableImageBlock:FC<EditableImageBlockProps> = memo((props) => {
     className, item, onImageChange, onRemoveImage, onTitleChange, 
   } = props;
 
-  const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files) {
-      onImageChange?.(URL.createObjectURL(event.target.files[0]));
-    }
+  const { t } = useTranslation('news');
+
+  const onImageChangeHandler = (image?: File | null) => {
+    onImageChange?.(image ? URL.createObjectURL(image) : '');
   };
 
   return (
-    <div className={classNames(cls.EditableImageBlock, {}, [className])}>
-      {item.image && (
-        <div className={cls.imageWrapper}>
-          <img
-            alt="not found"
-            width="250px"
-            src={item.image}
-          />
+    <Card className={classNames(cls.EditableImageBlock, {}, [className])}>
+      <Text size={TextSize.L} title={t('image block')} />
 
-          <button onClick={onRemoveImage}>Remove</button>
-        </div>
-      )}
+      <ImageInput className={cls.image} onImageChange={onImageChangeHandler} image={item.image} omImageRemove={onRemoveImage} />
 
-      <input
-        type="file"
-        name="myImage"
-        onChange={onInputChange}
-      />
-
-      <TextInput value={item.title} onChange={onTitleChange} />
-    </div>
+      <TextInput className={cls.title} value={item.title} onChange={onTitleChange} label={t('image subtitle')} />
+    </Card>
   );
 });

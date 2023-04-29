@@ -1,6 +1,5 @@
 import { memo, FC } from 'react';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { EditableNewsMain } from 'features/EditableNewsMain';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
@@ -12,6 +11,7 @@ import { createAndEditNewsReducer } from '../../model/slice/createAndEditNews.sl
 import { initCreateAndEditNews } from '../../model/services/initCreateAndEditNews/initCreateAndEditNews';
 import { getLoading } from '../../model/selectors/createAdnEditNews';
 import { NewsBlocks } from '../NewsBlocks/NewsBlocks';
+import { NewsMainSection } from '../NewsMainSection/NewsMainSection';
 
 interface CreateAndEditNewsProps {
   className?: string;
@@ -43,9 +43,9 @@ export const CreateAndEditNews:FC<CreateAndEditNewsProps> = memo((props) => {
             <>
               <NewsTools />
 
-              <EditableNewsMain />
+              <NewsMainSection className={cls.mainInputs} />
 
-              <NewsBlocks />
+              <NewsBlocks className={cls.blocks} blockClassName={cls.block} />
             </>
           )}
       </div>
