@@ -27,7 +27,6 @@ api.interceptors.request.use(async (config) => {
   config.headers = {
     Authorization: `Bearer ${accessToken}`,
     Accept: 'application/json',
-    'Content-Type': 'application/json',
   };
 
   return config;
@@ -37,14 +36,13 @@ api.interceptors.response.use(
   (config) => config,
   async (error) => {
     const originalRequest = error.config;
-
     if (error.response?.status === 403 && error.config && !originalRequest._isRetry) {
       originalRequest._isRetry = true;
       const accessToken = localStorage.getItem(ACCESS_TOKEN_LOCALSTORAGE_KEY);
       const refreshToken = localStorage.getItem(REFRESH_TOKEN_LOCALSTORAGE_KEY);
 
       if (refreshToken && accessToken) {
-        const response = await api.post<RefreshResponse>('auth/refresh', {
+        const response = await axios.post<RefreshResponse>('auth/refresh', {
           accessToken, refreshToken,
         });
 
@@ -53,6 +51,8 @@ api.interceptors.response.use(
           appStore.dispatch(userActions.setUserData(response.data.user));
           return api.request(originalRequest);
         }
+      } else {
+        window.location.hash = '#/login'
       }
     }
     throw error;

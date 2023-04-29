@@ -1,4 +1,5 @@
 import { memo, FC } from 'react';
+import { Text } from 'shared/ui/Text/Text';
 import {
   EditableNewsBlock, EditableNewsBlockCodeHandlers, EditableNewsBlockImageHandlers, EditableNewsBlockTextHandlers, 
 } from '../../model/types/editableNewsBlock';
@@ -6,7 +7,6 @@ import { EditableTextBlock } from '../EditableTextBlock/EditableTextBlock';
 import { EditableImageBlock } from '../EditableImageBlock/EditableImageBlock';
 import { EditableCodeBlock } from '../EditableCodeBlock/EditableCodeBlock';
 import { isTextBlock, isCodeBlock, isImageBlock } from '../../model/lib/editableNewsBlock';
-import { Text } from 'shared/ui/Text/Text';
 
 export interface EditableNewsBlockComponentProps {
   item: EditableNewsBlock,
@@ -34,7 +34,7 @@ export const EditableNewsBlockComponent:FC<EditableNewsBlockComponentProps> = me
   }
 
   if (__IS__DEV__) {
-    return <Text title={`Unexpected block item ${JSON.stringify(item)}`} />
+    return <Text title={`Unexpected block item ${JSON.stringify(item)}`} />;
   } 
   return null;
 });

@@ -27,7 +27,7 @@ export const ImageInput:FC<ImageInputProps> = memo((props) => {
   const onImageRemove = () => {
     omImageRemove?.();
   };
-
+  
   return (
     <div className={classNames(cls.ImageInput, {}, [className])}>
       {image && (

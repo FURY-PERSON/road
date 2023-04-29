@@ -2,9 +2,9 @@ import { memo, FC, useCallback } from 'react';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { TextInput } from 'shared/ui/TextInput/TextInput';
 import { ImageInput } from 'shared/ui/ImageInput/ImageInput';
-import cls from './EditableNewsMain.module.scss';
 import { useTranslation } from 'react-i18next';
 import { Card } from 'shared/ui/Card/Card';
+import cls from './EditableNewsMain.module.scss';
 
 interface EditableNewsMainProps {
   className?: string;
@@ -24,7 +24,7 @@ export const EditableNewsMain:FC<EditableNewsMainProps> = memo((props) => {
     className, onImageChange, onMainTextChange, onRemoveImage, onSubTitleChange, onTitleChange, image, mainText, subTitle, title, 
   } = props;
 
-  const {t} = useTranslation('news')
+  const { t } = useTranslation('news');
 
   const onImageChangeHandler = useCallback((image?: File | null) => {
     onImageChange?.(image ? URL.createObjectURL(image) : '');

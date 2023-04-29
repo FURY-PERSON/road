@@ -41,7 +41,7 @@ export const CreateAndEditNews:FC<CreateAndEditNewsProps> = memo((props) => {
           ? <SvgLoader />
           : (
             <>
-              <NewsTools />
+              <NewsTools id={id} />
 
               <NewsMainSection className={cls.mainInputs} />
 

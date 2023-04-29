@@ -13,7 +13,7 @@ export interface NewsBlockBase {
 
 export interface NewsImageBlock extends NewsBlockBase {
   type: NewsBlockType.IMAGE;
-  src: string;
+  image: string;
   title?: string
 }
 export interface NewsTextBlock extends NewsBlockBase {

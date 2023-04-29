@@ -1,11 +1,12 @@
 import { PayloadAction, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import { NewsBlockType } from 'entities/News';
+import { NewsBlock, NewsBlockType } from 'entities/News';
 import { getUniqueId } from 'shared/lib/helpers/getUniqueId/getUniqueId';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { EditableNewsBlock } from 'features/EditableNewsBlock';
 import { EditableNewsBlockCode, EditableNewsBlockImage, EditableNewsBlockText } from 'features/EditableNewsBlock/model/types/editableNewsBlock';
 import { CreateAndEditNewsSchema } from '../types/createAndEditNewsSchema';
 import { initCreateAndEditNews } from '../services/initCreateAndEditNews/initCreateAndEditNews';
+import { blockToState } from '../lib/createAndEditNews';
 
 const createAndEditNewsBlockAdapter = createEntityAdapter<EditableNewsBlock>({
   selectId: (block) => block.localId,
@@ -15,14 +16,20 @@ export const getCreateAndEditNews = createAndEditNewsBlockAdapter.getSelectors<S
   (state) => state.createAndEditNews || createAndEditNewsBlockAdapter.getInitialState(),
 );
 
+const initialState = createAndEditNewsBlockAdapter.getInitialState<CreateAndEditNewsSchema>({
+  entities: {},
+  ids: [],
+  form: {
+    title: '',
+    subTitle: '',
+    mainText: ''
+  },
+  isEdit: false,
+});
+
 export const createAndEditNewsSlice = createSlice({
   name: 'createAndEditNewsSlice',
-  initialState: createAndEditNewsBlockAdapter.getInitialState<CreateAndEditNewsSchema>({
-    entities: {},
-    ids: [],
-    form: {},
-    isEdit: false,
-  }),
+  initialState: initialState,
   reducers: {
     setNewsTitle(state, action: PayloadAction<string | undefined>) {
       state.form.title = action.payload;
@@ -35,6 +42,22 @@ export const createAndEditNewsSlice = createSlice({
     },
     setNewsMainImage(state, action: PayloadAction<string | undefined>) {
       state.form.image = action.payload;
+    },
+    cancelEdeting(state) {
+      state.error = '';
+      state.isLoading = false;
+      state.form = state.item || {};
+      state.form.image = state.item?.imageUrl;
+      state.isEdit = true;
+
+      if (state.item) {
+        createAndEditNewsBlockAdapter.setAll(state, blockToState(state.item?.blocks));
+      } else {
+        createAndEditNewsBlockAdapter.removeAll(state);
+      }
+    },
+    resetForm() {
+      return initialState;
     },
     addBlock(state, action: PayloadAction<NewsBlockType>) {
       createAndEditNewsBlockAdapter.addOne(state, { localId: getUniqueId(), type: action.payload });
@@ -64,7 +87,11 @@ export const createAndEditNewsSlice = createSlice({
       if (updatedBlock) {
         createAndEditNewsBlockAdapter.updateOne(state, { 
           id: payload.localBlockId, 
-          changes: { paragraphs: updatedBlock.paragraphs ? [...updatedBlock.paragraphs, { localId: getUniqueId(), text: '' }] : [{ localId: getUniqueId(), text: '' }] } as EditableNewsBlockText, 
+          changes: { 
+            paragraphs: updatedBlock.paragraphs 
+              ? [...updatedBlock.paragraphs, { localId: getUniqueId(), text: '' }] 
+              : [{ localId: getUniqueId(), text: '' }], 
+          } as EditableNewsBlockText, 
         });
       }
     },
@@ -105,16 +132,7 @@ export const createAndEditNewsSlice = createSlice({
         state.form = action.payload;
         state.form.image = action.payload.imageUrl;
         state.isEdit = true;
-        createAndEditNewsBlockAdapter.setAll(state, action.payload.blocks.map((block) => {
-          if (block.type === NewsBlockType.TEXT) {
-            return { 
-              ...block, 
-              localId: block.id, 
-              paragraphs: block.paragraphs.map((paragraph) => ({ localId: getUniqueId(), text: paragraph })), 
-            };
-          }
-          return { ...block, localId: block.id };
-        }));
+        createAndEditNewsBlockAdapter.setAll(state, blockToState(action.payload.blocks));
       })
       .addCase(initCreateAndEditNews.rejected, (state, action) => {
         state.error = action.payload;

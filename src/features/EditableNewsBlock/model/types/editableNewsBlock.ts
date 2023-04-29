@@ -23,3 +23,15 @@ export interface EditableNewsBlockImageHandlers {
   onRemoveImage?: () => void,
   onTitleChange?: (title: string) => void
 }
+
+export function isEditableNewsBlockText(block: EditableNewsBlock): block is EditableNewsBlockText {
+  return block.type === NewsBlockType.TEXT
+}
+
+export function isEditableNewsBlockImage(block: EditableNewsBlock): block is EditableNewsBlockImage {
+  return block.type === NewsBlockType.IMAGE
+}
+
+export function isEditableNewsBlockCode(block: EditableNewsBlock): block is EditableNewsBlockCode {
+  return block.type === NewsBlockType.CODE
+}

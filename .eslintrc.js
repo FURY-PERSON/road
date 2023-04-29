@@ -38,6 +38,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'import/no-unresolved': 'off',
     'pace-infix-ops': 'off',
+    'consistent-return': 'off',
     'object-curly-spacing': 'warn',
     'react/jsx-props-no-spreading': 'off',
     'no-multiple-empty-lines': 'warn',
