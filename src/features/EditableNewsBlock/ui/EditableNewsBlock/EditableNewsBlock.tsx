@@ -14,23 +14,24 @@ export interface EditableNewsBlockComponentProps {
   textBlockHandlers?: EditableNewsBlockTextHandlers
   codeBlockHandlers?: EditableNewsBlockCodeHandlers
   imageBlockHandlers?: EditableNewsBlockImageHandlers
+  maxSequenceNumber: number
 }
 
 export const EditableNewsBlockComponent:FC<EditableNewsBlockComponentProps> = memo((props) => {
   const {
-    item, codeBlockHandlers, imageBlockHandlers, textBlockHandlers, className,
+    item, codeBlockHandlers, imageBlockHandlers, textBlockHandlers, className, maxSequenceNumber,
   } = props;
 
   if (isImageBlock(item)) {
-    return <EditableImageBlock item={item} {...imageBlockHandlers} className={className} />;
+    return <EditableImageBlock item={item} {...imageBlockHandlers} maxSequenceNumber={maxSequenceNumber} className={className} />;
   }
 
   if (isTextBlock(item)) {
-    return <EditableTextBlock item={item} {...textBlockHandlers} className={className} />;
+    return <EditableTextBlock item={item} {...textBlockHandlers} maxSequenceNumber={maxSequenceNumber} className={className} />;
   }
 
   if (isCodeBlock(item)) {
-    return <EditableCodeBlock item={item} {...codeBlockHandlers} className={className} />;
+    return <EditableCodeBlock item={item} {...codeBlockHandlers} maxSequenceNumber={maxSequenceNumber} className={className} />;
   }
 
   if (__IS__DEV__) {

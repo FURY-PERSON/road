@@ -14,14 +14,15 @@ export const saveChanges = createAsyncThunk<News, string | undefined, ThunkConfi
     } = thunkAPI;
     
     try {
+      console.log(1)
       const form = getForm(getState());
       const item = getItem(getState());
       const blocks = getCreateAndEditNews.selectAll(getState());
-
+      console.log(2)
       const formData = new FormData();
 
       formData.append('type', NewsType.WARNING);
-
+      console.log(3)
       if (form?.title) formData.append('title', form?.title);
       if (form?.subTitle) formData.append('subTitle', form?.subTitle);
       if (form?.mainText) formData.append('mainText', form?.mainText);
@@ -29,13 +30,13 @@ export const saveChanges = createAsyncThunk<News, string | undefined, ThunkConfi
       if (blocks) {
         formData.append('blocks', JSON.stringify(stateBlocksToServer(blocks)));
       }
-
+      console.log(4)
       if (form?.image) {
         const imageFetch = await fetch(form.image);
         const blobFile = await imageFetch.blob();
         formData.append('image', new Blob([blobFile]));
       }
-
+      console.log(5)
       if (newsId) {
         return (await extra.api.put<News>(`news/${newsId}`, formData, {
           headers: {
@@ -43,8 +44,7 @@ export const saveChanges = createAsyncThunk<News, string | undefined, ThunkConfi
           },
         })).data;
       } 
-
-      formData.append('dormID', '70571c5d-945d-4d1d-b318-eca7f89476d7');
+      console.log(6)
       return (await extra.api.post<News>('news', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',

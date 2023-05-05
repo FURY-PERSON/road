@@ -1,4 +1,6 @@
-import { memo, FC, useCallback } from 'react';
+import {
+  memo, FC, useCallback, useMemo, 
+} from 'react';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { useSelector } from 'react-redux';
 import {
@@ -19,6 +21,13 @@ export const NewsBlocks:FC<NewsBlocksProps> = memo((props) => {
   const dispatch = useAppDispatch();
 
   const newsBlocks = useSelector(getCreateAndEditNews.selectAll);
+
+  const sortedNewsBlocks = useMemo(() => newsBlocks.sort((a, b) => a.sequenceNumber - b.sequenceNumber), [newsBlocks]);
+  // TODO create sequence map to avoid sort
+
+  const onBlockSequenceChange = useCallback((localBlockId: string) => (sequenceNum: number) => {
+    dispatch(createAndEditNewsActions.updateBlockSequenceNum({ localBlockId, num: sequenceNum }));
+  }, [dispatch]);
 
   const onCodeBlockChange = useCallback((localBlockId: string) => (code: string) => {
     dispatch(createAndEditNewsActions.updateBlockCode({ localBlockId, code }));
@@ -46,27 +55,31 @@ export const NewsBlocks:FC<NewsBlocksProps> = memo((props) => {
 
   const codeBlockHandlers: (localBlockId: string) => EditableNewsBlockCodeHandlers = useCallback((localBlockId: string) => ({
     onCodeChange: onCodeBlockChange(localBlockId),
-  }), [onCodeBlockChange]);
+    onSequenceNumberChange: onBlockSequenceChange(localBlockId),
+  }), [onCodeBlockChange, onBlockSequenceChange]);
 
   const imageBlockHandlers: (localBlockId: string) => EditableNewsBlockImageHandlers = useCallback((localBlockId: string) => ({
     onImageChange: onImageBlockImageChange(localBlockId),
     onRemoveImage: onImageBlockImageRemove(localBlockId),
     onTitleChange: onImageBlockTitleChange(localBlockId),
-  }), [onImageBlockImageChange, onImageBlockImageRemove, onImageBlockTitleChange]);
+    onSequenceNumberChange: onBlockSequenceChange(localBlockId),
+  }), [onImageBlockImageChange, onImageBlockImageRemove, onImageBlockTitleChange, onBlockSequenceChange]);
 
   const textBlockHandlers: (localBlockId: string) => EditableNewsBlockTextHandlers = useCallback((localBlockId: string) => ({
     onAddParagraph: onTextBlockParagraphAdd(localBlockId),
     onParagraphChange: onTextBlockParagraphChange(localBlockId),
     onTitleChange: onTextBlockTitleChange(localBlockId),
-  }), [onTextBlockParagraphAdd, onTextBlockParagraphChange, onTextBlockTitleChange]);
+    onSequenceNumberChange: onBlockSequenceChange(localBlockId),
+  }), [onTextBlockParagraphAdd, onTextBlockParagraphChange, onTextBlockTitleChange, onBlockSequenceChange]);
 
   return (
     <div className={classNames(cls.NewsBlocks, {}, [className])}>
-      {newsBlocks.map((block) => (
+      {sortedNewsBlocks.map((block) => (
         <EditableNewsBlockComponent 
           item={block} 
           key={block.localId} 
           className={blockClassName}
+          maxSequenceNumber={newsBlocks.length}
           codeBlockHandlers={codeBlockHandlers(block.localId)} 
           imageBlockHandlers={imageBlockHandlers(block.localId)} 
           textBlockHandlers={textBlockHandlers(block.localId)}

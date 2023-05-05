@@ -11,17 +11,22 @@ export type EditableNewsBlockText = Partial<Omit<NewsTextBlock, 'id' | 'paragrap
 
 export type EditableNewsBlockCode = Partial<Omit<NewsCodeBlock, 'id'>> & EditableNewsBlock & { code: string }
 
-export interface EditableNewsBlockTextHandlers {
+
+interface EditableNewsBlockHandlersBase {
+  onSequenceNumberChange?: (num: number) => void
+}
+
+export interface EditableNewsBlockTextHandlers extends EditableNewsBlockHandlersBase {
   onAddParagraph?: () => void
   onTitleChange?: (title: string) => void
   onParagraphChange?: (paragraphId: string, text: string) => void
 }
 
-export interface EditableNewsBlockCodeHandlers {
+export interface EditableNewsBlockCodeHandlers extends EditableNewsBlockHandlersBase {
   onCodeChange?: (code: string) => void
 }
 
-export interface EditableNewsBlockImageHandlers {
+export interface EditableNewsBlockImageHandlers extends EditableNewsBlockHandlersBase {
   onImageChange?: (image?: string) => void,
   onRemoveImage?: () => void,
   onTitleChange?: (title: string) => void

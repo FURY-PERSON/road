@@ -78,6 +78,37 @@ export const createAndEditNewsSlice = createSlice({
         changes: { code: payload.code } as EditableNewsBlockCode, 
       });
     },
+    updateBlockSequenceNum(state, { payload }: PayloadAction<{localBlockId: string, num: number}>) {
+      const currentPosition = state.entities[payload.localBlockId]!.sequenceNumber;
+      const futurePosition = payload.num;
+
+      const maxBorder = Math.max(currentPosition, futurePosition); // sequence number changed just inside this sequence borders
+      const minBorder = Math.min(currentPosition, futurePosition);
+
+      const isPositionIncrease = currentPosition < futurePosition;
+
+      state.ids.forEach((id) => {
+        const sequenceNumber = state.entities[id]?.sequenceNumber;
+
+        if (sequenceNumber === undefined
+          || sequenceNumber < minBorder 
+          || sequenceNumber > maxBorder
+        ) return;
+
+        if (sequenceNumber === currentPosition) {
+          createAndEditNewsBlockAdapter.updateOne(state, { 
+            id: id, 
+            changes: { sequenceNumber: futurePosition } as EditableNewsBlockImage, 
+          });
+          return;
+        }
+
+        createAndEditNewsBlockAdapter.updateOne(state, { 
+          id: id, 
+          changes: { sequenceNumber: isPositionIncrease ? sequenceNumber - 1 : sequenceNumber + 1 } as EditableNewsBlockImage, 
+        });
+      });
+    },
     updateImageBlockImage(state, { payload }: PayloadAction<{localBlockId: string, image: string}>) {
       createAndEditNewsBlockAdapter.updateOne(state, { 
         id: payload.localBlockId, 
