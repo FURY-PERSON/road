@@ -10,10 +10,13 @@ export class EditableNewsImageBlockDto implements EditableNewsBlockImage {
 
   image: string;
 
+  sequenceNumber: number;
+
   constructor(newsBlock: NewsImageBlock) {
     this.localId = newsBlock.id;
     this.type = NewsBlockType.IMAGE;
     this.title = newsBlock.title || '';
     this.image = newsBlock.image;
+    this.sequenceNumber = newsBlock.sequenceNumber;
   }
 }

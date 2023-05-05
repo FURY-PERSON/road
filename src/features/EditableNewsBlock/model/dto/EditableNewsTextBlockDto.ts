@@ -11,10 +11,13 @@ export class EditableNewsTextBlockDto implements EditableNewsBlockText {
 
   paragraphs: Array<EditableNewsBlockTextParagraph>;
 
+  sequenceNumber: number;
+
   constructor(newsBlock: NewsTextBlock) {
     this.localId = newsBlock.id;
     this.type = NewsBlockType.TEXT;
     this.title = newsBlock.title || '';
+    this.sequenceNumber = newsBlock.sequenceNumber;
     this.paragraphs = newsBlock.paragraphs.map((paragraph) => ({
       localId: getUniqueId(), 
       text: paragraph,

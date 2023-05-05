@@ -7,10 +7,13 @@ export class EditableNewsImageBlockToServer implements Omit<NewsImageBlock, 'id'
   title?: string;
 
   image: string;
+  
+  sequenceNumber: number;
 
   constructor(block: EditableNewsBlockImage) {
     this.image = block.image;
     this.title = block.title;
     this.type = block.type;
+    this.sequenceNumber = block.sequenceNumber;
   }
 }

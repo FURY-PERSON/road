@@ -6,8 +6,11 @@ export class EditableNewsCodeBlockToServer implements Omit<NewsCodeBlock, 'id'> 
 
   code: string;
 
+  sequenceNumber: number;
+
   constructor(block: EditableNewsBlockCode) {
     this.code = block.code;
     this.type = block.type;
+    this.sequenceNumber = block.sequenceNumber;
   }
 }

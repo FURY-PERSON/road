@@ -8,9 +8,12 @@ export class EditableNewsCodeBlockDto implements EditableNewsBlockCode {
 
   code: string;
 
+  sequenceNumber: number;
+
   constructor(newsBlock: NewsCodeBlock) {
     this.localId = newsBlock.id;
     this.type = NewsBlockType.CODE;
     this.code = newsBlock.code || '';
+    this.sequenceNumber = newsBlock.sequenceNumber;
   }
 }

@@ -1,9 +1,13 @@
-import { memo, FC, useCallback } from 'react';
+import {
+  memo, FC, useCallback, useMemo, 
+} from 'react';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { TextInput } from 'shared/ui/TextInput/TextInput';
 import { ImageInput } from 'shared/ui/ImageInput/ImageInput';
 import { useTranslation } from 'react-i18next';
 import { Card } from 'shared/ui/Card/Card';
+import { Dorm } from 'entities/Dorm';
+import { Select, SelectOption } from 'shared/ui/Select/Select';
 import cls from './EditableNewsMain.module.scss';
 
 interface EditableNewsMainProps {
@@ -12,6 +16,9 @@ interface EditableNewsMainProps {
   subTitle?: string,
   mainText?: string,
   image?: string,
+  dorms?: Dorm[];
+  selectedDorm?: Dorm
+  onDormChange?: (dormId?: string) => void,
   onImageChange?: (image?: string) => void,
   onRemoveImage?: () => void,
   onTitleChange?: (title: string) => void
@@ -21,7 +28,19 @@ interface EditableNewsMainProps {
 
 export const EditableNewsMain:FC<EditableNewsMainProps> = memo((props) => {
   const {
-    className, onImageChange, onMainTextChange, onRemoveImage, onSubTitleChange, onTitleChange, image, mainText, subTitle, title, 
+    className, 
+    onImageChange, 
+    onMainTextChange, 
+    onRemoveImage, 
+    onSubTitleChange, 
+    onTitleChange, 
+    image, 
+    mainText, 
+    subTitle, 
+    title, 
+    dorms, 
+    onDormChange, 
+    selectedDorm,
   } = props;
 
   const { t } = useTranslation('news');
@@ -30,10 +49,14 @@ export const EditableNewsMain:FC<EditableNewsMainProps> = memo((props) => {
     onImageChange?.(image ? URL.createObjectURL(image) : '');
   }, [onImageChange]);
 
+  const selectItems: SelectOption<string>[] | undefined = useMemo(() => dorms?.map((dorm) => ({ value: dorm.id, content: dorm.name })), [dorms]);
+
   return (
     <Card className={classNames(cls.EditableNewsMain, {}, [className])}>
       <TextInput className={cls.title} value={title} onChange={onTitleChange} label={t('title')} />
       <TextInput className={cls.subTitle} value={subTitle} onChange={onSubTitleChange} label={t('subTitle')} />
+
+      <Select value={selectedDorm?.id} onChange={onDormChange} label={t('select dorm')} options={selectItems} />
 
       <ImageInput className={cls.image} onImageChange={onImageChangeHandler} image={image} omImageRemove={onRemoveImage} />
 

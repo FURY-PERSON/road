@@ -4,6 +4,7 @@ import { getUniqueId } from 'shared/lib/helpers/getUniqueId/getUniqueId';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { EditableNewsBlock } from 'features/EditableNewsBlock';
 import { EditableNewsBlockCode, EditableNewsBlockImage, EditableNewsBlockText } from 'features/EditableNewsBlock/model/types/editableNewsBlock';
+import { Dorm } from 'entities/Dorm';
 import { CreateAndEditNewsSchema } from '../types/createAndEditNewsSchema';
 import { initCreateAndEditNews } from '../services/initCreateAndEditNews/initCreateAndEditNews';
 import { blockToState } from '../lib/createAndEditNews';
@@ -44,6 +45,13 @@ export const createAndEditNewsSlice = createSlice({
     setNewsMainImage(state, action: PayloadAction<string | undefined>) {
       state.form.image = action.payload;
     },
+    setSelectedDorm(state, action: PayloadAction<string>) {
+      const dorm = state.dorms?.find((dorm) => dorm.id === action.payload);
+
+      if (dorm) {
+        state.form.dorm = dorm;
+      }
+    },
     cancelEdeting(state) {
       state.error = '';
       state.isLoading = false;
@@ -61,7 +69,8 @@ export const createAndEditNewsSlice = createSlice({
       return initialState;
     },
     addBlock(state, action: PayloadAction<NewsBlockType>) {
-      createAndEditNewsBlockAdapter.addOne(state, { localId: getUniqueId(), type: action.payload });
+      const blocksAmount = state.ids.length || 0;
+      createAndEditNewsBlockAdapter.addOne(state, { localId: getUniqueId(), type: action.payload, sequenceNumber: blocksAmount });
     },
     updateBlockCode(state, { payload }: PayloadAction<{localBlockId: string, code: string}>) {
       createAndEditNewsBlockAdapter.updateOne(state, { 
@@ -129,11 +138,15 @@ export const createAndEditNewsSlice = createSlice({
       .addCase(initCreateAndEditNews.fulfilled, (state, action) => {
         state.error = '';
         state.isLoading = false;
-        state.item = action.payload;
-        state.form = action.payload;
-        state.form.image = action.payload.imageUrl;
+        state.dorms = action.payload.dorms;
         state.isEdit = true;
-        createAndEditNewsBlockAdapter.setAll(state, blockToState(action.payload.blocks));
+        
+        if (action.payload.news) {
+          createAndEditNewsBlockAdapter.setAll(state, blockToState(action.payload.news?.blocks));
+          state.item = action.payload.news;
+          state.form.image = action.payload.news.imageUrl;
+          state.form = action.payload.news;
+        }
       })
       .addCase(initCreateAndEditNews.rejected, (state, action) => {
         state.error = action.payload;

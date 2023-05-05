@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { AxiosError } from 'axios';
 import { News, NewsType } from 'entities/News';
-import { getForm } from '../../selectors/createAdnEditNews';
+import { getForm, getItem } from '../../selectors/createAdnEditNews';
 import { getCreateAndEditNews } from '../../slice/createAndEditNews.slice';
 import { stateBlocksToServer } from '../../lib/createAndEditNews';
 
@@ -15,6 +15,7 @@ export const saveChanges = createAsyncThunk<News, string | undefined, ThunkConfi
     
     try {
       const form = getForm(getState());
+      const item = getItem(getState());
       const blocks = getCreateAndEditNews.selectAll(getState());
 
       const formData = new FormData();
@@ -24,6 +25,7 @@ export const saveChanges = createAsyncThunk<News, string | undefined, ThunkConfi
       if (form?.title) formData.append('title', form?.title);
       if (form?.subTitle) formData.append('subTitle', form?.subTitle);
       if (form?.mainText) formData.append('mainText', form?.mainText);
+      if (form?.dorm?.id && item?.dorm.id !== form?.dorm?.id) formData.append('dormId', form.dorm.id);
       if (blocks) {
         formData.append('blocks', JSON.stringify(stateBlocksToServer(blocks)));
       }

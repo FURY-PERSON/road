@@ -21,9 +21,7 @@ export const CreateAndEditNews:FC<CreateAndEditNewsProps> = memo((props) => {
   const loading = useSelector(getLoading);
 
   useInitialEffect(() => {
-    if (id) {
-      dispatch(initCreateAndEditNews(id));
-    }
+    dispatch(initCreateAndEditNews(id));
   });
 
   if (loading) {

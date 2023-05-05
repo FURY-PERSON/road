@@ -1,3 +1,4 @@
+import { Dorm } from 'entities/Dorm';
 import { User } from 'entities/User';
 
 export enum NewsBlockType {
@@ -9,6 +10,7 @@ export enum NewsBlockType {
 export interface NewsBlockBase {
   id: string
   type: NewsBlockType 
+  sequenceNumber: number
 }
 
 export interface NewsImageBlock extends NewsBlockBase {
@@ -44,6 +46,7 @@ export interface News {
   type: NewsType,
   createdAt: string,
   blocks: Array<NewsBlock>
+  dorm: Dorm
 }
 
 export enum NewsListVariant {

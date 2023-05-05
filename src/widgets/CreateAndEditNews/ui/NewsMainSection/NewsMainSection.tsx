@@ -3,7 +3,7 @@ import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { EditableNewsMain } from 'features/EditableNewsMain';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { getForm } from '../../model/selectors/createAdnEditNews';
+import { getDorms, getForm, getSelectedDorm } from '../../model/selectors/createAdnEditNews';
 import cls from './NewsMainSection.module.scss';
 import { createAndEditNewsActions } from '../../model/slice/createAndEditNews.slice';
 
@@ -16,6 +16,8 @@ export const NewsMainSection:FC<NewsMainSectionProps> = memo((props) => {
 
   const dispatch = useAppDispatch();
   const form = useSelector(getForm);
+  const dorms = useSelector(getDorms);
+  const selectedDorm = useSelector(getSelectedDorm);
 
   const onTitleChange = useCallback((title: string) => {
     dispatch(createAndEditNewsActions.setNewsTitle(title));
@@ -37,6 +39,12 @@ export const NewsMainSection:FC<NewsMainSectionProps> = memo((props) => {
     dispatch(createAndEditNewsActions.setNewsMainImage(undefined));
   }, [dispatch]);
 
+  const onDormChange = useCallback((dormId?: string) => {
+    if (dormId) {
+      dispatch(createAndEditNewsActions.setSelectedDorm(dormId));
+    }
+  }, [dispatch]);
+
   return (
     <div className={classNames(cls.NewsMainSection, {}, [className])}>
       <EditableNewsMain 
@@ -44,6 +52,9 @@ export const NewsMainSection:FC<NewsMainSectionProps> = memo((props) => {
         subTitle={form?.subTitle}
         image={form?.image} 
         mainText={form?.mainText}
+        dorms={dorms}
+        selectedDorm={selectedDorm}
+        onDormChange={onDormChange}
         onImageChange={onImageChange}
         onMainTextChange={onMainTextChange}
         onSubTitleChange={onSubTitleChange}
