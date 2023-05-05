@@ -11,7 +11,7 @@ export class EditableNewsTextBlockToServer implements Omit<NewsTextBlock, 'id'> 
   sequenceNumber: number;
 
   constructor(block: EditableNewsBlockText) {
-    this.paragraphs = block.paragraphs.map((paragraph) => paragraph.text);
+    this.paragraphs = block.paragraphs?.map((paragraph) => paragraph.text);
     this.title = block.title;
     this.type = block.type;
     this.sequenceNumber = block.sequenceNumber;

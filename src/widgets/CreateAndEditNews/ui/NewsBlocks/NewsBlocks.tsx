@@ -22,7 +22,7 @@ export const NewsBlocks:FC<NewsBlocksProps> = memo((props) => {
 
   const newsBlocks = useSelector(getCreateAndEditNews.selectAll);
 
-  const sortedNewsBlocks = useMemo(() => newsBlocks.sort((a, b) => a.sequenceNumber - b.sequenceNumber), [newsBlocks]);
+  const sortedNewsBlocks = useMemo(() => [...newsBlocks].sort((a, b) => a.sequenceNumber - b.sequenceNumber), [newsBlocks]);
   // TODO create sequence map to avoid sort
 
   const onBlockSequenceChange = useCallback((localBlockId: string) => (sequenceNum: number) => {

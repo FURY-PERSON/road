@@ -1,4 +1,4 @@
-import { memo, FC } from 'react';
+import { memo, FC, useMemo } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { Text, TextSize, TextVariant } from 'shared/ui/Text/Text';
@@ -39,6 +39,7 @@ export const NewsDetails:FC<NewsDetailsProps> = memo((props) => {
   const error = useSelector(getNewsDetailsError);
   const news = useSelector(getNewsDetailsData);
 
+  const sortedBlocks = useMemo(() => news?.blocks && [...news.blocks].sort((a, b) => a.sequenceNumber - b.sequenceNumber), [news?.blocks]);
   useInitialEffect(() => {
     dispatch(fetchNewsById({ id }));
   });
@@ -74,7 +75,7 @@ export const NewsDetails:FC<NewsDetailsProps> = memo((props) => {
       <Text className={cls.title} size={TextSize.XL} title={news?.title} text={news?.subTitle} />
       <Text className={cls.createdAt} text={news?.createdAt} />
 
-      {news?.blocks.map((block) => renderBlock(block))}
+      {sortedBlocks?.map((block) => renderBlock(block))}
     </>
   );
 });
