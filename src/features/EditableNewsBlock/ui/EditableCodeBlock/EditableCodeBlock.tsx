@@ -19,7 +19,7 @@ export const EditableCodeBlock:FC<EditableCodeBlockProps> = memo((props) => {
 
   return (
     <Card className={classNames(cls.EditableCodeBlock, {}, [className])}>
-      <Text size={TextSize.Д} title={t('code block')} />
+      <Text size={TextSize.M} title={t('code block')} />
 
       <TextInput className={cls.code} value={item?.code} onChange={onCodeChange} />
     </Card>

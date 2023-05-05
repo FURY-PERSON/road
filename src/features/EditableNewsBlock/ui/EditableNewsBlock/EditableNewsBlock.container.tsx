@@ -15,4 +15,4 @@ export const EditableNewsBlockContainer:FC<EditableNewsBlockContainerProps> = me
       <EditableNewsBlockComponent {...otherProps} />
     </div>
   );
-})
+});

@@ -22,7 +22,8 @@ const initialState = createAndEditNewsBlockAdapter.getInitialState<CreateAndEdit
   form: {
     title: '',
     subTitle: '',
-    mainText: ''
+    mainText: '',
+    image: '',
   },
   isEdit: false,
 });

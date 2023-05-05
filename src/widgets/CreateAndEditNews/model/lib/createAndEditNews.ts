@@ -1,36 +1,49 @@
-import { NewsBlock, NewsBlockType, NewsTextBlock } from 'entities/News';
-import { EditableNewsBlock, isEditableNewsBlockText } from 'features/EditableNewsBlock/model/types/editableNewsBlock';
-import { getUniqueId } from 'shared/lib/helpers/getUniqueId/getUniqueId';
+import { NewsBlock, NewsBlockType } from 'entities/News';
+import {
+  EditableNewsBlock, 
+  EditableNewsCodeBlockDto, 
+  EditableNewsImageBlockDto, 
+  EditableNewsTextBlockDto, 
+  isEditableNewsBlockCode, 
+  isEditableNewsBlockImage, 
+  isEditableNewsBlockText, 
+} from 'features/EditableNewsBlock';
+import { EditableNewsTextBlockToServer } from '../dto/EditableNewsTextBlockToServer';
+import { EditableNewsImageBlockToServer } from '../dto/EditableNewsImageBlockToServer';
+import { EditableNewsCodeBlockToServer } from '../dto/EditableNewsCodeBlockToServer';
 
 export function blockToState(blocks: NewsBlock[]): EditableNewsBlock[] {
   return blocks.map((block) => {
     if (block.type === NewsBlockType.TEXT) {
-      return { 
-        ...block, 
-        localId: block.id, 
-        paragraphs: block.paragraphs.map((paragraph) => ({ localId: getUniqueId(), text: paragraph })), 
-      };
+      return { ...new EditableNewsTextBlockDto(block) };
     }
-    return { ...block, localId: block.id };
+    if (block.type === NewsBlockType.IMAGE) {
+      return { ...new EditableNewsImageBlockDto(block) };
+    }
+    
+    return { ...new EditableNewsCodeBlockDto(block) };
   });
 }
 
 export function stateBlocksToServer(blocks: EditableNewsBlock[]): Array<Omit<NewsBlock, 'id'>> {
   return blocks.map((block) => {
     if (isEditableNewsBlockText(block)) {
-      return {
-        paragraphs: block.paragraphs.map((paragraph) => paragraph.text),
-        title: block.title,
-        type: block.type,
-        id: undefined
-      };
+      return { ...new EditableNewsTextBlockToServer(block) };
+    }
+
+    if (isEditableNewsBlockImage(block)) {
+      return { ...new EditableNewsImageBlockToServer(block) };
+    }
+
+    if (isEditableNewsBlockCode(block)) {
+      return { ...new EditableNewsCodeBlockToServer(block) };
     }
 
     return {
       ...block,
       type: block.type,
       localId: undefined,
-      id: undefined
+      id: undefined,
     };
   });
 }

@@ -1,20 +1,24 @@
 import { memo, FC } from 'react';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import cls from './NewsToolsItem.module.scss';
 import { Button, ButtonVariant } from 'shared/ui/Button/Button';
+import cls from './NewsToolsItem.module.scss';
 
-interface NewsToolsItemProps {
-  className?: string;
+export interface NewsToolItem {
   onClick?: () => void;
   label?: string
 }
 
+interface NewsToolsItemProps {
+  className?: string;
+  item: NewsToolItem
+}
+
 export const NewsToolsItem:FC<NewsToolsItemProps> = memo((props) => {
-  const { className, onClick, label } = props;
+  const { className, item } = props;
 
   return (
-    <Button variant={ButtonVariant.OUTLINE} onClick={onClick} className={classNames(cls.NewsToolsItem, {}, [className])}>
-      {label}
+    <Button variant={ButtonVariant.OUTLINE} onClick={item.onClick} className={classNames(cls.NewsToolsItem, {}, [className])}>
+      {item.label}
     </Button>
   );
-})
+});

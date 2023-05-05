@@ -13,5 +13,13 @@
   "code block": "блок кода",
   "text block": "блок текста",
   "image block": "блок картинки",
-  "image subtitle": "подпись к картинке"
+  "image subtitle": "подпись к картинке",
+  "edit news": "редактировать новость",
+  "create new": "создать новую",
+  "Add image block": "добавить блок картинки",
+  "Add text block": "добавить блок текста",
+  "Add code block": "добавить блок кода",
+  "Cancel": "отменить",
+  "Reset": "сбросить",
+  "Save": "сохранить"
 }

@@ -31,6 +31,7 @@ export const EditableTextBlock:FC<EditableTextBlockProps> = memo((props) => {
       <TextInput className={cls.title} value={item.title} onChange={onTitleChange} />
 
       <Text className={cls.paragraphsTitle} size={TextSize.M} title={t('paragraphs')}></Text>
+      
       <div className={cls.paragraphs}>
         {item.paragraphs?.map((paragraph) => (
           <TextInput 

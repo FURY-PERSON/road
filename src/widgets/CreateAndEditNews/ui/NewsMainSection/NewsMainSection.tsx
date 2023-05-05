@@ -40,10 +40,10 @@ export const NewsMainSection:FC<NewsMainSectionProps> = memo((props) => {
   return (
     <div className={classNames(cls.NewsMainSection, {}, [className])}>
       <EditableNewsMain 
-        title={form?.title || ''} 
-        subTitle={form?.subTitle || ''}
-        image={form?.image || ''} 
-        mainText={form?.mainText || ''}
+        title={form?.title} 
+        subTitle={form?.subTitle}
+        image={form?.image} 
+        mainText={form?.mainText}
         onImageChange={onImageChange}
         onMainTextChange={onMainTextChange}
         onSubTitleChange={onSubTitleChange}

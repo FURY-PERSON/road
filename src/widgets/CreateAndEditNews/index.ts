@@ -1,1 +1,1 @@
-export { CreateAndEditNews } from './ui/CreateAndEditNews/CreateAndEditNews';
+export { CreateAndEditNewsContainer as CreateAndEditNews } from './ui/CreateAndEditNews/CreateAndEditNews.container';

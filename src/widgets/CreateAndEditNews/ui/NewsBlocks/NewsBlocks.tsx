@@ -1,6 +1,4 @@
-import {
-  memo, FC, useCallback, useMemo, 
-} from 'react';
+import { memo, FC, useCallback } from 'react';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { useSelector } from 'react-redux';
 import {

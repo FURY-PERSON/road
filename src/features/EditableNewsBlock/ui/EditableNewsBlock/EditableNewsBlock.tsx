@@ -36,5 +36,6 @@ export const EditableNewsBlockComponent:FC<EditableNewsBlockComponentProps> = me
   if (__IS__DEV__) {
     return <Text title={`Unexpected block item ${JSON.stringify(item)}`} />;
   } 
+  
   return null;
 });

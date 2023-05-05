@@ -5,9 +5,10 @@ import { News, NewsBlockType } from 'entities/News';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { useTranslation } from 'react-i18next';
 import { createAndEditNewsActions } from '../../model/slice/createAndEditNews.slice';
 import cls from './NewsTools.module.scss';
-import { NewsToolsItem } from '../NewsToolsItem/NewsToolsItem';
+import { NewsToolItem, NewsToolsItem } from '../NewsToolsItem/NewsToolsItem';
 import { isEdit } from '../../model/selectors/createAdnEditNews';
 import { saveChanges } from '../../model/services/saveChanges/saveChanges';
 
@@ -18,44 +19,45 @@ interface NewsToolsProps {
 
 export const NewsTools:FC<NewsToolsProps> = memo((props) => {
   const { className, id } = props;
+  const { t, i18n } = useTranslation('news');
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const edit = useSelector(isEdit);
 
   const tools = useMemo(() => {
-    const tools: Array<{label: string, onClick: () => void}> = [
+    const tools: Array<NewsToolItem> = [
       {
-        label: 'Add image block',
+        label: t('Add image block')!,
         onClick: () => dispatch(createAndEditNewsActions.addBlock(NewsBlockType.IMAGE)),
       },
       {
-        label: 'Add text block',
+        label: t('Add text block')!,
         onClick: () => dispatch(createAndEditNewsActions.addBlock(NewsBlockType.TEXT)),
       },
       {
-        label: 'Add code block',
+        label: t('Add code block')!,
         onClick: () => dispatch(createAndEditNewsActions.addBlock(NewsBlockType.CODE)),
       },
     ];
 
     if (edit) {
       tools.push({
-        label: 'Cancel',
+        label: t('Cancel')!,
         onClick: () => {
           navigate(RoutePath[AppRoutes.NEWS_DETAILS] + id);
-          dispatch(createAndEditNewsActions.cancelEdeting())
+          dispatch(createAndEditNewsActions.cancelEdeting());
         },
       });
     } else {
       tools.push({
-        label: 'Reset',
+        label: t('Reset')!,
         onClick: () => dispatch(createAndEditNewsActions.resetForm()),
       });
     }
 
     tools.push({
-      label: 'Save',
+      label: t('Save')!,
       onClick: async () => {
         const resposne = await dispatch(saveChanges(id));
     
@@ -67,11 +69,11 @@ export const NewsTools:FC<NewsToolsProps> = memo((props) => {
     });
 
     return tools;
-  }, [dispatch, edit, id]);
+  }, [dispatch, edit, id, t]);
 
   return (
     <div className={classNames(cls.NewsTools, {}, [className])}>
-      {tools.map((tool) => <NewsToolsItem key={tool.label} className={cls.tool} onClick={tool.onClick} label={tool.label} />)}
+      {tools.map((tool) => <NewsToolsItem key={tool.label} className={cls.tool} item={tool} />)}
     </div>
   );
 });

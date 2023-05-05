@@ -18,8 +18,8 @@ export const fetchNextNewsPage = createAsyncThunk<void, void, ThunkConfig<string
     const isLoading = getNewsPageLoading(getState());
 
     if (hasMore && !isLoading) {
-      dispatch(fetchNewsList({ page: page + 1 }));
-      dispatch(newsPageActions.setPage(page + 1));
+      dispatch(fetchNewsList({ page: +page + 1 }));
+      dispatch(newsPageActions.setPage(+page + 1));
     }
   },
 );

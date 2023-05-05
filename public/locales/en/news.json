@@ -13,5 +13,13 @@
   "code block": "code block",
   "text block": "text block",
   "image block": "image block",
-  "image subtitle": "image subtitle"
+  "image subtitle": "image subtitle",
+  "edit news": "edit news",
+  "create new": "create new",
+  "Add image block": "Add image block",
+  "Add text block": "Add text block",
+  "Add code block": "Add code block",
+  "Cancel": "Cancel",
+  "Reset": "Reset",
+  "Save": "Save"
 }
