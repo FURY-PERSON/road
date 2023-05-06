@@ -1,3 +1,4 @@
+import { RoleName } from 'entities/Role';
 import React from 'react';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 
@@ -7,4 +8,5 @@ export interface ISidebarItem {
   path: typeof RoutePath[Routes];
   text: string,
   Icon: React.FC<React.SVGProps<SVGSVGElement>>
+  roles?: Array<RoleName>
 }

@@ -1,4 +1,3 @@
-import { StateSchema } from 'app/providers/StoreProvider';
 import HomeIcon from 'shared/assets/icons/home.svg';
 import BookIcon from 'shared/assets/icons/book.svg';
 import ProfileIcon from 'shared/assets/icons/profile.svg';
@@ -7,12 +6,13 @@ import i18n from 'shared/config/i18n/i18n';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { createSelector } from '@reduxjs/toolkit';
 import { getUserData } from 'entities/User';
+import { RoleName } from 'entities/Role';
 import { ISidebarItem } from '../../types/item';
 
 export const getSidebarItemList = createSelector<any, ISidebarItem[]>(
   getUserData,
   (userData) => {
-    const items = [
+    const items: ISidebarItem[] = [
       {
         path: RoutePath.main,
         Icon: HomeIcon,
@@ -41,6 +41,7 @@ export const getSidebarItemList = createSelector<any, ISidebarItem[]>(
           path: RoutePath.news_create,
           Icon: NewsIcon,
           text: i18n.t('create news'),
+          roles: [RoleName.ADMIN],
         },
       );
     }

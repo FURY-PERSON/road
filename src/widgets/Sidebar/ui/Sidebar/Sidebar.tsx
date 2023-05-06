@@ -6,6 +6,7 @@ import {
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { Button, ButtonSize, ButtonVariant } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
+import { RoleGuard } from 'features/RoleGuard';
 import cls from './Sidebar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { getSidebarItemList } from '../../model/selectors/getSidebarItemList/getSidebarItemList';
@@ -31,7 +32,9 @@ export const Sidebar:FC<SidebarProps> = memo((props) => {
     >
       <div className={cls.links}>
         {sidebarItemList.map((item) => (
-          <SidebarItem key={item.path} item={item} collapsed={collapsed} />
+          <RoleGuard roleNames={item.roles}>
+            <SidebarItem key={item.path} item={item} collapsed={collapsed} />
+          </RoleGuard>
         ))}
       </div>
 
