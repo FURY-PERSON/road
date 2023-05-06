@@ -1,0 +1,29 @@
+.EditableTextBlock {
+  width: 100%;
+
+  > .title {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  > .paragraphsTitle {
+    margin-top: 16px;
+  }
+
+  > .paragraphs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 24px;
+
+    > .paragraph {
+      width: 80%;
+      margin-top: 4px;
+    }
+  }
+
+  > .addParagraph {
+    margin-top: 8px;
+  }
+
+}

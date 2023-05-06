@@ -10,12 +10,16 @@ interface StoreProviderProps {
   asyncReducers?: ReducersList;
 }
 
+// eslint-disable-next-line import/no-mutable-exports
+export let appStore;
+
 export const StoreProvider:FC<StoreProviderProps> = (props) => {
   const {
     children, initialState, asyncReducers, 
   } = props;
 
   const store = createReduxStore(initialState, asyncReducers);
+  appStore = store;
 
   return (
     <Provider store={store}>

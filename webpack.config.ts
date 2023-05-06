@@ -8,6 +8,8 @@ const paths: BuildPaths = {
   html: path.resolve(__dirname, 'public', 'index.html'),
   entry: path.resolve(__dirname, 'src', 'index.tsx'),
   src: path.resolve(__dirname, 'src'),
+  locales: path.resolve(__dirname, 'public', 'locales'),
+  buildLocales: path.resolve(__dirname, 'build', 'locales'),
 };
 
 export default function (env: BuildEnv): webpack.Configuration {

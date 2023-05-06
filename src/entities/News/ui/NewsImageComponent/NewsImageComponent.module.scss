@@ -1,0 +1,11 @@
+.NewsImageComponent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.img {
+  height: 230px;
+  object-fit: contain;
+}

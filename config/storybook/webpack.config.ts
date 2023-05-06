@@ -15,6 +15,8 @@ export default ({ config }: {config: webpack.Configuration}) => {
     entry: '',
     html: '',
     src: path.resolve(__dirname, '..', '..', 'src'),
+    buildLocales: '',
+    locales: ''
   };
 
   const apiUrl = 'http://localhost:3005/api/';

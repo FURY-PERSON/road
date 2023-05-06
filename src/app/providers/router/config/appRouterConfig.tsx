@@ -1,12 +1,15 @@
 import { AboutPage } from 'pages/AboutPage';
 import { LoginPage } from 'pages/LoginPage';
 import { MainPage } from 'pages/MainPage';
+import { NewsDetailsPage } from 'pages/NewsDetailsPage';
+import { NewsPage } from 'pages/NewsPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { ProfilePage } from 'pages/ProfilePage';
 import { RegisterPage } from 'pages/RegisterPage';
 import { RouteProps } from 'react-router-dom';
 import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { RequireAuth } from '../ui/RequireAuth';
+import { NewsEditPage } from 'pages/NewsEditPage';
 
 export const appRouteConfig: Array<RouteProps> = [
   {
@@ -27,9 +30,26 @@ export const appRouteConfig: Array<RouteProps> = [
     element: <AboutPage />,
   },
   {
-    path: `${RoutePath[AppRoutes.PROFILE]}/:login`,
+    path: `${RoutePath[AppRoutes.PROFILE]}:login`,
     element: <RequireAuth><ProfilePage /></RequireAuth>,
   },
+  {
+    path: RoutePath[AppRoutes.NEWS],
+    element: <RequireAuth><NewsPage /></RequireAuth>,
+  },
+  {
+    path: `${RoutePath[AppRoutes.NEWS_DETAILS]}:id`,
+    element: <RequireAuth><NewsDetailsPage /></RequireAuth>,
+  },
+  {
+    path: `${RoutePath[AppRoutes.NEWS_CREATE]}`,
+    element: <RequireAuth><NewsEditPage /></RequireAuth>,
+  },
+  {
+    path: `${RoutePath[AppRoutes.NEWS_EDIT]}`,
+    element: <RequireAuth><NewsEditPage /></RequireAuth>,
+  },
+
   {
     path: RoutePath[AppRoutes.NOTFOUND],
     element: <NotFoundPage />,

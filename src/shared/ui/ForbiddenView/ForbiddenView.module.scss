@@ -1,0 +1,22 @@
+.ForbiddenView {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  background-color: var(--invert-bg-color);
+  border-radius: 4px;
+
+  > .title {
+    font: var(--font-l);
+    color: var(--red-light)
+  }
+
+  > .subTitle {
+    margin-top: 6px;
+    font: var(--font-m);
+    color: var(--red-light);
+  }
+}

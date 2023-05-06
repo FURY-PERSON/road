@@ -1,0 +1,34 @@
+.main {
+  font: var(--font-l);
+
+  > .back {
+    margin-bottom: 12px;
+  }
+
+  > .recommendationsTitle {
+    margin-top: 36px;
+  }
+
+  > .recommendations {
+    flex-wrap: nowrap;
+    margin-top: 18px;
+    overflow-x: scroll;
+  }
+}
+
+.comments {
+  margin-top: 36px;
+  margin-bottom: 24px;
+}
+
+.notFound {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  
+  &__text {
+    font: var(--font-l);
+    color: var(--red-dark)
+  }
+}

@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 import { RegisterForm } from './RegisterForm';
 import {ValidationError} from "../../model/types/error";
-import { Role } from 'entities/Role';
+import { RoleName } from 'entities/Role';
 
 export default {
    title: 'features/RegisterForm',
@@ -31,7 +31,7 @@ Normal.decorators = [StoreDecorator({
          login: 'admin',
          password: '12345',
          phone: '+37533455644',
-         role: Role.ADMIN
+         role: RoleName.ADMIN
       }
    }
 })];

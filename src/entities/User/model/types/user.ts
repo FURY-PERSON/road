@@ -1,6 +1,15 @@
+import { Permission } from 'entities/Permission';
+import { Role } from 'entities/Role';
+
 export interface User {
   id: string,
-  login: string
+  login: string,
+  firstName: string,
+  lastName: string,
+  phone?: string,
+  email?: string,
+  role: Role,
+  permissions: Permission[]
 }
 
 export interface AuthTokens {
@@ -10,5 +19,9 @@ export interface AuthTokens {
 
 export interface UserSchema {
   authData?: AuthTokens,
-  userData?: User
+  userData?: User,
+  isLoading?: boolean,
+  error?: string
+
+  _inited: boolean
 }

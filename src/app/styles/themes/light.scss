@@ -4,4 +4,14 @@ body.light {
   --primary-color: #080b14;
   --invert-primary-color: #40509c;
   --secondary-color: #39AFEA;
+
+  // skeleton
+  --skeleton-color: #fff;
+  --skeleton-shadow: rgba(0 0 0 / 20%);
+
+  // code
+  --code-bg: #d5d8fa;
+
+    // news
+    --card-bg: rgb(221 223 241);
 }

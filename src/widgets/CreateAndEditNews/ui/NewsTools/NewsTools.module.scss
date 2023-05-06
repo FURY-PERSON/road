@@ -1,0 +1,8 @@
+.NewsTools {
+  display: flex;
+  flex-direction: row;
+
+  > .tool {
+    margin-right: 16px;
+  }
+}

@@ -1,0 +1,24 @@
+.AddNewCommentForm {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 8px;
+  border: 1px solid var(--primary-color);
+
+  > .inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    > .input {
+      flex-grow: 1;
+    }
+
+    > .button {
+      margin-left: 46px;
+    }
+  }
+
+  > .error {
+    margin-top: 24px;
+  }
+}
