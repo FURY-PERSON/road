@@ -8,6 +8,7 @@ import { newsDetailsCommentsReducer } from 'features/NewsDetailsCommentList/mode
 import { newsRecommendationListReducer } from 'features/NewsRecommendationList/model/slice/newsRecomendationList.slice';
 import { registerReducer } from 'features/RegisterNewUser/model/slice/register.slice';
 import { newsPageReducer } from 'pages/NewsPage/model/slice/newsPage.slice';
+import { usersPageReducer } from 'pages/UsersPage/model/slice/usersPage.slice';
 import { ReducersList } from 'shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
 import { createAndEditNewsReducer } from 'widgets/CreateAndEditNews/model/slice/createAndEditNews.slice';
 
@@ -20,7 +21,8 @@ const defaultAsyncReducers: ReducersList = {
   addCommentForm: addCommentFormReducer,
   newsPage: newsPageReducer,
   newsRecommendationList: newsRecommendationListReducer,
-  createAndEditNews: createAndEditNewsReducer
+  createAndEditNews: createAndEditNewsReducer,
+  usersPage: usersPageReducer
 };
 
 export const StoreDecorator = (

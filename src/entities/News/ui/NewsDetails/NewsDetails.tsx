@@ -84,7 +84,7 @@ export const NewsDetails:FC<NewsDetailsProps> = memo((props) => {
 
         <div className={cls.section}>
           <Text className={cls.label} size={TextSize.M} title={t('author')} />
-          <AppLink to={`${RoutePath.profile}${news?.author.login}`}>
+          <AppLink to={`${RoutePath.users}${news?.author.login}`}>
             <Text className={cls.title} size={TextSize.M} title={news?.author.login} />
           </AppLink>
         </div>

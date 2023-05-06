@@ -10,6 +10,7 @@ import { RouteProps } from 'react-router-dom';
 import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { RequireAuth } from '../ui/RequireAuth';
 import { NewsEditPage } from 'pages/NewsEditPage';
+import { UsersPage } from 'pages/UsersPage';
 
 export const appRouteConfig: Array<RouteProps> = [
   {
@@ -30,7 +31,11 @@ export const appRouteConfig: Array<RouteProps> = [
     element: <AboutPage />,
   },
   {
-    path: `${RoutePath[AppRoutes.PROFILE]}:login`,
+    path: `${RoutePath[AppRoutes.USERS]}`,
+    element: <RequireAuth><UsersPage /></RequireAuth>,
+  },
+  {
+    path: `${RoutePath[AppRoutes.USER_DETAILS]}:login`,
     element: <RequireAuth><ProfilePage /></RequireAuth>,
   },
   {
