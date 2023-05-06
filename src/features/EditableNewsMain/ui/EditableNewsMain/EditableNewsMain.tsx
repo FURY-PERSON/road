@@ -56,7 +56,7 @@ export const EditableNewsMain:FC<EditableNewsMainProps> = memo((props) => {
       <TextInput className={cls.title} value={title} onChange={onTitleChange} label={t('title')} />
       <TextInput className={cls.subTitle} value={subTitle} onChange={onSubTitleChange} label={t('subTitle')} />
 
-      <Select value={selectedDorm?.id} onChange={onDormChange} label={t('select dorm')} options={selectItems} />
+      <Select className={cls.dorm} value={selectedDorm?.id} onChange={onDormChange} label={t('select dorm')} options={selectItems} />
 
       <ImageInput className={cls.image} onImageChange={onImageChangeHandler} image={image} omImageRemove={onRemoveImage} />
 

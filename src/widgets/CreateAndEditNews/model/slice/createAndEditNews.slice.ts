@@ -177,6 +177,7 @@ export const createAndEditNewsSlice = createSlice({
           state.item = action.payload.news;
           state.form.image = action.payload.news.imageUrl;
           state.form = action.payload.news;
+          state.form.image = action.payload.news.imageUrl;
         }
       })
       .addCase(initCreateAndEditNews.rejected, (state, action) => {

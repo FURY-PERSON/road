@@ -15,7 +15,7 @@ export const NewsTextComponent:FC<NewsTextComponentProps> = memo((props) => {
   return (
     <div className={classNames(cls.NewsTextComponent, {}, [className])}>
       {block.title
-        ? <Text className={cls.title} title={block.title} size={TextSize.M} />
+        ? <Text className={cls.title} title={block.title} size={TextSize.L} />
         : null}
 
       {block.paragraphs.map((paragraph, i) => (

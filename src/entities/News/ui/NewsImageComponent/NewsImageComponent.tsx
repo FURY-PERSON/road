@@ -14,7 +14,7 @@ export const NewsImageComponent:FC<NewsImageComponentProps> = memo((props) => {
 
   return (
     <div className={classNames(cls.NewsImageComponent, {}, [className])}>
-      <img src={block.image} alt="news" />
+      <img className={cls.img} src={block.image} alt="news" />
 
       {block.title
         ? <Text title={block.title} size={TextSize.M} />

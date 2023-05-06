@@ -42,7 +42,7 @@ export const EditableCodeBlock:FC<EditableCodeBlockProps> = memo((props) => {
     <Card className={classNames(cls.EditableCodeBlock, {}, [className])}>
       <Select options={sequenceNumberOptions} value={String(item.sequenceNumber)} label={t('sequency number')} onChange={onSequenceChange} />
 
-      <Text size={TextSize.M} title={t('code block')} />
+      <Text size={TextSize.L} title={t('code block')} />
 
       <TextInput className={cls.code} value={item?.code} onChange={onCodeChange} />
     </Card>
