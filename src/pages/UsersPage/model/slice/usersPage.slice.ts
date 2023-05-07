@@ -4,6 +4,7 @@ import { StateSchema } from 'app/providers/StoreProvider';
 import { User } from 'entities/User';
 import { fetchUsersList } from '../services/fetchUsersList/fetchUsersList';
 import { UsersPageSchema } from '../types/usersPageSchema';
+import { UsersRolesFilter, UsersSortFilter } from '../types/usersPage';
 
 const defaultLimit = 12;
 
@@ -26,8 +27,8 @@ export const usersPageSlice = createSlice({
   
     order: 'ASC',
     search: '',
-    /*   sort: NewsSort.TITLE,
-    type: NewsType.ALL, */
+    sort: UsersSortFilter.LOGIN,
+    role: UsersRolesFilter.ALL,
   
     _inited: false,
   }),
@@ -43,6 +44,12 @@ export const usersPageSlice = createSlice({
     },
     setLimit(state, action: PayloadAction<number>) {
       state.limit = action.payload;
+    },
+    setRole(state, action: PayloadAction<UsersRolesFilter>) {
+      state.role = action.payload;
+    },
+    setSort(state, action: PayloadAction<UsersSortFilter>) {
+      state.sort = action.payload;
     },
   },
   extraReducers: (builder) => {

@@ -12,6 +12,10 @@ export const getSearch = (state: StateSchema) => state.usersPage?.search;
 
 export const getOrder = (state: StateSchema) => state.usersPage?.order;
 
+export const getRole = (state: StateSchema) => state.usersPage?.role;
+
+export const getSort = (state: StateSchema) => state.usersPage?.sort;
+
 export const getLoading = (state: StateSchema) => state.usersPage?.isLoading;
 
 export const getError = (state: StateSchema) => state.usersPage?.error;

@@ -4,8 +4,9 @@ import { AxiosError } from 'axios';
 import { User } from 'entities/User';
 import { addQueryParams } from 'shared/lib/helpers/url/addQueryParam';
 import {
-  getApiLimit, getApiPage, getOrder, getSearch, 
+  getApiLimit, getApiPage, getOrder, getRole, getSearch, getSort, 
 } from '../../selectors/usersPage';
+import { UsersRolesFilter } from '../../types/usersPage';
 
 interface FetchUsersListProps {
   page?: number,
@@ -29,6 +30,8 @@ export const fetchUsersList = createAsyncThunk<FetchUsersListResponse, FetchUser
     const order = getOrder(getState());
     const search = getSearch(getState());
     const pageState = getApiPage(getState());
+    const role = getRole(getState());
+    const sort = getSort(getState());
  
     const limit = getApiLimit(getState());
 
@@ -44,7 +47,9 @@ export const fetchUsersList = createAsyncThunk<FetchUsersListResponse, FetchUser
           limit,
           page: pageNum,
           orderBy: order,
-          title: search,
+          login: search,
+          role: role !== UsersRolesFilter.ALL ? role : undefined,
+          sort
         },
       });
       const users = response.data; 

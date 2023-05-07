@@ -4,6 +4,7 @@ import { SortOrder } from 'shared/types/sort';
 import { getInited } from '../../selectors/usersPage';
 import { usersPageActions } from '../../slice/usersPage.slice';
 import { fetchUsersList } from '../fetchUsersList/fetchUsersList';
+import { UsersRolesFilter, UsersSortFilter } from '../../types/usersPage';
 
 
 export const initUsersPage = createAsyncThunk<void, URLSearchParams, ThunkConfig<string>>(
@@ -18,7 +19,9 @@ export const initUsersPage = createAsyncThunk<void, URLSearchParams, ThunkConfig
       const orderFromUrl = data.get('order') as SortOrder;
       const limitFromUrl = data.get('limit') as number | null;
       const pageFromUrl = data.get('page') as number | null;
-      const searchFromUrl = data.get('search');
+      const searchFromUrl = data.get('login');
+      const sortFromUrl = data.get('sort') as UsersSortFilter | null;
+      const roleFromUrl = data.get('role') as UsersRolesFilter | null;
 
       if (orderFromUrl) {
         dispatch(
@@ -38,6 +41,16 @@ export const initUsersPage = createAsyncThunk<void, URLSearchParams, ThunkConfig
       if (searchFromUrl) {
         dispatch(
           usersPageActions.setSearch(searchFromUrl),
+        );
+      } 
+      if (roleFromUrl) {
+        dispatch(
+          usersPageActions.setRole(roleFromUrl),
+        );
+      } 
+      if (sortFromUrl) {
+        dispatch(
+          usersPageActions.setSort(sortFromUrl),
         );
       } 
 
