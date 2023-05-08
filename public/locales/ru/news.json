@@ -25,5 +25,7 @@
   "select dorm": "выберите общежитие",
   "sequency number": "порядковый номер",
   "dorm": "общежитие",
-  "created at": "создано"
+  "created at": "создано",
+  "first name": "имя",
+  "last name": "фамилия"
 }

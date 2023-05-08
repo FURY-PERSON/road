@@ -1,4 +1,5 @@
-import { Profile } from 'entities/Profile';
+import { RoleName } from 'entities/Role';
+import { User } from 'entities/User';
 
 export enum ProfileValidationError {
   USER_DATA = 'USER_DATA',
@@ -6,11 +7,13 @@ export enum ProfileValidationError {
   SERVER_ERROR = 'SERVER_ERROR'
 }
 
+export type EditableUser = Omit<User, 'role' | 'permissions'> & {roleName: RoleName}
+
 export interface ProfileSchema {
-  data?: Profile
+  data?: User
   isLoading: boolean;
   error?: string;
   readonly: boolean
-  form?: Profile,
+  form: Partial<EditableUser>,
   validationErrors?: ProfileValidationError[]
 }

@@ -1,3 +1,9 @@
 {
-  "profile": "профиль"
+  "profile": "профиль",
+  "login": "логин",
+  "first name": "имя",
+  "last name": "фамилия",
+  "phone": "телефон",
+  "email": "почта",
+  "role": "роль"
 }

@@ -1,3 +1,9 @@
 {
-  "profile": "profile"
+  "profile": "profile",
+  "login": "login",
+  "first name": "first name",
+  "last name": "last name",
+  "phone": "phone",
+  "email": "email",
+  "role": "role"
 }
