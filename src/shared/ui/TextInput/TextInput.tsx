@@ -11,7 +11,8 @@ interface TextInputProps extends HTMLInputProps {
   value?: string,
   onChange?: (value: string) => void,
   placeholder?: string | null,
-  label?: string | null
+  label?: string | null,
+  multiline?: boolean
 }
 
 export const TextInput:FC<TextInputProps> = memo((props) => {
@@ -23,10 +24,11 @@ export const TextInput:FC<TextInputProps> = memo((props) => {
     placeholder,
     label,
     type,
+    multiline,
     ...otherProps
   } = props;
 
-  const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeHandler = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     onChange?.(event.target.value);
   };
 
@@ -39,7 +41,10 @@ export const TextInput:FC<TextInputProps> = memo((props) => {
       {label
         ? <div className={cls.label}>{label}</div>
         : null}
-      <input {...otherProps} className={classNames(cls.input, {}, [])} type={type || 'text'} value={value} readOnly={readOnly} placeholder={placeholder || ''} onChange={onChangeHandler} />
+
+      {multiline
+        ? <textarea {...otherProps as any} rows={8} className={classNames(cls.input, {}, [])} value={value} readOnly={readOnly} placeholder={placeholder || ''} onChange={onChangeHandler} />
+        : <input {...otherProps} className={classNames(cls.input, {}, [])} type={type || 'text'} value={value} readOnly={readOnly} placeholder={placeholder || ''} onChange={onChangeHandler} />}
     </div>
   );
 });

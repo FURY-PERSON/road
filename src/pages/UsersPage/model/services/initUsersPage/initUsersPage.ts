@@ -6,7 +6,6 @@ import { usersPageActions } from '../../slice/usersPage.slice';
 import { fetchUsersList } from '../fetchUsersList/fetchUsersList';
 import { UsersRolesFilter, UsersSortFilter } from '../../types/usersPage';
 
-
 export const initUsersPage = createAsyncThunk<void, URLSearchParams, ThunkConfig<string>>(
   'users/initUsersPage',
   async (data, thunkAPI) => {

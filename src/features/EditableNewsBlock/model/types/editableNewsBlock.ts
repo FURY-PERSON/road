@@ -11,7 +11,6 @@ export type EditableNewsBlockText = Partial<Omit<NewsTextBlock, 'id' | 'paragrap
 
 export type EditableNewsBlockCode = Partial<Omit<NewsCodeBlock, 'id'>> & EditableNewsBlock & { code: string }
 
-
 interface EditableNewsBlockHandlersBase {
   onSequenceNumberChange?: (num: number) => void
 }

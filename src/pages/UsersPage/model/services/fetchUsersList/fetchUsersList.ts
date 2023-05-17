@@ -49,7 +49,7 @@ export const fetchUsersList = createAsyncThunk<FetchUsersListResponse, FetchUser
           orderBy: order,
           login: search,
           role: role !== UsersRolesFilter.ALL ? role : undefined,
-          sort
+          sort,
         },
       });
       const users = response.data; 

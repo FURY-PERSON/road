@@ -8,9 +8,9 @@ import { ProfilePage } from 'pages/ProfilePage';
 import { RegisterPage } from 'pages/RegisterPage';
 import { RouteProps } from 'react-router-dom';
 import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { RequireAuth } from '../ui/RequireAuth';
 import { NewsEditPage } from 'pages/NewsEditPage';
 import { UsersPage } from 'pages/UsersPage';
+import { RequireAuth } from '../ui/RequireAuth';
 
 export const appRouteConfig: Array<RouteProps> = [
   {
@@ -24,7 +24,7 @@ export const appRouteConfig: Array<RouteProps> = [
 
   {
     path: RoutePath[AppRoutes.MAIN],
-    element: <MainPage />,
+    element: <RequireAuth><MainPage /></RequireAuth>,
   },
   {
     path: RoutePath[AppRoutes.ABOUT],

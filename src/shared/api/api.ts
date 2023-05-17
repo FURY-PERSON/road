@@ -52,7 +52,7 @@ api.interceptors.response.use(
           return api.request(originalRequest);
         }
       } else {
-        window.location.hash = '#/login'
+        window.location.hash = '#/login';
       }
     }
     throw error;

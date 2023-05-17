@@ -13,11 +13,11 @@ export const getSidebarItemList = createSelector<any, ISidebarItem[]>(
   getUserData,
   (userData) => {
     const items: ISidebarItem[] = [
-      {
+      /*       {
         path: RoutePath.main,
         Icon: HomeIcon,
         text: i18n.t('to main'),
-      },
+      }, */
       {
         path: RoutePath.about,
         Icon: BookIcon,

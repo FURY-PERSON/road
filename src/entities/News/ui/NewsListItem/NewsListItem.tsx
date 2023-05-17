@@ -21,7 +21,7 @@ interface NewsListItemProps {
 
 export const NewsListItem:FC<NewsListItemProps> = memo((props) => {
   const {
-    className, news, variant, target = '_self'
+    className, news, variant, target = '_self',
   } = props;
 
   const { t } = useTranslation('news');

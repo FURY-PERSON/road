@@ -9,7 +9,7 @@ export interface IUseInfinityScroll {
 export function useInfinityScroll({ callback, triggerRef, wrapperRef }: IUseInfinityScroll) {
   useEffect(() => {
     const trigger = triggerRef.current;
-    let observer
+    let observer;
     if (trigger) {
       const wrapper = wrapperRef.current;
   

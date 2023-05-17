@@ -22,7 +22,7 @@ const defaultAsyncReducers: ReducersList = {
   newsPage: newsPageReducer,
   newsRecommendationList: newsRecommendationListReducer,
   createAndEditNews: createAndEditNewsReducer,
-  usersPage: usersPageReducer
+  usersPage: usersPageReducer,
 };
 
 export const StoreDecorator = (
