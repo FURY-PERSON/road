@@ -1,0 +1,14 @@
+.main {
+  font: var(--font-l);
+}
+
+.list {
+  margin-top: 36px;
+}
+
+
+@media print {
+  .filter {
+    display: none;
+  }
+}

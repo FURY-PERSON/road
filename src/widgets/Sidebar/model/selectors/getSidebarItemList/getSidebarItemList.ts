@@ -13,11 +13,11 @@ export const getSidebarItemList = createSelector<any, ISidebarItem[]>(
   getUserData,
   (userData) => {
     const items: ISidebarItem[] = [
-      {
+      /*       {
         path: RoutePath.main,
         Icon: HomeIcon,
         text: i18n.t('to main'),
-      },
+      }, */
       {
         path: RoutePath.about,
         Icon: BookIcon,
@@ -28,7 +28,13 @@ export const getSidebarItemList = createSelector<any, ISidebarItem[]>(
     if (userData) {
       items.push(
         {
-          path: `${RoutePath.profile}${userData?.login}`,
+          path: `${RoutePath.users}`,
+          Icon: ProfileIcon,
+          text: i18n.t('to users'),
+          roles: [RoleName.ADMIN],
+        },
+        {
+          path: `${RoutePath.user_details}${userData?.login}`,
           Icon: ProfileIcon,
           text: i18n.t('to profile'),
         },

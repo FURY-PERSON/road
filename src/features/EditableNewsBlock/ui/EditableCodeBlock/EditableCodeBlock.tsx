@@ -44,7 +44,7 @@ export const EditableCodeBlock:FC<EditableCodeBlockProps> = memo((props) => {
 
       <Text size={TextSize.L} title={t('code block')} />
 
-      <TextInput className={cls.code} value={item?.code} onChange={onCodeChange} />
+      <TextInput multiline className={cls.code} value={item?.code} onChange={onCodeChange} />
     </Card>
   );
 });

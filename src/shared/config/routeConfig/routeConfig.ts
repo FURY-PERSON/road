@@ -1,9 +1,10 @@
 export enum AppRoutes {
   MAIN = 'main',
   ABOUT = 'about',
-  PROFILE = 'profile',
   LOGIN = 'login',
   REGISTER = 'register',
+  USERS = 'users',
+  USER_DETAILS = 'user_details',
   NEWS = 'news',
   NEWS_DETAILS = 'news_details',
   NEWS_CREATE = 'news_create',
@@ -15,7 +16,8 @@ export enum AppRoutes {
 export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: '/',
   [AppRoutes.ABOUT]: '/about',
-  [AppRoutes.PROFILE]: '/profile/',
+  [AppRoutes.USERS]: '/user/',
+  [AppRoutes.USER_DETAILS]: '/user/', // +id
   [AppRoutes.LOGIN]: '/login',
   [AppRoutes.REGISTER]: '/register',
   [AppRoutes.NEWS]: '/news',

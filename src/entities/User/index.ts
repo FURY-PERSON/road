@@ -5,3 +5,4 @@ export { getUserData } from './model/selectors/getUserData/getUserData';
 export { getUserLogin } from './model/selectors/getUserLogin/getUserLogin';
 export { refreshAuthData } from './model/services/refreshAuthData/refreshAuthData';
 export { getUserRoleName } from './model/selectors/getUserRole/getUserRole';
+export { UsersList } from './ui/UsersList/UsersList';

@@ -25,5 +25,7 @@
   "select dorm": "select dorm",
   "sequency number": "sequency number",
   "dorm": "dorm",
-  "created at": "created at"
+  "created at": "created at",
+  "first name": "first name",
+  "last name": "last name"
 }

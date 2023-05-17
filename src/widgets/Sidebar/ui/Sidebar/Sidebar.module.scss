@@ -42,3 +42,9 @@
     align-items: center;
   }
 }
+
+@media print {
+  .Sidebar {
+    display: none;
+  }
+}

@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Profile } from 'entities/Profile';
+import { RoleName } from 'entities/Role';
 import { fetchProfile } from '../services/fetchProfileData/fetchProfileData';
 import { updateProfile } from '../services/updateProfileData/updateProfileData';
 import { ProfileSchema } from '../types/editableProfileCard';
+import { UserToStoreDto } from '../dto/UserToStoreDto';
 
 const initialState: ProfileSchema = {
   isLoading: false,
-  error: undefined,
-  data: undefined,
   readonly: true,
-  form: undefined,
-  validationErrors: undefined,
+  form: {
+
+  },
 };
 
 export const profileSlice = createSlice({
@@ -22,15 +22,27 @@ export const profileSlice = createSlice({
     },
     cancelEdit(state) {
       state.readonly = true;
-      state.form = state.data;
       state.validationErrors = undefined;
       state.error = undefined;
+
+      if (state.data) {
+        state.form = { ...new UserToStoreDto(state.data) };
+      }
     },
-    updateProfile(state, action: PayloadAction<Profile>) {
-      state.form = {
-        ...state.form,
-        ...action.payload,
-      };
+    setFirstName(state, action: PayloadAction<string>) {
+      state.form.firstName = action.payload;
+    },
+    setLastName(state, action: PayloadAction<string>) {
+      state.form.lastName = action.payload;
+    },
+    setPhone(state, action: PayloadAction<string>) {
+      state.form.phone = action.payload;
+    },
+    setRole(state, action: PayloadAction<RoleName>) {
+      state.form.roleName = action.payload;
+    },
+    setEmail(state, action: PayloadAction<string>) {
+      state.form.email = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -42,7 +54,7 @@ export const profileSlice = createSlice({
       .addCase(fetchProfile.fulfilled, (state, action) => {
         state.error = '';
         state.data = action.payload;
-        state.form = action.payload;
+        state.form = { ...new UserToStoreDto(action.payload) };
         state.isLoading = false;
       })
       .addCase(fetchProfile.rejected, (state, action) => {
@@ -57,7 +69,7 @@ export const profileSlice = createSlice({
         state.error = undefined;
         state.validationErrors = undefined;
         state.data = action.payload;
-        state.form = action.payload;
+        state.form = { ...new UserToStoreDto(action.payload) };
         state.readonly = true;
         state.isLoading = false;
       })

@@ -5,6 +5,9 @@ import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button } from 'shared/ui/Button/Button';
 import { updateProfile } from 'features/EditableProfileCard/model/services/updateProfileData/updateProfileData';
+import { PermissionGuard } from 'features/PermissionGuard';
+import { RoleGuard } from 'features/RoleGuard';
+import { RoleName } from 'entities/Role';
 import { profileActions } from '../../model/slice/profile.slice';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import cls from './ProfileCardHeader.module.scss';
@@ -36,9 +39,11 @@ export const ProfileCardHeader:FC<ProfileCardHeaderProps> = memo((props) => {
     <div className={classNames(cls.ProfileCardHeader, {}, [className])}>
       {readOnly
         ? (
-          <Button onClick={onEditClick}>
-            {t('edit')}
-          </Button>
+          <RoleGuard roleNames={[RoleName.ADMIN, RoleName.WORKER]}>
+            <Button onClick={onEditClick}>
+              {t('edit')}
+            </Button>
+          </RoleGuard>
         )
         : (
           <div className={cls.buttons}>

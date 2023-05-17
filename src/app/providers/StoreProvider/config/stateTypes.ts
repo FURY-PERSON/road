@@ -12,6 +12,7 @@ import { NewsDetailsCommentsSchema } from 'features/NewsDetailsCommentList';
 import { NewsRecommendationListSchema } from 'features/NewsRecommendationList';
 import { RegisterSchema } from 'features/RegisterNewUser/model/types/register.schema';
 import { NewsPageSchema } from 'pages/NewsPage/model/types/newsPageSchema';
+import { UsersPageSchema } from 'pages/UsersPage/model/types/usersPageSchema';
 import { CreateAndEditNewsSchema } from 'widgets/CreateAndEditNews/model/types/createAndEditNewsSchema';
 import { SaveScrollSchema } from 'widgets/SaveScroll';
 
@@ -30,6 +31,7 @@ export interface StateSchema {
   newsPage?: NewsPageSchema,
   newsRecommendationList?: NewsRecommendationListSchema
   createAndEditNews?: CreateAndEditNewsSchema
+  usersPage?: UsersPageSchema
 }
 
 export type StateSchemaKey = keyof StateSchema;

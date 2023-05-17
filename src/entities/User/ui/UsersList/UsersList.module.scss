@@ -1,0 +1,10 @@
+.UsersList {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 24px;
+  column-gap: 36px;
+}
+
+.item {
+  margin-top: 16px;
+}
