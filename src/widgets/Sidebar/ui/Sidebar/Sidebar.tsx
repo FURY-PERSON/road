@@ -10,6 +10,7 @@ import { RoleGuard } from 'features/RoleGuard';
 import cls from './Sidebar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { getSidebarItemList } from '../../model/selectors/getSidebarItemList/getSidebarItemList';
+import { VStack } from 'shared/ui/Stack/VStack/VStack';
 
 interface SidebarProps {
   className?: string;
@@ -30,13 +31,13 @@ export const Sidebar:FC<SidebarProps> = memo((props) => {
       data-testid="sidebar"
       className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}
     >
-      <div className={cls.links}>
+      <VStack gap={16} className={cls.links}>
         {sidebarItemList.map((item) => (
           <RoleGuard roleNames={item.roles}>
             <SidebarItem key={item.path} item={item} collapsed={collapsed} />
           </RoleGuard>
         ))}
-      </div>
+      </VStack>
 
       <Button 
         data-testid="sidebar-toggle" 
