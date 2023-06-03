@@ -7,10 +7,10 @@ import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { Button, ButtonSize, ButtonVariant } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
 import { RoleGuard } from 'features/RoleGuard';
+import { VStack } from 'shared/ui/Stack/VStack/VStack';
 import cls from './Sidebar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { getSidebarItemList } from '../../model/selectors/getSidebarItemList/getSidebarItemList';
-import { VStack } from 'shared/ui/Stack/VStack/VStack';
 
 interface SidebarProps {
   className?: string;
@@ -27,11 +27,11 @@ export const Sidebar:FC<SidebarProps> = memo((props) => {
   }, []);
 
   return (
-    <div 
+    <aside 
       data-testid="sidebar"
       className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}
     >
-      <VStack gap={16} className={cls.links}>
+      <VStack role="navigation" gap={16} className={cls.links}>
         {sidebarItemList.map((item) => (
           <RoleGuard roleNames={item.roles}>
             <SidebarItem key={item.path} item={item} collapsed={collapsed} />
@@ -54,6 +54,6 @@ export const Sidebar:FC<SidebarProps> = memo((props) => {
         <ThemeSwitcher />
         <LanguageSwitcher short={collapsed} className={cls.lng} />
       </div>
-    </div>
+    </aside>
   );
 });

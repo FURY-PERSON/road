@@ -30,23 +30,23 @@ export function Navbar(props: NavbarProps) {
 
   if (!user) {
     return (
-      <div className={classNames(cls.Navbar, {}, [className])}>
+      <header className={classNames(cls.Navbar, {}, [className])}>
         <div className={cls.inner}>
           <div />
 
           <Button onClick={onLoginClick}>{t('login')}</Button>
         </div>
-      </div>
+      </header>
     );
   }
 
   return (
-    <div className={classNames(cls.Navbar, {}, [className])}>
+    <header className={classNames(cls.Navbar, {}, [className])}>
       <div className={cls.inner}>
         <AppLink to={RoutePath.main}>{t('to main')}</AppLink>
 
         <Button onClick={onLogout}>{t('logout')}</Button>
       </div>
-    </div>
+    </header>
   );
 }
