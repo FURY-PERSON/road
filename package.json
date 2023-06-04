@@ -23,7 +23,8 @@
     "documentation:storybook:dev": "start-storybook -p 6006 -c ./config/storybook",
     "documentation:storybook:build": "build-storybook -c ./config/storybook",
     "mock-server:start": "node ./json-server/index.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "generate:fsd": "node ./scripts/createSlice/index.js"
   },
   "repository": {
     "type": "git",
