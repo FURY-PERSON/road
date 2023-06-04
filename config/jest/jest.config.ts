@@ -53,6 +53,16 @@ export default {
     __PROJECT__: 'jest',
   },
 
+  reporters: [
+    'default',
+    ['jest-html-reporters', {
+      filename: 'unit.html',
+      publicPath: '<rootDir>/reports/unit',
+      openReport: true,
+      includeConsoleLog: true,
+    }],
+  ],
+
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
 
