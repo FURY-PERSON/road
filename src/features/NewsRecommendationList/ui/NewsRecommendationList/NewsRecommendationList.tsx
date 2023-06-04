@@ -1,14 +1,10 @@
 import { memo, FC } from 'react';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { useSelector } from 'react-redux';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
 import { NewsList, NewsListVariant } from 'entities/News';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import cls from './NewsRecommendationList.module.scss';
-import { getNewsRecommendations, getNewsRecommendationsLoading } from '../../model/selectors/selectors';
 import { newsRecommendationListReducer } from '../../model/slice/newsRecomendationList.slice';
-import { fetchNewsRecommendationList } from '../../model/services/fetchNewsRecommendationList/fetchNewsRecommendationList';
+import { useGetNewsRecommendations } from '../../model/api/newsRecommendationsApi';
 
 interface NewsRecommendationListProps {
   className?: string;
@@ -20,14 +16,12 @@ const reducers: ReducersList = {
 
 export const NewsRecommendationList:FC<NewsRecommendationListProps> = memo((props) => {
   const { className } = props;
-  const dispatch = useAppDispatch();
 
-  useInitialEffect(() => {
-    dispatch(fetchNewsRecommendationList());
-  });
+  const {
+    isLoading, isFetching, error, data: recommendedNews, 
+  } = useGetNewsRecommendations(6);
 
-  const recommendedNews = useSelector(getNewsRecommendations);
-  const loading = useSelector(getNewsRecommendationsLoading);
+  const loading = isLoading || isFetching;
 
   return (
     <DynamicModuleLoader reducers={reducers}>

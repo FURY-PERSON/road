@@ -9,6 +9,7 @@ import { ReducersList } from 'shared/lib/helpers/DynamicModuleLoader/DynamicModu
 import { saveScrollReducer } from 'widgets/SaveScroll';
 import { createReducerManager } from './reducerManager';
 import { StateSchema } from './stateTypes';
+import { rtkApi } from 'shared/api/rtkApi';
 
 // initialState - for tests
 export function createReduxStore(
@@ -20,6 +21,8 @@ export function createReduxStore(
     counter: counterReducer,
     user: userReducer,
     saveScroll: saveScrollReducer,
+    [rtkApi.reducerPath]: rtkApi.reducer,
+  
   };
 
   const reducerManager = createReducerManager(rootReducers);
@@ -33,7 +36,7 @@ export function createReduxStore(
           api,
         },
       },
-    }),
+    }).concat(rtkApi.middleware),
   });
 
   // @ts-ignore
