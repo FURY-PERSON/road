@@ -1,4 +1,4 @@
-import { memo, FC, useState } from 'react';
+/* import { memo, FC, useState } from 'react';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { Listbox as HListbox } from '@headlessui/react';
 import cls from './Listbox.module.scss';
@@ -37,3 +37,4 @@ export const Listbox:FC<ListboxProps> = memo((props) => {
     </HListbox>
   );
 });
+ */

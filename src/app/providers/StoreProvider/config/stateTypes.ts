@@ -9,7 +9,6 @@ import { AddCommentFormSchema } from 'features/AddNewComment';
 import { LoginSchema } from 'features/AuthByUsername';
 import { ProfileSchema } from 'features/EditableProfileCard';
 import { NewsDetailsCommentsSchema } from 'features/NewsDetailsCommentList';
-import { NewsListSchema } from 'features/NewsList/model/types/NewsListSchema';
 import { NewsRecommendationListSchema } from 'features/NewsRecommendationList';
 import { RegisterSchema } from 'features/RegisterNewUser/model/types/register.schema';
 import { NewsPageSchema } from 'pages/NewsPage/model/types/newsPageSchema';
@@ -35,7 +34,6 @@ export interface StateSchema {
   newsRecommendationList?: NewsRecommendationListSchema
   createAndEditNews?: CreateAndEditNewsSchema
   usersPage?: UsersPageSchema
-  newsList?: NewsListSchema
 }
 
 export type StateSchemaKey = keyof StateSchema;

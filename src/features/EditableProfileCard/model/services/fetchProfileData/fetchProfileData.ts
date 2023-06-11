@@ -1,13 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { AxiosError } from 'axios';
-import { Profile } from 'entities/Profile';
+import { User } from 'entities/User';
 
 interface fetchProfileProps {
   login?: string
 }
 
-export const fetchProfile = createAsyncThunk<Profile, fetchProfileProps, ThunkConfig<string>>(
+export const fetchProfile = createAsyncThunk<User, fetchProfileProps, ThunkConfig<string>>(
   'profile/fetchProfileData',
   async (data, thunkAPI) => {
     const {
@@ -18,7 +18,7 @@ export const fetchProfile = createAsyncThunk<Profile, fetchProfileProps, ThunkCo
         return rejectWithValue('Profile login do not provided');
       }
 
-      const response = await extra.api.get<Profile>(`/users/${data?.login}`);
+      const response = await extra.api.get<User>(`/users/${data?.login}`);
       const profile = response.data; 
 
       if (!profile) {
