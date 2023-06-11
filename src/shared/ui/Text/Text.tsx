@@ -20,30 +20,32 @@ interface TextProps {
   title?: string | null;
   text?: string | null
   variant?: TextVariant,
-  size?: TextSize
+  size?: TextSize,
+
+  'data-testid'?: string
 }
 
 const textElementMap: Record<TextSize, TextElement> = {
   [TextSize.M]: 'h4',
   [TextSize.L]: 'h3',
-  [TextSize.XL]: 'h2'
-}
+  [TextSize.XL]: 'h2',
+};
 
 export const Text:FC<TextProps> = memo((props) => {
   const {
-    className, text, title, variant = TextVariant.PRIMARY, size = TextSize.L, 
+    className, text, title, variant = TextVariant.PRIMARY, size = TextSize.L, 'data-testid': dataTestId = 'Text',
   } = props;
 
-  const TextElement = textElementMap[size]
+  const TextElement = textElementMap[size];
 
   return (
     <div className={classNames(cls.Text, {}, [className, cls[variant], cls[size]])}>
       {title
-        ? <TextElement className={cls.title}>{title}</TextElement>
+        ? <TextElement data-testid={`${dataTestId}.title`} className={cls.title}>{title}</TextElement>
         : null}
 
       {text
-        ? <p className={cls.text}>{text}</p>
+        ? <p data-testid={`${dataTestId}.text`} className={cls.text}>{text}</p>
         : null}
     </div>
   );

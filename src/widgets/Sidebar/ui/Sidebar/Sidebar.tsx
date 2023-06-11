@@ -33,8 +33,8 @@ export const Sidebar:FC<SidebarProps> = memo((props) => {
     >
       <VStack role="navigation" gap={16} className={cls.links}>
         {sidebarItemList.map((item) => (
-          <RoleGuard roleNames={item.roles}>
-            <SidebarItem key={item.path} item={item} collapsed={collapsed} />
+          <RoleGuard key={item.path} roleNames={item.roles}>
+            <SidebarItem item={item} collapsed={collapsed} />
           </RoleGuard>
         ))}
       </VStack>

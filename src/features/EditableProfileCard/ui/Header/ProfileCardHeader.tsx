@@ -5,7 +5,6 @@ import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button } from 'shared/ui/Button/Button';
 import { updateProfile } from 'features/EditableProfileCard/model/services/updateProfileData/updateProfileData';
-import { PermissionGuard } from 'features/PermissionGuard';
 import { RoleGuard } from 'features/RoleGuard';
 import { RoleName } from 'entities/Role';
 import { profileActions } from '../../model/slice/profile.slice';
@@ -40,18 +39,18 @@ export const ProfileCardHeader:FC<ProfileCardHeaderProps> = memo((props) => {
       {readOnly
         ? (
           <RoleGuard roleNames={[RoleName.ADMIN, RoleName.WORKER]}>
-            <Button onClick={onEditClick}>
+            <Button data-testid="EditableProfileCard.editButton" onClick={onEditClick}>
               {t('edit')}
             </Button>
           </RoleGuard>
         )
         : (
           <div className={cls.buttons}>
-            <Button onClick={onCancelClick}>
+            <Button data-testid="EditableProfileCard.cancelButton" onClick={onCancelClick}>
               {t('cancel')}
             </Button>
 
-            <Button className={cls.save} onClick={onSaveClick}>
+            <Button data-testid="EditableProfileCard.saveButton" className={cls.save} onClick={onSaveClick}>
               {t('save')}
             </Button>
           </div>

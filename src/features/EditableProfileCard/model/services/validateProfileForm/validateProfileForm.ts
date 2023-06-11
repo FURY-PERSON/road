@@ -1,7 +1,6 @@
-import { Profile } from 'entities/Profile';
-import { ProfileValidationError } from '../../types/editableProfileCard';
+import { EditableUser, ProfileValidationError } from '../../types/editableProfileCard';
 
-export const validateProfileForm = (profile?: Profile): ProfileValidationError[] => {
+export const validateProfileForm = (profile?: Partial<EditableUser>): ProfileValidationError[] => {
   const errors = new Set<ProfileValidationError>();
   
   if (!profile) {

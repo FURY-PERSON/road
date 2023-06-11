@@ -13,16 +13,16 @@ import i18n from 'shared/config/i18n/i18n';
 import { TextInput } from 'shared/ui/TextInput/TextInput';
 import { useTranslation } from 'react-i18next';
 import { RoleGuard } from 'features/RoleGuard';
-import { getProfileError } from '../model/selectors/getProfileError/getProfileError';
-import { getProfileForm } from '../model/selectors/getProfileForm/getProfileForm';
-import { getProfileLoading } from '../model/selectors/getProfileLoading/getProfileLoading';
-import { getProfileReadonly } from '../model/selectors/getProfileReadonly/getProfileReadonly';
-import { getProfileValidationErrors } from '../model/selectors/getProfileValidationErrors/getProfileValidationErrors';
-import { fetchProfile } from '../model/services/fetchProfileData/fetchProfileData';
-import { profileActions } from '../model/slice/profile.slice';
-import { ProfileValidationError } from '../model/types/editableProfileCard';
+import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
+import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
+import { getProfileLoading } from '../../model/selectors/getProfileLoading/getProfileLoading';
+import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
+import { getProfileValidationErrors } from '../../model/selectors/getProfileValidationErrors/getProfileValidationErrors';
+import { fetchProfile } from '../../model/services/fetchProfileData/fetchProfileData';
+import { profileActions } from '../../model/slice/profile.slice';
+import { ProfileValidationError } from '../../model/types/editableProfileCard';
 import cls from './EditableProfileCard.module.scss';
-import { ProfileCardHeader } from './Header/ProfileCardHeader';
+import { ProfileCardHeader } from '../Header/ProfileCardHeader';
 
 interface EditableProfileCardProps {
   className?: string;
@@ -90,19 +90,19 @@ export const EditableProfileCard:FC<EditableProfileCardProps> = memo((props) => 
 
       {validationErrors?.length
         ? validationErrors.map((error) => (
-          <Text key={error} variant={TextVariant.ERROR} title={errorMap[error]} />
+          <Text data-testid="EditableProfileCard.error" key={error} variant={TextVariant.ERROR} title={errorMap[error]} />
         ))
         : null}
 
       <div>
-        <TextInput label={t('login')} readOnly value={formData?.login} />
-        <TextInput label={t('first name')} readOnly={readOnly} value={formData?.firstName} onChange={onChangeFirstName} />
-        <TextInput label={t('last name')} readOnly={readOnly} value={formData?.lastName} onChange={onChangeLastName} />
+        <TextInput data-testid="EditableProfileCard.loginInput" label={t('login')} readOnly value={formData?.login} />
+        <TextInput data-testid="EditableProfileCard.firstNameInput" label={t('first name')} readOnly={readOnly} value={formData?.firstName} onChange={onChangeFirstName} />
+        <TextInput data-testid="EditableProfileCard.lastNameInput" label={t('last name')} readOnly={readOnly} value={formData?.lastName} onChange={onChangeLastName} />
 
         <RoleGuard roleNames={[RoleName.ADMIN]}>
           <>
-            <TextInput label={t('phone')} readOnly={readOnly} value={formData?.phone} onChange={onChangePhone} />
-            <TextInput label={t('email')} readOnly={readOnly} value={formData?.email} onChange={onChangeEmail} />
+            <TextInput data-testid="EditableProfileCard.phoneInput" label={t('phone')} readOnly={readOnly} value={formData?.phone} onChange={onChangePhone} />
+            <TextInput data-testid="EditableProfileCard.emailInput" label={t('email')} readOnly={readOnly} value={formData?.email} onChange={onChangeEmail} />
 
             <Select<RoleName> readonly={readOnly} options={roleOptions} label={t('role')} onChange={onChangeRole} value={formData?.roleName}></Select>
           </>
