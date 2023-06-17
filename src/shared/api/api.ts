@@ -1,4 +1,4 @@
-import { appStore } from 'app/providers/StoreProvider/ui/StoreProvider';
+/* import { appStore } from 'app/providers/StoreProvider/ui/StoreProvider'; */
 import axios from 'axios';
 import { AuthTokens, User, userActions } from 'entities/User';
 import { ACCESS_TOKEN_LOCALSTORAGE_KEY, REFRESH_TOKEN_LOCALSTORAGE_KEY } from 'shared/constant/localstorage';
@@ -47,8 +47,8 @@ api.interceptors.response.use(
         });
 
         if (response) {
-          appStore.dispatch(userActions.setAuthData(response.data.tokens));
-          appStore.dispatch(userActions.setUserData(response.data.user));
+/*           appStore.dispatch(userActions.setAuthData(response.data.tokens));
+          appStore.dispatch(userActions.setUserData(response.data.user)); */
           return api.request(originalRequest);
         }
       } else {

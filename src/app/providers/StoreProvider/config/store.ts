@@ -22,7 +22,6 @@ export function createReduxStore(
     user: userReducer,
     saveScroll: saveScrollReducer,
     [rtkApi.reducerPath]: rtkApi.reducer,
-  
   };
 
   const reducerManager = createReducerManager(rootReducers);
