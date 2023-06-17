@@ -108,3 +108,5 @@ typings/
 /storybook-static
 
 /reports
+
+dependency-graph.svg

@@ -24,7 +24,9 @@
     "documentation:storybook:build": "build-storybook -c ./config/storybook",
     "mock-server:start": "node ./json-server/index.js",
     "prepare": "husky install",
-    "generate:fsd": "node ./scripts/createSlice/index.js"
+    "generate:fsd": "node ./scripts/createSlice/index.js",
+    "generate:dependency-graph": "npx depcruise src --include-only '^src' --output-type dot | dot -T svg > dependency-graph.svg",
+    "check:code": "npx depcruise src"
   },
   "repository": {
     "type": "git",
@@ -73,6 +75,7 @@
     "concurrently": "^7.6.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.3",
+    "dependency-cruiser": "^13.0.3",
     "eslint": "^8.34.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-i18next": "^6.0.0-2",

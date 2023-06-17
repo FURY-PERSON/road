@@ -33,3 +33,6 @@ Preferences: Configure User Snippets -> typescript (in the VS Code)
 ## http://localhost:3000/?showtranslations to see translations  
 	  
 ### highly recommend to add shortcut for lint and stylelint fix 
+  
+  
+### install graphviz (brew install graphviz) to generate dependency graph 
