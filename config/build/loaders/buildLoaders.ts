@@ -1,5 +1,7 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import sass from 'sass';
+import { BuildOption } from '../types/config';
+import { babelRemovePropsPlugin } from '../babelPlugins/babelRemovePropsPlugin';
 
 export function buildCssLoader(isDev: boolean) {
   return {
@@ -31,5 +33,40 @@ export function buildSvgLoader() {
   return {
     test: /\.svg$/,
     use: ['@svgr/webpack'],
+  };
+}
+
+interface BuildBabelLoaderProps extends BuildOption {
+  isTsx: boolean
+}
+
+export function buildBabelLoader({ isDev, isTsx }: BuildBabelLoaderProps) {
+  return {
+    test: isTsx ? /\.(jsx|tsx)$/ : /\.(js|ts)$/,
+    exclude: /node_modules/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        presets: ['@babel/preset-env'],
+        plugins: [
+          [
+            '@babel/plugin-transform-typescript',
+            {
+              isTsx,
+            },
+          ],
+          [
+            '@babel/plugin-transform-runtime',
+          ],
+          !isDev && isTsx && [
+            babelRemovePropsPlugin,
+            {
+              props: ['data-testid'],
+            },
+          ],
+          /*           i18nExtractPlugin */
+        ],
+      },
+    },
   };
 }
