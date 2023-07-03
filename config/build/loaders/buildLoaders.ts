@@ -41,6 +41,25 @@ interface BuildBabelLoaderProps extends BuildOption {
 }
 
 export function buildBabelLoader({ isDev, isTsx }: BuildBabelLoaderProps) {
+  const plugins: any = [
+    [
+      '@babel/plugin-transform-typescript',
+      {
+        isTsx,
+      },
+    ],
+    '@babel/plugin-transform-runtime',
+  ];
+
+  if (!isDev && isTsx) {
+    plugins.push([
+      babelRemovePropsPlugin,
+      {
+        props: ['data-testid'],
+      },
+    ]);
+  }
+
   return {
     test: isTsx ? /\.(jsx|tsx)$/ : /\.(js|ts)$/,
     exclude: /node_modules/,
@@ -48,24 +67,7 @@ export function buildBabelLoader({ isDev, isTsx }: BuildBabelLoaderProps) {
       loader: 'babel-loader',
       options: {
         presets: ['@babel/preset-env'],
-        plugins: [
-          [
-            '@babel/plugin-transform-typescript',
-            {
-              isTsx,
-            },
-          ],
-          [
-            '@babel/plugin-transform-runtime',
-          ],
-          !isDev && isTsx && [
-            babelRemovePropsPlugin,
-            {
-              props: ['data-testid'],
-            },
-          ],
-          /*           i18nExtractPlugin */
-        ],
+        plugins: plugins,
       },
     },
   };

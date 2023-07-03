@@ -38,7 +38,7 @@ export const refreshAuthData = createAsyncThunk<{user: User, tokens: AuthTokens}
 
       return { user, tokens };
     } catch (error) {
-      if (error instanceof AxiosError<{message: string}>) {
+      if (error instanceof AxiosError) {
         return thunkAPI.rejectWithValue(error.response?.data.message || error.response?.statusText || error.message);
       }
       return thunkAPI.rejectWithValue('Unexpected login error');

@@ -7,6 +7,7 @@ import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { Button } from 'shared/ui/Button/Button';
+import { NotificationButton } from 'features/NotificationButton';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -34,7 +35,9 @@ export function Navbar(props: NavbarProps) {
         <div className={cls.inner}>
           <div />
 
-          <Button onClick={onLoginClick}>{t('login')}</Button>
+          <div className={cls.right}>
+            <Button onClick={onLoginClick}>{t('login')}</Button>
+          </div>
         </div>
       </header>
     );
@@ -45,7 +48,11 @@ export function Navbar(props: NavbarProps) {
       <div className={cls.inner}>
         <AppLink to={RoutePath.main}>{t('to main')}</AppLink>
 
-        <Button onClick={onLogout}>{t('logout')}</Button>
+        <div className={cls.right}>
+          <NotificationButton />
+          
+          <Button onClick={onLogout}>{t('logout')}</Button>
+        </div>
       </div>
     </header>
   );
