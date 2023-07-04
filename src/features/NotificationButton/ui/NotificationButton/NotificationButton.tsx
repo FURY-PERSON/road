@@ -1,4 +1,6 @@
-import { memo, FC, useCallback } from 'react';
+import {
+  memo, FC, useCallback, useState, 
+} from 'react';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import {
   Notification, NotificationList, markNotificationAsRead, useGetNotifications, 
@@ -8,6 +10,8 @@ import { Popover } from 'shared/ui/popups';
 import { Button, ButtonVariant } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { BrowserView, MobileView } from 'react-device-detect';
+import { Drawer } from 'shared/ui/Drawer/Drawer';
 import cls from './NotificationButton.module.scss';
 import { getUnreadMessagesAmount } from '../../model/selectors/notificationButton';
 
@@ -27,27 +31,49 @@ export const NotificationButton:FC<NotificationButtonProps> = memo((props) => {
   });
 
   const unreadNotificationsAmount = useSelector(getUnreadMessagesAmount(data));
+  const [drawerOpened, setDrawerOpened] = useState(false);
 
   const onNotificationItemClick = useCallback((notification: Notification) => {
     dispatch(markNotificationAsRead(notification));
   }, []);
 
-  return (
-    <Popover
-      direction="bottom left"
-      className={classNames(cls.NotificationButton, {}, [className])}
-      panelClassName={cls.popover}
-      trigger={(
-        <Button className={cls.notificationButton} variant={ButtonVariant.CLEAR}>
-          <NotificationIcon className={cls.notificationIcon} />
+  const onButtonClick = useCallback(() => {
+    setDrawerOpened(true);
+  }, [setDrawerOpened]);
 
-          {unreadNotificationsAmount 
-            ? <div className={cls.unreadAmount}>{unreadNotificationsAmount}</div>
-            : null}
-        </Button> 
-      )}
-    >
-      <NotificationList items={data} isLoading={isLoading} onItemClick={onNotificationItemClick} />
-    </Popover>
+  const onDrawerClose = useCallback(() => {
+    setDrawerOpened(false);
+  }, [setDrawerOpened]);
+
+  const trigger = (
+    <Button className={cls.notificationButton} onClick={onButtonClick} variant={ButtonVariant.CLEAR}>
+      <NotificationIcon className={cls.notificationIcon} />
+
+      {unreadNotificationsAmount 
+        ? <div className={cls.unreadAmount}>{unreadNotificationsAmount}</div>
+        : null}
+    </Button> 
+  );
+
+  return (
+    <>
+      <BrowserView>
+        <Popover
+          direction="bottom left"
+          className={classNames(cls.NotificationButton, {}, [className])}
+          panelClassName={cls.popover}
+          trigger={trigger}
+        >
+          <NotificationList items={data} isLoading={isLoading} onItemClick={onNotificationItemClick} />
+        </Popover>
+      </BrowserView>
+
+      <MobileView>
+        {trigger}
+        <Drawer isOpen={drawerOpened} onClose={onDrawerClose}> 
+          <NotificationList items={data} isLoading={isLoading} onItemClick={onNotificationItemClick} />
+        </Drawer>
+      </MobileView>
+    </>
   );
 });

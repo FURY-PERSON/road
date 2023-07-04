@@ -1,9 +1,10 @@
 import React, {
-  memo, FC, ReactNode, useState, useRef, useEffect, useCallback, MutableRefObject, 
+  FC, ReactNode, useState, useRef, useEffect, MutableRefObject, 
 } from 'react';
 import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
 import { Portal } from '../Portal/Portal';
 import cls from './Modal.module.scss';
+import { Overlay } from '../Overlay/Overlay';
 
 interface ModalProps {
   className?: string;
@@ -61,6 +62,8 @@ export const Modal:FC<ModalProps> = (props) => {
   return (
     <Portal>
       <div className={classNames(cls.Modal, wrapperMods, [className])}>
+        <Overlay onClick={closeHandler} />
+
         <div className={cls.overlay} onClick={closeHandler}>
           <div className={cls.content} onClick={onContentClick}>
             {children}
