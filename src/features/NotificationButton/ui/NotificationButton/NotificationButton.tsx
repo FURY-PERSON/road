@@ -14,6 +14,7 @@ import { BrowserView, MobileView } from 'react-device-detect';
 import { Drawer } from 'shared/ui/Drawer/Drawer';
 import cls from './NotificationButton.module.scss';
 import { getUnreadMessagesAmount } from '../../model/selectors/notificationButton';
+import { AnimationProvider } from 'shared/lib/helpers/AnimationProvider';
 
 interface NotificationButtonProps {
   className?: string;
@@ -70,9 +71,11 @@ export const NotificationButton:FC<NotificationButtonProps> = memo((props) => {
 
       <MobileView>
         {trigger}
-        <Drawer isOpen={drawerOpened} onClose={onDrawerClose}> 
-          <NotificationList items={data} isLoading={isLoading} onItemClick={onNotificationItemClick} />
-        </Drawer>
+        <AnimationProvider>
+          <Drawer isOpen={drawerOpened} onClose={onDrawerClose}> 
+            <NotificationList items={data} isLoading={isLoading} onItemClick={onNotificationItemClick} />
+          </Drawer>
+        </AnimationProvider>
       </MobileView>
     </>
   );
