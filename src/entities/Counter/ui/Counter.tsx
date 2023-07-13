@@ -1,8 +1,8 @@
 /* eslint-disable i18next/no-literal-string */
 import { memo, FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { Button } from 'shared/ui/Button/Button';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { Button } from '@/shared/ui/Button/Button';
 import { getCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
 import { counterActions } from '../model/slice/counter.slice';
 import cls from './Counter.module.scss';

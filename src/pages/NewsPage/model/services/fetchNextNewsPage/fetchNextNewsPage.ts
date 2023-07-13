@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from 'app/providers/StoreProvider';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { getNewsPageApiHasMore } from '../../selectors/getNewsPageApiHasMore/getNewsPageApiHasMore';
 import { getNewsPageApiPage } from '../../selectors/getNewsPageApiPage/getNewsPageApiPage';
 import { getNewsPageLoading } from '../../selectors/getNewsPageLoading/getNewsPageLoading';

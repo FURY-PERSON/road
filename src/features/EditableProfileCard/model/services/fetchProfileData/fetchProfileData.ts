@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from 'app/providers/StoreProvider';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { AxiosError } from 'axios';
-import { User } from 'entities/User';
+import { User } from '@/entities/User';
 
 interface fetchProfileProps {
   login?: string

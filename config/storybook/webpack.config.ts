@@ -24,6 +24,8 @@ export default ({ config }: {config: webpack.Configuration}) => {
   config.resolve!.modules!.push(paths.src);
   config.resolve!.extensions!.push('.ts', '.tsx');
 
+  config.resolve!.alias = { '@': paths.src }
+
   // delete storybook internal svg loader
   // eslint-disable-next-line no-param-reassign
   // @ts-ignore webpack type error

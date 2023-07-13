@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from 'app/providers/StoreProvider';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { AxiosError } from 'axios';
-import { AuthTokens, User } from 'entities/User';
+import { AuthTokens, User } from '@/entities/User';
 
 interface RefreshResponse {
   user: User,

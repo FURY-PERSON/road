@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from 'app/providers/StoreProvider';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { getApiHasMore, getApiPage, getLoading } from '../../selectors/usersPage';
 import { fetchUsersList } from '../fetchUsersList/fetchUsersList';
 import { usersPageActions } from '../../slice/usersPage.slice';

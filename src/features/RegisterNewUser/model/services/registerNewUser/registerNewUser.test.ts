@@ -1,7 +1,7 @@
-import { PermissionName } from "entities/Permission";
-import { RoleName } from "entities/Role";
-import { AuthTokens, User, userActions } from "entities/User";
-import { TestAsyncThunk } from "shared/lib/helpers/tests/TestAsyncThunk/TestAsyncThunk";
+import { PermissionName } from "@/entities/Permission";
+import { RoleName } from "@/entities/Role";
+import { AuthTokens, User, userActions } from "@/entities/User";
+import { TestAsyncThunk } from "@/shared/lib/helpers/tests/TestAsyncThunk/TestAsyncThunk";
 import { ValidationError } from "../../types/error";
 import { RegisterForm } from "../../types/register.schema";
 import { registerNewUser } from "./registerNewUser";

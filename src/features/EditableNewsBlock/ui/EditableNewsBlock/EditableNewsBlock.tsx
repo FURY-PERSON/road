@@ -1,5 +1,5 @@
 import { memo, FC } from 'react';
-import { Text } from 'shared/ui/Text/Text';
+import { Text } from '@/shared/ui/Text/Text';
 import {
   EditableNewsBlock, EditableNewsBlockCodeHandlers, EditableNewsBlockImageHandlers, EditableNewsBlockTextHandlers, 
 } from '../../model/types/editableNewsBlock';

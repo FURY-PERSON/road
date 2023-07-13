@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from 'app/providers/StoreProvider';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { AxiosError } from 'axios';
-import { AuthTokens, User, userActions } from 'entities/User';
+import { AuthTokens, User, userActions } from '@/entities/User';
 
 interface LoginResponse {
   user: User,

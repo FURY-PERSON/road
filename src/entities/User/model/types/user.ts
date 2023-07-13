@@ -1,5 +1,5 @@
-import { Permission } from 'entities/Permission';
-import { Role } from 'entities/Role';
+import { Permission } from '@/entities/Permission';
+import { Role } from '@/entities/Role';
 
 export interface User {
   id: string,

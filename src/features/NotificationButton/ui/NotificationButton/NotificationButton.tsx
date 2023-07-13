@@ -1,20 +1,20 @@
 import {
   memo, FC, useCallback, useState, 
 } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import {
   Notification, NotificationList, markNotificationAsRead, useGetNotifications, 
-} from 'entities/Notification';
-import NotificationIcon from 'shared/assets/icons/notification.svg';
-import { Popover } from 'shared/ui/popups';
-import { Button, ButtonVariant } from 'shared/ui/Button/Button';
+} from '@/entities/Notification';
+import NotificationIcon from '@/shared/assets/icons/notification.svg';
+import { Popover } from '@/shared/ui/popups';
+import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { BrowserView, MobileView } from 'react-device-detect';
-import { Drawer } from 'shared/ui/Drawer/Drawer';
+import { Drawer } from '@/shared/ui/Drawer/Drawer';
 import cls from './NotificationButton.module.scss';
 import { getUnreadMessagesAmount } from '../../model/selectors/notificationButton';
-import { AnimationProvider } from 'shared/lib/helpers/AnimationProvider';
+import { AnimationProvider } from '@/shared/lib/helpers/AnimationProvider';
 
 interface NotificationButtonProps {
   className?: string;

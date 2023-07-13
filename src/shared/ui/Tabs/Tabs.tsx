@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { typedMemo } from 'shared/types/react';
-import { Card, CardVariant } from 'shared/ui/Card/Card';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { typedMemo } from '@/shared/types/react';
+import { Card, CardVariant } from '@/shared/ui/Card/Card';
 import cls from './Tabs.module.scss';
 
 export interface TabItem <T extends string> {

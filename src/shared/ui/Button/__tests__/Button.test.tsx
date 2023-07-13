@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { renderWithProviders } from 'shared/lib/helpers/tests/renderWithProviders/renderWithProviders';
+import { renderWithProviders } from '@/shared/lib/helpers/tests/renderWithProviders/renderWithProviders';
 import { Button, ButtonVariant } from '../Button';
 
 describe('Button', () => {

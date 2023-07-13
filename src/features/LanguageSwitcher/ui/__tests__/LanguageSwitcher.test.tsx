@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react';
-import { renderWithProviders } from 'shared/lib/helpers/tests/renderWithProviders/renderWithProviders';
+import { renderWithProviders } from '@/shared/lib/helpers/tests/renderWithProviders/renderWithProviders';
 import { LanguageSwitcher } from '../LanguageSwitcher';
 
 describe('LanguageSwitcher', () => {

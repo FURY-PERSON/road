@@ -1,6 +1,6 @@
 import { memo, FC } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { SvgLoader, SvgLoaderType } from 'shared/ui/SvgLoader';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { SvgLoader, SvgLoaderType } from '@/shared/ui/SvgLoader';
 import cls from './PageLoader.module.scss';
 
 interface PageLoaderProps {

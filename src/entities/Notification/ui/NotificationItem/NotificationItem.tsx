@@ -1,8 +1,8 @@
 import { memo, FC, useCallback } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { Card, CardVariant } from 'shared/ui/Card/Card';
-import { Text, TextSize } from 'shared/ui/Text/Text';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { Card, CardVariant } from '@/shared/ui/Card/Card';
+import { Text, TextSize } from '@/shared/ui/Text/Text';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import cls from './NotificationItem.module.scss';
 import { Notification } from '../../model/types/notification';
 

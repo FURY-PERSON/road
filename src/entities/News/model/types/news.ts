@@ -1,5 +1,5 @@
-import { Dorm } from 'entities/Dorm';
-import { User } from 'entities/User';
+import { Dorm } from '@/entities/Dorm';
+import { User } from '@/entities/User';
 
 export enum NewsBlockType {
   IMAGE = 'NewsImageBlock',

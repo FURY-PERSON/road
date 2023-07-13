@@ -1,11 +1,11 @@
-import { ThemeProvider } from 'shared/contexts/ThemeProvider';
+import { ThemeProvider } from '@/shared/contexts/ThemeProvider';
 import { createRoot } from 'react-dom/client';
-import { ErrorBoundary } from 'app/providers/ErrorBoundary';
-import { StoreProvider } from 'app/providers/StoreProvider';
+import { ErrorBoundary } from '@/app/providers/ErrorBoundary';
+import { StoreProvider } from '@/app/providers/StoreProvider';
 import { BrowserRouter } from 'react-router-dom';
 import App from './app/App';
-import 'shared/config/i18n/i18n';
-import 'app/styles/index.scss';
+import '@/shared/config/i18n/i18n';
+import '@/app/styles/index.scss';
 
 const container = document.getElementById('root') as HTMLElement;
 const root = createRoot(container);

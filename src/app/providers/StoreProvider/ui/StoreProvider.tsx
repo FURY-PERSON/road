@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { Provider } from 'react-redux';
-import { ReducersList } from 'shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
+import { ReducersList } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
 import { createReduxStore } from '../config/store';
 import { StateSchema } from '../config/stateTypes';
 

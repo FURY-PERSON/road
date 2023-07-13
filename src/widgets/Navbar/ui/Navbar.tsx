@@ -1,13 +1,13 @@
-import { getUserData, userActions } from 'entities/User';
+import { getUserData, userActions } from '@/entities/User';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { Button } from 'shared/ui/Button/Button';
-import { NotificationButton } from 'features/NotificationButton';
+import { AppRoutes, RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { Button } from '@/shared/ui/Button/Button';
+import { NotificationButton } from '@/features/NotificationButton';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {

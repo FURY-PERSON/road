@@ -1,7 +1,7 @@
 import { memo, FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { SvgLoader } from 'shared/ui/SvgLoader';
-import { Text } from 'shared/ui/Text/Text';
+import { SvgLoader } from '@/shared/ui/SvgLoader';
+import { Text } from '@/shared/ui/Text/Text';
 import { Comment } from '../../model/types/comment';
 import { CommentCard } from '../CommentCard/CommentCard';
 

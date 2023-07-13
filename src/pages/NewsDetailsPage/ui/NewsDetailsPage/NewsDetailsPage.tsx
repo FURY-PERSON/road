@@ -1,13 +1,13 @@
-import { NewsDetails } from 'entities/News';
-import { AddNewCommentFormAsync, sendNewsComment } from 'features/AddNewComment';
-import { fetchCommentsByNewsId, NewsDetailsCommentList } from 'features/NewsDetailsCommentList';
+import { NewsDetails } from '@/entities/News';
+import { AddNewCommentFormAsync, sendNewsComment } from '@/features/AddNewComment';
+import { fetchCommentsByNewsId, NewsDetailsCommentList } from '@/features/NewsDetailsCommentList';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Page } from 'widgets/Page/Page';
-import { Text } from 'shared/ui/Text/Text';
-import { NewsRecommendationList } from 'features/NewsRecommendationList';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Page } from '@/widgets/Page/Page';
+import { Text } from '@/shared/ui/Text/Text';
+import { NewsRecommendationList } from '@/features/NewsRecommendationList';
 import cls from './NewsDetailsPage.module.scss';
 import { NewsDetailsPageHeader } from '../NewsDetailsPageHeader/NewsDetailsPageHeader';
 

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from 'app/providers/StoreProvider';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { AxiosError } from 'axios';
 import { Notification } from '../types/notification';
 import { refetchNotifications } from '../../api/notificationApi';

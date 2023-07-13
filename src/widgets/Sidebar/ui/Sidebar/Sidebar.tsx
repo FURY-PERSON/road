@@ -1,13 +1,13 @@
-import { LanguageSwitcher } from 'features/LanguageSwitcher';
-import { ThemeSwitcher } from 'features/ThemeSwitcher';
+import { LanguageSwitcher } from '@/features/LanguageSwitcher';
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import {
   memo, FC, useState, useCallback, 
 } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { Button, ButtonSize, ButtonVariant } from 'shared/ui/Button/Button';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { Button, ButtonSize, ButtonVariant } from '@/shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
-import { RoleGuard } from 'features/RoleGuard';
-import { VStack } from 'shared/ui/Stack/VStack/VStack';
+import { RoleGuard } from '@/features/RoleGuard';
+import { VStack } from '@/shared/ui/Stack/VStack/VStack';
 import cls from './Sidebar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { getSidebarItemList } from '../../model/selectors/getSidebarItemList/getSidebarItemList';

@@ -1,7 +1,7 @@
 import {
   memo, FC, HTMLAttributeAnchorTarget, 
 } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import cls from './UsersList.module.scss';
 import { User } from '../../model/types/user';
 import { UsersListItem } from '../UsersListItem/UsersListItem';

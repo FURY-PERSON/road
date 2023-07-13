@@ -1,9 +1,9 @@
 import { memo, FC } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { Page } from 'widgets/Page/Page';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { Page } from '@/widgets/Page/Page';
 import { useParams } from 'react-router-dom';
-import { CreateAndEditNews } from 'widgets/CreateAndEditNews';
-import { Text } from 'shared/ui/Text/Text';
+import { CreateAndEditNews } from '@/widgets/CreateAndEditNews';
+import { Text } from '@/shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
 import cls from './NewsEditPage.module.scss';
 

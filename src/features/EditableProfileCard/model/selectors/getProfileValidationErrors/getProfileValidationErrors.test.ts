@@ -1,4 +1,4 @@
-import { StateSchema } from "app/providers/StoreProvider";
+import { StateSchema } from "@/app/providers/StoreProvider";
 import { ProfileValidationError } from "../../types/editableProfileCard";
 import { getProfileValidationErrors } from "./getProfileValidationErrors";
 

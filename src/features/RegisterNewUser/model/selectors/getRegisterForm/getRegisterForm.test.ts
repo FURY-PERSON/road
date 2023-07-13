@@ -1,5 +1,5 @@
-import { StateSchema } from "app/providers/StoreProvider";
-import { RoleName } from "entities/Role";
+import { StateSchema } from "@/app/providers/StoreProvider";
+import { RoleName } from "@/entities/Role";
 import { initialForm } from "../../slice/register.slice";
 import { RegisterForm } from "../../types/register.schema";
 import { getRegisterForm } from "./getRegisterForm";

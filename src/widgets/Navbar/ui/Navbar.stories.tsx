@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { PermissionName } from 'entities/Permission';
-import { RoleName } from 'entities/Role';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
+import { PermissionName } from '@/entities/Permission';
+import { RoleName } from '@/entities/Role';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 import { Navbar } from './Navbar';
 
 export default {

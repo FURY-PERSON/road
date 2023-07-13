@@ -1,5 +1,5 @@
 import { memo, FC, ButtonHTMLAttributes } from 'react';
-import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
+import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
 import { SvgLoader } from '../SvgLoader';
 import cls from './Button.module.scss';
 

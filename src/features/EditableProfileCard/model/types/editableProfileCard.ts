@@ -1,5 +1,5 @@
-import { RoleName } from 'entities/Role';
-import { User } from 'entities/User';
+import { RoleName } from '@/entities/Role';
+import { User } from '@/entities/User';
 
 export enum ProfileValidationError {
   USER_DATA = 'USER_DATA',

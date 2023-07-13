@@ -1,13 +1,13 @@
 import {
   memo, FC, useCallback, useMemo, 
 } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { TextInput } from 'shared/ui/TextInput/TextInput';
-import { Button, ButtonVariant } from 'shared/ui/Button/Button';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { TextInput } from '@/shared/ui/TextInput/TextInput';
+import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
-import { Text, TextSize } from 'shared/ui/Text/Text';
-import { Card } from 'shared/ui/Card/Card';
-import { Select, SelectOption } from 'shared/ui/Select/Select';
+import { Text, TextSize } from '@/shared/ui/Text/Text';
+import { Card } from '@/shared/ui/Card/Card';
+import { Select, SelectOption } from '@/shared/ui/Select/Select';
 import cls from './EditableTextBlock.module.scss';
 import { EditableNewsBlockText, EditableNewsBlockTextHandlers } from '../../model/types/editableNewsBlock';
 

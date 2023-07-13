@@ -1,5 +1,5 @@
-import { News } from 'entities/News';
-import { User } from 'entities/User';
+import { News } from '@/entities/News';
+import { User } from '@/entities/User';
 
 export interface Comment {
   id: string;

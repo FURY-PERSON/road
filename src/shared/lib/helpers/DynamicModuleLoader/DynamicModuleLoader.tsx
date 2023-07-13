@@ -1,6 +1,6 @@
 import { Reducer } from '@reduxjs/toolkit';
-import { ReduxStoreWithManager } from 'app/providers/StoreProvider';
-import { StateSchema, StateSchemaKey } from 'app/providers/StoreProvider/config/stateTypes';
+import { ReduxStoreWithManager } from '@/app/providers/StoreProvider';
+import { StateSchema, StateSchemaKey } from '@/app/providers/StoreProvider/config/stateTypes';
 import { FC, useEffect, useLayoutEffect } from 'react';
 import { useDispatch, useStore } from 'react-redux';
 

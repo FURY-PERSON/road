@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Page } from 'widgets/Page/Page';
-import { Text, TextVariant } from 'shared/ui/Text/Text';
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Page } from '@/widgets/Page/Page';
+import { Text, TextVariant } from '@/shared/ui/Text/Text';
 import { getNewsPageError } from '../../model/selectors/getNewsPageError/getNewsPageError';
 import { fetchNextNewsPage } from '../../model/services/fetchNextNewsPage/fetchNextNewsPage';
 import { newsPageReducer } from '../../model/slice/newsPage.slice';

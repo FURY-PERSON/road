@@ -1,6 +1,6 @@
 import {
   NewsBlock, NewsBlockType, NewsImageBlock, NewsCodeBlock, NewsTextBlock, 
-} from 'entities/News';
+} from '@/entities/News';
 
 export type EditableNewsBlock = Partial<Omit<NewsBlock, 'id'>> & {localId: string, type: NewsBlockType, sequenceNumber: number }
 

@@ -1,8 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 import { RegisterForm } from './RegisterForm';
 import {ValidationError} from "../../model/types/error";
-import { RoleName } from 'entities/Role';
+import { RoleName } from '@/entities/Role';
 
 export default {
    title: 'features/RegisterForm',

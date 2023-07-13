@@ -1,7 +1,7 @@
 import {
   memo, FC, InputHTMLAttributes, ChangeEvent, 
 } from 'react';
-import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
+import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
 import cls from './TextInput.module.scss';
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'placeholder'>

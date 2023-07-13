@@ -2,11 +2,11 @@ import {
   memo, FC, HTMLAttributeAnchorTarget, 
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { Card } from 'shared/ui/Card/Card';
-import { Text, TextSize } from 'shared/ui/Text/Text';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { AppRoutes, RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { Card } from '@/shared/ui/Card/Card';
+import { Text, TextSize } from '@/shared/ui/Text/Text';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import cls from './UsersListItem.module.scss';
 import { User } from '../../model/types/user';
 

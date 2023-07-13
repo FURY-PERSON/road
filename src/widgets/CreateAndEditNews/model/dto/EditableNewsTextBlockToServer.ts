@@ -1,5 +1,5 @@
-import { NewsBlockType, NewsTextBlock } from 'entities/News';
-import { EditableNewsBlockText } from 'features/EditableNewsBlock';
+import { NewsBlockType, NewsTextBlock } from '@/entities/News';
+import { EditableNewsBlockText } from '@/features/EditableNewsBlock';
 
 export class EditableNewsTextBlockToServer implements Omit<NewsTextBlock, 'id'> {
   type: NewsBlockType.TEXT;

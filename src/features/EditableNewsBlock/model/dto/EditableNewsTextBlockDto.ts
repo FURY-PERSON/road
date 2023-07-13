@@ -1,5 +1,5 @@
-import { NewsBlockType, NewsTextBlock } from 'entities/News';
-import { getUniqueId } from 'shared/lib/helpers/getUniqueId/getUniqueId';
+import { NewsBlockType, NewsTextBlock } from '@/entities/News';
+import { getUniqueId } from '@/shared/lib/helpers/getUniqueId/getUniqueId';
 import { EditableNewsBlockText, EditableNewsBlockTextParagraph } from '../types/editableNewsBlock';
  
 export class EditableNewsTextBlockDto implements EditableNewsBlockText {

@@ -1,4 +1,4 @@
-import { RoleName } from "entities/Role/types/role";
+import { RoleName } from "@/entities/Role/types/role";
 import { ValidationError } from "../../types/error";
 import { RegisterForm } from "../../types/register.schema";
 import { validateForm } from "./validateForm";

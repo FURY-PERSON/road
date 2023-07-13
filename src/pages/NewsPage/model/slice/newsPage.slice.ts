@@ -1,9 +1,9 @@
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { StateSchema } from 'app/providers/StoreProvider';
-import { News, NewsListVariant, NewsSort } from 'entities/News';
-import { NEWS_VIEW_LOCALSTORAGE_KEY } from 'shared/constant/localstorage';
-import { SortOrder } from 'shared/types/sort';
-import { NewsType } from 'entities/News/model/types/news';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { News, NewsListVariant, NewsSort } from '@/entities/News';
+import { NEWS_VIEW_LOCALSTORAGE_KEY } from '@/shared/constant/localstorage';
+import { SortOrder } from '@/shared/types/sort';
+import { NewsType } from '@/entities/News/model/types/news';
 import { fetchNewsList } from '../services/fetchNewsList/fetchNewsList';
 import { NewsPageSchema } from '../types/newsPageSchema';
 

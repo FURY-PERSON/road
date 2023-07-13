@@ -1,6 +1,6 @@
-import { PermissionName } from "entities/Permission";
-import { RoleName } from "entities/Role";
-import { AuthTokens, User } from "entities/User";
+import { PermissionName } from "@/entities/Permission";
+import { RoleName } from "@/entities/Role";
+import { AuthTokens, User } from "@/entities/User";
 import { registerNewUser } from "../services/registerNewUser/registerNewUser";
 import { ValidationError } from "../types/error";
 import { RegisterForm, RegisterSchema } from "../types/register.schema";

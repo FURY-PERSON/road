@@ -1,12 +1,12 @@
 import {
   memo, FC, useCallback, useMemo, 
 } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useSelector } from 'react-redux';
 import {
   EditableNewsBlockCodeHandlers, EditableNewsBlockComponent, EditableNewsBlockImageHandlers, EditableNewsBlockTextHandlers, 
-} from 'features/EditableNewsBlock';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+} from '@/features/EditableNewsBlock';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import cls from './NewsBlocks.module.scss';
 import { createAndEditNewsActions, getCreateAndEditNews } from '../../model/slice/createAndEditNews.slice';
 

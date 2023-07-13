@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from 'app/providers/StoreProvider';
-import { SortOrder } from 'shared/types/sort';
-import { NewsSort, NewsType } from 'entities/News';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
+import { SortOrder } from '@/shared/types/sort';
+import { NewsSort, NewsType } from '@/entities/News';
 import { fetchNewsList } from '../fetchNewsList/fetchNewsList';
 import { getNewsPageInited } from '../../selectors/getNewsPageInited/getNewsPageInited';
 import { newsPageActions } from '../../slice/newsPage.slice';

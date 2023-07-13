@@ -1,7 +1,7 @@
 import { memo, FC, Suspense } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { Modal } from 'shared/ui/Modal/Modal';
-import { SvgLoader } from 'shared/ui/SvgLoader';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { Modal } from '@/shared/ui/Modal/Modal';
+import { SvgLoader } from '@/shared/ui/SvgLoader';
 import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 import cls from './LoginModal.module.scss';
 

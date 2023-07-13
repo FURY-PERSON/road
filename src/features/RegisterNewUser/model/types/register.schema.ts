@@ -1,5 +1,5 @@
-import { Role } from 'entities/Role';
-import { RoleName } from 'entities/Role/types/role';
+import { Role } from '@/entities/Role';
+import { RoleName } from '@/entities/Role/types/role';
 import { ValidationError } from './error';
 
 export interface RegisterForm {

@@ -1,9 +1,9 @@
-import { NewsListVariant } from 'entities/News/model/types/news';
+import { NewsListVariant } from '@/entities/News/model/types/news';
 import { memo } from 'react';
-import ListIcon from 'shared/assets/icons/list.svg';
-import GridIcon from 'shared/assets/icons/grid.svg';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { Button, ButtonVariant } from 'shared/ui/Button/Button';
+import ListIcon from '@/shared/assets/icons/list.svg';
+import GridIcon from '@/shared/assets/icons/grid.svg';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
 import cls from './NewsViewSelector.module.scss';
 
 interface NewsViewSelectorProps {

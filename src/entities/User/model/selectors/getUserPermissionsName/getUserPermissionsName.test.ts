@@ -1,5 +1,5 @@
-import { StateSchema } from "app/providers/StoreProvider";
-import { PermissionName } from "entities/Permission";
+import { StateSchema } from "@/app/providers/StoreProvider";
+import { PermissionName } from "@/entities/Permission";
 import { getUserPermissionsName } from "./getUserPermissionsName";
 
 describe('getUserPermissions', () => {

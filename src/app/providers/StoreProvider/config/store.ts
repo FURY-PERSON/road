@@ -2,14 +2,14 @@
 import {
   CombinedState, configureStore, Reducer, ReducersMapObject, 
 } from '@reduxjs/toolkit';
-import { counterReducer } from 'entities/Counter';
-import { userReducer } from 'entities/User';
-import { api } from 'shared/api/api';
-import { ReducersList } from 'shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
-import { saveScrollReducer } from 'widgets/SaveScroll';
+import { counterReducer } from '@/entities/Counter';
+import { userReducer } from '@/entities/User';
+import { api } from '@/shared/api/api';
+import { ReducersList } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
+import { saveScrollReducer } from '@/widgets/SaveScroll';
 import { createReducerManager } from './reducerManager';
 import { StateSchema } from './stateTypes';
-import { rtkApi } from 'shared/api/rtkApi';
+import { rtkApi } from '@/shared/api/rtkApi';
 
 // initialState - for tests
 export function createReduxStore(

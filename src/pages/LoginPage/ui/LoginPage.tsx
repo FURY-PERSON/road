@@ -1,9 +1,9 @@
-import { LoginForm } from 'features/AuthByUsername';
+import { LoginForm } from '@/features/AuthByUsername';
 import { FC, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { Page } from 'widgets/Page/Page';
+import { AppRoutes, RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { Page } from '@/widgets/Page/Page';
 import cls from './LoginPage.module.scss';
 
 interface LoginPageProps {

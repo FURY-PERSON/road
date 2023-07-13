@@ -1,6 +1,6 @@
 import { memo, FC } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { Text, TextSize } from 'shared/ui/Text/Text';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { Text, TextSize } from '@/shared/ui/Text/Text';
 import { NewsTextBlock } from '../../model/types/news';
 import cls from './NewsTextComponent.module.scss';
 

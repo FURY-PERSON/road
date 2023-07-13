@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from 'app/providers/StoreProvider';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { AxiosError } from 'axios';
-import { User } from 'entities/User';
-import { addQueryParams } from 'shared/lib/helpers/url/addQueryParam';
+import { User } from '@/entities/User';
+import { addQueryParams } from '@/shared/lib/helpers/url/addQueryParam';
 import {
   getApiLimit, getApiPage, getOrder, getRole, getSearch, getSort, 
 } from '../../selectors/usersPage';

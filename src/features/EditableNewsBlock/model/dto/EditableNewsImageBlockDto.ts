@@ -1,4 +1,4 @@
-import { NewsBlockType, NewsImageBlock } from 'entities/News';
+import { NewsBlockType, NewsImageBlock } from '@/entities/News';
 import { EditableNewsBlockImage } from '../types/editableNewsBlock';
 
 export class EditableNewsImageBlockDto implements EditableNewsBlockImage {

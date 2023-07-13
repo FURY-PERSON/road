@@ -1,7 +1,7 @@
 import { PayloadAction, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import { SortOrder } from 'shared/types/sort';
-import { StateSchema } from 'app/providers/StoreProvider';
-import { User } from 'entities/User';
+import { SortOrder } from '@/shared/types/sort';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { User } from '@/entities/User';
 import { fetchUsersList } from '../services/fetchUsersList/fetchUsersList';
 import { UsersPageSchema } from '../types/usersPageSchema';
 import { UsersRolesFilter, UsersSortFilter } from '../types/usersPage';

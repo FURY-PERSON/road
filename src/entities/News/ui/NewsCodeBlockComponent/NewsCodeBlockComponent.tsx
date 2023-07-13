@@ -1,7 +1,7 @@
-import { NewsCodeBlock } from 'entities/News/model/types/news';
+import { NewsCodeBlock } from '@/entities/News/model/types/news';
 import { memo, FC } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { Code } from 'shared/ui/Code/Code';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { Code } from '@/shared/ui/Code/Code';
 import cls from './NewsCodeBlockComponent.module.scss';
 
 interface NewsCodeBlockComponentProps {

@@ -1,7 +1,7 @@
 import { memo, FC } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
-import { NewsList, NewsListVariant } from 'entities/News';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
+import { NewsList, NewsListVariant } from '@/entities/News';
 import cls from './NewsRecommendationList.module.scss';
 import { newsRecommendationListReducer } from '../../model/slice/newsRecomendationList.slice';
 import { useGetNewsRecommendations } from '../../model/api/newsRecommendationsApi';

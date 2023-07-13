@@ -1,6 +1,6 @@
 import { memo, FC } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
 import cls from './CreateAndEditNews.module.scss';
 import { CreateAndEditNews, CreateAndEditNewsProps } from './CreateAndEditNews';
 import { createAndEditNewsReducer } from '../../model/slice/createAndEditNews.slice';

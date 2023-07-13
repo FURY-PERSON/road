@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from 'app/providers/StoreProvider';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { AxiosError } from 'axios';
-import { User } from 'entities/User';
+import { User } from '@/entities/User';
 import { getProfileForm } from '../../selectors/getProfileForm/getProfileForm';
 import { ProfileValidationError } from '../../types/editableProfileCard';
 import { validateProfileForm } from '../validateProfileForm/validateProfileForm';

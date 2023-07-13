@@ -1,7 +1,7 @@
 /* import { appStore } from 'app/providers/StoreProvider/ui/StoreProvider'; */
 import axios from 'axios';
-import { AuthTokens, User, userActions } from 'entities/User';
-import { ACCESS_TOKEN_LOCALSTORAGE_KEY, REFRESH_TOKEN_LOCALSTORAGE_KEY } from 'shared/constant/localstorage';
+import { AuthTokens, User, userActions } from '@/entities/User';
+import { ACCESS_TOKEN_LOCALSTORAGE_KEY, REFRESH_TOKEN_LOCALSTORAGE_KEY } from '@/shared/constant/localstorage';
 
 interface RefreshResponse {
   user: User,

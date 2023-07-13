@@ -1,4 +1,4 @@
-import { RoleName } from 'entities/Role';
+import { RoleName } from '@/entities/Role';
 
 export enum UsersSortFilter {
   LOGIN = 'login',

@@ -1,5 +1,5 @@
 import { memo, FC, ChangeEvent } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import cls from './ImageInput.module.scss';
 import { Button, ButtonVariant } from '../Button/Button';

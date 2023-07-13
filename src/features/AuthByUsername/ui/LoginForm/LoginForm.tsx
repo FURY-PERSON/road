@@ -1,19 +1,19 @@
-import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername';
-import { loginActions } from 'features/AuthByUsername/model/slice/login.slice';
+import { loginByUsername } from '@/features/AuthByUsername/model/services/loginByUsername/loginByUsername';
+import { loginActions } from '@/features/AuthByUsername/model/slice/login.slice';
 import {
   memo, FC, useCallback,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { Button, ButtonVariant } from 'shared/ui/Button/Button';
-import { TextInput } from 'shared/ui/TextInput/TextInput';
-import { getLoginState } from 'features/AuthByUsername/model/selectors/getLoginState/getLoginState';
-import { Text, TextVariant } from 'shared/ui/Text/Text';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
+import { TextInput } from '@/shared/ui/TextInput/TextInput';
+import { getLoginState } from '@/features/AuthByUsername/model/selectors/getLoginState/getLoginState';
+import { Text, TextVariant } from '@/shared/ui/Text/Text';
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { AppRoutes, RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import cls from './LoginForm.module.scss';
 import { loginReducer } from '../../model/slice/login.slice';
 

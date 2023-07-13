@@ -1,6 +1,6 @@
 import { memo, FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import cls from './ForbiddenView.module.scss';
 
 interface ForbiddenViewProps {

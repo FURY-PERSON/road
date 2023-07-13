@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RoleName } from 'entities/Role';
+import { RoleName } from '@/entities/Role';
 import { registerNewUser } from '../services/registerNewUser/registerNewUser';
 import { RegisterForm, RegisterSchema } from '../types/register.schema';
 

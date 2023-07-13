@@ -1,6 +1,6 @@
-import { StateSchema } from "app/providers/StoreProvider";
-import { PermissionName } from "entities/Permission";
-import { RoleName } from "entities/Role";
+import { StateSchema } from "@/app/providers/StoreProvider";
+import { PermissionName } from "@/entities/Permission";
+import { RoleName } from "@/entities/Role";
 import { AuthTokens, User } from "../../types/user";
 import { getUserData } from "./getUserData";
 

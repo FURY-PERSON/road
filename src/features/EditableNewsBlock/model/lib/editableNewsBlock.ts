@@ -1,4 +1,4 @@
-import { NewsBlockType } from 'entities/News';
+import { NewsBlockType } from '@/entities/News';
 import {
   EditableNewsBlock, EditableNewsBlockCode, EditableNewsBlockImage, EditableNewsBlockText, 
 } from '../types/editableNewsBlock';

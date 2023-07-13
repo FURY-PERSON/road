@@ -1,16 +1,16 @@
 import { memo, FC, useCallback } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useSelector } from 'react-redux';
 
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Select, SelectOption } from 'shared/ui/Select/Select';
-import { TextInput } from 'shared/ui/TextInput/TextInput';
-import { Card } from 'shared/ui/Card/Card';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Select, SelectOption } from '@/shared/ui/Select/Select';
+import { TextInput } from '@/shared/ui/TextInput/TextInput';
+import { Card } from '@/shared/ui/Card/Card';
 import { useTranslation } from 'react-i18next';
-import i18n from 'shared/config/i18n/i18n';
-import { SortOrder } from 'shared/types/sort';
-import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
-import { TabItem, Tabs } from 'shared/ui/Tabs/Tabs';
+import i18n from '@/shared/config/i18n/i18n';
+import { SortOrder } from '@/shared/types/sort';
+import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
+import { TabItem, Tabs } from '@/shared/ui/Tabs/Tabs';
 import cls from './UsersPageFilter.module.scss';
 import { usersPageActions } from '../../model/slice/usersPage.slice';
 import { fetchUsersList } from '../../model/services/fetchUsersList/fetchUsersList';

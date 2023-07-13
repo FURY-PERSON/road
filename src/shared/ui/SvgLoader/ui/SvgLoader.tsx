@@ -1,6 +1,6 @@
 import { memo, FC, SVGProps } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import SvgLoaderIcon from 'shared/assets/icons/catLoader.svg';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import SvgLoaderIcon from '@/shared/assets/icons/catLoader.svg';
 import cls from './SvgLoader.module.scss';
 
 export enum SvgLoaderType {

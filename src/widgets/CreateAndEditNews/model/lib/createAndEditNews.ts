@@ -1,4 +1,4 @@
-import { NewsBlock, NewsBlockType } from 'entities/News';
+import { NewsBlock, NewsBlockType } from '@/entities/News';
 import {
   EditableNewsBlock, 
   EditableNewsCodeBlockDto, 
@@ -7,7 +7,7 @@ import {
   isEditableNewsBlockCode, 
   isEditableNewsBlockImage, 
   isEditableNewsBlockText, 
-} from 'features/EditableNewsBlock';
+} from '@/features/EditableNewsBlock';
 import { EditableNewsTextBlockToServer } from '../dto/EditableNewsTextBlockToServer';
 import { EditableNewsImageBlockToServer } from '../dto/EditableNewsImageBlockToServer';
 import { EditableNewsCodeBlockToServer } from '../dto/EditableNewsCodeBlockToServer';

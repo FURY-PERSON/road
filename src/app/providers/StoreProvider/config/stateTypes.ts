@@ -2,20 +2,20 @@ import {
   AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject, 
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
-import { CounterSchema } from 'entities/Counter';
-import { NewsDetailsSchema } from 'entities/News';
-import { UserSchema } from 'entities/User';
-import { AddCommentFormSchema } from 'features/AddNewComment';
-import { LoginSchema } from 'features/AuthByUsername';
-import { ProfileSchema } from 'features/EditableProfileCard';
-import { NewsDetailsCommentsSchema } from 'features/NewsDetailsCommentList';
-import { NewsRecommendationListSchema } from 'features/NewsRecommendationList';
-import { RegisterSchema } from 'features/RegisterNewUser/model/types/register.schema';
-import { NewsPageSchema } from 'pages/NewsPage/model/types/newsPageSchema';
-import { UsersPageSchema } from 'pages/UsersPage/model/types/usersPageSchema';
-import { rtkApi } from 'shared/api/rtkApi';
-import { CreateAndEditNewsSchema } from 'widgets/CreateAndEditNews/model/types/createAndEditNewsSchema';
-import { SaveScrollSchema } from 'widgets/SaveScroll';
+import { CounterSchema } from '@/entities/Counter';
+import { NewsDetailsSchema } from '@/entities/News';
+import { UserSchema } from '@/entities/User';
+import { AddCommentFormSchema } from '@/features/AddNewComment';
+import { LoginSchema } from '@/features/AuthByUsername';
+import { ProfileSchema } from '@/features/EditableProfileCard';
+import { NewsDetailsCommentsSchema } from '@/features/NewsDetailsCommentList';
+import { NewsRecommendationListSchema } from '@/features/NewsRecommendationList';
+import { RegisterSchema } from '@/features/RegisterNewUser/model/types/register.schema';
+import { NewsPageSchema } from '@/pages/NewsPage/model/types/newsPageSchema';
+import { UsersPageSchema } from '@/pages/UsersPage/model/types/usersPageSchema';
+import { rtkApi } from '@/shared/api/rtkApi';
+import { CreateAndEditNewsSchema } from '@/widgets/CreateAndEditNews/model/types/createAndEditNewsSchema';
+import { SaveScrollSchema } from '@/widgets/SaveScroll';
 
 export interface StateSchema {
   counter: CounterSchema,

@@ -1,6 +1,6 @@
-import { RoleName } from 'entities/Role';
+import { RoleName } from '@/entities/Role';
 import React from 'react';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 
 type Routes = keyof typeof RoutePath;
 

@@ -1,9 +1,9 @@
-import { RegisterForm } from 'features/RegisterNewUser';
+import { RegisterForm } from '@/features/RegisterNewUser';
 import { FC, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AppRoutes } from 'shared/config/routeConfig/routeConfig';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { Page } from 'widgets/Page/Page';
+import { AppRoutes } from '@/shared/config/routeConfig/routeConfig';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { Page } from '@/widgets/Page/Page';
 import cls from './RegisterPage.module.scss';
 
 interface RegisterPageProps {

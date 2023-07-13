@@ -1,12 +1,12 @@
 import { fireEvent, screen } from '@testing-library/react';
-import { renderWithProviders } from 'shared/lib/helpers/tests/renderWithProviders/renderWithProviders';
+import { renderWithProviders } from '@/shared/lib/helpers/tests/renderWithProviders/renderWithProviders';
 import { EditableProfileCard } from './EditableProfileCard';
 import { EditableUser } from '../../model/types/editableProfileCard';
-import { RoleName } from 'entities/Role';
+import { RoleName } from '@/entities/Role';
 import { profileReducer } from '../../model/slice/profile.slice';
 import userEvent from '@testing-library/user-event'
 import { UserToStoreDto } from '../../model/dto/UserToStoreDto';
-import { User } from 'entities/User';
+import { User } from '@/entities/User';
 
 const profile: User = {
   firstName: 'misha',

@@ -1,7 +1,7 @@
 import {
   memo, FC, ReactNode, HTMLAttributes, 
 } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import cls from './Card.module.scss';
 
 export enum CardVariant {

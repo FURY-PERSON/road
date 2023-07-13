@@ -1,8 +1,8 @@
-import { Counter } from 'entities/Counter';
-import { PermissionName } from 'entities/Permission';
-import { PermissionGuard } from 'features/PermissionGuard';
+import { Counter } from '@/entities/Counter';
+import { PermissionName } from '@/entities/Permission';
+import { PermissionGuard } from '@/features/PermissionGuard';
 import { useTranslation } from 'react-i18next';
-import { Page } from 'widgets/Page/Page';
+import { Page } from '@/widgets/Page/Page';
 import styles from './styles.module.scss';
  
 export const MainPage = () => {

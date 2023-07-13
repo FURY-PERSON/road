@@ -1,6 +1,6 @@
-import { CommentList } from 'entities/Comment';
-import { getNewsDetailsError } from 'entities/News/model/selectors/getNewsDetailsError/getNewsDetailsError';
-import { getNewsDetailsLoading } from 'entities/News/model/selectors/getNewsDetailsLoading/getNewsDetailsLoading';
+import { CommentList } from '@/entities/Comment';
+import { getNewsDetailsError } from '@/entities/News/model/selectors/getNewsDetailsError/getNewsDetailsError';
+import { getNewsDetailsLoading } from '@/entities/News/model/selectors/getNewsDetailsLoading/getNewsDetailsLoading';
 import { memo, FC } from 'react';
 import { useSelector } from 'react-redux';
 import { getNewsDetailsComments } from '../model/slice/newsDetailsComments.slice';

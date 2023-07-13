@@ -1,6 +1,6 @@
 import { EntityState } from '@reduxjs/toolkit';
-import { User } from 'entities/User';
-import { SortOrder } from 'shared/types/sort';
+import { User } from '@/entities/User';
+import { SortOrder } from '@/shared/types/sort';
 import { UsersRolesFilter, UsersSortFilter } from './usersPage';
 
 export interface UsersPageSchema extends EntityState<User> {

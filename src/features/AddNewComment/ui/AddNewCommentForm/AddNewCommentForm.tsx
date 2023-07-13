@@ -1,10 +1,10 @@
 import { memo, FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { Button } from 'shared/ui/Button/Button';
-import { TextInput } from 'shared/ui/TextInput/TextInput';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Text, TextVariant } from 'shared/ui/Text/Text';
+import { Button } from '@/shared/ui/Button/Button';
+import { TextInput } from '@/shared/ui/TextInput/TextInput';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Text, TextVariant } from '@/shared/ui/Text/Text';
 import { addCommentFormLoading } from '../../model/selectors/addCommentFormLoading/addCommentFormLoading';
 import cls from './AddNewCommentForm.module.scss';
 import { addCommentFormText } from '../../model/selectors/addCommentFormText/addCommentFormText';

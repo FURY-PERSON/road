@@ -1,4 +1,4 @@
-import { News } from 'entities/News';
+import { News } from '@/entities/News';
 
 export interface NewsRecommendationListSchema {
   isLoading?: boolean;

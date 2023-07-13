@@ -1,12 +1,12 @@
-import HomeIcon from 'shared/assets/icons/home.svg';
-import BookIcon from 'shared/assets/icons/book.svg';
-import ProfileIcon from 'shared/assets/icons/profile.svg';
-import NewsIcon from 'shared/assets/icons/news.svg';
-import i18n from 'shared/config/i18n/i18n';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import HomeIcon from '@/shared/assets/icons/home.svg';
+import BookIcon from '@/shared/assets/icons/book.svg';
+import ProfileIcon from '@/shared/assets/icons/profile.svg';
+import NewsIcon from '@/shared/assets/icons/news.svg';
+import i18n from '@/shared/config/i18n/i18n';
+import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { createSelector } from '@reduxjs/toolkit';
-import { getUserData } from 'entities/User';
-import { RoleName } from 'entities/Role';
+import { getUserData } from '@/entities/User';
+import { RoleName } from '@/entities/Role';
 import { ISidebarItem } from '../../types/item';
 
 export const getSidebarItemList = createSelector<any, ISidebarItem[]>(

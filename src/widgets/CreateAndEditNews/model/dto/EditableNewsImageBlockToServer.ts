@@ -1,5 +1,5 @@
-import { NewsBlockType, NewsImageBlock } from 'entities/News';
-import { EditableNewsBlockImage } from 'features/EditableNewsBlock';
+import { NewsBlockType, NewsImageBlock } from '@/entities/News';
+import { EditableNewsBlockImage } from '@/features/EditableNewsBlock';
 
 export class EditableNewsImageBlockToServer implements Omit<NewsImageBlock, 'id'> {
   type: NewsBlockType.IMAGE;

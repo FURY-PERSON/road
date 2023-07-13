@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ACCESS_TOKEN_LOCALSTORAGE_KEY, REFRESH_TOKEN_LOCALSTORAGE_KEY } from 'shared/constant/localstorage';
+import { ACCESS_TOKEN_LOCALSTORAGE_KEY, REFRESH_TOKEN_LOCALSTORAGE_KEY } from '@/shared/constant/localstorage';
 import { refreshAuthData } from '../services/refreshAuthData/refreshAuthData';
 import { AuthTokens, User, UserSchema } from '../types/user';
 

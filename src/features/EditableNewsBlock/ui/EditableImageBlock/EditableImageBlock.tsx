@@ -1,13 +1,13 @@
 import {
   memo, FC, useCallback, useMemo, 
 } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { TextInput } from 'shared/ui/TextInput/TextInput';
-import { ImageInput } from 'shared/ui/ImageInput/ImageInput';
-import { Card } from 'shared/ui/Card/Card';
-import { Text, TextSize } from 'shared/ui/Text/Text';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { TextInput } from '@/shared/ui/TextInput/TextInput';
+import { ImageInput } from '@/shared/ui/ImageInput/ImageInput';
+import { Card } from '@/shared/ui/Card/Card';
+import { Text, TextSize } from '@/shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
-import { Select, SelectOption } from 'shared/ui/Select/Select';
+import { Select, SelectOption } from '@/shared/ui/Select/Select';
 import cls from './EditableImageBlock.module.scss';
 import { EditableNewsBlockImage, EditableNewsBlockImageHandlers } from '../../model/types/editableNewsBlock';
 

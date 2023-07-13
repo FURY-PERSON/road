@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from 'app/providers/StoreProvider';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { AxiosError } from 'axios';
-import { Dorm } from 'entities/Dorm';
-import { News } from 'entities/News';
+import { Dorm } from '@/entities/Dorm';
+import { News } from '@/entities/News';
 
 export const initCreateAndEditNews = createAsyncThunk<{news?: News, dorms: Dorm[]}, string | undefined, ThunkConfig<string>>(
   'news/initCreateAndEditNews',
