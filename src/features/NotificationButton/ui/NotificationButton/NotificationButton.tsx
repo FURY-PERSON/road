@@ -1,6 +1,8 @@
 import {
   memo, FC, useCallback, useState, 
 } from 'react';
+import { useSelector } from 'react-redux';
+import { BrowserView, MobileView } from 'react-device-detect';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import {
   Notification, NotificationList, markNotificationAsRead, useGetNotifications, 
@@ -8,13 +10,10 @@ import {
 import NotificationIcon from '@/shared/assets/icons/notification.svg';
 import { Popover } from '@/shared/ui/popups';
 import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
-import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { BrowserView, MobileView } from 'react-device-detect';
 import { Drawer } from '@/shared/ui/Drawer/Drawer';
 import cls from './NotificationButton.module.scss';
 import { getUnreadMessagesAmount } from '../../model/selectors/notificationButton';
-import { AnimationProvider } from '@/shared/lib/helpers/AnimationProvider';
 
 interface NotificationButtonProps {
   className?: string;
@@ -71,11 +70,9 @@ export const NotificationButton:FC<NotificationButtonProps> = memo((props) => {
 
       <MobileView>
         {trigger}
-        <AnimationProvider>
-          <Drawer isOpen={drawerOpened} onClose={onDrawerClose}> 
-            <NotificationList items={data} isLoading={isLoading} onItemClick={onNotificationItemClick} />
-          </Drawer>
-        </AnimationProvider>
+        <Drawer isOpen={drawerOpened} onClose={onDrawerClose}> 
+          <NotificationList items={data} isLoading={isLoading} onItemClick={onNotificationItemClick} />
+        </Drawer>
       </MobileView>
     </>
   );
