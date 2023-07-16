@@ -34,5 +34,8 @@
   "create news": "create news",
   "remove": "remove",
   "to users": "to users",
-  "your rating": "your rating"
+  "your rating": "your rating",
+  "rate news": "rate news",
+  "leave your feedback about the news": "leave your feedback about the news",
+  "thanks for the feedback": "thanks for the feedback"
 }

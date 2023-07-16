@@ -34,5 +34,8 @@
   "create news": "создать новость",
   "remove": "убрать",
   "to users": "к пользователям",
-  "your rating": "ваш рейтинг"
+  "your rating": "ваш рейтинг",
+  "rate news": "оцените новость",
+  "leave your feedback about the news": "оставьте свой отзыв о новости",
+  "thanks for the feedback": "спасибо за отзыв"
 }

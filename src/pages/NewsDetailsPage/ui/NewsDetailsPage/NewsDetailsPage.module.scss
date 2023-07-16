@@ -21,6 +21,10 @@
   margin-bottom: 24px;
 }
 
+.commentsTitle {
+  margin-top: 36px;
+}
+
 .notFound {
   display: flex;
   flex: 1;
@@ -31,4 +35,8 @@
     font: var(--font-l);
     color: var(--red-dark)
   }
+}
+
+.rating {
+  margin-top: 48px;
 }

@@ -1,10 +1,10 @@
-import { loginByUsername } from '@/features/AuthByUsername/model/services/loginByUsername/loginByUsername';
-import { loginActions } from '@/features/AuthByUsername/model/slice/login.slice';
 import {
   memo, FC, useCallback,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { loginActions } from '@/features/AuthByUsername/model/slice/login.slice';
+import { loginByUsername } from '@/features/AuthByUsername/model/services/loginByUsername/loginByUsername';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
 import { TextInput } from '@/shared/ui/TextInput/TextInput';

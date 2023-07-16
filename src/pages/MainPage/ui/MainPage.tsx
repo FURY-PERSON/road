@@ -4,7 +4,7 @@ import { PermissionName } from '@/entities/Permission';
 import { PermissionGuard } from '@/features/PermissionGuard';
 import { Page } from '@/widgets/Page/Page';
 import styles from './styles.module.scss';
-import { RatingCard } from '@/entities/Rating';
+import { RatingCard } from '@/entities/Feedback';
  
 export const MainPage = () => {
   const { t } = useTranslation('main');

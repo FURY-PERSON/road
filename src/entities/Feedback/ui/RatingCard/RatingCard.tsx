@@ -14,12 +14,13 @@ import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { HStack } from '@/shared/ui/Stack/HStack/HStack';
 
 interface RatingCardProps {
-    className?: string;
-    title?: string;
-    feedbackTitle?: string;
-    hasFeedback?: boolean;
-    onCancel?: (starsCount: number) => void;
-    onAccept?: (starsCount: number, feedback?: string) => void;
+  className?: string;
+  title?: string | null;
+  feedbackTitle?: string | null;
+  hasFeedback?: boolean;
+  onCancel?: (starsCount: number) => void;
+  onAccept?: (starsCount: number, feedback?: string) => void;
+  rate?: number
 }
 
 export const RatingCard = memo((props: RatingCardProps) => {
@@ -30,10 +31,11 @@ export const RatingCard = memo((props: RatingCardProps) => {
     hasFeedback,
     onCancel,
     title,
+    rate,
   } = props;
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [starsCount, setStarsCount] = useState(0);
+  const [starsCount, setStarsCount] = useState(rate || 0);
   const [feedback, setFeedback] = useState('');
 
   const onSelectStars = useCallback((selectedStarsCount: number) => {
@@ -72,7 +74,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
     <Card className={classNames(cls.RatingCard, {}, [className])}>
       <VStack align="center" gap={8}>
         <Text title={title} />
-        <StarRating size={40} onSelect={onSelectStars} />
+        <StarRating selectedStars={starsCount} size={40} onSelect={onSelectStars} />
       </VStack>
 
       <BrowserView>

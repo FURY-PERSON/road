@@ -1,15 +1,16 @@
-import { NewsDetails } from '@/entities/News';
-import { AddNewCommentFormAsync, sendNewsComment } from '@/features/AddNewComment';
-import { fetchCommentsByNewsId, NewsDetailsCommentList } from '@/features/NewsDetailsCommentList';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
+import { NewsDetails } from '@/entities/News';
+import { AddNewCommentFormAsync, sendNewsComment } from '@/features/AddNewComment';
+import { fetchCommentsByNewsId, NewsDetailsCommentList } from '@/features/NewsDetailsCommentList';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Page } from '@/widgets/Page/Page';
 import { Text } from '@/shared/ui/Text/Text';
 import { NewsRecommendationList } from '@/features/NewsRecommendationList';
 import cls from './NewsDetailsPage.module.scss';
 import { NewsDetailsPageHeader } from '../NewsDetailsPageHeader/NewsDetailsPageHeader';
+import { NewsRating, NewsRatingAsync } from '@/features/NewsRating';
 
 export const NewsDetailsPage = () => {
   const { id } = useParams<{id: string}>();
@@ -37,7 +38,9 @@ export const NewsDetailsPage = () => {
       
       <NewsDetails id={id} />
 
-      <Text title={t('comments')} />
+      <NewsRatingAsync className={cls.rating} newsId={id} />
+
+      <Text className={cls.commentsTitle} title={t('comments')} />
       <AddNewCommentFormAsync onSendComment={onNewsCommentSend} />
       <NewsDetailsCommentList newsId={id} className={cls.comments} />
 
