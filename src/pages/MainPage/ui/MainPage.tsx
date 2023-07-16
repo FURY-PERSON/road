@@ -1,9 +1,10 @@
+import { useTranslation } from 'react-i18next';
 import { Counter } from '@/entities/Counter';
 import { PermissionName } from '@/entities/Permission';
 import { PermissionGuard } from '@/features/PermissionGuard';
-import { useTranslation } from 'react-i18next';
 import { Page } from '@/widgets/Page/Page';
 import styles from './styles.module.scss';
+import { RatingCard } from '@/entities/Rating';
  
 export const MainPage = () => {
   const { t } = useTranslation('main');
@@ -11,7 +12,7 @@ export const MainPage = () => {
     <Page className={styles.main}>
       <div>{t('about page')}</div>
       <PermissionGuard permissionsNames={[PermissionName.ADMIN]}>
-        <Counter />
+        <RatingCard hasFeedback />
       </PermissionGuard>
     </Page>
   );
