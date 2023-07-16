@@ -6,7 +6,7 @@ import { appRouteConfig } from '../config/appRouterConfig';
 export const AppRouter = () => (
   <Suspense fallback={<PageLoader />}>
     <Routes>
-      {appRouteConfig.map((route) => <Route {...route} />)}
+      {appRouteConfig.map((route) => <Route key={route.path} {...route} />)}
     </Routes>
   </Suspense>
 );
