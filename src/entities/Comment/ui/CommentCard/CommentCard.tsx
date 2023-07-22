@@ -1,5 +1,5 @@
 import { memo, FC } from 'react';
-import { AppRoutes, RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { AppRoutes, RoutePath } from '@/shared/constant/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { Text, TextSize } from '@/shared/ui/Text/Text';

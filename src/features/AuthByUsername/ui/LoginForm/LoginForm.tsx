@@ -13,7 +13,7 @@ import { Text, TextVariant } from '@/shared/ui/Text/Text';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { AppRoutes, RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { AppRoutes, RoutePath } from '@/shared/constant/router';
 import cls from './LoginForm.module.scss';
 import { loginReducer } from '../../model/slice/login.slice';
 

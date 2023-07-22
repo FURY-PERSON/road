@@ -1,4 +1,4 @@
-import { AppRoutes } from '@/shared/config/routeConfig/routeConfig';
+import { AppRoutes } from '@/shared/constant/router';
 
 export type ScrollSchema = OptionalRecord<AppRoutes, number>
 

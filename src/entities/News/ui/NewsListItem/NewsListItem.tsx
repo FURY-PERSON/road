@@ -2,7 +2,7 @@ import {
   memo, FC, useMemo, HTMLAttributeAnchorTarget, 
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { AppRoutes, RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { AppRoutes, RoutePath } from '@/shared/constant/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useHover } from '@/shared/lib/hooks/useHover/useHover';
 import { Button, ButtonVariant } from '@/shared/ui/Button/Button';

@@ -4,7 +4,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { News, NewsBlockType } from '@/entities/News';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { AppRoutes, RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { AppRoutes, RoutePath } from '@/shared/constant/router';
 import { useTranslation } from 'react-i18next';
 import { createAndEditNewsActions } from '../../model/slice/createAndEditNews.slice';
 import cls from './NewsTools.module.scss';

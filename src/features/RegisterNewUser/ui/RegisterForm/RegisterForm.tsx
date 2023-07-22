@@ -10,7 +10,7 @@ import { Select } from '@/shared/ui/Select/Select';
 import { Text, TextVariant } from '@/shared/ui/Text/Text';
 import { TextInput } from '@/shared/ui/TextInput/TextInput';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { AppRoutes, RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { AppRoutes, RoutePath } from '@/shared/constant/router';
 import { registerNewUser } from '../../model/services/registerNewUser/registerNewUser';
 import { registerActions, registerReducer } from '../../model/slice/register.slice';
 import { getRegisterForm } from '../../model/selectors/getRegisterForm/getRegisterForm';

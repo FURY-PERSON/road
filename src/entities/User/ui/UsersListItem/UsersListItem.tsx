@@ -2,7 +2,7 @@ import {
   memo, FC, HTMLAttributeAnchorTarget, 
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { AppRoutes, RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { AppRoutes, RoutePath } from '@/shared/constant/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Card } from '@/shared/ui/Card/Card';
 import { Text, TextSize } from '@/shared/ui/Text/Text';

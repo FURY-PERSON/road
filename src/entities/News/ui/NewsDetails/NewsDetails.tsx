@@ -7,7 +7,7 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitial
 import { Card } from '@/shared/ui/Card/Card';
 import { useTranslation } from 'react-i18next';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { RoutePath } from '@/shared/constant/router';
 import { getNewsDetailsLoading } from '../../model/selectors/getNewsDetailsLoading/getNewsDetailsLoading';
 import { fetchNewsById } from '../../model/services/fetchNewsById/fetchNewsById';
 import cls from './NewsDetails.module.scss';
