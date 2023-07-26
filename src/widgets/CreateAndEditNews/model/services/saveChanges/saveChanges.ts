@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { AxiosError } from 'axios';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { News, NewsType } from '@/entities/News';
 import { getForm, getItem } from '../../selectors/createAdnEditNews';
 import { getCreateAndEditNews } from '../../slice/createAndEditNews.slice';

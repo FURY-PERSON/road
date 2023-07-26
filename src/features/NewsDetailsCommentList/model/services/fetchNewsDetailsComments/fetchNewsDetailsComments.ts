@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { AxiosError } from 'axios';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { Comment } from '@/entities/Comment';
 
 export const fetchCommentsByNewsId = createAsyncThunk<Comment[], string, ThunkConfig<string>>(

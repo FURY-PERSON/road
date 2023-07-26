@@ -1,10 +1,10 @@
 import {
   memo, FC, useCallback, useMemo, 
 } from 'react';
+import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { TextInput } from '@/shared/ui/TextInput/TextInput';
 import { ImageInput } from '@/shared/ui/ImageInput/ImageInput';
-import { useTranslation } from 'react-i18next';
 import { Card } from '@/shared/ui/Card/Card';
 import { Dorm } from '@/entities/Dorm';
 import { Select, SelectOption } from '@/shared/ui/Select/Select';

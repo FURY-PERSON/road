@@ -1,8 +1,8 @@
 import {
   memo, FC, useCallback, useMemo, 
 } from 'react';
-import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useSelector } from 'react-redux';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import {
   EditableNewsBlockCodeHandlers, EditableNewsBlockComponent, EditableNewsBlockImageHandlers, EditableNewsBlockTextHandlers, 
 } from '@/features/EditableNewsBlock';

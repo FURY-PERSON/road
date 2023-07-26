@@ -2,6 +2,7 @@ import {
   memo, FC, useCallback, 
 } from 'react';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
@@ -11,7 +12,6 @@ import { RoleName } from '@/entities/Role';
 import { Select, SelectOption } from '@/shared/ui/Select/Select';
 import i18n from '@/shared/config/i18n/i18n';
 import { TextInput } from '@/shared/ui/TextInput/TextInput';
-import { useTranslation } from 'react-i18next';
 import { RoleGuard } from '@/features/RoleGuard';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';

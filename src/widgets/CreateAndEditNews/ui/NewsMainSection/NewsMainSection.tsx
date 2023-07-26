@@ -1,7 +1,7 @@
 import { memo, FC, useCallback } from 'react';
+import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { EditableNewsMain } from '@/features/EditableNewsMain';
-import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getDorms, getForm, getSelectedDorm } from '../../model/selectors/createAdnEditNews';
 import cls from './NewsMainSection.module.scss';

@@ -29,10 +29,10 @@ const feedbackApi = rtkApi.injectEndpoints({
         method: 'POST',
         body: {
           ...args,
-          relatedEntityId: args.newsId
+          relatedEntityId: args.newsId,
         },
       }),
-      invalidatesTags: ['newsFeedback']
+      invalidatesTags: ['newsFeedback'],
     }),
   }),
   overrideExisting: false,

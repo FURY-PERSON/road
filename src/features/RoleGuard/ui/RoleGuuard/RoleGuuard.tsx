@@ -1,6 +1,6 @@
+import { useSelector } from 'react-redux';
 import { RoleName } from '@/entities/Role';
 import { getUserRoleName } from '@/entities/User';
-import { useSelector } from 'react-redux';
 import { ForbiddenView } from '@/shared/ui/ForbiddenView/ForbiddenView';
 
 interface RoleGuardProps {

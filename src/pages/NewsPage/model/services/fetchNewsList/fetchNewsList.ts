@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { AxiosError } from 'axios';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { News } from '@/entities/News';
 import { addQueryParams } from '@/shared/lib/helpers/url/addQueryParam';
 import { getNewsPageApiLimit } from '../../selectors/getNewsPageApiLimit/getNewsPageApiLimit';

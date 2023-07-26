@@ -1,10 +1,10 @@
 import {
   memo, FC, useCallback, useMemo, 
 } from 'react';
+import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { TextInput } from '@/shared/ui/TextInput/TextInput';
 import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
-import { useTranslation } from 'react-i18next';
 import { Text, TextSize } from '@/shared/ui/Text/Text';
 import { Card } from '@/shared/ui/Card/Card';
 import { Select, SelectOption } from '@/shared/ui/Select/Select';

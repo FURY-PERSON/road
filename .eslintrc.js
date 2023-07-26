@@ -25,6 +25,7 @@ module.exports = {
     'eslint-plugin-jest',
     'jest-dom',
     'react-hooks',
+    'unused-imports'
   ],
   rules: {
     indent: [1, 2],

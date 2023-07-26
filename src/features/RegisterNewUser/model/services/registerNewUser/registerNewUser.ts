@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { AxiosError } from 'axios';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { AuthTokens, User, userActions } from '@/entities/User';
 import { ValidationError } from '../../types/error';
 import { validateForm } from '../validateForm/validateForm';

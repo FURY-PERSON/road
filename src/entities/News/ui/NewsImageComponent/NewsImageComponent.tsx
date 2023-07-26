@@ -1,5 +1,5 @@
-import { NewsImageBlock } from '@/entities/News/model/types/news';
 import { memo, FC } from 'react';
+import { NewsImageBlock } from '@/entities/News/model/types/news';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Text, TextSize } from '@/shared/ui/Text/Text';
 import cls from './NewsImageComponent.module.scss';

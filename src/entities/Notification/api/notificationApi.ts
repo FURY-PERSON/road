@@ -14,4 +14,4 @@ const notificationApi = rtkApi.injectEndpoints({
 });
 
 export const useGetNotifications = notificationApi.useGetNotificationsQuery;
-export const refetchNotifications = notificationApi.util.invalidateTags(['notifications'])
+export const refetchNotifications = notificationApi.util.invalidateTags(['notifications']);

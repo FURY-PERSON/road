@@ -47,7 +47,7 @@ api.interceptors.response.use(
         });
 
         if (response) {
-/*           appStore.dispatch(userActions.setAuthData(response.data.tokens));
+          /*           appStore.dispatch(userActions.setAuthData(response.data.tokens));
           appStore.dispatch(userActions.setUserData(response.data.user)); */
           return api.request(originalRequest);
         }

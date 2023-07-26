@@ -1,5 +1,5 @@
-import { NewsListVariant } from '@/entities/News/model/types/news';
 import { memo } from 'react';
+import { NewsListVariant } from '@/entities/News/model/types/news';
 import ListIcon from '@/shared/assets/icons/list.svg';
 import GridIcon from '@/shared/assets/icons/grid.svg';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';

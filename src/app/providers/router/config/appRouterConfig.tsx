@@ -1,3 +1,4 @@
+import { RouteProps } from 'react-router-dom';
 import { AboutPage } from '@/pages/AboutPage';
 import { LoginPage } from '@/pages/LoginPage';
 import { MainPage } from '@/pages/MainPage';
@@ -6,7 +7,6 @@ import { NewsPage } from '@/pages/NewsPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ProfilePage } from '@/pages/ProfilePage';
 import { RegisterPage } from '@/pages/RegisterPage';
-import { RouteProps } from 'react-router-dom';
 import { AppRoutes, RoutePath } from '@/shared/constant/router';
 import { NewsEditPage } from '@/pages/NewsEditPage';
 import { UsersPage } from '@/pages/UsersPage';

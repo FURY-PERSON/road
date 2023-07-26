@@ -1,7 +1,7 @@
-import { RoleName } from '@/entities/Role';
 import { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { RoleName } from '@/entities/Role';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';

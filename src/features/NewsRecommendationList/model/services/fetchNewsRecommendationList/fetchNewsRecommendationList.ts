@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { AxiosError } from 'axios';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { News } from '@/entities/News';
 
 export const fetchNewsRecommendationList = createAsyncThunk<News[], void, ThunkConfig<string>>(

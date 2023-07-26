@@ -1,11 +1,11 @@
 import { memo, FC, useMemo } from 'react';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text, TextSize, TextVariant } from '@/shared/ui/Text/Text';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Card } from '@/shared/ui/Card/Card';
-import { useTranslation } from 'react-i18next';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { RoutePath } from '@/shared/constant/router';
 import { getNewsDetailsLoading } from '../../model/selectors/getNewsDetailsLoading/getNewsDetailsLoading';

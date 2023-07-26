@@ -1,5 +1,5 @@
-import { News } from '@/entities/News';
 import { EntityState } from '@reduxjs/toolkit';
+import { News } from '@/entities/News';
 import { EditableNewsBlock } from '@/features/EditableNewsBlock';
 import { Dorm } from '@/entities/Dorm';
 

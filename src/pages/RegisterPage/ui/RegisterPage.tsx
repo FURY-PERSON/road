@@ -1,6 +1,6 @@
-import { RegisterForm } from '@/features/RegisterNewUser';
 import { FC, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { RegisterForm } from '@/features/RegisterNewUser';
 import { AppRoutes } from '@/shared/constant/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Page } from '@/widgets/Page/Page';

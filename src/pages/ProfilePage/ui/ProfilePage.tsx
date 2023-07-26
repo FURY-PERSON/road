@@ -1,6 +1,6 @@
-import { EditableProfileCard, profileReducer } from '@/features/EditableProfileCard';
 import { memo, FC } from 'react';
 import { useParams } from 'react-router-dom';
+import { EditableProfileCard, profileReducer } from '@/features/EditableProfileCard';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
 import { Page } from '@/widgets/Page/Page';

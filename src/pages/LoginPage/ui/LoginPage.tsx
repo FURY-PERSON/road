@@ -1,6 +1,6 @@
-import { LoginForm } from '@/features/AuthByUsername';
 import { FC, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { LoginForm } from '@/features/AuthByUsername';
 import { AppRoutes, RoutePath } from '@/shared/constant/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Page } from '@/widgets/Page/Page';

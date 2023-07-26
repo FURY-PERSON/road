@@ -1,7 +1,7 @@
 import { memo, FC } from 'react';
+import { useSelector } from 'react-redux';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { useSelector } from 'react-redux';
 import { SvgLoader } from '@/shared/ui/SvgLoader';
 import cls from './CreateAndEditNews.module.scss';
 import { NewsTools } from '../NewsTools/NewsTools';

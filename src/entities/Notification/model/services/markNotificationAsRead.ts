@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { AxiosError } from 'axios';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { Notification } from '../types/notification';
 import { refetchNotifications } from '../../api/notificationApi';
 
@@ -8,12 +8,12 @@ export const markNotificationAsRead = createAsyncThunk<Notification, Notificatio
   'notifications/markNotificationAsRead',
   async (notification, thunkAPI) => {
     const {
-      extra, rejectWithValue, getState, dispatch
+      extra, rejectWithValue, getState, dispatch,
     } = thunkAPI;
 
     try {
       const response = await extra.api.get<Notification>(`notifications/${notification.id}`);
-      dispatch(refetchNotifications)
+      dispatch(refetchNotifications);
 
       return response.data;
     } catch (error) {

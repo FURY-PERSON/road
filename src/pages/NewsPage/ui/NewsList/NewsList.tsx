@@ -1,8 +1,8 @@
 import { memo, FC } from 'react';
-import { NewsList as SimpleNewsList } from '@/entities/News';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSearchParams } from 'react-router-dom';
+import { NewsList as SimpleNewsList } from '@/entities/News';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import cls from './NewsList.module.scss';
 import { getNews } from '../../model/slice/newsPage.slice';

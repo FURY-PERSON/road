@@ -1,11 +1,11 @@
 import { memo, FC, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { AppRoutes, RoutePath } from '@/shared/constant/router';
-import { useTranslation } from 'react-i18next';
 import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { getNewsDetailsData } from '@/entities/News';
 import cls from './NewsDetailsPageHeader.module.scss';
 import { getCanEditNews } from '../../model/selectors/news';

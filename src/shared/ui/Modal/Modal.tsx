@@ -16,7 +16,7 @@ const ANIMATION_DELAY = 300;
 
 export const Modal:FC<ModalProps> = (props) => {
   const {
-    className, children, open, onClose
+    className, children, open, onClose,
   } = props;
 
   const { close, isClosing, isMounted } = useModal({

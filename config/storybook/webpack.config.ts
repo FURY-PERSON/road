@@ -26,8 +26,8 @@ export default ({ config }: {config: webpack.Configuration}) => {
 
   config.resolve!.alias = {
     ...config.resolve!.alias,
-    '@': paths.src 
-  }
+    '@': paths.src, 
+  };
 
   // delete storybook internal svg loader
   // eslint-disable-next-line no-param-reassign
