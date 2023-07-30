@@ -23,6 +23,7 @@ export const parameters = {
     [SupportedLanguages.EN]: 'English',
     [SupportedLanguages.RU]: 'Russian',   
   },
+  layout: 'fullscreen'
 };
 
 export const globalTypes = {

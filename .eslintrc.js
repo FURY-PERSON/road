@@ -25,7 +25,7 @@ module.exports = {
     'eslint-plugin-jest',
     'jest-dom',
     'react-hooks',
-    'unused-imports'
+    'unused-imports',
   ],
   rules: {
     indent: [1, 2],
@@ -35,7 +35,6 @@ module.exports = {
       extensions: ['.jsx', '.tsx'],
     }],
     'react/function-component-definition': 'off',
-    'no-unused-vars': 'off',
     'import/prefer-default-export': 'off',
     'import/no-unresolved': 'off',
     'pace-infix-ops': 'off',
@@ -68,6 +67,14 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'no-trailing-spaces': 'off',
     'import/extensions': 'off',
+    'no-unused-vars': 'off', // or "@typescript-eslint/no-unused-vars": "off",
+    'unused-imports/no-unused-imports': 'warn',
+    'unused-imports/no-unused-vars': [
+      'warn',
+      {
+        vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_', 
+      },
+    ],
     'max-len': [1, {
       ignoreComments: true, tabWidth: 2, code: 130, ignoreStrings: true, ignoreUrls: true, 
     }],

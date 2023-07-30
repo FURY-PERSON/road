@@ -8,7 +8,7 @@ export const markNotificationAsRead = createAsyncThunk<Notification, Notificatio
   'notifications/markNotificationAsRead',
   async (notification, thunkAPI) => {
     const {
-      extra, rejectWithValue, getState, dispatch,
+      extra, dispatch,
     } = thunkAPI;
 
     try {

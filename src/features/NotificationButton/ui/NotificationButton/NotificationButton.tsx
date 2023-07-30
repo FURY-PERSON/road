@@ -35,7 +35,7 @@ export const NotificationButton:FC<NotificationButtonProps> = memo((props) => {
 
   const onNotificationItemClick = useCallback((notification: Notification) => {
     dispatch(markNotificationAsRead(notification));
-  }, []);
+  }, [dispatch]);
 
   const onButtonClick = useCallback(() => {
     setDrawerOpened(true);
