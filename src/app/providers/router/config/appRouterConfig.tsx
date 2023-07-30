@@ -7,56 +7,56 @@ import { NewsPage } from '@/pages/NewsPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ProfilePage } from '@/pages/ProfilePage';
 import { RegisterPage } from '@/pages/RegisterPage';
-import { AppRoutes, RoutePath } from '@/shared/constant/router';
+import { routes } from '@/shared/constant/router';
 import { NewsEditPage } from '@/pages/NewsEditPage';
 import { UsersPage } from '@/pages/UsersPage';
 import { RequireAuth } from '../ui/RequireAuth';
 
 export const appRouteConfig: Array<RouteProps> = [
   {
-    path: RoutePath[AppRoutes.REGISTER],
+    path: routes.register(),
     element: <RegisterPage />,
   },
   {
-    path: RoutePath[AppRoutes.LOGIN],
+    path: routes.login(),
     element: <LoginPage />,
   },
 
   {
-    path: RoutePath[AppRoutes.MAIN],
+    path: routes.main(),
     element: <RequireAuth><MainPage /></RequireAuth>,
   },
   {
-    path: RoutePath[AppRoutes.ABOUT],
+    path: routes.about(),
     element: <AboutPage />,
   },
   {
-    path: `${RoutePath[AppRoutes.USERS]}`,
+    path: routes.users(),
     element: <RequireAuth><UsersPage /></RequireAuth>,
   },
   {
-    path: `${RoutePath[AppRoutes.USER_DETAILS]}:login`,
+    path: routes.profile(':login'),
     element: <RequireAuth><ProfilePage /></RequireAuth>,
   },
   {
-    path: RoutePath[AppRoutes.NEWS],
+    path: routes.news(),
     element: <RequireAuth><NewsPage /></RequireAuth>,
   },
   {
-    path: `${RoutePath[AppRoutes.NEWS_DETAILS]}:id`,
+    path: routes.newsDetails(':id'),
     element: <RequireAuth><NewsDetailsPage /></RequireAuth>,
   },
   {
-    path: `${RoutePath[AppRoutes.NEWS_CREATE]}`,
+    path: routes.newsCreate(),
     element: <RequireAuth><NewsEditPage /></RequireAuth>,
   },
   {
-    path: `${RoutePath[AppRoutes.NEWS_EDIT]}`,
+    path: routes.newsDetails(':id'),
     element: <RequireAuth><NewsEditPage /></RequireAuth>,
   },
 
   {
-    path: RoutePath[AppRoutes.NOTFOUND],
+    path: routes.notFound(),
     element: <NotFoundPage />,
   },
 ];

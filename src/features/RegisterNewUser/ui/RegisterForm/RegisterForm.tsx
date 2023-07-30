@@ -10,7 +10,6 @@ import { Select } from '@/shared/ui/Select/Select';
 import { Text, TextVariant } from '@/shared/ui/Text/Text';
 import { TextInput } from '@/shared/ui/TextInput/TextInput';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { AppRoutes, RoutePath } from '@/shared/constant/router';
 import { registerNewUser } from '../../model/services/registerNewUser/registerNewUser';
 import { registerActions, registerReducer } from '../../model/slice/register.slice';
 import { getRegisterForm } from '../../model/selectors/getRegisterForm/getRegisterForm';
@@ -20,6 +19,7 @@ import { getRegisterLoading } from '../../model/selectors/getRegisterLoading/get
 import { getRegisterValidationError } from '../../model/selectors/getRegisterValidationError/getRegisterValidationError';
 import { getRegisterError } from '../../model/selectors/getRegisterError/getRegisterError';
 import { ValidationError } from '../../model/types/error';
+import { routes } from '@/shared/constant/router';
 
 interface RegisterFormProps {
    className?: string;
@@ -115,7 +115,7 @@ export const RegisterForm: FC<RegisterFormProps> = (props) => {
 
         <Button onClick={onLoginClick} disabled={isLoading} className={cls.button} variant={ButtonVariant.OUTLINE}>{t('apply')}</Button>
 
-        <AppLink className={cls.login} to={RoutePath[AppRoutes.LOGIN]}>
+        <AppLink className={cls.login} to={routes.login()}>
           {`${t('already have account')}? ${t('login')}`}
         </AppLink>
       </div>

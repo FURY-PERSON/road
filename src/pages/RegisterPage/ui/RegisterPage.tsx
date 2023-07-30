@@ -1,10 +1,10 @@
 import { FC, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RegisterForm } from '@/features/RegisterNewUser';
-import { AppRoutes } from '@/shared/constant/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Page } from '@/widgets/Page/Page';
 import cls from './RegisterPage.module.scss';
+import { routes } from '@/shared/constant/router';
 
 interface RegisterPageProps {
   className?: string;
@@ -15,7 +15,7 @@ export const RegisterPage: FC<RegisterPageProps> = (props) => {
   const navigator = useNavigate();
 
   const onSuccessRegister = useCallback(() => {
-    navigator(AppRoutes.MAIN);
+    navigator(routes.main());
   }, [navigator]);
 
   return (

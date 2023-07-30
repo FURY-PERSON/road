@@ -1,6 +1,4 @@
-import { AppRoutes } from '@/shared/constant/router';
-
-export type ScrollSchema = OptionalRecord<AppRoutes, number>
+export type ScrollSchema = OptionalRecord<string, number>
 
 export interface SaveScrollSchema {
   scroll: ScrollSchema

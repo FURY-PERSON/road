@@ -1,29 +1,25 @@
-export enum AppRoutes {
-  MAIN = 'main',
-  ABOUT = 'about',
-  LOGIN = 'login',
-  REGISTER = 'register',
-  USERS = 'users',
-  USER_DETAILS = 'user_details',
-  NEWS = 'news',
-  NEWS_DETAILS = 'news_details',
-  NEWS_CREATE = 'news_create',
-  NEWS_EDIT = 'news_edit',
+const getRouteMain = () => '/';
+const getRouteAbout = () => '/about';
+const getRouteUsers = () => '/user';
+const getRouteProfile = (login: string) => `/user/${login}`;
+const getRouteLogin = () => '/login';
+const getRouteRegister = () => '/register';
+const getRouteNews = () => '/news';
+const getRouteNewsDetails = (id: string) => `/news/${id}`;
+const getRouteNewsCreate = () => '/news/create';
+const getRouteNewsEdit = (id: string) => `/news/${id}/edit`;
+const getRouteNotFound = () => '*';
 
-  NOTFOUND = '404'
+export const routes = {
+  main: getRouteMain,
+  about: getRouteAbout,
+  users: getRouteUsers,
+  profile: getRouteProfile,
+  login: getRouteLogin,
+  register: getRouteRegister,
+  news: getRouteNews,
+  newsDetails: getRouteNewsDetails,
+  newsCreate: getRouteNewsCreate,
+  newsEdit: getRouteNewsEdit,
+  notFound: getRouteNotFound,
 }
-
-export const RoutePath: Record<AppRoutes, string> = {
-  [AppRoutes.MAIN]: '/',
-  [AppRoutes.ABOUT]: '/about',
-  [AppRoutes.USERS]: '/user/',
-  [AppRoutes.USER_DETAILS]: '/user/', // +id
-  [AppRoutes.LOGIN]: '/login',
-  [AppRoutes.REGISTER]: '/register',
-  [AppRoutes.NEWS]: '/news',
-  [AppRoutes.NEWS_DETAILS]: '/news/', // + id
-  [AppRoutes.NEWS_CREATE]: '/news/create',
-  [AppRoutes.NEWS_EDIT]: '/news/:id/edit',
-
-  [AppRoutes.NOTFOUND]: '*',
-};

@@ -4,11 +4,11 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { AppRoutes, RoutePath } from '@/shared/constant/router';
 import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
 import { getNewsDetailsData } from '@/entities/News';
 import cls from './NewsDetailsPageHeader.module.scss';
 import { getCanEditNews } from '../../model/selectors/news';
+import { routes } from '@/shared/constant/router';
 
 interface NewsDetailsPageHeaderProps {
   className?: string;
@@ -28,7 +28,7 @@ export const NewsDetailsPageHeader:FC<NewsDetailsPageHeaderProps> = memo((props)
 
   return (
     <div className={classNames(cls.NewsDetailsPageHeader, {}, [className])}>
-      <AppLink to={RoutePath[AppRoutes.NEWS_DETAILS]} className={cls.back}>{t('back to list')}</AppLink>
+      <AppLink to={routes.news()} className={cls.back}>{t('back to list')}</AppLink>
 
       {canEdit
         ? <Button variant={ButtonVariant.OUTLINE} onClick={onEditClick}>{t('edit')}</Button>

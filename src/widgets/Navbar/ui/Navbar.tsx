@@ -3,12 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getUserData, userActions } from '@/entities/User';
-import { AppRoutes, RoutePath } from '@/shared/constant/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { Button } from '@/shared/ui/Button/Button';
 import { NotificationButton } from '@/features/NotificationButton';
 import cls from './Navbar.module.scss';
+import { routes } from '@/shared/constant/router';
 
 interface NavbarProps {
   className?: string
@@ -22,7 +22,7 @@ export function Navbar(props: NavbarProps) {
   const navigator = useNavigate();
 
   const onLoginClick = useCallback(() => {
-    navigator(RoutePath[AppRoutes.LOGIN]);
+    navigator(routes.login());
   }, [navigator]);
 
   const onLogout = useCallback(() => {
@@ -46,7 +46,7 @@ export function Navbar(props: NavbarProps) {
   return (
     <header className={classNames(cls.Navbar, {}, [className])}>
       <div className={cls.inner}>
-        <AppLink to={RoutePath.main}>{t('to main')}</AppLink>
+        <AppLink to={routes.main()}>{t('to main')}</AppLink>
 
         <div className={cls.right}>
           <NotificationButton />

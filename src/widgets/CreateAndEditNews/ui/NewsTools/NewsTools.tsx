@@ -5,12 +5,12 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { News, NewsBlockType } from '@/entities/News';
-import { AppRoutes, RoutePath } from '@/shared/constant/router';
 import { createAndEditNewsActions } from '../../model/slice/createAndEditNews.slice';
 import cls from './NewsTools.module.scss';
 import { NewsToolItem, NewsToolsItem } from '../NewsToolsItem/NewsToolsItem';
 import { isEdit } from '../../model/selectors/createAdnEditNews';
 import { saveChanges } from '../../model/services/saveChanges/saveChanges';
+import { routes } from '@/shared/constant/router';
 
 interface NewsToolsProps {
   className?: string;
@@ -45,7 +45,7 @@ export const NewsTools:FC<NewsToolsProps> = memo((props) => {
       tools.push({
         label: t('Cancel')!,
         onClick: () => {
-          navigate(RoutePath[AppRoutes.NEWS_DETAILS] + id);
+          navigate(routes.newsDetails(id!));
           dispatch(createAndEditNewsActions.cancelEdeting());
         },
       });
@@ -63,7 +63,7 @@ export const NewsTools:FC<NewsToolsProps> = memo((props) => {
     
         if (resposne.meta.requestStatus === 'fulfilled') {
           const savedNews = resposne.payload as News;
-          navigate(RoutePath[AppRoutes.NEWS_DETAILS] + savedNews.id);
+          navigate(routes.newsDetails(savedNews.id));
         }
       },
     });

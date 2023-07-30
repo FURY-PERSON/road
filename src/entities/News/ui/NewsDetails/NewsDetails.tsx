@@ -7,7 +7,6 @@ import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Card } from '@/shared/ui/Card/Card';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { RoutePath } from '@/shared/constant/router';
 import { getNewsDetailsLoading } from '../../model/selectors/getNewsDetailsLoading/getNewsDetailsLoading';
 import { fetchNewsById } from '../../model/services/fetchNewsById/fetchNewsById';
 import cls from './NewsDetails.module.scss';
@@ -17,6 +16,7 @@ import { NewsBlock, NewsBlockType } from '../../model/types/news';
 import { NewsTextComponent } from '../NewsTextComponent/NewsTextComponent';
 import { NewsCodeBlockComponent } from '../NewsCodeBlockComponent/NewsCodeBlockComponent';
 import { NewsImageComponent } from '../NewsImageComponent/NewsImageComponent';
+import { routes } from '@/shared/constant/router';
 
 export interface NewsDetailsProps {
   className?: string;
@@ -71,32 +71,40 @@ export const NewsDetails:FC<NewsDetailsProps> = memo((props) => {
       </div>
     );
   }
+
+  if (!news) {
+    return (
+      <div className={cls.error}>
+        <Text variant={TextVariant.ERROR} title={t('can not find news')} />
+      </div>
+    );
+  }
  
   return (
     <>
       <Card className={cls.card}>
-        {news?.imageUrl
+        {news.imageUrl
           ? <img className={cls.image} src={news.imageUrl} alt="news" />
           : null}
 
-        <Text className={cls.title} size={TextSize.XL} title={news?.title} text={news?.subTitle} />
-        <Text className={cls.mainText} size={TextSize.M} title={news?.mainText} />
+        <Text className={cls.title} size={TextSize.XL} title={news.title} text={news.subTitle} />
+        <Text className={cls.mainText} size={TextSize.M} title={news.mainText} />
 
         <div className={cls.section}>
           <Text className={cls.label} size={TextSize.M} title={t('author')} />
-          <AppLink to={`${RoutePath.users}${news?.author.login}`}>
-            <Text className={cls.title} size={TextSize.M} title={news?.author.login} />
+          <AppLink to={routes.profile(news.author.login)}>
+            <Text className={cls.title} size={TextSize.M} title={news.author.login} />
           </AppLink>
         </div>
 
         <div className={cls.section}>
           <Text className={cls.label} size={TextSize.M} text={t('dorm')} />
-          <Text className={cls.title} size={TextSize.M} text={news?.dorm.name} />
+          <Text className={cls.title} size={TextSize.M} text={news.dorm.name} />
         </div>
 
         <div className={cls.section}>
           <Text className={cls.label} size={TextSize.M} text={t('created at')} />
-          <Text className={cls.title} size={TextSize.M} text={news?.createdAt} />
+          <Text className={cls.title} size={TextSize.M} text={news.createdAt} />
         </div>
       </Card>
 

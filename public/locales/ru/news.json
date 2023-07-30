@@ -27,5 +27,6 @@
   "dorm": "общежитие",
   "created at": "создано",
   "first name": "имя",
-  "last name": "фамилия"
+  "last name": "фамилия",
+  "can not find news": "новость не найдена"
 }
