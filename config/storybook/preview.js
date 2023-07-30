@@ -23,7 +23,14 @@ export const parameters = {
     [SupportedLanguages.EN]: 'English',
     [SupportedLanguages.RU]: 'Russian',   
   },
-  layout: 'fullscreen'
+  layout: 'fullscreen',
+  themes: {
+    default: 'light',
+    list: [
+      { name: 'light', class: Theme.Light, color: '#fff' },
+      { name: 'dark', class: Theme.Dark, color: '#000' }
+    ],
+  },
 };
 
 export const globalTypes = {
