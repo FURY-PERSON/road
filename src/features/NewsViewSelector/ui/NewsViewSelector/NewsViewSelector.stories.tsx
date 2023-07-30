@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { NewsViewSelector } from './NewsViewSelector';
 
 export default {
-    title: 'entities/ArticleViewSelector',
+    title: 'feature/NewsViewSelector',
     component: NewsViewSelector,
 } as ComponentMeta<typeof NewsViewSelector>;
 

@@ -6,6 +6,7 @@ import { babelRemovePropsPlugin } from '../babelPlugins/babelRemovePropsPlugin';
 export function buildCssLoader(isDev: boolean) {
   return {
     test: /\.(sc|sa|c)ss$/,
+    exclude: '/node_modules/',
     use: [
       isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       {
@@ -66,6 +67,7 @@ export function buildBabelLoader({ isDev, isTsx }: BuildBabelLoaderProps) {
     use: {
       loader: 'babel-loader',
       options: {
+        cacheDirectory: true,
         presets: ['@babel/preset-env'],
         plugins: plugins,
       },

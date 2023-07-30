@@ -23,6 +23,6 @@ export function buildWebpackConfig(options: BuildOption): webpack.Configuration 
       publicPath: '/',
     },
     devServer: isDev ? buildDevServer(options) : undefined,
-    devtool: isDev ? 'inline-source-map' : undefined,
+    devtool: isDev ? 'eval-cheap-module-source-map' : undefined,
   };
 }

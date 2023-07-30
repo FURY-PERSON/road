@@ -17,13 +17,7 @@ export function buildPlugins(options: BuildOption): webpack.WebpackPluginInstanc
     }),
     new ForkTsCheckerWebpackPlugin(),
     new webpack.ProgressPlugin(),
-    miniCssExtractPlugin(),
     buildDefinePlugin(options),
-    new CopyPlugin({
-      patterns: [
-        { from: paths.locales, to: paths.buildLocales },
-      ],
-    }),
   ];
 
   if (isDev) {
@@ -31,6 +25,15 @@ export function buildPlugins(options: BuildOption): webpack.WebpackPluginInstanc
     plugins.push(new CircularDependencyPlugin({
       exclude: /node_modules/,
       failOnError: false,
+    }));
+  }
+
+  if (!isDev) {
+    plugins.push(miniCssExtractPlugin());
+    plugins.push(new CopyPlugin({
+      patterns: [
+        { from: paths.locales, to: paths.buildLocales },
+      ],
     }));
   }
 

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import {
-  NewsListVariant, NewsSort, NewsViewSelector, NewsType, 
+  NewsListVariant, NewsSort, NewsType, 
 } from '@/entities/News';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Select, SelectOption } from '@/shared/ui/Select/Select';
@@ -21,6 +21,7 @@ import cls from './NewsPageFilter.module.scss';
 import { getNewsPageSort } from '../../model/selectors/getNewsPageSort/getNewsPageSort';
 import { getNewsPageOrder } from '../../model/selectors/getNewsPageOrder/getNewsPageOrder';
 import { getNewsPageType } from '../../model/selectors/getNewsPageType/getNewsPageType';
+import {NewsViewSelector} from '@/features/NewsViewSelector';
 
 interface NewsPageFilterProps {
   className?: string;

@@ -12,6 +12,7 @@ module.exports = {
     'plugin:i18next/recommended',
     'plugin:react-hooks/recommended',
   ],
+  ignorePatterns: ['**.js'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',

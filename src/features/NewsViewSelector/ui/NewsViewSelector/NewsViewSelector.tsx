@@ -1,27 +1,15 @@
 import { memo } from 'react';
 import { NewsListVariant } from '@/entities/News/model/types/news';
-import ListIcon from '@/shared/assets/icons/list.svg';
-import GridIcon from '@/shared/assets/icons/grid.svg';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
 import cls from './NewsViewSelector.module.scss';
+import { viewTypes } from '../../model/constants/newsViewSelector';
 
 interface NewsViewSelectorProps {
     className?: string;
     view: NewsListVariant,
     onViewClick?: (view: NewsListVariant) => void;
 }
-
-const viewTypes = [
-  {
-    view: NewsListVariant.BLOCK,
-    Icon: GridIcon,
-  },
-  {
-    view: NewsListVariant.LIST,
-    Icon: ListIcon,
-  },
-];
 
 export const NewsViewSelector = memo((props: NewsViewSelectorProps) => {
   const { className, view, onViewClick } = props;

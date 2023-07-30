@@ -27,7 +27,8 @@
     "prepare": "husky install",
     "generate:fsd": "node ./scripts/createSlice/index.js",
     "generate:dependency-graph": "npx depcruise src --include-only '^src' --output-type dot | dot -T svg > dependency-graph.svg",
-    "check:code": "npx depcruise src"
+    "check:code": "npx depcruise src",
+    "postinstall": "node ./scripts/clearNodeModulesCache.js"
   },
   "repository": {
     "type": "git",
