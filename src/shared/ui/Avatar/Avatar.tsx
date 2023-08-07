@@ -3,6 +3,8 @@ import {
 } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import cls from './Avatar.module.scss';
+import { AppImage } from '@/shared/ui/AppImage/AppImage';
+import { Skeleton } from '../Skeleton/Skeleton';
 
 interface AvatarProps {
   className?: string;
@@ -19,10 +21,11 @@ export const Avatar:FC<AvatarProps> = memo((props) => {
   }), [size]);
 
   return (
-    <img 
+    <AppImage 
       className={classNames(cls.Avatar, {}, [className])} 
       src={src} 
       style={styles}
+      fallback={<Skeleton width={size} height={size} />}
       alt="avatar" 
     />
   );

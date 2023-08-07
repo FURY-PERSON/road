@@ -18,11 +18,12 @@ interface PageProps {
   children: ReactNode;
   onScrollEnd?: () => void,
   saveScroll?: boolean
+  testId?: string
 }
 
 export const Page:FC<PageProps> = (props) => {
   const {
-    className, children, onScrollEnd, saveScroll = true, 
+    className, children, onScrollEnd, saveScroll = true, testId
   } = props;
 
   const pageRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -51,7 +52,7 @@ export const Page:FC<PageProps> = (props) => {
   }, 300);
 
   return (
-    <div onScroll={onScroll} ref={pageRef} className={classNames(cls.Page, {}, [className])}>
+    <div onScroll={onScroll} ref={pageRef} className={classNames(cls.Page, {}, [className])} data-testId={testId}>
       {children}
       {onScrollEnd
         ? (

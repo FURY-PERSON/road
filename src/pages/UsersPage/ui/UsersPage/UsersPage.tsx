@@ -46,7 +46,7 @@ export const UsersPage: FC<UsersPageProps> = (props) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-      <Page onScrollEnd={loadNextPage} className={classNames(cls.UsersPage, {}, [className])}>
+      <Page onScrollEnd={loadNextPage} className={classNames(cls.UsersPage, {}, [className])} testId="UsersPage">
         <div className={cls.inner}>
           <UsersPageFilter className={cls.filter} />
   

@@ -19,7 +19,7 @@ export const LoginPage: FC<LoginPageProps> = (props) => {
   }, [navigator]);
 
   return (
-    <Page className={classNames(cls.loginPage, {}, [className])}>
+    <Page className={classNames(cls.loginPage, {}, [className])} testId="LoginPage">
       <div className={cls.inner}>
         <LoginForm onSuccess={onSuccessLogin} />
       </div>

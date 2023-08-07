@@ -13,7 +13,7 @@ export const NotFoundPage:FC<NotFoundPageProps> = memo((props) => {
   const { t } = useTranslation();
 
   return (
-    <Page className={classNames(cls.NotFoundPage, {}, [className])}>
+    <Page className={classNames(cls.NotFoundPage, {}, [className])} testId="NotFoundPage">
       {t('page not found')}
     </Page>
   );

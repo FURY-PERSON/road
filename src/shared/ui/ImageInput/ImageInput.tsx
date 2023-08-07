@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import cls from './ImageInput.module.scss';
 import { Button, ButtonVariant } from '../Button/Button';
+import { AppImage } from '../AppImage/AppImage';
+import { Skeleton } from '../Skeleton/Skeleton';
 
 interface ImageInputProps {
   className?: string;
@@ -32,9 +34,10 @@ export const ImageInput:FC<ImageInputProps> = memo((props) => {
     <div className={classNames(cls.ImageInput, {}, [className])}>
       {image && (
         <div className={cls.imageWrapper}>
-          <img
+          <AppImage
             className={cls.img}
             alt="not found"
+            fallback={<Skeleton width="100%" height={240} />}
             src={typeof image === 'string' ? image : URL.createObjectURL(image)}
           />
 

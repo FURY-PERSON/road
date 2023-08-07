@@ -22,7 +22,7 @@ export const ProfilePage:FC<ProfilePageProps> = memo((props) => {
 
   return (
     <DynamicModuleLoader removeAfterUnmount reducers={moduleReducer}>
-      <Page className={classNames(cls.ProfilePage, {}, [className])}>
+      <Page className={classNames(cls.ProfilePage, {}, [className])} testId="ProfilePage">
         <EditableProfileCard login={login} />
       </Page>
     </DynamicModuleLoader>

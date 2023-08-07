@@ -17,6 +17,7 @@ import { NewsTextComponent } from '../NewsTextComponent/NewsTextComponent';
 import { NewsCodeBlockComponent } from '../NewsCodeBlockComponent/NewsCodeBlockComponent';
 import { NewsImageComponent } from '../NewsImageComponent/NewsImageComponent';
 import { routes } from '@/shared/constant/router';
+import { AppImage } from '@/shared/ui/AppImage/AppImage';
 
 export interface NewsDetailsProps {
   className?: string;
@@ -84,7 +85,7 @@ export const NewsDetails:FC<NewsDetailsProps> = memo((props) => {
     <>
       <Card className={cls.card}>
         {news.imageUrl
-          ? <img className={cls.image} src={news.imageUrl} alt="news" />
+          ? <AppImage className={cls.image} src={news.imageUrl} alt="news" fallback={<Skeleton width="100%" height={230} />} />
           : null}
 
         <Text className={cls.title} size={TextSize.XL} title={news.title} text={news.subTitle} />

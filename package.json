@@ -98,6 +98,7 @@
     "jest-html-reporters": "^3.1.4",
     "json-server": "^0.17.2",
     "kill-port": "^2.0.1",
+    "lint-staged": "^13.2.3",
     "loki": "^0.32.0",
     "mini-css-extract-plugin": "^2.7.2",
     "open": "^8.4.2",

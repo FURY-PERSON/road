@@ -11,6 +11,8 @@ import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { News, NewsListVariant } from '../../model/types/news';
 import cls from './NewsListItem.module.scss';
 import { routes } from '@/shared/constant/router';
+import { AppImage } from '@/shared/ui/AppImage/AppImage';
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
 interface NewsListItemProps {
   className?: string;
@@ -38,7 +40,7 @@ export const NewsListItem:FC<NewsListItemProps> = memo((props) => {
       >
         <Card className={cls.card}>
           <div className={cls.imageWrapper}>
-            <img className={cls.image} src={news.imageUrl} alt="news" />
+            <AppImage className={cls.image} src={news.imageUrl} alt="news" fallback={<Skeleton width="100%" height={260} />} />
             <Text className={cls.date} size={TextSize.M} text={createdAt} />
           </div>
           <div className={cls.tags}>
@@ -59,7 +61,7 @@ export const NewsListItem:FC<NewsListItemProps> = memo((props) => {
           <Text title={news.title} text={news.subTitle} className={cls.title} />
         </div>
 
-        <img className={cls.image} src={news.imageUrl} alt="news" />
+        <AppImage className={cls.image} src={news.imageUrl} alt="news" fallback={<Skeleton width="100%" height={260} />} />
 
         <div className={cls.tags}>
           {news.type}

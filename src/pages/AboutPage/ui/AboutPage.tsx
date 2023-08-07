@@ -6,7 +6,7 @@ export const AboutPage = () => {
   const { t } = useTranslation('about');
 
   return (
-    <Page>
+    <Page testId="AboutPage">
       <Text title={t('dorm system')} />
     </Page>
   );
