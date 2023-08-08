@@ -16,7 +16,7 @@
     "test:unit": "jest --silent --config './config/jest/jest.config.ts'",
     "test:ui": "npx loki test",
     "test:ui:approve": "npx loki approve",
-    "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
+    "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static --chromeFlags='--headless --disable-gpu --hide-scrollbars --no-sandbox'",
     "test:ui:report": "node scripts/generate-visual-screenshot-test-report.js && reg-cli --from .loki/report.json --report .loki/report.html && node scripts/openBrowserWithReport.js",
     "test:all": "npm run build:prod && npm run lint:ts:check && npm run lint:scss:check && npm run test:unit && npm run documentation:storybook:build && npm run test:ui:ci && echo All tests passed successfully",
     "analyze:prod": "webpack --env mode=production analyze=1",
