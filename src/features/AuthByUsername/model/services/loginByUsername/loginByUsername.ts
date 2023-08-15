@@ -32,7 +32,7 @@ export const loginByUsername = createAsyncThunk<User, void, ThunkConfig<string>>
       dispatch(userActions.setUserData(user));
       return user;
     } catch (error) {
-      if (error instanceof AxiosError<{message: string}>) {
+      if (error instanceof AxiosError) {
         return thunkAPI.rejectWithValue(error.response?.data.message || error.response?.statusText || error.message);
       }
       return thunkAPI.rejectWithValue('Unexpected login error');

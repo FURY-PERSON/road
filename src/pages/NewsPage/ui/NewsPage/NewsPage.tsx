@@ -30,7 +30,7 @@ export const NewsPage = () => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-      <Page onScrollEnd={loadNextPage} className={cls.main}>
+      <Page onScrollEnd={loadNextPage} className={cls.main} testId="NewsPage">
         <NewsPageFilter />
  
         <NewsList />
