@@ -32,7 +32,7 @@ export const fetchNewsById = createAsyncThunk<News, FetchNewsByIdProps, ThunkCon
 
       return news;
     } catch (error) {
-      if (error instanceof AxiosError<{message: string}>) {
+      if (error instanceof AxiosError) {
         return thunkAPI.rejectWithValue(error.response?.data.message || error.response?.statusText || error.message);
       }
       return thunkAPI.rejectWithValue('Unexpected news fetching error');

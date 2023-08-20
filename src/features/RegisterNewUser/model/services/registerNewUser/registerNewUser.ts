@@ -46,7 +46,7 @@ export const registerNewUser = createAsyncThunk<User, void, ThunkConfig<Validati
       dispatch(userActions.setUserData(user));
       return user;
     } catch (error) {
-      if (error instanceof AxiosError<{message: string}>) {
+      if (error instanceof AxiosError) {
         return thunkAPI.rejectWithValue(error.response?.data?.message || error.message);
       }
 
