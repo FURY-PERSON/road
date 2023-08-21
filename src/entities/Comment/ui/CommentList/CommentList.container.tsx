@@ -7,7 +7,7 @@ export const CommentListContainer:FC<CommentListProps> = memo((props) => {
   const { className } = props;
 
   return (
-    <div className={classNames(cls.CommentList, {}, [className])}>
+    <div className={classNames(cls.CommentList, {}, [className])} data-testId="CommentListContainer">
       <CommentList {...props} />
     </div>
   );

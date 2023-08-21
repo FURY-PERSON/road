@@ -13,7 +13,7 @@ const reducers: ReducersList = {
 };
 
 export const NewsDetailsCommentListContainer:FC<NewsDetailsCommentListProps> = memo((props) => {
-  const { className, newsId } = props;
+  const { className, newsId, testId } = props;
   const dispatch = useAppDispatch();
 
   useInitialEffect(() => {
@@ -22,7 +22,7 @@ export const NewsDetailsCommentListContainer:FC<NewsDetailsCommentListProps> = m
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <div className={classNames(cls.NewsDetailsCommentList, {}, [className])}>
+      <div className={classNames(cls.NewsDetailsCommentList, {}, [className])} data-testId={testId}>
         <NewsDetailsCommentList {...props} />
       </div>
     </DynamicModuleLoader>

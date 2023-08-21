@@ -1,10 +1,9 @@
 import { PayloadAction, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import { NewsBlock, NewsBlockType } from '@/entities/News';
+import { NewsBlockType } from '@/entities/News';
 import { getUniqueId } from '@/shared/lib/helpers/getUniqueId/getUniqueId';
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { EditableNewsBlock } from '@/features/EditableNewsBlock';
 import { EditableNewsBlockCode, EditableNewsBlockImage, EditableNewsBlockText } from '@/features/EditableNewsBlock/model/types/editableNewsBlock';
-import { Dorm } from '@/entities/Dorm';
 import { CreateAndEditNewsSchema } from '../types/createAndEditNewsSchema';
 import { initCreateAndEditNews } from '../services/initCreateAndEditNews/initCreateAndEditNews';
 import { blockToState } from '../lib/createAndEditNews';

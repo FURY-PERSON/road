@@ -14,10 +14,11 @@ import { addCommentFormActions } from '../../model/slice/addCommentForm.slice';
 export interface AddNewCommentFormProps {
   className?: string;
   onSendComment: () => void
+  testId?: string
 }
 
 export const AddNewCommentForm:FC<AddNewCommentFormProps> = memo((props) => {
-  const { onSendComment } = props;
+  const { onSendComment, testId } = props;
 
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -36,9 +37,9 @@ export const AddNewCommentForm:FC<AddNewCommentFormProps> = memo((props) => {
   
   return (
     <>
-      <div className={cls.inner}>
-        <TextInput className={cls.input} value={commentText} onChange={onCommentTextChange} />
-        <Button className={cls.button} isLoading={commentLoading} onClick={onSendClick}>{t('send')}</Button>
+      <div className={cls.inner} data-testId={testId}>
+        <TextInput className={cls.input} value={commentText} onChange={onCommentTextChange} data-testId="AddNewCommentForm.commentInput" />
+        <Button className={cls.button} isLoading={commentLoading} onClick={onSendClick} data-testId="AddNewCommentForm.sendButton">{t('send')}</Button>
       </div>
 
       {commentError

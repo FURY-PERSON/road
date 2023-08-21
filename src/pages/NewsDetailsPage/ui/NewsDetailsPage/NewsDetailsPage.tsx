@@ -10,7 +10,7 @@ import { Text } from '@/shared/ui/Text/Text';
 import { NewsRecommendationList } from '@/features/NewsRecommendationList';
 import cls from './NewsDetailsPage.module.scss';
 import { NewsDetailsPageHeader } from '../NewsDetailsPageHeader/NewsDetailsPageHeader';
-import { NewsRating, NewsRatingAsync } from '@/features/NewsRating';
+import { NewsRatingAsync } from '@/features/NewsRating';
 
 export const NewsDetailsPage = () => {
   const { id } = useParams<{id: string}>();
@@ -33,7 +33,7 @@ export const NewsDetailsPage = () => {
   }
 
   return (
-    <Page className={cls.main}>
+    <Page className={cls.main} testId="NewsDetailsPage">
       <NewsDetailsPageHeader />
       
       <NewsDetails id={id} />
@@ -41,11 +41,11 @@ export const NewsDetailsPage = () => {
       <NewsRatingAsync className={cls.rating} newsId={id} />
 
       <Text className={cls.commentsTitle} title={t('comments')} />
-      <AddNewCommentFormAsync onSendComment={onNewsCommentSend} />
-      <NewsDetailsCommentList newsId={id} className={cls.comments} />
+      <AddNewCommentFormAsync onSendComment={onNewsCommentSend} testId="NewsDetailsPage.AddNewCommentFormAsync" />
+      <NewsDetailsCommentList newsId={id} className={cls.comments} testId="NewsDetailsPage.NewsDetailsCommentList" />
 
       <Text className={cls.recommendationsTitle} title={t('recommendations')} />
-      <NewsRecommendationList className={cls.recommendations} />
+      <NewsRecommendationList className={cls.recommendations} testId="NewsDetailsPage.NewsRecommendationList" />
     </Page>
   );
 };

@@ -17,6 +17,7 @@ export const saveChanges = createAsyncThunk<News, string | undefined, ThunkConfi
       const form = getForm(getState());
       const item = getItem(getState());
       const blocks = getCreateAndEditNews.selectAll(getState());
+      
       const formData = new FormData();
 
       formData.append('type', NewsType.WARNING);
@@ -28,11 +29,13 @@ export const saveChanges = createAsyncThunk<News, string | undefined, ThunkConfi
       if (blocks) {
         formData.append('blocks', JSON.stringify(stateBlocksToServer(blocks)));
       }
+
       if (form?.image) {
         const imageFetch = await fetch(form.image);
         const blobFile = await imageFetch.blob();
         formData.append('image', new Blob([blobFile]));
       }
+
       if (newsId) {
         return (await extra.api.put<News>(`news/${newsId}`, formData, {
           headers: {
@@ -40,6 +43,7 @@ export const saveChanges = createAsyncThunk<News, string | undefined, ThunkConfi
           },
         })).data;
       } 
+
       return (await extra.api.post<News>('news', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',

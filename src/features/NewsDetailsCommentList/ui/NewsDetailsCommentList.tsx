@@ -10,6 +10,7 @@ import cls from './NewsDetailsCommentList.module.scss';
 export interface NewsDetailsCommentListProps {
   className?: string;
   newsId: string
+  testId?: string
 }
 
 export const NewsDetailsCommentList:FC<NewsDetailsCommentListProps> = memo((props) => {

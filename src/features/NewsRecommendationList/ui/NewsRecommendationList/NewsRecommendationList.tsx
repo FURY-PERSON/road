@@ -8,6 +8,7 @@ import { useGetNewsRecommendations } from '../../model/api/newsRecommendationsAp
 
 interface NewsRecommendationListProps {
   className?: string;
+  testId?: string
 }
 
 const reducers: ReducersList = {
@@ -15,7 +16,7 @@ const reducers: ReducersList = {
 };
 
 export const NewsRecommendationList:FC<NewsRecommendationListProps> = memo((props) => {
-  const { className } = props;
+  const { className, testId } = props;
 
   const {
     isLoading, isFetching, error, data: recommendedNews, 
@@ -31,6 +32,7 @@ export const NewsRecommendationList:FC<NewsRecommendationListProps> = memo((prop
         target="_blank"
         isLoading={loading} 
         variant={NewsListVariant.BLOCK}
+        testId={testId}
       />
     </DynamicModuleLoader>
   );

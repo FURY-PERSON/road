@@ -13,17 +13,18 @@ interface NewsListProps {
   isLoading?: boolean,
   variant: NewsListVariant
   target?: HTMLAttributeAnchorTarget
+  testId?: string
 }
 
 export const NewsList:FC<NewsListProps> = memo((props) => {
   const {
-    className, isLoading, news, variant, target,
+    className, isLoading, news, variant, target, testId
   } = props;
 
   const skeletonAmount = useMemo(() => (variant === NewsListVariant.LIST ? 3 : 12), [variant]);
 
   return (
-    <div className={classNames(cls.NewsList, {}, [className])}>
+    <div className={classNames(cls.NewsList, {}, [className])} data-testId={testId}>
       {news?.map((item) => <NewsListItem key={item.id} target={target} variant={variant} news={item} />)}
 
       {isLoading
