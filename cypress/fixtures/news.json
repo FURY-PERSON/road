@@ -1,0 +1,46 @@
+{
+  "id": "dc9d2703-7669-445f-b09f-aa8df752b214",
+  "title": "title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title",
+  "subTitle": "sub Tite sub Tite sub Tite sub Tite sub Tite sub Tite sub Tite",
+  "mainText": "main text main text main text main text main text main textmain text main text main text main text main text main text main textmain text main text main text main text main text main text main textmain text main text main text main text main text main text main textmain text main text main text main text main text main text main textmain text main text main text main text main text main text main textmain text",
+  "imageName": "ca722fba-e7de-4a28-b06a-ce0e33426fc8.jpg",
+  "imageUrl": "http://localhost:3005/ca722fba-e7de-4a28-b06a-ce0e33426fc8.jpg",
+  "createdAt": "2023-05-08T11:54:58.607Z",
+  "type": "warning",
+  "rating": "5",
+  "author": {
+      "id": "070bf09e-5410-4b13-aa52-e195d05cacf7",
+      "firstName": "misha",
+      "lastName": "admin",
+      "phone": "+375446577833",
+      "login": "admin",
+      "email": "sdfsd@gmail.com"
+  },
+  "blocks": [
+      {
+          "id": "1e47d2ce-0fe2-42aa-b472-bbdfc23476b8",
+          "type": "NewsCodeBlock",
+          "sequenceNumber": 1,
+          "code": "<div>asdasdasdasd</div>"
+      },
+      {
+          "id": "a080c323-4e39-491d-940e-b32de383ef8b",
+          "type": "NewsTextBlock",
+          "sequenceNumber": 0,
+          "paragraphs": [
+              "parahraph 1 parahraph 1 parahraph 1 parahraph 1 parahraph 1 v v v parahraph 1 parahraph 1 parahraph 1 parahraph 1 parahraph 1 parahraph 1",
+              "paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2  paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2  paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2  paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2  paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2  paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 paragraph 2 "
+          ],
+          "title": "text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1 text block 1"
+      }
+  ],
+  "dorm": {
+      "id": "70571c5d-945d-4d1d-b318-eca7f89476d7",
+      "name": "dfg",
+      "address": "dfg",
+      "phone": "+36544533455",
+      "email": "sdgf@gmail.com",
+      "imageName": null,
+      "imageUrl": null
+  }
+}

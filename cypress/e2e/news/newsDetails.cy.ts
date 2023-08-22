@@ -47,12 +47,15 @@ describe('News List', () => {
   });
 
   it('should see comments list', () => {
+    cy.intercept('GET', '**/news/*', { fixture: 'news.json' });
+    
     cy.selectByTestId('NewsDetailsPage.NewsDetailsCommentList').should('exist');
   });
 
   it('should create comment', () => {
+    cy.intercept('GET', '**/news/*', { fixture: 'news.json' });
+    
     cy.selectByTestId('NewsDetailsPage.AddNewCommentFormAsync').should('exist');
-
     cy.selectByTestId('NewsDetailsPage.AddNewCommentFormAsync').scrollIntoView();
     cy.selectByTestId('AddNewCommentForm.commentInput').type('Comment');
     cy.selectByTestId('AddNewCommentForm.sendButton').click();
