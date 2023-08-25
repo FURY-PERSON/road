@@ -1,42 +1,46 @@
 import { memo, FC, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text, TextSize, TextVariant } from '@/shared/ui/Text/Text';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Card } from '@/shared/ui/Card/Card';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { routes } from '@/shared/constant/router';
+import { AppImage } from '@/shared/ui/AppImage/AppImage';
+
 import { getNewsDetailsLoading } from '../../model/selectors/getNewsDetailsLoading/getNewsDetailsLoading';
 import { fetchNewsById } from '../../model/services/fetchNewsById/fetchNewsById';
-import cls from './NewsDetails.module.scss';
 import { getNewsDetailsError } from '../../model/selectors/getNewsDetailsError/getNewsDetailsError';
 import { getNewsDetailsData } from '../../model/selectors/getNewsDetailsData/getNewsDetailsData';
 import { NewsBlock, NewsBlockType } from '../../model/types/news';
 import { NewsTextComponent } from '../NewsTextComponent/NewsTextComponent';
 import { NewsCodeBlockComponent } from '../NewsCodeBlockComponent/NewsCodeBlockComponent';
 import { NewsImageComponent } from '../NewsImageComponent/NewsImageComponent';
-import { routes } from '@/shared/constant/router';
-import { AppImage } from '@/shared/ui/AppImage/AppImage';
+
+import cls from './NewsDetails.module.scss';
 
 export interface NewsDetailsProps {
   className?: string;
-  id: string
+  id: string;
 }
 
 const renderBlock = (block: NewsBlock) => {
   switch (block.type) {
-  case NewsBlockType.TEXT:
-    return <NewsTextComponent key={block.id} className={cls.block} block={block} />;
-  case NewsBlockType.CODE:
-    return <NewsCodeBlockComponent key={block.id} className={cls.block} block={block} />;
-  case NewsBlockType.IMAGE:
-    return <NewsImageComponent key={block.id} className={cls.block} block={block} />;
-  default: return null;
+    case NewsBlockType.TEXT:
+      return <NewsTextComponent key={block.id} className={cls.block} block={block} />;
+    case NewsBlockType.CODE:
+      return <NewsCodeBlockComponent key={block.id} className={cls.block} block={block} />;
+    case NewsBlockType.IMAGE:
+      return <NewsImageComponent key={block.id} className={cls.block} block={block} />;
+    default:
+      return null;
   }
 };
 
-export const NewsDetails:FC<NewsDetailsProps> = memo((props) => {
+export const NewsDetails: FC<NewsDetailsProps> = memo((props) => {
   const { id } = props;
   const dispatch = useAppDispatch();
   const { t } = useTranslation('news');
@@ -45,7 +49,10 @@ export const NewsDetails:FC<NewsDetailsProps> = memo((props) => {
   const error = useSelector(getNewsDetailsError);
   const news = useSelector(getNewsDetailsData);
 
-  const sortedBlocks = useMemo(() => news?.blocks && [...news.blocks].sort((a, b) => a.sequenceNumber - b.sequenceNumber), [news?.blocks]);
+  const sortedBlocks = useMemo(
+    () => news?.blocks && [...news.blocks].sort((a, b) => a.sequenceNumber - b.sequenceNumber),
+    [news?.blocks]
+  );
   // TODO create sequence map to avoid sort
   useInitialEffect(() => {
     dispatch(fetchNewsById({ id }));
@@ -80,13 +87,18 @@ export const NewsDetails:FC<NewsDetailsProps> = memo((props) => {
       </div>
     );
   }
- 
+
   return (
     <>
       <Card className={cls.card}>
-        {news.imageUrl
-          ? <AppImage className={cls.image} src={news.imageUrl} alt="news" fallback={<Skeleton width="100%" height={230} />} />
-          : null}
+        {news.imageUrl ? (
+          <AppImage
+            className={cls.image}
+            src={news.imageUrl}
+            alt="news"
+            fallback={<Skeleton width="100%" height={230} />}
+          />
+        ) : null}
 
         <Text className={cls.title} size={TextSize.XL} title={news.title} text={news.subTitle} />
         <Text className={cls.mainText} size={TextSize.M} title={news.mainText} />

@@ -1,32 +1,34 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Flex } from './Flex';
 
-const children = <>
-  <div style={{width: 50, height: 50, background: '#E7ECFF'}}></div>
-  <div style={{width: 50, height: 50, background: '#FFFADD'}}></div>
-  <div style={{width: 50, height: 50, background: '#DEF7FE'}}></div>
-</>
+const children = (
+  <>
+    <div style={{ width: 50, height: 50, background: '#E7ECFF' }}></div>
+    <div style={{ width: 50, height: 50, background: '#FFFADD' }}></div>
+    <div style={{ width: 50, height: 50, background: '#DEF7FE' }}></div>
+  </>
+);
 
 export default {
   title: 'Shared/Flex',
   component: Flex,
   argTypes: {
     align: {
-      control: {type: 'radio'},
-      options: ['start', 'center', 'end'] 
+      control: { type: 'radio' },
+      options: ['start', 'center', 'end']
     },
     justify: {
-      control: {type: 'radio'},
-      options: ['start', 'center', 'end', 'between', 'around'] 
+      control: { type: 'radio' },
+      options: ['start', 'center', 'end', 'between', 'around']
     },
     direction: {
-      control: {type: 'radio'},
-      options: ['row', 'column', 'row-reverse', 'column-reverse'] 
+      control: { type: 'radio' },
+      options: ['row', 'column', 'row-reverse', 'column-reverse']
     },
     gap: {
-      control: {type: 'radio'},
-      options: [4, 8 ,16, 32] 
-    },
+      control: { type: 'radio' },
+      options: [4, 8, 16, 32]
+    }
   }
 } as ComponentMeta<typeof Flex>;
 
@@ -34,7 +36,7 @@ const Template: ComponentStory<typeof Flex> = (args) => <Flex {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  children: children,
+  children: children
 };
 
 export const JustifyStart = Template.bind({});

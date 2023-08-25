@@ -1,13 +1,15 @@
 import { FC, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { LoginForm } from '@/features/AuthByUsername';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Page } from '@/widgets/Page/Page';
-import cls from './LoginPage.module.scss';
 import { routes } from '@/shared/constant/router';
 
+import cls from './LoginPage.module.scss';
+
 interface LoginPageProps {
-   className?: string;
+  className?: string;
 }
 
 export const LoginPage: FC<LoginPageProps> = (props) => {

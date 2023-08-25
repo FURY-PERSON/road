@@ -1,6 +1,6 @@
-import { StateSchema } from "@/app/providers/StoreProvider";
-import { ValidationError } from "../../types/error";
-import { getRegisterValidationError } from "./getRegisterValidationError";
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { ValidationError } from '../../types/error';
+import { getRegisterValidationError } from './getRegisterValidationError';
 
 describe('getRegisterValidationError', () => {
   test('should return register validation errors', () => {
@@ -10,13 +10,14 @@ describe('getRegisterValidationError', () => {
       }
     };
 
-    expect(getRegisterValidationError(state as StateSchema)).toEqual([ValidationError.NO_DATA, ValidationError.SERVER_ERROR]);
+    expect(getRegisterValidationError(state as StateSchema)).toEqual([
+      ValidationError.NO_DATA,
+      ValidationError.SERVER_ERROR
+    ]);
   });
 
   test('should work with empty state', () => {
-    const state: DeepPartial<StateSchema> = {
-
-    };
+    const state: DeepPartial<StateSchema> = {};
 
     expect(getRegisterValidationError(state as StateSchema)).toBe(undefined);
   });

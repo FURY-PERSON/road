@@ -1,5 +1,6 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import sass from 'sass';
+
 import { BuildOption } from '../types/config';
 import { babelRemovePropsPlugin } from '../babelPlugins/babelRemovePropsPlugin';
 
@@ -15,30 +16,30 @@ export function buildCssLoader(isDev: boolean) {
           sourceMap: isDev,
           modules: {
             auto: (path: string) => !!path.includes('.module.'),
-            localIdentName: isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:8]',
-          },
-        },
+            localIdentName: isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:8]'
+          }
+        }
       },
       {
         loader: 'sass-loader',
         options: {
           // Prefer `dart-sass`
-          implementation: sass,
-        },
-      },
-    ],
+          implementation: sass
+        }
+      }
+    ]
   };
 }
 
 export function buildSvgLoader() {
   return {
     test: /\.svg$/,
-    use: ['@svgr/webpack'],
+    use: ['@svgr/webpack']
   };
 }
 
 interface BuildBabelLoaderProps extends BuildOption {
-  isTsx: boolean
+  isTsx: boolean;
 }
 
 export function buildBabelLoader({ isDev, isTsx }: BuildBabelLoaderProps) {
@@ -46,18 +47,18 @@ export function buildBabelLoader({ isDev, isTsx }: BuildBabelLoaderProps) {
     [
       '@babel/plugin-transform-typescript',
       {
-        isTsx,
-      },
+        isTsx
+      }
     ],
-    '@babel/plugin-transform-runtime',
+    '@babel/plugin-transform-runtime'
   ];
 
   if (!isDev && isTsx) {
     plugins.push([
       babelRemovePropsPlugin,
       {
-        props: ['data-testid'],
-      },
+        props: ['data-testid']
+      }
     ]);
   }
 
@@ -69,8 +70,8 @@ export function buildBabelLoader({ isDev, isTsx }: BuildBabelLoaderProps) {
       options: {
         cacheDirectory: true,
         presets: ['@babel/preset-env'],
-        plugins: plugins,
-      },
-    },
+        plugins: plugins
+      }
+    }
   };
 }

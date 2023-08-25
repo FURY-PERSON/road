@@ -1,19 +1,25 @@
 import { memo, FC } from 'react';
+
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { DynamicModuleLoader, ReducersList } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
+import {
+  DynamicModuleLoader,
+  ReducersList
+} from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
+
+import { createAndEditNewsReducer } from '../../model/slice/createAndEditNews.slice';
+
 import cls from './CreateAndEditNews.module.scss';
 import { CreateAndEditNews, CreateAndEditNewsProps } from './CreateAndEditNews';
-import { createAndEditNewsReducer } from '../../model/slice/createAndEditNews.slice';
 
 interface CreateAndEditNewsContainerProps extends CreateAndEditNewsProps {
   className?: string;
 }
 
 const reducers: ReducersList = {
-  createAndEditNews: createAndEditNewsReducer,
+  createAndEditNews: createAndEditNewsReducer
 };
 
-export const CreateAndEditNewsContainer:FC<CreateAndEditNewsContainerProps> = memo((props) => {
+export const CreateAndEditNewsContainer: FC<CreateAndEditNewsContainerProps> = memo((props) => {
   const { className, ...otherProps } = props;
 
   return (

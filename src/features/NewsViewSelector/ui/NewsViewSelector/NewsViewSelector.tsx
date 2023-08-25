@@ -1,14 +1,17 @@
 import { memo } from 'react';
+
 import { NewsListVariant } from '@/entities/News/model/types/news';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
-import cls from './NewsViewSelector.module.scss';
+
 import { viewTypes } from '../../model/constants/newsViewSelector';
 
+import cls from './NewsViewSelector.module.scss';
+
 interface NewsViewSelectorProps {
-    className?: string;
-    view: NewsListVariant,
-    onViewClick?: (view: NewsListVariant) => void;
+  className?: string;
+  view: NewsListVariant;
+  onViewClick?: (view: NewsListVariant) => void;
 }
 
 export const NewsViewSelector = memo((props: NewsViewSelectorProps) => {
@@ -21,11 +24,10 @@ export const NewsViewSelector = memo((props: NewsViewSelectorProps) => {
   return (
     <div className={classNames(cls.NewsViewSelector, {}, [className])}>
       {viewTypes.map((viewType) => (
-        <Button
-          variant={ButtonVariant.CLEAR}
-          onClick={onClick(viewType.view)}
-        >
-          <viewType.Icon className={classNames(cls.icon, { [cls.notSelected]: viewType.view !== view })} />
+        <Button variant={ButtonVariant.CLEAR} onClick={onClick(viewType.view)}>
+          <viewType.Icon
+            className={classNames(cls.icon, { [cls.notSelected]: viewType.view !== view })}
+          />
         </Button>
       ))}
     </div>

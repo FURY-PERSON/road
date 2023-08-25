@@ -2,16 +2,18 @@ import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
 import { getUserData, userActions } from '@/entities/User';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { Button } from '@/shared/ui/Button/Button';
 import { NotificationButton } from '@/features/NotificationButton';
-import cls from './Navbar.module.scss';
 import { routes } from '@/shared/constant/router';
 
+import cls from './Navbar.module.scss';
+
 interface NavbarProps {
-  className?: string
+  className?: string;
 }
 
 export function Navbar(props: NavbarProps) {
@@ -50,7 +52,7 @@ export function Navbar(props: NavbarProps) {
 
         <div className={cls.right}>
           <NotificationButton />
-          
+
           <Button onClick={onLogout}>{t('logout')}</Button>
         </div>
       </div>

@@ -1,4 +1,3 @@
-import { News } from '@/entities/News';
 import { User } from '@/entities/User';
 
 export interface Comment {
@@ -6,10 +5,10 @@ export interface Comment {
   title: string;
   subTitle: string;
   mainText: string;
-  author: User
+  author: User;
   rating?: number;
   createdAt: Date;
-/*   news: News; */
+  /*   news: News; */
 
   /*   likers: User[]
   dislikers: User[] */

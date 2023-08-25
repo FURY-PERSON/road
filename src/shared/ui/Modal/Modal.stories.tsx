@@ -5,8 +5,8 @@ export default {
   title: 'shared/Modal',
   component: Modal,
   parameters: {
-    loki: { skip: true },
-  },
+    loki: { skip: true }
+  }
 } as ComponentMeta<typeof Modal>;
 
 const Template: ComponentStory<typeof Modal> = (args) => <Modal {...args} />;

@@ -3,17 +3,17 @@ export { EditableTextBlock } from './ui/EditableTextBlock/EditableTextBlock';
 export { EditableImageBlock } from './ui/EditableImageBlock/EditableImageBlock';
 export { EditableCodeBlock } from './ui/EditableCodeBlock/EditableCodeBlock';
 export {
-  type EditableNewsBlockTextHandlers, 
-  type EditableNewsBlockCodeHandlers, 
-  type EditableNewsBlockImageHandlers, 
+  type EditableNewsBlockTextHandlers,
+  type EditableNewsBlockCodeHandlers,
+  type EditableNewsBlockImageHandlers,
   type EditableNewsBlockImage,
   type EditableNewsBlockText,
   type EditableNewsBlockCode,
-  type EditableNewsBlock, 
+  type EditableNewsBlock,
   type EditableNewsBlockTextParagraph,
-  isEditableNewsBlockCode, 
-  isEditableNewsBlockImage, 
-  isEditableNewsBlockText,
+  isEditableNewsBlockCode,
+  isEditableNewsBlockImage,
+  isEditableNewsBlockText
 } from './model/types/editableNewsBlock';
 export { EditableNewsCodeBlockDto } from './model/dto/EditableNewsCodeBlockDto';
 export { EditableNewsImageBlockDto } from './model/dto/EditableNewsImageBlockDto';

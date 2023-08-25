@@ -1,12 +1,13 @@
 import React, { ErrorInfo, ReactNode } from 'react';
+
 import { PageError } from '@/widgets/PageError/ui/PageError';
 
 interface ErrorBoundaryProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 interface ErrorBoundaryState {
-  hasError: boolean
+  hasError: boolean;
 }
 
 export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
@@ -28,12 +29,12 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
   render() {
     const { hasError } = this.state;
     const { children } = this.props;
-    
+
     if (hasError) {
       // You can render any custom fallback UI
       return <PageError />;
     }
 
-    return children; 
+    return children;
   }
 }

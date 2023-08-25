@@ -1,26 +1,26 @@
-import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { Comment } from '@/entities/Comment';
+
 import { fetchCommentsByNewsId } from '../services/fetchNewsDetailsComments/fetchNewsDetailsComments';
 import { NewsDetailsCommentsSchema } from '../types/newsDetailsCommentsSchema';
 
 const newsDetailsCommentsAdapter = createEntityAdapter<Comment>({
-  selectId: (comment) => comment.id,
+  selectId: (comment) => comment.id
 });
 
 export const getNewsDetailsComments = newsDetailsCommentsAdapter.getSelectors<StateSchema>(
-  (state) => state.newsDetailsComments || newsDetailsCommentsAdapter.getInitialState(),
+  (state) => state.newsDetailsComments || newsDetailsCommentsAdapter.getInitialState()
 );
 
 export const newsDetailsCommentsSlice = createSlice({
   name: 'newsDetailsComments',
   initialState: newsDetailsCommentsAdapter.getInitialState<NewsDetailsCommentsSchema>({
     entities: {},
-    ids: [],
+    ids: []
   }),
-  reducers: {
-
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchCommentsByNewsId.pending, (state) => {
@@ -36,7 +36,7 @@ export const newsDetailsCommentsSlice = createSlice({
         state.error = action.payload;
         state.isLoading = false;
       });
-  },
+  }
 });
 
 // Action creators are generated for each case reducer function

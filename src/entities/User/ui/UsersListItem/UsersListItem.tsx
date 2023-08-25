@@ -1,25 +1,24 @@
-import {
-  memo, FC, HTMLAttributeAnchorTarget, 
-} from 'react';
+import { memo, FC, HTMLAttributeAnchorTarget } from 'react';
 import { useTranslation } from 'react-i18next';
+
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Card } from '@/shared/ui/Card/Card';
 import { Text, TextSize } from '@/shared/ui/Text/Text';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import cls from './UsersListItem.module.scss';
-import { User } from '../../model/types/user';
 import { routes } from '@/shared/constant/router';
+
+import { User } from '../../model/types/user';
+
+import cls from './UsersListItem.module.scss';
 
 interface UsersListItemProps {
   className?: string;
-  user: User,
-  target?: HTMLAttributeAnchorTarget
+  user: User;
+  target?: HTMLAttributeAnchorTarget;
 }
 
-export const UsersListItem:FC<UsersListItemProps> = memo((props) => {
-  const {
-    className, user, target = '_self',
-  } = props;
+export const UsersListItem: FC<UsersListItemProps> = memo((props) => {
+  const { className, user, target = '_self' } = props;
 
   const { t } = useTranslation('users');
 
@@ -40,9 +39,8 @@ export const UsersListItem:FC<UsersListItemProps> = memo((props) => {
 
           <div className={cls.section}>
             <Text title={t('role')} className={cls.label} />
-            <Text size={TextSize.M} title={user.role?.name} className={cls.value} /> 
+            <Text size={TextSize.M} title={user.role?.name} className={cls.value} />
           </div>
-
         </div>
       </Card>
     </AppLink>

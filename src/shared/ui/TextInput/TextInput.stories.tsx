@@ -4,12 +4,10 @@ import { TextInput } from './TextInput';
 
 export default {
   title: 'Shared/TextInput',
-  component: TextInput,
+  component: TextInput
 } as ComponentMeta<typeof TextInput>;
 
 const Template: ComponentStory<typeof TextInput> = (args) => <TextInput {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  
-};
+Default.args = {};

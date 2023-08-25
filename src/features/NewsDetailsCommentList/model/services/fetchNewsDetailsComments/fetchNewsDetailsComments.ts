@@ -1,17 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
+
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { Comment } from '@/entities/Comment';
 
 export const fetchCommentsByNewsId = createAsyncThunk<Comment[], string, ThunkConfig<string>>(
   'news/fetchCommentsByNewsId',
   async (newsId, thunkAPI) => {
-    const {
-      extra, rejectWithValue, 
-    } = thunkAPI;
+    const { extra, rejectWithValue } = thunkAPI;
     try {
       const response = await extra.api.get<Comment[]>(`comment/news/${newsId}`);
-      const comments = response.data; 
+      const comments = response.data;
 
       if (!comments) {
         return rejectWithValue('Comments not found');
@@ -22,5 +21,5 @@ export const fetchCommentsByNewsId = createAsyncThunk<Comment[], string, ThunkCo
       const typedError = error as AxiosError;
       return thunkAPI.rejectWithValue(typedError.response?.statusText || typedError.message);
     }
-  },
+  }
 );

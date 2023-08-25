@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 import { selectByTestId as selectByTestIdUtil } from 'cypress/helpers/selectByTestId';
-import { ACCESS_TOKEN_LOCALSTORAGE_KEY, REFRESH_TOKEN_LOCALSTORAGE_KEY } from '../../../src/shared/constant/localstorage';
+
+import {
+  ACCESS_TOKEN_LOCALSTORAGE_KEY,
+  REFRESH_TOKEN_LOCALSTORAGE_KEY
+} from '../../../src/shared/constant/localstorage';
 import { User } from '../../../src/entities/User';
 
 export const login = (login: string, password: string) => {
@@ -11,10 +15,10 @@ export const login = (login: string, password: string) => {
     url: 'http://localhost:3005/api/auth/login',
     body: {
       login,
-      password,
-    },
+      password
+    }
   }).then(({ body }) => {
-    Cypress.env('token', body.tokens.accessToken)
+    Cypress.env('token', body.tokens.accessToken);
     window.localStorage.setItem(ACCESS_TOKEN_LOCALSTORAGE_KEY, body.tokens.accessToken);
     window.localStorage.setItem(REFRESH_TOKEN_LOCALSTORAGE_KEY, body.tokens.refreshToken);
 
@@ -35,7 +39,7 @@ Cypress.Commands.overwrite('request', (originalFn, ...options) => {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${Cypress.env('token')}`,
       'Access-Control-Expose-Headers': '*',
-      ...optionsObject.headers,
+      ...optionsObject.headers
     };
 
     return originalFn(optionsObject);
@@ -47,8 +51,8 @@ Cypress.Commands.overwrite('request', (originalFn, ...options) => {
 declare global {
   namespace Cypress {
     interface Chainable {
-      login(login: string, password: string): Chainable<User>
-      selectByTestId(testId: string): Chainable<JQuery<HTMLElement>>
+      login(login: string, password: string): Chainable<User>;
+      selectByTestId(testId: string): Chainable<JQuery<HTMLElement>>;
     }
   }
 }

@@ -1,13 +1,14 @@
 import { NewsBlock, NewsBlockType } from '@/entities/News';
 import {
-  EditableNewsBlock, 
-  EditableNewsCodeBlockDto, 
-  EditableNewsImageBlockDto, 
-  EditableNewsTextBlockDto, 
-  isEditableNewsBlockCode, 
-  isEditableNewsBlockImage, 
-  isEditableNewsBlockText, 
+  EditableNewsBlock,
+  EditableNewsCodeBlockDto,
+  EditableNewsImageBlockDto,
+  EditableNewsTextBlockDto,
+  isEditableNewsBlockCode,
+  isEditableNewsBlockImage,
+  isEditableNewsBlockText
 } from '@/features/EditableNewsBlock';
+
 import { EditableNewsTextBlockToServer } from '../dto/EditableNewsTextBlockToServer';
 import { EditableNewsImageBlockToServer } from '../dto/EditableNewsImageBlockToServer';
 import { EditableNewsCodeBlockToServer } from '../dto/EditableNewsCodeBlockToServer';
@@ -20,7 +21,7 @@ export function blockToState(blocks: NewsBlock[]): EditableNewsBlock[] {
     if (block.type === NewsBlockType.IMAGE) {
       return { ...new EditableNewsImageBlockDto(block) };
     }
-    
+
     return { ...new EditableNewsCodeBlockDto(block) };
   });
 }
@@ -43,7 +44,7 @@ export function stateBlocksToServer(blocks: EditableNewsBlock[]): Array<Omit<New
       ...block,
       type: block.type,
       localId: undefined,
-      id: undefined,
+      id: undefined
     };
   });
 }

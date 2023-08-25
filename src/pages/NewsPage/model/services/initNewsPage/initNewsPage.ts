@@ -1,7 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { SortOrder } from '@/shared/types/sort';
 import { NewsSort, NewsType } from '@/entities/News';
+
 import { fetchNewsList } from '../fetchNewsList/fetchNewsList';
 import { getNewsPageInited } from '../../selectors/getNewsPageInited/getNewsPageInited';
 import { newsPageActions } from '../../slice/newsPage.slice';
@@ -9,9 +11,7 @@ import { newsPageActions } from '../../slice/newsPage.slice';
 export const initNewsPage = createAsyncThunk<void, URLSearchParams, ThunkConfig<string>>(
   'news/initNewsPage',
   async (data, thunkAPI) => {
-    const {
-      getState, dispatch,
-    } = thunkAPI;
+    const { getState, dispatch } = thunkAPI;
 
     const inited = getNewsPageInited(getState());
     if (!inited) {
@@ -23,37 +23,25 @@ export const initNewsPage = createAsyncThunk<void, URLSearchParams, ThunkConfig<
       const typeFromUrl = data.get('type') as NewsType;
 
       if (orderFromUrl) {
-        dispatch(
-          newsPageActions.setOrder(orderFromUrl),
-        );
-      } 
+        dispatch(newsPageActions.setOrder(orderFromUrl));
+      }
       if (limitFromUrl) {
-        dispatch(
-          newsPageActions.setLimit(limitFromUrl),
-        );
-      } 
+        dispatch(newsPageActions.setLimit(limitFromUrl));
+      }
       if (pageFromUrl) {
-        dispatch(
-          newsPageActions.setPage(pageFromUrl),
-        );
-      } 
+        dispatch(newsPageActions.setPage(pageFromUrl));
+      }
       if (sortFromUrl) {
-        dispatch(
-          newsPageActions.setSort(sortFromUrl),
-        );
-      } 
+        dispatch(newsPageActions.setSort(sortFromUrl));
+      }
       if (searchFromUrl) {
-        dispatch(
-          newsPageActions.setSearch(searchFromUrl),
-        );
-      } 
+        dispatch(newsPageActions.setSearch(searchFromUrl));
+      }
       if (typeFromUrl) {
-        dispatch(
-          newsPageActions.setType(typeFromUrl),
-        );
-      } 
+        dispatch(newsPageActions.setType(typeFromUrl));
+      }
 
       dispatch(fetchNewsList({ page: 1 }));
     }
-  },
+  }
 );

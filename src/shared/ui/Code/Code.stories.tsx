@@ -4,7 +4,7 @@ import { Code } from './Code';
 
 export default {
   title: 'Shared/Code',
-  component: Code,
+  component: Code
 } as ComponentMeta<typeof Code>;
 
 const Template: ComponentStory<typeof Code> = (args) => <Code {...args} />;
@@ -28,5 +28,3 @@ Default.args = {
   };
   `
 };
-
-

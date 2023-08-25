@@ -1,14 +1,15 @@
 import { rtkApi } from '@/shared/api/rtkApi';
+
 import { Feedback } from '../model/types/feedback';
 
 interface GetNewsFeedbackArgs {
-  newsId: string
+  newsId: string;
 }
 
 interface CreateNewsFeedbackArgs {
-  newsId: string,
-  rating: number,
-  text?: string
+  newsId: string;
+  rating: number;
+  text?: string;
 }
 
 const feedbackApi = rtkApi.injectEndpoints({
@@ -16,11 +17,11 @@ const feedbackApi = rtkApi.injectEndpoints({
     getNewsFeedback: build.query<Feedback, GetNewsFeedbackArgs>({
       providesTags: ['newsFeedback'],
       query: ({ newsId }) => ({
-        url: `feedback/news/${newsId}/user`,
+        url: `feedback/news/${newsId}/user`
       }),
       transformResponse(value: Feedback[], meta, arg) {
         return value[0];
-      },
+      }
     }),
 
     createNewsFeedback: build.mutation<Feedback, CreateNewsFeedbackArgs>({
@@ -29,13 +30,13 @@ const feedbackApi = rtkApi.injectEndpoints({
         method: 'POST',
         body: {
           ...args,
-          relatedEntityId: args.newsId,
-        },
+          relatedEntityId: args.newsId
+        }
       }),
-      invalidatesTags: ['newsFeedback'],
-    }),
+      invalidatesTags: ['newsFeedback']
+    })
   }),
-  overrideExisting: false,
+  overrideExisting: false
 });
 
 export const useGetNewsFeedback = feedbackApi.useGetNewsFeedbackQuery;

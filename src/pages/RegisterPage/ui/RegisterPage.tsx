@@ -1,10 +1,12 @@
 import { FC, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { RegisterForm } from '@/features/RegisterNewUser';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Page } from '@/widgets/Page/Page';
-import cls from './RegisterPage.module.scss';
 import { routes } from '@/shared/constant/router';
+
+import cls from './RegisterPage.module.scss';
 
 interface RegisterPageProps {
   className?: string;

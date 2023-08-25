@@ -1,1 +1,1 @@
-export {NewsViewSelector} from "./ui/NewsViewSelector/NewsViewSelector"
+export { NewsViewSelector } from './ui/NewsViewSelector/NewsViewSelector';

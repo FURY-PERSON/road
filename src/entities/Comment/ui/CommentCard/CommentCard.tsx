@@ -1,17 +1,20 @@
 import { memo, FC } from 'react';
+
 import { routes } from '@/shared/constant/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { Text, TextSize } from '@/shared/ui/Text/Text';
+
 import { Comment } from '../../model/types/comment';
+
 import cls from './CommentCard.module.scss';
 
 interface CommentCardProps {
   className?: string;
-  comment: Comment
+  comment: Comment;
 }
 
-export const CommentCard:FC<CommentCardProps> = memo((props) => {
+export const CommentCard: FC<CommentCardProps> = memo((props) => {
   const { className, comment } = props;
 
   return (

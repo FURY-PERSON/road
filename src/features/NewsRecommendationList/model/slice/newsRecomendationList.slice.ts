@@ -1,17 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import { fetchNewsRecommendationList } from '../services/fetchNewsRecommendationList/fetchNewsRecommendationList';
 import { NewsRecommendationListSchema } from '../types/newsRecomendationListSchema';
 
-const initialState: NewsRecommendationListSchema = {
-
-};
+const initialState: NewsRecommendationListSchema = {};
 
 const newsRecommendationListSlice = createSlice({
   name: 'newsRecommendationListSlice',
   initialState: initialState,
-  reducers: {
-
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchNewsRecommendationList.pending, (state, action) => {
@@ -27,7 +24,7 @@ const newsRecommendationListSlice = createSlice({
         state.error = action.payload;
         state.isLoading = false;
       });
-  },
+  }
 });
 
 export const { actions: newsRecommendationListActions } = newsRecommendationListSlice;

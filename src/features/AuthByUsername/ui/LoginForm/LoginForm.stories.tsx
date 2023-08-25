@@ -5,34 +5,30 @@ import { LoginForm } from './LoginForm';
 
 export default {
   title: 'features/LoginForm',
-  component: LoginForm,
+  component: LoginForm
 } as ComponentMeta<typeof LoginForm>;
 
 const Template: ComponentStory<typeof LoginForm> = (args) => <LoginForm {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  
-};
+Default.args = {};
 
 export const Error = Template.bind({});
-Error.decorators = [StoreDecorator({
-  loginForm: {
-    error: 'error',
-  },
-})];
-Error.args = {
-  
-};
-
+Error.decorators = [
+  StoreDecorator({
+    loginForm: {
+      error: 'error'
+    }
+  })
+];
+Error.args = {};
 
 export const Pending = Template.bind({});
-Pending.decorators = [StoreDecorator({
-  loginForm: {
-    isLoading: true
-  }
-})];
-Pending.args = {
-  
-};
-
+Pending.decorators = [
+  StoreDecorator({
+    loginForm: {
+      isLoading: true
+    }
+  })
+];
+Pending.args = {};

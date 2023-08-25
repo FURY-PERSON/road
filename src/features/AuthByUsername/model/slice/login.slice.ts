@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { loginByUsername } from '../services/loginByUsername/loginByUsername';
 import { LoginSchema } from '../types/login.schema';
 
 const initialState: LoginSchema = {
   isLoading: false,
   login: '',
-  password: '',
+  password: ''
 };
 
 export const loginSlice = createSlice({
@@ -17,7 +18,7 @@ export const loginSlice = createSlice({
     },
     setPassword(state, action: PayloadAction<string>) {
       state.password = action.payload;
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -35,7 +36,7 @@ export const loginSlice = createSlice({
         state.error = action.payload;
         state.isLoading = false;
       });
-  },
+  }
 });
 
 // Action creators are generated for each case reducer function

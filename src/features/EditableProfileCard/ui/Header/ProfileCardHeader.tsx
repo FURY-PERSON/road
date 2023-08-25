@@ -1,21 +1,24 @@
 import { memo, FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button } from '@/shared/ui/Button/Button';
 import { updateProfile } from '@/features/EditableProfileCard/model/services/updateProfileData/updateProfileData';
 import { RoleGuard } from '@/features/RoleGuard';
 import { RoleName } from '@/entities/Role';
+
 import { profileActions } from '../../model/slice/profile.slice';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
+
 import cls from './ProfileCardHeader.module.scss';
 
 interface ProfileCardHeaderProps {
   className?: string;
 }
 
-export const ProfileCardHeader:FC<ProfileCardHeaderProps> = memo((props) => {
+export const ProfileCardHeader: FC<ProfileCardHeaderProps> = memo((props) => {
   const { className } = props;
 
   const readOnly = useSelector(getProfileReadonly);
@@ -36,26 +39,27 @@ export const ProfileCardHeader:FC<ProfileCardHeaderProps> = memo((props) => {
 
   return (
     <div className={classNames(cls.ProfileCardHeader, {}, [className])}>
-      {readOnly
-        ? (
-          <RoleGuard roleNames={[RoleName.ADMIN, RoleName.WORKER]}>
-            <Button data-testid="EditableProfileCard.editButton" onClick={onEditClick}>
-              {t('edit')}
-            </Button>
-          </RoleGuard>
-        )
-        : (
-          <div className={cls.buttons}>
-            <Button data-testid="EditableProfileCard.cancelButton" onClick={onCancelClick}>
-              {t('cancel')}
-            </Button>
+      {readOnly ? (
+        <RoleGuard roleNames={[RoleName.ADMIN, RoleName.WORKER]}>
+          <Button data-testid="EditableProfileCard.editButton" onClick={onEditClick}>
+            {t('edit')}
+          </Button>
+        </RoleGuard>
+      ) : (
+        <div className={cls.buttons}>
+          <Button data-testid="EditableProfileCard.cancelButton" onClick={onCancelClick}>
+            {t('cancel')}
+          </Button>
 
-            <Button data-testid="EditableProfileCard.saveButton" className={cls.save} onClick={onSaveClick}>
-              {t('save')}
-            </Button>
-          </div>
-            
-        )}
+          <Button
+            data-testid="EditableProfileCard.saveButton"
+            className={cls.save}
+            onClick={onSaveClick}
+          >
+            {t('save')}
+          </Button>
+        </div>
+      )}
     </div>
   );
 });

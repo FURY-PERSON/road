@@ -1,5 +1,5 @@
 import webpack from 'webpack';
-import ReactRefreshTypeScript from 'react-refresh-typescript';
+
 import { BuildOption } from './types/config';
 import { buildBabelLoader, buildCssLoader, buildSvgLoader } from './loaders/buildLoaders';
 
@@ -10,8 +10,8 @@ const i18nExtractPlugin = [
     keyAsDefaultValue: false,
     saveMissing: true,
     keySeparator: null,
-    outputPath: 'public/locales/{{locale}}/{{ns}}.json',
-  },
+    outputPath: 'public/locales/{{locale}}/{{ns}}.json'
+  }
 ];
 
 export function buildLoaders(options: BuildOption): webpack.RuleSetRule[] {
@@ -21,7 +21,7 @@ export function buildLoaders(options: BuildOption): webpack.RuleSetRule[] {
 
   const pngLoader = {
     test: /\.(png|jpg|gif)$/i,
-    type: 'asset/resource',
+    type: 'asset/resource'
   };
 
   const codeBabelLoader = buildBabelLoader({ ...options, isTsx: false });
@@ -29,11 +29,5 @@ export function buildLoaders(options: BuildOption): webpack.RuleSetRule[] {
 
   const stylesLoader = buildCssLoader(isDev);
 
-  return [
-    pngLoader,
-    svgLoader,
-    codeBabelLoader,
-    tsxBabelLoader,
-    stylesLoader,
-  ];
+  return [pngLoader, svgLoader, codeBabelLoader, tsxBabelLoader, stylesLoader];
 }

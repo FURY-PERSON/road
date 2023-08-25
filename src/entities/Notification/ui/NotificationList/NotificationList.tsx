@@ -1,25 +1,26 @@
 import { memo, FC } from 'react';
 import { useTranslation } from 'react-i18next';
+
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { VStack } from '@/shared/ui/Stack/VStack/VStack';
 import { SvgLoader } from '@/shared/ui/SvgLoader';
 import { Text, TextVariant } from '@/shared/ui/Text/Text';
+
 import { Notification } from '../../model/types/notification';
-import cls from './NotificationList.module.scss';
 import { NotificationItem } from '../NotificationItem/NotificationItem';
+
+import cls from './NotificationList.module.scss';
 
 interface NotificationListProps {
   className?: string;
-  items?: Notification[]
-  isLoading?: boolean,
-  error?: string
-  onItemClick?: (item: Notification) => void
+  items?: Notification[];
+  isLoading?: boolean;
+  error?: string;
+  onItemClick?: (item: Notification) => void;
 }
 
-export const NotificationList:FC<NotificationListProps> = memo((props) => {
-  const {
-    className, items, error, isLoading, onItemClick,
-  } = props;
+export const NotificationList: FC<NotificationListProps> = memo((props) => {
+  const { className, items, error, isLoading, onItemClick } = props;
 
   const { t } = useTranslation();
 
@@ -41,7 +42,9 @@ export const NotificationList:FC<NotificationListProps> = memo((props) => {
 
   return (
     <VStack gap={16} className={classNames(cls.NotificationList, {}, [className])}>
-      {items?.map((notification) => <NotificationItem key={notification.id} item={notification} onClick={onItemClick} />)}
+      {items?.map((notification) => (
+        <NotificationItem key={notification.id} item={notification} onClick={onItemClick} />
+      ))}
     </VStack>
   );
 });

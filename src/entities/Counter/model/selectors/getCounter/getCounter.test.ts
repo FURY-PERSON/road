@@ -4,9 +4,9 @@ import { getCounter } from './getCounter';
 describe('getCounter', () => {
   test('should return counter value', () => {
     const state: DeepPartial<StateSchema> = {
-      counter: { value: 3 },
+      counter: { value: 3 }
     };
 
-    expect(getCounter(state as StateSchema)).toEqual({value: 3});
+    expect(getCounter(state as StateSchema)).toEqual({ value: 3 });
   });
 });

@@ -1,12 +1,12 @@
-import { StateSchema } from "@/app/providers/StoreProvider";
-import { RoleName } from "@/entities/Role";
-import { initialForm } from "../../slice/register.slice";
-import { RegisterForm } from "../../types/register.schema";
-import { getRegisterForm } from "./getRegisterForm";
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { RoleName } from '@/entities/Role';
+import { initialForm } from '../../slice/register.slice';
+import { RegisterForm } from '../../types/register.schema';
+import { getRegisterForm } from './getRegisterForm';
 
 describe('getRegisterForm', () => {
   test('should return register from state', () => {
-    const form:RegisterForm = {
+    const form: RegisterForm = {
       confirmPassword: '12345',
       email: 'email@gmail.com',
       firstName: 'first',
@@ -15,7 +15,7 @@ describe('getRegisterForm', () => {
       password: '12345',
       phone: '+37533455644',
       role: RoleName.ADMIN
-    }
+    };
     const state: DeepPartial<StateSchema> = {
       registerForm: {
         form: form
@@ -26,9 +26,7 @@ describe('getRegisterForm', () => {
   });
 
   test('should work with empty state', () => {
-    const state: DeepPartial<StateSchema> = {
-
-    };
+    const state: DeepPartial<StateSchema> = {};
 
     expect(getRegisterForm(state as StateSchema)).toEqual(initialForm);
   });

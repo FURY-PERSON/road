@@ -1,7 +1,11 @@
 import { Project } from 'ts-morph';
 
 function isAbsolute(value: string) {
-  if (['app', 'shared', 'entities', 'features', 'widgets', 'pages'].some((layer) => value.startsWith(layer))) {
+  if (
+    ['app', 'shared', 'entities', 'features', 'widgets', 'pages'].some((layer) =>
+      value.startsWith(layer)
+    )
+  ) {
     return true;
   }
 

@@ -1,22 +1,23 @@
-import {
-  memo, FC, useState, useCallback, 
-} from 'react';
+import { memo, FC, useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
+
 import { LanguageSwitcher } from '@/features/LanguageSwitcher';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Button, ButtonSize, ButtonVariant } from '@/shared/ui/Button/Button';
 import { RoleGuard } from '@/features/RoleGuard';
 import { VStack } from '@/shared/ui/Stack/VStack/VStack';
-import cls from './Sidebar.module.scss';
+
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { getSidebarItemList } from '../../model/selectors/getSidebarItemList/getSidebarItemList';
+
+import cls from './Sidebar.module.scss';
 
 interface SidebarProps {
   className?: string;
 }
 
-export const Sidebar:FC<SidebarProps> = memo((props) => {
+export const Sidebar: FC<SidebarProps> = memo((props) => {
   const { className } = props;
   const [collapsed, serCollapsed] = useState(false);
 
@@ -27,7 +28,7 @@ export const Sidebar:FC<SidebarProps> = memo((props) => {
   }, []);
 
   return (
-    <aside 
+    <aside
       data-testid="sidebar"
       className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}
     >
@@ -39,8 +40,8 @@ export const Sidebar:FC<SidebarProps> = memo((props) => {
         ))}
       </VStack>
 
-      <Button 
-        data-testid="sidebar-toggle" 
+      <Button
+        data-testid="sidebar-toggle"
         onClick={onToggle}
         square
         className={cls.collapseBtn}

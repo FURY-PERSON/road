@@ -1,5 +1,5 @@
-import { StateSchema } from "@/app/providers/StoreProvider";
-import { getRegisterLoading } from "./getRegisterLoading";
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { getRegisterLoading } from './getRegisterLoading';
 
 describe('getRegisterLoading', () => {
   test('should return register loading - true', () => {
@@ -23,9 +23,7 @@ describe('getRegisterLoading', () => {
   });
 
   test('should work with empty state', () => {
-    const state: DeepPartial<StateSchema> = {
-
-    };
+    const state: DeepPartial<StateSchema> = {};
 
     expect(getRegisterLoading(state as StateSchema)).toBe(undefined);
   });

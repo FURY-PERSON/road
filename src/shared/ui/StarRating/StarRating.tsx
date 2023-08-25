@@ -1,21 +1,21 @@
 import { memo, FC, useState } from 'react';
-import cls from './StarRating.module.scss';
+
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import StarIcon from '@/shared/assets/icons/star.svg';
 
+import cls from './StarRating.module.scss';
+
 interface StarRatingProps {
   className?: string;
-  onSelect?: (star: number) => void
-  size?: number
-  selectedStars?: number
+  onSelect?: (star: number) => void;
+  size?: number;
+  selectedStars?: number;
 }
 
 const starts = [1, 2, 3, 4, 5];
 
-export const StarRating:FC<StarRatingProps> = memo((props) => {
-  const {
-    className, onSelect, selectedStars = 0, size = 30, 
-  } = props;
+export const StarRating: FC<StarRatingProps> = memo((props) => {
+  const { className, onSelect, selectedStars = 0, size = 30 } = props;
 
   const [currentStarsCount, setCurrentStarsCount] = useState(selectedStars);
   const [isSelected, setIsSelected] = useState(Boolean(selectedStars));
@@ -50,10 +50,14 @@ export const StarRating:FC<StarRatingProps> = memo((props) => {
           onMouseLeave={onLeave}
           onClick={onClick(star)}
           onMouseEnter={onHover(star)}
-          className={classNames(cls.star, {
-            [cls.hovered]: currentStarsCount >= star,
-            [cls.normal]: isSelected,
-          }, [])}
+          className={classNames(
+            cls.star,
+            {
+              [cls.hovered]: currentStarsCount >= star,
+              [cls.normal]: isSelected
+            },
+            []
+          )}
         />
       ))}
     </div>

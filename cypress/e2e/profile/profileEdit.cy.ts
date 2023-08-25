@@ -5,7 +5,7 @@ const userData: Partial<User> = {
   firstName: 'misha',
   lastName: 'admin',
   phone: '+375446577833',
-  email: 'sdfsd@gmail.com',
+  email: 'sdfsd@gmail.com'
 };
 
 describe('Edit profile', () => {

@@ -1,19 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import { fetchNewsById } from '../services/fetchNewsById/fetchNewsById';
 import { NewsDetailsSchema } from '../types/newsDetailsSchema';
 
 const initialState: NewsDetailsSchema = {
   isLoading: false,
   data: undefined,
-  error: undefined,
+  error: undefined
 };
 
 export const newsDetailsSlice = createSlice({
   name: 'newsDetails',
   initialState,
-  reducers: {
-
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchNewsById.pending, (state, action) => {
@@ -29,7 +28,7 @@ export const newsDetailsSlice = createSlice({
         state.error = action.payload;
         state.isLoading = false;
       });
-  },
+  }
 });
 
 // Action creators are generated for each case reducer function

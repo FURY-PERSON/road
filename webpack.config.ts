@@ -1,5 +1,7 @@
 import path from 'path';
+
 import webpack from 'webpack';
+
 import { buildWebpackConfig } from './config/build/buildWebpackConfig';
 import { BuildEnv, BuildPaths } from './config/build/types/config';
 
@@ -9,7 +11,7 @@ const paths: BuildPaths = {
   entry: path.resolve(__dirname, 'src', 'index.tsx'),
   src: path.resolve(__dirname, 'src'),
   locales: path.resolve(__dirname, 'public', 'locales'),
-  buildLocales: path.resolve(__dirname, 'build', 'locales'),
+  buildLocales: path.resolve(__dirname, 'build', 'locales')
 };
 
 export default function (env: BuildEnv): webpack.Configuration {
@@ -26,6 +28,6 @@ export default function (env: BuildEnv): webpack.Configuration {
     port,
     analyze,
     apiUrl,
-    project: 'main',
+    project: 'main'
   });
 }

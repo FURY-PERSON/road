@@ -5,10 +5,10 @@ import { NewsListVariant } from '@/entities/News';
 export const viewTypes = [
   {
     view: NewsListVariant.BLOCK,
-    Icon: GridIcon,
+    Icon: GridIcon
   },
   {
     view: NewsListVariant.LIST,
-    Icon: ListIcon,
-  },
+    Icon: ListIcon
+  }
 ];

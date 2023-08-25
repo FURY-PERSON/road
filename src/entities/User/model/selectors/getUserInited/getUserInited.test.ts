@@ -1,5 +1,5 @@
-import { StateSchema } from "@/app/providers/StoreProvider";
-import { getUserInited } from "./getUserInited";
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { getUserInited } from './getUserInited';
 
 describe('getUserInited', () => {
   test('should return user inited flag', () => {
@@ -14,9 +14,7 @@ describe('getUserInited', () => {
 
   test('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {
-      user: {
-
-      }
+      user: {}
     };
 
     expect(getUserInited(state as StateSchema)).toEqual(undefined);

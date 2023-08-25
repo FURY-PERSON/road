@@ -1,5 +1,7 @@
 import { memo, FC } from 'react';
+
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+
 import cls from './EditableNewsBlock.module.scss';
 import { EditableNewsBlockComponent, EditableNewsBlockComponentProps } from './EditableNewsBlock';
 
@@ -7,7 +9,7 @@ interface EditableNewsBlockContainerProps extends EditableNewsBlockComponentProp
   className?: string;
 }
 
-export const EditableNewsBlockContainer:FC<EditableNewsBlockContainerProps> = memo((props) => {
+export const EditableNewsBlockContainer: FC<EditableNewsBlockContainerProps> = memo((props) => {
   const { className, ...otherProps } = props;
 
   return (

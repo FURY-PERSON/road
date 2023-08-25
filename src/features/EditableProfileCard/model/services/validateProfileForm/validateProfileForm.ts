@@ -2,7 +2,7 @@ import { EditableUser, ProfileValidationError } from '../../types/editableProfil
 
 export const validateProfileForm = (profile?: Partial<EditableUser>): ProfileValidationError[] => {
   const errors = new Set<ProfileValidationError>();
-  
+
   if (!profile) {
     errors.add(ProfileValidationError.NO_DATA);
     return Array.from(errors);
@@ -11,11 +11,11 @@ export const validateProfileForm = (profile?: Partial<EditableUser>): ProfileVal
   const { firstName, lastName } = profile;
 
   if (!firstName) {
-    errors.add(ProfileValidationError.USER_DATA); 
+    errors.add(ProfileValidationError.USER_DATA);
   }
 
   if (!lastName) {
-    errors.add(ProfileValidationError.USER_DATA); 
+    errors.add(ProfileValidationError.USER_DATA);
   }
 
   return Array.from(errors);

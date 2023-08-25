@@ -1,12 +1,11 @@
 /* eslint-disable no-param-reassign */
-import {
-  AnyAction, combineReducers, Reducer, ReducersMapObject,
-} from '@reduxjs/toolkit';
-import {
-  MountedReducers, ReducerManager, StateSchema, StateSchemaKey, 
-} from './stateTypes';
+import { AnyAction, combineReducers, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 
-export function createReducerManager(initialReducers: ReducersMapObject<StateSchema>): ReducerManager {
+import { MountedReducers, ReducerManager, StateSchema, StateSchemaKey } from './stateTypes';
+
+export function createReducerManager(
+  initialReducers: ReducersMapObject<StateSchema>
+): ReducerManager {
   const reducers = { ...initialReducers };
 
   let combinedReducer = combineReducers(reducers);
@@ -45,6 +44,6 @@ export function createReducerManager(initialReducers: ReducersMapObject<StateSch
       mountedReducers[key] = false;
       keysToRemove.push(key);
       combinedReducer = combineReducers(reducers);
-    },
+    }
   };
 }

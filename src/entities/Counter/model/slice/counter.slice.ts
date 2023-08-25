@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import { CounterSchema } from '../types/counter';
 
 const initialState: CounterSchema = {
-  value: 0,
+  value: 0
 };
 
 export const counterSlice = createSlice({
@@ -14,8 +15,8 @@ export const counterSlice = createSlice({
     },
     decrement: (state) => {
       state.value -= 1;
-    },
-  },
+    }
+  }
 });
 
 // Action creators are generated for each case reducer function

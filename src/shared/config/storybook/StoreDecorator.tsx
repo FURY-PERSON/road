@@ -1,4 +1,5 @@
 import { Story } from '@storybook/react';
+
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 import { newsDetailsReducer } from '@/entities/News/model/slice/newsDetails.slice';
 import { addCommentFormReducer } from '@/features/AddNewComment/model/slice/addCommentForm.slice';
@@ -22,22 +23,20 @@ const defaultAsyncReducers: ReducersList = {
   newsPage: newsPageReducer,
   newsRecommendationList: newsRecommendationListReducer,
   createAndEditNews: createAndEditNewsReducer,
-  usersPage: usersPageReducer,
+  usersPage: usersPageReducer
 };
 
-export const StoreDecorator = (
-  initialState?: DeepPartial<StateSchema>, 
-  asyncReducers?: ReducersList,
-) => (Story: Story) => {
-  const typedDefaultAsyncReducers = defaultAsyncReducers;
-  const typedAsyncReducers = asyncReducers;
+export const StoreDecorator =
+  (initialState?: DeepPartial<StateSchema>, asyncReducers?: ReducersList) => (Story: Story) => {
+    const typedDefaultAsyncReducers = defaultAsyncReducers;
+    const typedAsyncReducers = asyncReducers;
 
-  return (
-    <StoreProvider 
-      initialState={initialState as StateSchema} 
-      asyncReducers={{ ...typedDefaultAsyncReducers, ...typedAsyncReducers }}
-    >
-      <Story />
-    </StoreProvider>
-  );
-};
+    return (
+      <StoreProvider
+        initialState={initialState as StateSchema}
+        asyncReducers={{ ...typedDefaultAsyncReducers, ...typedAsyncReducers }}
+      >
+        <Story />
+      </StoreProvider>
+    );
+  };

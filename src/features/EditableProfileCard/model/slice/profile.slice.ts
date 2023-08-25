@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { RoleName } from '@/entities/Role';
+
 import { fetchProfile } from '../services/fetchProfileData/fetchProfileData';
 import { updateProfile } from '../services/updateProfileData/updateProfileData';
 import { ProfileSchema } from '../types/editableProfileCard';
@@ -8,9 +10,7 @@ import { UserToStoreDto } from '../dto/UserToStoreDto';
 const initialState: ProfileSchema = {
   isLoading: false,
   readonly: true,
-  form: {
-
-  },
+  form: {}
 };
 
 export const profileSlice = createSlice({
@@ -43,7 +43,7 @@ export const profileSlice = createSlice({
     },
     setEmail(state, action: PayloadAction<string>) {
       state.form.email = action.payload;
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -82,7 +82,7 @@ export const profileSlice = createSlice({
 
         state.isLoading = false;
       });
-  },
+  }
 });
 
 // Action creators are generated for each case reducer function

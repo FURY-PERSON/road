@@ -1,22 +1,19 @@
 {
-  "i18n-ally.localesPaths": [
-    "public/locales",
-    "src/shared/config/i18n"
-  ],
+  "i18n-ally.localesPaths": ["public/locales", "src/shared/config/i18n"],
   "i18n-ally.keystyle": "nested",
-  "stylelint.snippet": [
-    "css",
-    "less",
-    "postcss",
-    "scss"
-  ],
-  "stylelint.validate": [
-    "css",
-    "less",
-    "postcss",
-    "scss"
-  ],
-  "files.associations": {
-    "**/.fttemplates/**": "plaintext",
-    }
+  "stylelint.snippet": ["css", "less", "postcss", "scss"],
+  "stylelint.validate": ["css", "less", "postcss", "scss"],
+
+  "editor.formatOnSave": true,
+  // disable editor formatting, so eslint can handle it
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  // available through eslint plugin in vscode
+  "eslint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "jestrunner.configPath": "config/jest/jest.config.ts"
 }

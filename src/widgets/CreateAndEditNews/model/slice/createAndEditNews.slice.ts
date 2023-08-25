@@ -1,19 +1,25 @@
 import { PayloadAction, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+
 import { NewsBlockType } from '@/entities/News';
 import { getUniqueId } from '@/shared/lib/helpers/getUniqueId/getUniqueId';
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { EditableNewsBlock } from '@/features/EditableNewsBlock';
-import { EditableNewsBlockCode, EditableNewsBlockImage, EditableNewsBlockText } from '@/features/EditableNewsBlock/model/types/editableNewsBlock';
+import {
+  EditableNewsBlockCode,
+  EditableNewsBlockImage,
+  EditableNewsBlockText
+} from '@/features/EditableNewsBlock/model/types/editableNewsBlock';
+
 import { CreateAndEditNewsSchema } from '../types/createAndEditNewsSchema';
 import { initCreateAndEditNews } from '../services/initCreateAndEditNews/initCreateAndEditNews';
 import { blockToState } from '../lib/createAndEditNews';
 
 const createAndEditNewsBlockAdapter = createEntityAdapter<EditableNewsBlock>({
-  selectId: (block) => block.localId,
+  selectId: (block) => block.localId
 });
 
 export const getCreateAndEditNews = createAndEditNewsBlockAdapter.getSelectors<StateSchema>(
-  (state) => state.createAndEditNews || createAndEditNewsBlockAdapter.getInitialState(),
+  (state) => state.createAndEditNews || createAndEditNewsBlockAdapter.getInitialState()
 );
 
 const initialState = createAndEditNewsBlockAdapter.getInitialState<CreateAndEditNewsSchema>({
@@ -23,9 +29,9 @@ const initialState = createAndEditNewsBlockAdapter.getInitialState<CreateAndEdit
     title: '',
     subTitle: '',
     mainText: '',
-    image: '',
+    image: ''
   },
-  isEdit: false,
+  isEdit: false
 });
 
 export const createAndEditNewsSlice = createSlice({
@@ -69,15 +75,22 @@ export const createAndEditNewsSlice = createSlice({
     },
     addBlock(state, action: PayloadAction<NewsBlockType>) {
       const blocksAmount = state.ids.length || 0;
-      createAndEditNewsBlockAdapter.addOne(state, { localId: getUniqueId(), type: action.payload, sequenceNumber: blocksAmount });
-    },
-    updateBlockCode(state, { payload }: PayloadAction<{localBlockId: string, code: string}>) {
-      createAndEditNewsBlockAdapter.updateOne(state, { 
-        id: payload.localBlockId, 
-        changes: { code: payload.code } as EditableNewsBlockCode, 
+      createAndEditNewsBlockAdapter.addOne(state, {
+        localId: getUniqueId(),
+        type: action.payload,
+        sequenceNumber: blocksAmount
       });
     },
-    updateBlockSequenceNum(state, { payload }: PayloadAction<{localBlockId: string, num: number}>) {
+    updateBlockCode(state, { payload }: PayloadAction<{ localBlockId: string; code: string }>) {
+      createAndEditNewsBlockAdapter.updateOne(state, {
+        id: payload.localBlockId,
+        changes: { code: payload.code } as EditableNewsBlockCode
+      });
+    },
+    updateBlockSequenceNum(
+      state,
+      { payload }: PayloadAction<{ localBlockId: string; num: number }>
+    ) {
       const currentPosition = state.entities[payload.localBlockId]!.sequenceNumber;
       const futurePosition = payload.num;
 
@@ -89,75 +102,95 @@ export const createAndEditNewsSlice = createSlice({
       state.ids.forEach((id) => {
         const sequenceNumber = state.entities[id]?.sequenceNumber;
 
-        if (sequenceNumber === undefined
-          || sequenceNumber < minBorder 
-          || sequenceNumber > maxBorder
-        ) return;
+        if (
+          sequenceNumber === undefined ||
+          sequenceNumber < minBorder ||
+          sequenceNumber > maxBorder
+        )
+          return;
 
         if (sequenceNumber === currentPosition) {
-          createAndEditNewsBlockAdapter.updateOne(state, { 
-            id: id, 
-            changes: { sequenceNumber: futurePosition } as EditableNewsBlockImage, 
+          createAndEditNewsBlockAdapter.updateOne(state, {
+            id: id,
+            changes: { sequenceNumber: futurePosition } as EditableNewsBlockImage
           });
           return;
         }
 
-        createAndEditNewsBlockAdapter.updateOne(state, { 
-          id: id, 
-          changes: { sequenceNumber: isPositionIncrease ? sequenceNumber - 1 : sequenceNumber + 1 } as EditableNewsBlockImage, 
+        createAndEditNewsBlockAdapter.updateOne(state, {
+          id: id,
+          changes: {
+            sequenceNumber: isPositionIncrease ? sequenceNumber - 1 : sequenceNumber + 1
+          } as EditableNewsBlockImage
         });
       });
     },
-    updateImageBlockImage(state, { payload }: PayloadAction<{localBlockId: string, image: string}>) {
-      createAndEditNewsBlockAdapter.updateOne(state, { 
-        id: payload.localBlockId, 
-        changes: { image: payload.image } as EditableNewsBlockImage, 
+    updateImageBlockImage(
+      state,
+      { payload }: PayloadAction<{ localBlockId: string; image: string }>
+    ) {
+      createAndEditNewsBlockAdapter.updateOne(state, {
+        id: payload.localBlockId,
+        changes: { image: payload.image } as EditableNewsBlockImage
       });
     },
-    updateImageBlockTitle(state, { payload }: PayloadAction<{localBlockId: string, title: string}>) {
-      createAndEditNewsBlockAdapter.updateOne(state, { 
-        id: payload.localBlockId, 
-        changes: { title: payload.title } as EditableNewsBlockImage, 
+    updateImageBlockTitle(
+      state,
+      { payload }: PayloadAction<{ localBlockId: string; title: string }>
+    ) {
+      createAndEditNewsBlockAdapter.updateOne(state, {
+        id: payload.localBlockId,
+        changes: { title: payload.title } as EditableNewsBlockImage
       });
     },
 
-    addParagraphToParagraphsBlock(state, { payload }: PayloadAction<{localBlockId: string}>) {
-      const updatedBlock = state.entities[payload.localBlockId] as EditableNewsBlockText | undefined;
+    addParagraphToParagraphsBlock(state, { payload }: PayloadAction<{ localBlockId: string }>) {
+      const updatedBlock = state.entities[payload.localBlockId] as
+        | EditableNewsBlockText
+        | undefined;
 
       if (updatedBlock) {
-        createAndEditNewsBlockAdapter.updateOne(state, { 
-          id: payload.localBlockId, 
-          changes: { 
-            paragraphs: updatedBlock.paragraphs 
-              ? [...updatedBlock.paragraphs, { localId: getUniqueId(), text: '' }] 
-              : [{ localId: getUniqueId(), text: '' }], 
-          } as EditableNewsBlockText, 
+        createAndEditNewsBlockAdapter.updateOne(state, {
+          id: payload.localBlockId,
+          changes: {
+            paragraphs: updatedBlock.paragraphs
+              ? [...updatedBlock.paragraphs, { localId: getUniqueId(), text: '' }]
+              : [{ localId: getUniqueId(), text: '' }]
+          } as EditableNewsBlockText
         });
       }
     },
-    updateTextBlockTitle(state, { payload }: PayloadAction<{localBlockId: string, title: string}>) {
-      createAndEditNewsBlockAdapter.updateOne(state, { 
-        id: payload.localBlockId, 
-        changes: { title: payload.title } as EditableNewsBlockText, 
+    updateTextBlockTitle(
+      state,
+      { payload }: PayloadAction<{ localBlockId: string; title: string }>
+    ) {
+      createAndEditNewsBlockAdapter.updateOne(state, {
+        id: payload.localBlockId,
+        changes: { title: payload.title } as EditableNewsBlockText
       });
     },
-    updateTextBlockParagraphText(state, { payload }: PayloadAction<{localBlockId: string, paragraphId: string, text: string}>) {
-      const updatedBlock = state.entities[payload.localBlockId] as EditableNewsBlockText | undefined;
+    updateTextBlockParagraphText(
+      state,
+      { payload }: PayloadAction<{ localBlockId: string; paragraphId: string; text: string }>
+    ) {
+      const updatedBlock = state.entities[payload.localBlockId] as
+        | EditableNewsBlockText
+        | undefined;
 
       if (updatedBlock) {
-        createAndEditNewsBlockAdapter.updateOne(state, { 
-          id: payload.localBlockId, 
+        createAndEditNewsBlockAdapter.updateOne(state, {
+          id: payload.localBlockId,
           changes: {
             paragraphs: updatedBlock.paragraphs?.map((paragraph) => {
               if (paragraph.localId === payload.paragraphId) {
                 return { ...paragraph, text: payload.text };
               }
               return paragraph;
-            }), 
-          } as EditableNewsBlockText, 
+            })
+          } as EditableNewsBlockText
         });
       }
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -170,7 +203,7 @@ export const createAndEditNewsSlice = createSlice({
         state.isLoading = false;
         state.dorms = action.payload.dorms;
         state.isEdit = true;
-        
+
         if (action.payload.news) {
           createAndEditNewsBlockAdapter.setAll(state, blockToState(action.payload.news?.blocks));
           state.item = action.payload.news;
@@ -183,7 +216,7 @@ export const createAndEditNewsSlice = createSlice({
         state.error = action.payload;
         state.isLoading = false;
       });
-  },
+  }
 });
 
 export const { actions: createAndEditNewsActions } = createAndEditNewsSlice;

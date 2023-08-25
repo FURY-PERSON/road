@@ -25,7 +25,7 @@ describe('Routing', () => {
       cy.visit('/');
       cy.selectByTestId('MainPage').should('exist');
     });
-    
+
     it('logged out user news url', () => {
       cy.visit('/news');
       cy.selectByTestId('NewsPage').should('exist');

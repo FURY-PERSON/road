@@ -1,6 +1,6 @@
-import { StateSchema } from "@/app/providers/StoreProvider";
-import { PermissionName } from "@/entities/Permission";
-import { getUserPermissionsName } from "./getUserPermissionsName";
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { PermissionName } from '@/entities/Permission';
+import { getUserPermissionsName } from './getUserPermissionsName';
 
 describe('getUserPermissions', () => {
   test('should return user permission', () => {
@@ -17,20 +17,21 @@ describe('getUserPermissions', () => {
               description: 'student desc',
               id: '2324',
               name: PermissionName.STUDENT
-            },
+            }
           ]
         }
       }
     };
 
-    expect(getUserPermissionsName(state as StateSchema)).toEqual([PermissionName.ADMIN, PermissionName.STUDENT]);
+    expect(getUserPermissionsName(state as StateSchema)).toEqual([
+      PermissionName.ADMIN,
+      PermissionName.STUDENT
+    ]);
   });
 
   test('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {
-      user: {
-
-      }
+      user: {}
     };
 
     expect(getUserPermissionsName(state as StateSchema)).toEqual(undefined);

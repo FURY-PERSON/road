@@ -1,3 +1,3 @@
 export type ProfilePageParam = {
-  login: string
-}
+  login: string;
+};

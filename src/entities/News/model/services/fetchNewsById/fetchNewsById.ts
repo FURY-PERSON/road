@@ -1,10 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
+
 import { ThunkConfig } from '@/app/providers/StoreProvider';
+
 import { News } from '../../types/news';
 
 interface FetchNewsByIdProps {
-  id: string
+  id: string;
 }
 
 export const fetchNewsById = createAsyncThunk<News, FetchNewsByIdProps, ThunkConfig<string>>(
@@ -12,18 +14,14 @@ export const fetchNewsById = createAsyncThunk<News, FetchNewsByIdProps, ThunkCon
   async (props, thunkAPI) => {
     const { id } = props;
 
-    const {
-      extra, rejectWithValue, 
-    } = thunkAPI;
+    const { extra, rejectWithValue } = thunkAPI;
     try {
       if (!id) {
         return rejectWithValue('news id do not provide');
       }
-      
-      const response = await extra.api.get<News>(`news/${id}`, {
 
-      });
-      
+      const response = await extra.api.get<News>(`news/${id}`, {});
+
       const news = response.data;
 
       if (!news) {
@@ -33,9 +31,11 @@ export const fetchNewsById = createAsyncThunk<News, FetchNewsByIdProps, ThunkCon
       return news;
     } catch (error) {
       if (error instanceof AxiosError) {
-        return thunkAPI.rejectWithValue(error.response?.data.message || error.response?.statusText || error.message);
+        return thunkAPI.rejectWithValue(
+          error.response?.data.message || error.response?.statusText || error.message
+        );
       }
       return thunkAPI.rejectWithValue('Unexpected news fetching error');
     }
-  },
+  }
 );

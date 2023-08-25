@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { RoleName } from '@/entities/Role';
+
 import { registerNewUser } from '../services/registerNewUser/registerNewUser';
 import { RegisterForm, RegisterSchema } from '../types/register.schema';
 
@@ -11,7 +13,7 @@ export const initialForm: RegisterForm = {
   phone: '',
   password: '',
   role: '',
-  confirmPassword: '',
+  confirmPassword: ''
 };
 
 export const initialState: RegisterSchema = {
@@ -19,7 +21,7 @@ export const initialState: RegisterSchema = {
 
   isLoading: false,
   error: undefined,
-  validationError: undefined,
+  validationError: undefined
 };
 
 export const registerSlice = createSlice({
@@ -49,7 +51,7 @@ export const registerSlice = createSlice({
     },
     setEmail(state, action: PayloadAction<string>) {
       state.form.email = action.payload;
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -72,7 +74,7 @@ export const registerSlice = createSlice({
         }
         state.isLoading = false;
       });
-  },
+  }
 });
 
 export const { actions: registerActions } = registerSlice;

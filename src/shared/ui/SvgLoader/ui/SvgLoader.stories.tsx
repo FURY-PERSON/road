@@ -5,16 +5,16 @@ export default {
   title: 'shared/SvgLoader',
   component: SvgLoader,
   argTypes: {
-    backgroundColor: { control: 'color' },
+    backgroundColor: { control: 'color' }
   },
   parameters: {
-    loki: { skip: true },
-  },
+    loki: { skip: true }
+  }
 } as ComponentMeta<typeof SvgLoader>;
 
 const Template: ComponentStory<typeof SvgLoader> = (args) => <SvgLoader {...args} />;
 
 export const CAT_BLUE = Template.bind({});
 CAT_BLUE.args = {
-  type: SvgLoaderType.CAT_BLUE,
+  type: SvgLoaderType.CAT_BLUE
 };

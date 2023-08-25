@@ -6,17 +6,17 @@ import { EditableNewsBlock } from '../../../src/features/EditableNewsBlock';
 export const deleteNews = (newsId: string) => {
   cy.request({
     method: 'DELETE',
-    url: `http://localhost:3005/api/news/${newsId}`,
+    url: `http://localhost:3005/api/news/${newsId}`
   }).then(({ body }) => body);
 };
 
 export interface CreateNewsProps {
-  type: NewsType,
-  title: string
-  subTitle: string
-  mainText: string
-  dormId: string
-  blocks: Array<EditableNewsBlock>
+  type: NewsType;
+  title: string;
+  subTitle: string;
+  mainText: string;
+  dormId: string;
+  blocks: Array<EditableNewsBlock>;
 }
 
 export const createNews = (news: CreateNewsProps) => {
@@ -31,8 +31,7 @@ export const createNews = (news: CreateNewsProps) => {
 
   formData.append('blocks', JSON.stringify([]));
 
-
-/*   if (form?.image) {
+  /*   if (form?.image) {
     const imageFetch = await fetch(form.image);
     const blobFile = await imageFetch.blob();
     formData.append('image', new Blob([blobFile]));
@@ -41,23 +40,23 @@ export const createNews = (news: CreateNewsProps) => {
 
   cy.request({
     method: 'POST',
-    url: `http://localhost:3005/api/news`,
+    url: 'http://localhost:3005/api/news',
     headers: {
-      'Content-Type': 'multipart/form-data',
+      'Content-Type': 'multipart/form-data'
     },
-    body: formData,
+    body: formData
   }).then(({ body }) => {
     const dec = new TextDecoder();
-    
-    return JSON.parse(dec.decode(body))
+
+    return JSON.parse(dec.decode(body));
   });
 };
 
 declare global {
   namespace Cypress {
     interface Chainable {
-      createNews(news: CreateNewsProps): Chainable<News>
-      deleteNews(newsId: string): Chainable<void>
+      createNews(news: CreateNewsProps): Chainable<News>;
+      deleteNews(newsId: string): Chainable<void>;
     }
   }
 }

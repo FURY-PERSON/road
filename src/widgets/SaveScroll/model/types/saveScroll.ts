@@ -1,5 +1,5 @@
-export type ScrollSchema = OptionalRecord<string, number>
+export type ScrollSchema = OptionalRecord<string, number>;
 
 export interface SaveScrollSchema {
-  scroll: ScrollSchema
+  scroll: ScrollSchema;
 }

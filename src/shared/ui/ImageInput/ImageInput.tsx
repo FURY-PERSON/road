@@ -1,22 +1,23 @@
 import { memo, FC, ChangeEvent } from 'react';
 import { useTranslation } from 'react-i18next';
+
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import cls from './ImageInput.module.scss';
+
 import { Button, ButtonVariant } from '../Button/Button';
 import { AppImage } from '../AppImage/AppImage';
 import { Skeleton } from '../Skeleton/Skeleton';
 
+import cls from './ImageInput.module.scss';
+
 interface ImageInputProps {
   className?: string;
-  onImageChange?: (image: File | null) => void,
-  omImageRemove?: () => void
-  image?: File | null | string
+  onImageChange?: (image: File | null) => void;
+  omImageRemove?: () => void;
+  image?: File | null | string;
 }
 
-export const ImageInput:FC<ImageInputProps> = memo((props) => {
-  const {
-    className, onImageChange, image, omImageRemove, 
-  } = props;
+export const ImageInput: FC<ImageInputProps> = memo((props) => {
+  const { className, onImageChange, image, omImageRemove } = props;
 
   const { t } = useTranslation();
 
@@ -29,7 +30,7 @@ export const ImageInput:FC<ImageInputProps> = memo((props) => {
   const onImageRemove = () => {
     omImageRemove?.();
   };
-  
+
   return (
     <div className={classNames(cls.ImageInput, {}, [className])}>
       {image && (
@@ -41,15 +42,13 @@ export const ImageInput:FC<ImageInputProps> = memo((props) => {
             src={typeof image === 'string' ? image : URL.createObjectURL(image)}
           />
 
-          <Button variant={ButtonVariant.OUTLINE} onClick={onImageRemove}>{t('remove')}</Button>
+          <Button variant={ButtonVariant.OUTLINE} onClick={onImageRemove}>
+            {t('remove')}
+          </Button>
         </div>
       )}
 
-      <input
-        type="file"
-        name="myImage"
-        onChange={onInputChange}
-      />
+      <input type="file" name="myImage" onChange={onInputChange} />
     </div>
   );
 });

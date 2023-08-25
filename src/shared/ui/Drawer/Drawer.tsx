@@ -1,19 +1,20 @@
-import React, {
-  memo, ReactNode, useCallback, useEffect,
-} from 'react';
+import React, { memo, ReactNode, useCallback, useEffect } from 'react';
+
 import { useTheme } from '@/shared/contexts/ThemeProvider';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { AnimationProvider, useAnimationLibs } from '@/shared/lib/helpers/AnimationProvider';
+
 import { Overlay } from '../Overlay/Overlay';
-import cls from './Drawer.module.scss';
 import { Portal } from '../Portal/Portal';
 
+import cls from './Drawer.module.scss';
+
 interface DrawerProps {
-    className?: string;
-    children: ReactNode;
-    isOpen?: boolean;
-    onClose?: () => void;
-    lazy?: boolean;
+  className?: string;
+  children: ReactNode;
+  isOpen?: boolean;
+  onClose?: () => void;
+  lazy?: boolean;
 }
 
 const height = window.innerHeight - 100;
@@ -22,13 +23,7 @@ export const DrawerContent = memo((props: DrawerProps) => {
   const { Spring, Gesture } = useAnimationLibs();
   const [{ y }, api] = Spring.useSpring(() => ({ y: height }));
   const { theme } = useTheme();
-  const {
-    className,
-    children,
-    onClose,
-    isOpen,
-    lazy,
-  } = props;
+  const { className, children, onClose, isOpen, lazy } = props;
 
   const openDrawer = useCallback(() => {
     api.start({ y: 0, immediate: false });
@@ -45,18 +40,12 @@ export const DrawerContent = memo((props: DrawerProps) => {
       y: height,
       immediate: false,
       config: { ...Spring.config.stiff, velocity },
-      onResolve: onClose,
+      onResolve: onClose
     });
   };
 
   const bind = Gesture.useDrag(
-    ({
-      last,
-      velocity: [, vy],
-      direction: [, dy],
-      movement: [, my],
-      cancel,
-    }) => {
+    ({ last, velocity: [, vy], direction: [, dy], movement: [, my], cancel }) => {
       if (my < -70) cancel();
 
       if (last) {
@@ -70,8 +59,11 @@ export const DrawerContent = memo((props: DrawerProps) => {
       }
     },
     {
-      from: () => [0, y.get()], filterTaps: true, bounds: { top: 0 }, rubberband: true,
-    },
+      from: () => [0, y.get()],
+      filterTaps: true,
+      bounds: { top: 0 },
+      rubberband: true
+    }
   );
 
   if (!isOpen) {

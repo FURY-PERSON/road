@@ -7,19 +7,15 @@ export default {
   title: 'pages/NewsPage',
   component: NewsPage,
   argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+    backgroundColor: { control: 'color' }
+  }
 } as ComponentMeta<typeof NewsPage>;
 
 const Template: ComponentStory<typeof NewsPage> = (args) => <NewsPage />;
 
 export const Light = Template.bind({});
-Light.args = {
-
-};
+Light.args = {};
 
 export const Dark = Template.bind({});
 Dark.decorators = [ThemeDecorator(Theme.Dark)];
-Dark.args = {
-
-};
+Dark.args = {};

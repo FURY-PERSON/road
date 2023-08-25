@@ -1,7 +1,12 @@
 import {
-  AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject, 
+  AnyAction,
+  CombinedState,
+  EnhancedStore,
+  Reducer,
+  ReducersMapObject
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
+
 import { CounterSchema } from '@/entities/Counter';
 import { NewsDetailsSchema } from '@/entities/News';
 import { UserSchema } from '@/entities/User';
@@ -18,45 +23,45 @@ import { CreateAndEditNewsSchema } from '@/widgets/CreateAndEditNews/model/types
 import { SaveScrollSchema } from '@/widgets/SaveScroll';
 
 export interface StateSchema {
-  counter: CounterSchema,
-  user: UserSchema,
-  saveScroll: SaveScrollSchema,
-  [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
+  counter: CounterSchema;
+  user: UserSchema;
+  saveScroll: SaveScrollSchema;
+  [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
   // async reducers
-  loginForm?: LoginSchema,
-  registerForm?: RegisterSchema,
-  profile?: ProfileSchema,
-  newsDetails?: NewsDetailsSchema,
-  newsDetailsComments?: NewsDetailsCommentsSchema,
-  addCommentForm?: AddCommentFormSchema
-  newsPage?: NewsPageSchema,
-  newsRecommendationList?: NewsRecommendationListSchema
-  createAndEditNews?: CreateAndEditNewsSchema
-  usersPage?: UsersPageSchema
+  loginForm?: LoginSchema;
+  registerForm?: RegisterSchema;
+  profile?: ProfileSchema;
+  newsDetails?: NewsDetailsSchema;
+  newsDetailsComments?: NewsDetailsCommentsSchema;
+  addCommentForm?: AddCommentFormSchema;
+  newsPage?: NewsPageSchema;
+  newsRecommendationList?: NewsRecommendationListSchema;
+  createAndEditNews?: CreateAndEditNewsSchema;
+  usersPage?: UsersPageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
-export type MountedReducers = OptionalRecord<StateSchemaKey, boolean>
+export type MountedReducers = OptionalRecord<StateSchemaKey, boolean>;
 
 export interface ReducerManager {
   getReducerMap: () => ReducersMapObject<StateSchema>;
   reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>;
   add: (key: StateSchemaKey, reducer: Reducer) => void;
   remove: (key: StateSchemaKey) => void;
-  getMountedReducers: () => MountedReducers
+  getMountedReducers: () => MountedReducers;
 }
 
 export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
-  reducerManager?: ReducerManager
+  reducerManager?: ReducerManager;
 }
 
 export interface ThunkExtra {
-  api: AxiosInstance,
+  api: AxiosInstance;
 }
 
 export interface ThunkConfig<T> {
-  rejectValue: T, 
-  extra: ThunkExtra,
-  state: StateSchema
+  rejectValue: T;
+  extra: ThunkExtra;
+  state: StateSchema;
 }

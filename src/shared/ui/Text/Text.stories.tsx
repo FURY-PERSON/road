@@ -6,7 +6,7 @@ import { Text, TextSize, TextVariant } from './Text';
 
 export default {
   title: 'Shared/Text',
-  component: Text,
+  component: Text
 } as ComponentMeta<typeof Text>;
 
 const Template: ComponentStory<typeof Text> = (args) => <Text {...args} />;
@@ -61,13 +61,12 @@ TitleAndTextErrorDark.args = {
   variant: TextVariant.ERROR
 };
 
-
 export const SizeM = Template.bind({});
 SizeM.args = {
   title: 'Title',
   text: 'Text',
   size: TextSize.M
-}
+};
 
 export const SizeL = Template.bind({});
 SizeL.args = {

@@ -6,12 +6,12 @@ const recommendationListApi = rtkApi.injectEndpoints({
       query: (limit) => ({
         url: 'news',
         params: {
-          limit: limit,
-        },
-      }),
-    }),
+          limit: limit
+        }
+      })
+    })
   }),
-  overrideExisting: false,
+  overrideExisting: false
 });
 
 export const useGetNewsRecommendations = recommendationListApi.useGetNewsRecommendationsQuery;

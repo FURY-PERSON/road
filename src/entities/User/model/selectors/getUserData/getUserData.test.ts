@@ -1,8 +1,8 @@
-import { StateSchema } from "@/app/providers/StoreProvider";
-import { PermissionName } from "@/entities/Permission";
-import { RoleName } from "@/entities/Role";
-import { AuthTokens, User } from "../../types/user";
-import { getUserData } from "./getUserData";
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { PermissionName } from '@/entities/Permission';
+import { RoleName } from '@/entities/Role';
+import { AuthTokens, User } from '../../types/user';
+import { getUserData } from './getUserData';
 
 const user: User = {
   login: 'admin',
@@ -19,14 +19,14 @@ const user: User = {
   role: {
     description: 'desc',
     name: RoleName.STUDENT
-  },
-}
+  }
+};
 
 describe('getUserData', () => {
   test('should return user data', () => {
     const state: DeepPartial<StateSchema> = {
       user: {
-        userData: user,
+        userData: user
       }
     };
 
@@ -35,9 +35,7 @@ describe('getUserData', () => {
 
   test('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {
-      user: {
-
-      }
+      user: {}
     };
 
     expect(getUserData(state as StateSchema)).toEqual(undefined);

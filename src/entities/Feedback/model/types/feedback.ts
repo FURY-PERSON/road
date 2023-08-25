@@ -1,5 +1,5 @@
 export interface Feedback {
-  id: string
-  rating: number,
-  text?: string
+  id: string;
+  rating: number;
+  text?: string;
 }

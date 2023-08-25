@@ -5,6 +5,6 @@ export enum RoleName {
 }
 
 export interface Role {
-  name: RoleName,
-  description: string
+  name: RoleName;
+  description: string;
 }

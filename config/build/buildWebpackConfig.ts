@@ -1,4 +1,5 @@
 import webpack from 'webpack';
+
 import { BuildOption } from './types/config';
 import { buildLoaders } from './buildLoaders';
 import { buildResolvers } from './buildResolvers';
@@ -12,7 +13,7 @@ export function buildWebpackConfig(options: BuildOption): webpack.Configuration 
     mode,
     entry: paths.entry,
     module: {
-      rules: buildLoaders(options),
+      rules: buildLoaders(options)
     },
     resolve: buildResolvers(options),
     plugins: buildPlugins(options),
@@ -20,9 +21,9 @@ export function buildWebpackConfig(options: BuildOption): webpack.Configuration 
       filename: '[name].[contenthash].js',
       path: paths.build,
       clean: true,
-      publicPath: '/',
+      publicPath: '/'
     },
     devServer: isDev ? buildDevServer(options) : undefined,
-    devtool: isDev ? 'eval-cheap-module-source-map' : undefined,
+    devtool: isDev ? 'eval-cheap-module-source-map' : undefined
   };
 }

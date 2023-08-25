@@ -1,12 +1,13 @@
 import { CreateNewsProps } from 'cypress/support/commands/news';
 import { CreateDormProps } from 'cypress/support/commands/dorm';
+
 import { NewsType } from '../../../src/entities/News/model/types/news';
 
 const dormData: CreateDormProps = {
   address: 'test address',
   email: 'test@gmail.com',
   name: 'name',
-  phone: '+375446378177',
+  phone: '+375446378177'
 };
 
 const newsData: Omit<CreateNewsProps, 'dormId'> = {
@@ -14,7 +15,7 @@ const newsData: Omit<CreateNewsProps, 'dormId'> = {
   blocks: [],
   subTitle: 'subTitle',
   title: 'title',
-  type: NewsType.WARNING,
+  type: NewsType.WARNING
 };
 
 let newsId;
@@ -28,8 +29,8 @@ describe('News List', () => {
       dormId = dorm.id;
 
       cy.createNews({
-        ...newsData, 
-        dormId: dorm.id,
+        ...newsData,
+        dormId: dorm.id
       }).then((news) => {
         newsId = news.id;
         cy.visit(`/news/${newsId}`);
@@ -48,13 +49,13 @@ describe('News List', () => {
 
   it('should see comments list', () => {
     cy.intercept('GET', '**/news/*', { fixture: 'news.json' });
-    
+
     cy.selectByTestId('NewsDetailsPage.NewsDetailsCommentList').should('exist');
   });
 
   it('should create comment', () => {
     cy.intercept('GET', '**/news/*', { fixture: 'news.json' });
-    
+
     cy.selectByTestId('NewsDetailsPage.AddNewCommentFormAsync').should('exist');
     cy.selectByTestId('NewsDetailsPage.AddNewCommentFormAsync').scrollIntoView();
     cy.selectByTestId('AddNewCommentForm.commentInput').type('Comment');

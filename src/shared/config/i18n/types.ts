@@ -1,6 +1,6 @@
 export enum TranslationNamespaces {
-  TRANSLATION = 'translation', 
-  MAIN = 'main', 
+  TRANSLATION = 'translation',
+  MAIN = 'main',
   ABOUT = 'about',
   AUTH = 'auth'
 }

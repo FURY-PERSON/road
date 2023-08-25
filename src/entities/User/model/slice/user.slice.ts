@@ -1,10 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ACCESS_TOKEN_LOCALSTORAGE_KEY, REFRESH_TOKEN_LOCALSTORAGE_KEY } from '@/shared/constant/localstorage';
+
+import {
+  ACCESS_TOKEN_LOCALSTORAGE_KEY,
+  REFRESH_TOKEN_LOCALSTORAGE_KEY
+} from '@/shared/constant/localstorage';
+
 import { refreshAuthData } from '../services/refreshAuthData/refreshAuthData';
 import { AuthTokens, User, UserSchema } from '../types/user';
 
 const initialState: UserSchema = {
-  _inited: false,
+  _inited: false
 };
 
 export const userSlice = createSlice({
@@ -22,11 +27,11 @@ export const userSlice = createSlice({
     initAuthData(state) {
       const accessToken = localStorage.getItem(ACCESS_TOKEN_LOCALSTORAGE_KEY);
       const refreshToken = localStorage.getItem(REFRESH_TOKEN_LOCALSTORAGE_KEY);
-      
+
       if (accessToken || refreshToken) {
         state.authData = {
           accessToken: accessToken || '',
-          refreshToken: refreshToken || '',
+          refreshToken: refreshToken || ''
         };
       }
     },
@@ -35,7 +40,7 @@ export const userSlice = createSlice({
       state.userData = undefined;
       localStorage.removeItem(ACCESS_TOKEN_LOCALSTORAGE_KEY);
       localStorage.removeItem(REFRESH_TOKEN_LOCALSTORAGE_KEY);
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -60,7 +65,7 @@ export const userSlice = createSlice({
         localStorage.removeItem(ACCESS_TOKEN_LOCALSTORAGE_KEY);
         localStorage.removeItem(REFRESH_TOKEN_LOCALSTORAGE_KEY);
       });
-  },
+  }
 });
 
 // Action creators are generated for each case reducer function

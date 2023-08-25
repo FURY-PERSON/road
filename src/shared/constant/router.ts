@@ -21,5 +21,5 @@ export const routes = {
   newsDetails: getRouteNewsDetails,
   newsCreate: getRouteNewsCreate,
   newsEdit: getRouteNewsEdit,
-  notFound: getRouteNotFound,
-}
+  notFound: getRouteNotFound
+};

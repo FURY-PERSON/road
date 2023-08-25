@@ -1,12 +1,13 @@
 import { useSelector } from 'react-redux';
+
 import { PermissionName } from '@/entities/Permission';
 import { getUserPermissionsName } from '@/entities/User/model/selectors/getUserPermissionsName/getUserPermissionsName';
 import { ForbiddenView } from '@/shared/ui/ForbiddenView/ForbiddenView';
 
 interface PermissionGuardProps {
-  children: JSX.Element, 
-  permissionsNames?: PermissionName[],
-  showForbidden?: boolean
+  children: JSX.Element;
+  permissionsNames?: PermissionName[];
+  showForbidden?: boolean;
 }
 
 export const PermissionGuard = (props: PermissionGuardProps) => {
@@ -17,8 +18,8 @@ export const PermissionGuard = (props: PermissionGuardProps) => {
   if (!permissionsNames) return children;
 
   if (!permissionsNames.every((permission) => userPermissions?.includes(permission))) {
-    return showForbidden ? <ForbiddenView /> : null; 
+    return showForbidden ? <ForbiddenView /> : null;
   }
-  
+
   return children;
 };

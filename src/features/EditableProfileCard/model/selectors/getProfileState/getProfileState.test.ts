@@ -1,6 +1,6 @@
-import { StateSchema } from "@/app/providers/StoreProvider";
-import { getProfileState } from "./getProfileState";
-import { ProfileValidationError } from "../../types/editableProfileCard";
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { getProfileState } from './getProfileState';
+import { ProfileValidationError } from '../../types/editableProfileCard';
 
 describe('getProfileState', () => {
   test('should return profile state', () => {
@@ -18,11 +18,8 @@ describe('getProfileState', () => {
       error: 'error',
       isLoading: true,
       readonly: false,
-      validationErrors: [
-        ProfileValidationError.NO_DATA, 
-        ProfileValidationError.SERVER_ERROR
-      ]
-    }
+      validationErrors: [ProfileValidationError.NO_DATA, ProfileValidationError.SERVER_ERROR]
+    };
     const state: DeepPartial<StateSchema> = {
       profile: profile
     };
@@ -31,9 +28,7 @@ describe('getProfileState', () => {
   });
 
   test('should work with empty state', () => {
-    const state: DeepPartial<StateSchema> = {
-
-    };
+    const state: DeepPartial<StateSchema> = {};
 
     expect(getProfileState(state as StateSchema)).toEqual(undefined);
   });

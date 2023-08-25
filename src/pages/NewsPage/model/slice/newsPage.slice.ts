@@ -1,21 +1,24 @@
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { News, NewsListVariant, NewsSort } from '@/entities/News';
 import { NEWS_VIEW_LOCALSTORAGE_KEY } from '@/shared/constant/localstorage';
 import { SortOrder } from '@/shared/types/sort';
 import { NewsType } from '@/entities/News/model/types/news';
+
 import { fetchNewsList } from '../services/fetchNewsList/fetchNewsList';
 import { NewsPageSchema } from '../types/newsPageSchema';
 
 const newsAdapter = createEntityAdapter<News>({
-  selectId: (news) => news.id,
+  selectId: (news) => news.id
 });
 
 export const getNews = newsAdapter.getSelectors<StateSchema>(
-  (state) => state.newsPage || newsAdapter.getInitialState(),
+  (state) => state.newsPage || newsAdapter.getInitialState()
 );
 
-const defaultListView = localStorage.getItem(NEWS_VIEW_LOCALSTORAGE_KEY) as NewsListVariant || NewsListVariant.BLOCK;
+const defaultListView =
+  (localStorage.getItem(NEWS_VIEW_LOCALSTORAGE_KEY) as NewsListVariant) || NewsListVariant.BLOCK;
 const defaultLimit = defaultListView === NewsListVariant.LIST ? 12 : 24;
 
 export const newsPageSlice = createSlice({
@@ -32,7 +35,7 @@ export const newsPageSlice = createSlice({
     search: '',
     type: NewsType.ALL,
 
-    _inited: false,
+    _inited: false
   }),
   reducers: {
     setView(state, action: PayloadAction<NewsListVariant>) {
@@ -56,7 +59,7 @@ export const newsPageSlice = createSlice({
     },
     setType(state, action: PayloadAction<NewsType>) {
       state.type = action.payload;
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -73,7 +76,7 @@ export const newsPageSlice = createSlice({
         state.isLoading = false;
         state.hasMore = action.payload.totalPage > state.page;
         state._inited = true;
-        
+
         if (action.meta.arg.replace) {
           newsAdapter.setAll(state, action.payload.news);
         } else {
@@ -84,7 +87,7 @@ export const newsPageSlice = createSlice({
         state.error = action.payload;
         state.isLoading = false;
       });
-  },
+  }
 });
 
 export const { actions: newsPageActions } = newsPageSlice;

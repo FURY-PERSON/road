@@ -1,5 +1,5 @@
-import { StateSchema } from "@/app/providers/StoreProvider";
-import { getRegisterError } from "./getRegisterError";
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { getRegisterError } from './getRegisterError';
 
 describe('getRegisterError', () => {
   test('should return register error', () => {
@@ -13,9 +13,7 @@ describe('getRegisterError', () => {
   });
 
   test('should work with empty state', () => {
-    const state: DeepPartial<StateSchema> = {
-
-    };
+    const state: DeepPartial<StateSchema> = {};
 
     expect(getRegisterError(state as StateSchema)).toEqual(undefined);
   });

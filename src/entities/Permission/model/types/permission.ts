@@ -5,7 +5,7 @@ export enum PermissionName {
 }
 
 export interface Permission {
-  id: string,
-  name: PermissionName,
-  description: string
+  id: string;
+  name: PermissionName;
+  description: string;
 }

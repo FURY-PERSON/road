@@ -5,13 +5,11 @@ export default {
   title: 'features/ThemeSwitcher',
   component: ThemeSwitcher,
   argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+    backgroundColor: { control: 'color' }
+  }
 } as ComponentMeta<typeof ThemeSwitcher>;
 
 const Template: ComponentStory<typeof ThemeSwitcher> = (args) => <ThemeSwitcher {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = {
-
-};
+Primary.args = {};

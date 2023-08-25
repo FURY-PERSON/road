@@ -1,5 +1,5 @@
-import { StateSchema } from "@/app/providers/StoreProvider";
-import { getProfileData } from "./getProfileData";
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { getProfileData } from './getProfileData';
 
 describe('getProfileData', () => {
   test('should return profile data', () => {
@@ -21,9 +21,7 @@ describe('getProfileData', () => {
   });
 
   test('should work with empty state', () => {
-    const state: DeepPartial<StateSchema> = {
-
-    };
+    const state: DeepPartial<StateSchema> = {};
 
     expect(getProfileData(state as StateSchema)).toEqual(undefined);
   });

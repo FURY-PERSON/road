@@ -1,15 +1,13 @@
-import {
-  memo, FC, ReactNode, useRef, useState, useEffect, 
-} from 'react';
+import { memo, FC, ReactNode, useRef, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 interface PortalProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
-const defaultRoot = (document.querySelector('.app') ?? document.body)as HTMLDivElement;
+const defaultRoot = (document.querySelector('.app') ?? document.body) as HTMLDivElement;
 
-export const Portal:FC<PortalProps> = memo((props) => {
+export const Portal: FC<PortalProps> = memo((props) => {
   const { children } = props;
 
   const ref = useRef<HTMLDivElement | null>(null);

@@ -1,14 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
+
 import { ThunkConfig } from '@/app/providers/StoreProvider';
+
 import { Dorm } from '../../types/dorm';
 
 export const fetchDorms = createAsyncThunk<Dorm[], void, ThunkConfig<string>>(
   'dorm/fetchDorms',
   async (_, thunkAPI) => {
-    const {
-      extra, rejectWithValue, getState, 
-    } = thunkAPI;
+    const { extra, rejectWithValue, getState } = thunkAPI;
 
     try {
       const response = await extra.api.get<Dorm[]>('dorm');
@@ -24,5 +24,5 @@ export const fetchDorms = createAsyncThunk<Dorm[], void, ThunkConfig<string>>(
       }
       return thunkAPI.rejectWithValue('unhandled fetch dorms error');
     }
-  },
+  }
 );

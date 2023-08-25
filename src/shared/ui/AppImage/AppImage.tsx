@@ -1,19 +1,17 @@
-import {
-  memo, FC, useState, ImgHTMLAttributes, useLayoutEffect, 
-} from 'react';
+import { memo, FC, useState, ImgHTMLAttributes, useLayoutEffect } from 'react';
+
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+
 import cls from './AppImage.module.scss';
 
 interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   className?: string;
-  fallback?: JSX.Element
-  errorFallback?: JSX.Element
+  fallback?: JSX.Element;
+  errorFallback?: JSX.Element;
 }
 
-export const AppImage:FC<AppImageProps> = memo((props) => {
-  const {
-    className, src, alt, fallback, errorFallback, ...otherProps 
-  } = props;
+export const AppImage: FC<AppImageProps> = memo((props) => {
+  const { className, src, alt, fallback, errorFallback, ...otherProps } = props;
 
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -41,6 +39,11 @@ export const AppImage:FC<AppImageProps> = memo((props) => {
   }
 
   return (
-    <img className={classNames(cls.AppImage, {}, [className])} src={src} alt={alt} {...otherProps} />
+    <img
+      className={classNames(cls.AppImage, {}, [className])}
+      src={src}
+      alt={alt}
+      {...otherProps}
+    />
   );
 });

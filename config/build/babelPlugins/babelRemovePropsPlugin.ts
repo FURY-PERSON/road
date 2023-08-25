@@ -12,8 +12,8 @@ export const babelRemovePropsPlugin = (): PluginItem => ({
           if (forbidden.includes(nodeName)) {
             current.parentPath.remove();
           }
-        },
+        }
       });
-    },
-  },
+    }
+  }
 });

@@ -1,7 +1,9 @@
 import { PayloadAction, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+
 import { SortOrder } from '@/shared/types/sort';
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { User } from '@/entities/User';
+
 import { fetchUsersList } from '../services/fetchUsersList/fetchUsersList';
 import { UsersPageSchema } from '../types/usersPageSchema';
 import { UsersRolesFilter, UsersSortFilter } from '../types/usersPage';
@@ -9,11 +11,11 @@ import { UsersRolesFilter, UsersSortFilter } from '../types/usersPage';
 const defaultLimit = 12;
 
 const usersAdapter = createEntityAdapter<User>({
-  selectId: (user) => user.id,
+  selectId: (user) => user.id
 });
 
 export const getUsers = usersAdapter.getSelectors<StateSchema>(
-  (state) => state.usersPage || usersAdapter.getInitialState(),
+  (state) => state.usersPage || usersAdapter.getInitialState()
 );
 
 export const usersPageSlice = createSlice({
@@ -24,13 +26,13 @@ export const usersPageSlice = createSlice({
     hasMore: false,
     limit: defaultLimit,
     page: 1,
-  
+
     order: 'ASC',
     search: '',
     sort: UsersSortFilter.LOGIN,
     role: UsersRolesFilter.ALL,
-  
-    _inited: false,
+
+    _inited: false
   }),
   reducers: {
     setPage(state, action: PayloadAction<number>) {
@@ -50,7 +52,7 @@ export const usersPageSlice = createSlice({
     },
     setSort(state, action: PayloadAction<UsersSortFilter>) {
       state.sort = action.payload;
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -67,7 +69,7 @@ export const usersPageSlice = createSlice({
         state.isLoading = false;
         state.hasMore = action.payload.totalPage > state.page;
         state._inited = true;
-        
+
         if (action.meta.arg.replace) {
           usersAdapter.setAll(state, action.payload.users);
         } else {
@@ -78,7 +80,7 @@ export const usersPageSlice = createSlice({
         state.error = action.payload;
         state.isLoading = false;
       });
-  },
+  }
 });
 
 export const { actions: usersPageActions } = usersPageSlice;

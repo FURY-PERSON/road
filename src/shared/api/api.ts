@@ -1,11 +1,15 @@
 /* import { appStore } from 'app/providers/StoreProvider/ui/StoreProvider'; */
 import axios from 'axios';
-import { AuthTokens, User, userActions } from '@/entities/User';
-import { ACCESS_TOKEN_LOCALSTORAGE_KEY, REFRESH_TOKEN_LOCALSTORAGE_KEY } from '@/shared/constant/localstorage';
+
+import { AuthTokens, User } from '@/entities/User';
+import {
+  ACCESS_TOKEN_LOCALSTORAGE_KEY,
+  REFRESH_TOKEN_LOCALSTORAGE_KEY
+} from '@/shared/constant/localstorage';
 
 interface RefreshResponse {
-  user: User,
-  tokens: AuthTokens
+  user: User;
+  tokens: AuthTokens;
 }
 
 export const api = axios.create({
@@ -14,8 +18,8 @@ export const api = axios.create({
     Accept: 'application/json',
     'Content-Type': 'application/json',
     Authorization: undefined,
-    'Access-Control-Expose-Headers': '*',
-  },
+    'Access-Control-Expose-Headers': '*'
+  }
 });
 
 api.interceptors.request.use(async (config) => {
@@ -26,7 +30,7 @@ api.interceptors.request.use(async (config) => {
   // eslint-disable-next-line no-param-reassign
   config.headers = {
     Authorization: `Bearer ${accessToken}`,
-    Accept: 'application/json',
+    Accept: 'application/json'
   };
 
   return config;
@@ -43,7 +47,8 @@ api.interceptors.response.use(
 
       if (refreshToken && accessToken) {
         const response = await axios.post<RefreshResponse>('api/auth/refresh', {
-          accessToken, refreshToken,
+          accessToken,
+          refreshToken
         });
 
         if (response) {
@@ -56,5 +61,5 @@ api.interceptors.response.use(
       }
     }
     throw error;
-  },
+  }
 );

@@ -1,23 +1,25 @@
 import { EntityState } from '@reduxjs/toolkit';
+
 import { User } from '@/entities/User';
 import { SortOrder } from '@/shared/types/sort';
+
 import { UsersRolesFilter, UsersSortFilter } from './usersPage';
 
 export interface UsersPageSchema extends EntityState<User> {
-  isLoading?: boolean,
-  error?: string,
-  users?: User[]
+  isLoading?: boolean;
+  error?: string;
+  users?: User[];
 
   // api
   page: number;
   limit: number;
-  hasMore: boolean
+  hasMore: boolean;
 
   // filters
-  order: SortOrder
-  search?: string 
-  sort: UsersSortFilter
-  role: UsersRolesFilter
+  order: SortOrder;
+  search?: string;
+  sort: UsersSortFilter;
+  role: UsersRolesFilter;
 
-  _inited?: boolean
+  _inited?: boolean;
 }

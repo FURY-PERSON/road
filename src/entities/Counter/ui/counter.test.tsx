@@ -5,7 +5,7 @@ import { Counter } from './Counter';
 describe('Counter', () => {
   test('should be in the document', () => {
     renderWithProviders(<Counter />, {
-      initialState: {counter: {value: 3}}
+      initialState: { counter: { value: 3 } }
     });
 
     expect(screen.getByTestId('value')).toBeInTheDocument();
@@ -13,7 +13,7 @@ describe('Counter', () => {
 
   test('should have value', () => {
     renderWithProviders(<Counter />, {
-      initialState: {counter: {value: 3}}
+      initialState: { counter: { value: 3 } }
     });
 
     expect(screen.getByTestId('value')).toHaveTextContent('3');
@@ -21,7 +21,7 @@ describe('Counter', () => {
 
   test('should increment', () => {
     renderWithProviders(<Counter />, {
-      initialState: {counter: {value: 3}}
+      initialState: { counter: { value: 3 } }
     });
     const incrementButton = screen.getByTestId('increment-btn');
     fireEvent.click(incrementButton);
@@ -30,7 +30,7 @@ describe('Counter', () => {
 
   test('should decrement', () => {
     renderWithProviders(<Counter />, {
-      initialState: {counter: {value: 3}}
+      initialState: { counter: { value: 3 } }
     });
     const incrementButton = screen.getByTestId('decrement-btn');
     fireEvent.click(incrementButton);

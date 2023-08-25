@@ -1,4 +1,5 @@
 import { NewsBlockType, NewsCodeBlock } from '@/entities/News';
+
 import { EditableNewsBlockCode } from '../types/editableNewsBlock';
 
 export class EditableNewsCodeBlockDto implements EditableNewsBlockCode {

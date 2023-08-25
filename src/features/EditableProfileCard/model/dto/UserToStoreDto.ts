@@ -1,5 +1,6 @@
 import { User } from '@/entities/User';
 import { RoleName } from '@/entities/Role';
+
 import { EditableUser } from '../types/editableProfileCard';
 
 export class UserToStoreDto implements EditableUser {

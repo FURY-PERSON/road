@@ -7,19 +7,15 @@ export default {
   title: 'pages/AboutPage',
   component: AboutPage,
   argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+    backgroundColor: { control: 'color' }
+  }
 } as ComponentMeta<typeof AboutPage>;
 
 const Template: ComponentStory<typeof AboutPage> = (args) => <AboutPage />;
 
 export const Light = Template.bind({});
-Light.args = {
-
-};
+Light.args = {};
 
 export const Dark = Template.bind({});
 Dark.decorators = [ThemeDecorator(Theme.Dark)];
-Dark.args = {
-
-};
+Dark.args = {};

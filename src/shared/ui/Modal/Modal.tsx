@@ -1,27 +1,28 @@
 import React, { FC, ReactNode } from 'react';
+
 import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
+
 import { Portal } from '../Portal/Portal';
-import cls from './Modal.module.scss';
 import { Overlay } from '../Overlay/Overlay';
+
+import cls from './Modal.module.scss';
 
 interface ModalProps {
   className?: string;
   children?: ReactNode;
   open: boolean;
-  onClose?: () => void,
+  onClose?: () => void;
 }
 
 const ANIMATION_DELAY = 300;
 
-export const Modal:FC<ModalProps> = (props) => {
-  const {
-    className, children, open, onClose,
-  } = props;
+export const Modal: FC<ModalProps> = (props) => {
+  const { className, children, open, onClose } = props;
 
   const { close, isClosing, isMounted } = useModal({
     animationDelay: ANIMATION_DELAY,
-    onClose: onClose,
+    onClose: onClose
   });
 
   const onContentClick = (e: React.MouseEvent) => {
@@ -30,7 +31,7 @@ export const Modal:FC<ModalProps> = (props) => {
 
   const wrapperMods: Mods = {
     [cls.open]: open,
-    [cls.closing]: isClosing,
+    [cls.closing]: isClosing
   };
 
   return (

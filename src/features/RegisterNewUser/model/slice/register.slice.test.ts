@@ -1,12 +1,12 @@
-import { PermissionName } from "@/entities/Permission";
-import { RoleName } from "@/entities/Role";
-import { AuthTokens, User } from "@/entities/User";
-import { registerNewUser } from "../services/registerNewUser/registerNewUser";
-import { ValidationError } from "../types/error";
-import { RegisterForm, RegisterSchema } from "../types/register.schema";
-import { initialForm, registerActions, registerReducer } from "./register.slice";
+import { PermissionName } from '@/entities/Permission';
+import { RoleName } from '@/entities/Role';
+import { AuthTokens, User } from '@/entities/User';
+import { registerNewUser } from '../services/registerNewUser/registerNewUser';
+import { ValidationError } from '../types/error';
+import { RegisterForm, RegisterSchema } from '../types/register.schema';
+import { initialForm, registerActions, registerReducer } from './register.slice';
 
-const form:RegisterForm = {
+const form: RegisterForm = {
   confirmPassword: '12345',
   email: 'email@gmail.com',
   firstName: 'first',
@@ -15,7 +15,7 @@ const form:RegisterForm = {
   password: '12345',
   phone: '+37533455644',
   role: RoleName.ADMIN
-}
+};
 const user: User = {
   login: 'admin',
   id: '23',
@@ -31,14 +31,13 @@ const user: User = {
   role: {
     description: 'desc',
     name: RoleName.STUDENT
-  },
-}
+  }
+};
 
 const tokens: AuthTokens = {
   accessToken: 'sdfsdfsdfsdfs TEST sdgsdgdsfg',
   refreshToken: 'sdfsvwwtfg TEST sdfgsdf s'
-}
-
+};
 
 describe('profile.slice', () => {
   test('should set login', () => {
@@ -50,7 +49,7 @@ describe('profile.slice', () => {
       form: {
         login: 'admin123'
       }
-    })
+    });
   });
 
   test('should set password', () => {
@@ -58,11 +57,13 @@ describe('profile.slice', () => {
       form: {}
     };
 
-    expect(registerReducer(state as RegisterSchema, registerActions.setPassword('password'))).toEqual({
+    expect(
+      registerReducer(state as RegisterSchema, registerActions.setPassword('password'))
+    ).toEqual({
       form: {
         password: 'password'
       }
-    })
+    });
   });
 
   test('should set confirmPassword', () => {
@@ -70,11 +71,16 @@ describe('profile.slice', () => {
       form: {}
     };
 
-    expect(registerReducer(state as RegisterSchema, registerActions.setConfirmPassword('confirmPassword'))).toEqual({
+    expect(
+      registerReducer(
+        state as RegisterSchema,
+        registerActions.setConfirmPassword('confirmPassword')
+      )
+    ).toEqual({
       form: {
         confirmPassword: 'confirmPassword'
       }
-    })
+    });
   });
 
   test('should set firstName', () => {
@@ -82,11 +88,13 @@ describe('profile.slice', () => {
       form: {}
     };
 
-    expect(registerReducer(state as RegisterSchema, registerActions.setFirstName('firstName'))).toEqual({
+    expect(
+      registerReducer(state as RegisterSchema, registerActions.setFirstName('firstName'))
+    ).toEqual({
       form: {
         firstName: 'firstName'
       }
-    })
+    });
   });
 
   test('should set secondName', () => {
@@ -94,11 +102,13 @@ describe('profile.slice', () => {
       form: {}
     };
 
-    expect(registerReducer(state as RegisterSchema, registerActions.setSecondName('lastName'))).toEqual({
+    expect(
+      registerReducer(state as RegisterSchema, registerActions.setSecondName('lastName'))
+    ).toEqual({
       form: {
         lastName: 'lastName'
       }
-    })
+    });
   });
 
   test('should set phone', () => {
@@ -110,7 +120,7 @@ describe('profile.slice', () => {
       form: {
         phone: '+375'
       }
-    })
+    });
   });
 
   test('should set role', () => {
@@ -118,11 +128,13 @@ describe('profile.slice', () => {
       form: {}
     };
 
-    expect(registerReducer(state as RegisterSchema, registerActions.setRole(RoleName.ADMIN))).toEqual({
+    expect(
+      registerReducer(state as RegisterSchema, registerActions.setRole(RoleName.ADMIN))
+    ).toEqual({
       form: {
         role: RoleName.ADMIN
       }
-    })
+    });
   });
 
   test('should set email', () => {
@@ -130,14 +142,14 @@ describe('profile.slice', () => {
       form: {}
     };
 
-    expect(registerReducer(state as RegisterSchema, registerActions.setEmail('email@gmail.com'))).toEqual({
+    expect(
+      registerReducer(state as RegisterSchema, registerActions.setEmail('email@gmail.com'))
+    ).toEqual({
       form: {
         email: 'email@gmail.com'
       }
-    })
+    });
   });
-
-
 
   test('should register new user pending', () => {
     const state: DeepPartial<RegisterSchema> = {
@@ -148,7 +160,7 @@ describe('profile.slice', () => {
     expect(registerReducer(state as RegisterSchema, registerNewUser.pending)).toEqual({
       isLoading: true,
       validationErrors: undefined
-    })
+    });
   });
 
   test('should register new user fulfilled ', () => {
@@ -160,8 +172,8 @@ describe('profile.slice', () => {
       form: initialForm,
       validationError: undefined,
       isLoading: false,
-      error: undefined,
-    })
+      error: undefined
+    });
   });
 
   test('should register new user rejected ', () => {
@@ -172,7 +184,7 @@ describe('profile.slice', () => {
     expect(registerReducer(state as RegisterSchema, registerNewUser.rejected)).toEqual({
       form,
       isLoading: false,
-      error: undefined,
-    })
+      error: undefined
+    });
   });
 });

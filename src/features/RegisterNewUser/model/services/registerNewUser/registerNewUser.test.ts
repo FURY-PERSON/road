@@ -1,12 +1,12 @@
-import { PermissionName } from "@/entities/Permission";
-import { RoleName } from "@/entities/Role";
-import { AuthTokens, User, userActions } from "@/entities/User";
-import { TestAsyncThunk } from "@/shared/lib/helpers/tests/TestAsyncThunk/TestAsyncThunk";
-import { ValidationError } from "../../types/error";
-import { RegisterForm } from "../../types/register.schema";
-import { registerNewUser } from "./registerNewUser";
+import { PermissionName } from '@/entities/Permission';
+import { RoleName } from '@/entities/Role';
+import { AuthTokens, User, userActions } from '@/entities/User';
+import { TestAsyncThunk } from '@/shared/lib/helpers/tests/TestAsyncThunk/TestAsyncThunk';
+import { ValidationError } from '../../types/error';
+import { RegisterForm } from '../../types/register.schema';
+import { registerNewUser } from './registerNewUser';
 
-const form:RegisterForm = {
+const form: RegisterForm = {
   confirmPassword: '12345',
   email: 'email@gmail.com',
   firstName: 'first',
@@ -15,7 +15,7 @@ const form:RegisterForm = {
   password: '12345',
   phone: '+37533455644',
   role: RoleName.ADMIN
-}
+};
 const user: User = {
   login: 'admin',
   id: '23',
@@ -31,25 +31,24 @@ const user: User = {
   role: {
     description: 'desc',
     name: RoleName.STUDENT
-  },
-}
+  }
+};
 
 const tokens: AuthTokens = {
   accessToken: 'sdfsdfsdfsdfs TEST sdgsdgdsfg',
   refreshToken: 'sdfsvwwtfg TEST sdfgsdf s'
-}
+};
 
 describe('registerNewUser', () => {
   test('success', async () => {
-
     const thunk = new TestAsyncThunk(registerNewUser, {
       registerForm: {
         form
       }
     });
-    thunk.api.post.mockReturnValue(Promise.resolve({data: {user, tokens}}))
+    thunk.api.post.mockReturnValue(Promise.resolve({ data: { user, tokens } }));
 
-    const result = await thunk.callThunk()
+    const result = await thunk.callThunk();
 
     expect(thunk.api.post).toHaveBeenCalled();
     expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(tokens));
@@ -65,9 +64,9 @@ describe('registerNewUser', () => {
         form
       }
     });
-    thunk.api.post.mockReturnValue(Promise.resolve({data: {tokens}}))
+    thunk.api.post.mockReturnValue(Promise.resolve({ data: { tokens } }));
 
-    const result = await thunk.callThunk()
+    const result = await thunk.callThunk();
 
     expect(thunk.api.post).toHaveBeenCalled();
 
@@ -81,9 +80,9 @@ describe('registerNewUser', () => {
         form
       }
     });
-    thunk.api.post.mockReturnValue(Promise.resolve({data: {user}}))
+    thunk.api.post.mockReturnValue(Promise.resolve({ data: { user } }));
 
-    const result = await thunk.callThunk()
+    const result = await thunk.callThunk();
 
     expect(thunk.api.post).toHaveBeenCalled();
 
@@ -100,15 +99,13 @@ describe('registerNewUser', () => {
         }
       }
     });
-    thunk.api.post.mockReturnValue(Promise.resolve({data: {user, tokens}}))
+    thunk.api.post.mockReturnValue(Promise.resolve({ data: { user, tokens } }));
 
-    const result = await thunk.callThunk()
+    const result = await thunk.callThunk();
 
     expect(thunk.api.post).toHaveBeenCalledTimes(0);
     expect(result.meta.requestStatus).toBe('rejected');
-    expect(result.payload).toEqual([
-      ValidationError.USER_DATA
-    ]);
+    expect(result.payload).toEqual([ValidationError.USER_DATA]);
   });
 
   test('server error', async () => {
@@ -117,13 +114,11 @@ describe('registerNewUser', () => {
         form: form
       }
     });
-    thunk.api.post.mockReturnValue(Promise.reject())
+    thunk.api.post.mockReturnValue(Promise.reject());
 
-
-    const result = await thunk.callThunk()
+    const result = await thunk.callThunk();
 
     expect(thunk.api.post).toBeCalled();
     expect(result.meta.requestStatus).toBe('rejected');
   });
-
 });

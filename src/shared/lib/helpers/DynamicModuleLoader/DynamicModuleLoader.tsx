@@ -1,25 +1,22 @@
 import { Reducer } from '@reduxjs/toolkit';
-import {
-  FC, ReactElement, useLayoutEffect, 
-} from 'react';
+import { FC, ReactElement, useLayoutEffect } from 'react';
 import { useDispatch, useStore } from 'react-redux';
+
 import { ReduxStoreWithManager } from '@/app/providers/StoreProvider';
 import { StateSchema, StateSchemaKey } from '@/app/providers/StoreProvider/config/stateTypes';
 
 export type ReducersList = {
-  [key in StateSchemaKey]?: Reducer<NonNullable<StateSchema[key]>>
-}
+  [key in StateSchemaKey]?: Reducer<NonNullable<StateSchema[key]>>;
+};
 
 interface DynamicModuleLoaderProps {
   children: ReactElement;
   reducers: ReducersList;
-  removeAfterUnmount?: boolean
+  removeAfterUnmount?: boolean;
 }
 
-export const DynamicModuleLoader:FC<DynamicModuleLoaderProps> = (props) => {
-  const {
-    children, reducers, removeAfterUnmount = true, 
-  } = props;
+export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
+  const { children, reducers, removeAfterUnmount = true } = props;
   const dispatch = useDispatch();
   const store = useStore() as ReduxStoreWithManager;
 
@@ -47,10 +44,8 @@ export const DynamicModuleLoader:FC<DynamicModuleLoaderProps> = (props) => {
         }
       });
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return (
-    children
-  );
+  return children;
 };

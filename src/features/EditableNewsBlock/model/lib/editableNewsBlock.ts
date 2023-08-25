@@ -1,6 +1,10 @@
 import { NewsBlockType } from '@/entities/News';
+
 import {
-  EditableNewsBlock, EditableNewsBlockCode, EditableNewsBlockImage, EditableNewsBlockText, 
+  EditableNewsBlock,
+  EditableNewsBlockCode,
+  EditableNewsBlockImage,
+  EditableNewsBlockText
 } from '../types/editableNewsBlock';
 
 export function isImageBlock(block: EditableNewsBlock): block is EditableNewsBlockImage {

@@ -2,21 +2,21 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    jest: true,
+    jest: true
   },
   extends: [
-    'eslint:recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'airbnb',
     'plugin:i18next/recommended',
     'plugin:react-hooks/recommended',
+    'prettier'
   ],
   ignorePatterns: ['**.js'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module',
+    sourceType: 'module'
   },
   plugins: [
     'react',
@@ -27,81 +27,104 @@ module.exports = {
     'jest-dom',
     'react-hooks',
     'unused-imports',
+    'prettier'
   ],
   rules: {
-    indent: [1, 2],
+    'prettier/prettier': [
+      'warn',
+      {
+        trailingComma: 'none',
+        tabWidth: 2,
+        semi: true,
+        singleQuote: true,
+        bracketSpacing: true,
+        bracketSameLine: false,
+        jsxBracketSameLine: false,
+        printWidth: 100
+      }
+    ],
+    'arrow-body-style': 'off',
+    'prefer-arrow-callback': 'off',
     'no-tabs': 'off',
-    'react/jsx-indent': [2, 2],
-    'react/jsx-filename-extension': [1, {
-      extensions: ['.jsx', '.tsx'],
-    }],
+    'react/jsx-filename-extension': [
+      1,
+      {
+        extensions: ['.jsx', '.tsx']
+      }
+    ],
     'react/function-component-definition': 'off',
     'import/prefer-default-export': 'off',
     'import/no-unresolved': 'off',
     'pace-infix-ops': 'off',
     'consistent-return': 'off',
-    'object-curly-spacing': 'warn',
     'react/jsx-props-no-spreading': 'off',
-    'no-multiple-empty-lines': 'warn',
-    'keyword-spacing': 'warn',
-    'react/jsx-tag-spacing': 'warn',
     'no-useless-return': 'off',
     'react/no-array-index-key': 'off',
     'no-undef': 'off',
     'object-shorthand': 'off',
     'eol-last': 'warn',
-    'import/order': 'warn',
-    'react/self-closing-comp': 'off',
+    'import/order': [
+      'warn',
+      {
+        pathGroups: [
+          {
+            pattern: '@/**',
+            group: 'external',
+            position: 'after'
+          }
+        ],
+        'newlines-between': 'always',
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'unknown',
+          'parent',
+          'sibling',
+          'index',
+          'object',
+          'type'
+        ]
+      }
+    ],
     'react/require-default-props': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
     'no-plusplus': 'off',
-    'react/jsx-one-expression-per-line': 'off',
     'react/destructuring-assignment': 'off',
     'import/no-extraneous-dependencies': 'off',
     'no-shadow': 'off',
     'no-underscore-dangle': 'off',
-    'comma-dangle': 'warn',
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
-    'no-trailing-spaces': 'off',
     'import/extensions': 'off',
     'no-unused-vars': 'off', // or "@typescript-eslint/no-unused-vars": "off",
     'unused-imports/no-unused-imports': 'warn',
     'unused-imports/no-unused-vars': [
       'warn',
       {
-        vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_', 
-      },
+        vars: 'all',
+        varsIgnorePattern: '^_',
+        args: 'after-used',
+        argsIgnorePattern: '^_'
+      }
     ],
-    'max-len': [1, {
-      ignoreComments: true, tabWidth: 2, code: 130, ignoreStrings: true, ignoreUrls: true, 
-    }],
     'i18next/no-literal-string': ['error', { markupOnly: true }],
-    'linebreak-style': [
-      'error',
-      'unix',
-    ],
-    quotes: [
-      'warn',
-      'single',
-    ],
-    semi: [
-      'warn',
-      'always',
-    ],
+    'linebreak-style': ['error', 'unix'],
+    quotes: ['warn', 'single'],
+    semi: ['warn', 'always']
   },
   globals: {
     __IS__DEV__: true,
     __API__: true,
-    __PROJECT__: true,
+    __PROJECT__: true
   },
   overrides: [
     {
       files: ['src/**/*.slice.ts'],
-      rules: { 'no-param-reassign': ['error', { props: false }] },
-    },
-  ],
+      rules: { 'no-param-reassign': ['error', { props: false }] }
+    }
+  ]
 };

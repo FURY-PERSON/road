@@ -7,13 +7,13 @@ export enum ProfileValidationError {
   SERVER_ERROR = 'SERVER_ERROR'
 }
 
-export type EditableUser = Omit<User, 'role' | 'permissions'> & {roleName: RoleName}
+export type EditableUser = Omit<User, 'role' | 'permissions'> & { roleName: RoleName };
 
 export interface ProfileSchema {
-  data?: User
+  data?: User;
   isLoading: boolean;
   error?: string;
-  readonly: boolean
-  form: Partial<EditableUser>,
-  validationErrors?: ProfileValidationError[]
+  readonly: boolean;
+  form: Partial<EditableUser>;
+  validationErrors?: ProfileValidationError[];
 }

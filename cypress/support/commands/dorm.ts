@@ -5,15 +5,15 @@ import { Dorm } from '@/entities/Dorm';
 export const deleteDorm = (dormId: string) => {
   cy.request({
     method: 'DELETE',
-    url: `http://localhost:3005/api/dorm/${dormId}`,
+    url: `http://localhost:3005/api/dorm/${dormId}`
   }).then(({ body }) => body);
 };
 
 export interface CreateDormProps {
-  name: string,
-  address: string
-  phone: string
-  email: string
+  name: string;
+  address: string;
+  phone: string;
+  email: string;
 }
 
 export const createDorm = (dorm: CreateDormProps) => {
@@ -24,27 +24,26 @@ export const createDorm = (dorm: CreateDormProps) => {
   if (dorm.phone) formData.append('phone', dorm.phone);
   if (dorm.email) formData.append('email', dorm.email);
 
-
   cy.request({
     method: 'POST',
-    url: `http://localhost:3005/api/dorm`,
+    url: 'http://localhost:3005/api/dorm',
     form: false,
     headers: {
-      'Content-Type': 'multipart/form-data',
+      'Content-Type': 'multipart/form-data'
     },
-    body: formData,
-  }).then(({body}) => {
+    body: formData
+  }).then(({ body }) => {
     const dec = new TextDecoder();
-    
-    return JSON.parse(dec.decode(body))
+
+    return JSON.parse(dec.decode(body));
   });
 };
 
 declare global {
   namespace Cypress {
     interface Chainable {
-      createDorm(news: CreateDormProps): Chainable<Dorm>
-      deleteDorm(dormId: string): Chainable<void>
+      createDorm(news: CreateDormProps): Chainable<Dorm>;
+      deleteDorm(dormId: string): Chainable<void>;
     }
   }
 }

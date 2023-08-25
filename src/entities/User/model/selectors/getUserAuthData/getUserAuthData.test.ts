@@ -1,5 +1,5 @@
-import { StateSchema } from "@/app/providers/StoreProvider";
-import { getUserAuthData } from "./getUserAuthData";
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { getUserAuthData } from './getUserAuthData';
 
 describe('getUserAuthData', () => {
   test('should return user auth data', () => {
@@ -20,9 +20,7 @@ describe('getUserAuthData', () => {
 
   test('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {
-      user: {
-
-      }
+      user: {}
     };
 
     expect(getUserAuthData(state as StateSchema)).toEqual(undefined);
