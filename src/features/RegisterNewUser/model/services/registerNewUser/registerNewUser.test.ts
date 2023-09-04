@@ -5,6 +5,9 @@ import { TestAsyncThunk } from '@/shared/lib/helpers/tests/TestAsyncThunk/TestAs
 import { ValidationError } from '../../types/error';
 import { RegisterForm } from '../../types/register.schema';
 import { registerNewUser } from './registerNewUser';
+import { setFeatureFlags } from '@/shared/constant/featureFlag';
+
+jest.mock('@/shared/constant/featureFlag')
 
 const form: RegisterForm = {
   confirmPassword: '12345',
@@ -53,6 +56,7 @@ describe('registerNewUser', () => {
     expect(thunk.api.post).toHaveBeenCalled();
     expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(tokens));
     expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setUserData(user));
+    expect(setFeatureFlags).toHaveBeenCalled();
 
     expect(result.meta.requestStatus).toBe('fulfilled');
     expect(result.payload).toEqual(user);
@@ -72,6 +76,7 @@ describe('registerNewUser', () => {
 
     expect(result.meta.requestStatus).toBe('rejected');
     expect(result.payload).toEqual('User not found');
+    expect(setFeatureFlags).not.toHaveBeenCalled();
   });
 
   test('empty tokens from server', async () => {
@@ -88,6 +93,7 @@ describe('registerNewUser', () => {
 
     expect(result.meta.requestStatus).toBe('rejected');
     expect(result.payload).toEqual('Tokens do not provided');
+    expect(setFeatureFlags).not.toHaveBeenCalled();
   });
 
   test('validation error', async () => {
@@ -106,6 +112,7 @@ describe('registerNewUser', () => {
     expect(thunk.api.post).toHaveBeenCalledTimes(0);
     expect(result.meta.requestStatus).toBe('rejected');
     expect(result.payload).toEqual([ValidationError.USER_DATA]);
+    expect(setFeatureFlags).not.toHaveBeenCalled();
   });
 
   test('server error', async () => {
@@ -120,5 +127,6 @@ describe('registerNewUser', () => {
 
     expect(thunk.api.post).toBeCalled();
     expect(result.meta.requestStatus).toBe('rejected');
+    expect(setFeatureFlags).not.toHaveBeenCalled();
   });
 });

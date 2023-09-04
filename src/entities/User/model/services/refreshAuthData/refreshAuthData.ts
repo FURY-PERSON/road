@@ -3,9 +3,11 @@ import { AxiosError } from 'axios';
 
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { AuthTokens, User } from '@/entities/User';
+import { setFeatureFlags } from '@/shared/constant/featureFlag';
+import { FeatureFlagsEntity } from '@/shared/types/toggleFeaturesFlags';
 
 interface RefreshResponse {
-  user: User;
+  user: User & { featureFlags: FeatureFlagsEntity };
   tokens: AuthTokens;
 }
 
@@ -36,6 +38,8 @@ export const refreshAuthData = createAsyncThunk<
     if (!tokens) {
       return rejectWithValue('Tokens do not provided');
     }
+
+    setFeatureFlags(user.featureFlags);
 
     return { user, tokens };
   } catch (error) {

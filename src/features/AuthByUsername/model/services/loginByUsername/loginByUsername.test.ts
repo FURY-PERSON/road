@@ -1,12 +1,12 @@
-import { Dispatch } from '@reduxjs/toolkit';
-import { StateSchema } from '@/app/providers/StoreProvider';
-import axios, { AxiosError } from 'axios';
 import { PermissionName } from '@/entities/Permission';
 import { RoleName } from '@/entities/Role';
 import { AuthTokens, User, userActions } from '@/entities/User';
 import { TestAsyncThunk } from '@/shared/lib/helpers/tests/TestAsyncThunk/TestAsyncThunk';
 import { LoginSchema } from '../../types/login.schema';
 import { loginByUsername } from './loginByUsername';
+import { setFeatureFlags } from '@/shared/constant/featureFlag';
+
+jest.mock('@/shared/constant/featureFlag')
 
 const tokens: AuthTokens = {
   accessToken: 'asdasd',
@@ -73,6 +73,7 @@ describe('Get login state', () => {
     const result = await thunk.callThunk();
 
     expect(thunk.api.post).toHaveBeenCalled();
+    expect(setFeatureFlags).toHaveBeenCalled();
     expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(tokens));
     expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setUserData(user));
     expect(result.meta.requestStatus).toBe('fulfilled');
@@ -111,6 +112,7 @@ describe('Get login state', () => {
     const result = await thunk.callThunk();
 
     expect(thunk.api.post).toBeCalled();
+    expect(setFeatureFlags).not.toHaveBeenCalled();
     expect(result.meta.requestStatus).toBe('rejected');
     expect(result.payload).toBe('Unexpected login error');
   });

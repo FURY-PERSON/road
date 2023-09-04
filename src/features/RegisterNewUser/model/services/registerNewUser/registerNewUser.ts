@@ -3,12 +3,14 @@ import { AxiosError } from 'axios';
 
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { AuthTokens, User, userActions } from '@/entities/User';
+import { setFeatureFlags } from '@/shared/constant/featureFlag';
+import { FeatureFlagsEntity } from '@/shared/types/toggleFeaturesFlags';
 
 import { ValidationError } from '../../types/error';
 import { validateForm } from '../validateForm/validateForm';
 
 interface RegisterResponse {
-  user: User;
+  user: User & { featureFlags: FeatureFlagsEntity };
   tokens: AuthTokens;
 }
 
@@ -43,6 +45,8 @@ export const registerNewUser = createAsyncThunk<
     if (!tokens) {
       return rejectWithValue('Tokens do not provided');
     }
+
+    setFeatureFlags(user.featureFlags);
 
     dispatch(userActions.setAuthData(tokens));
     dispatch(userActions.setUserData(user));

@@ -4,7 +4,7 @@
   "stylelint.snippet": ["css", "less", "postcss", "scss"],
   "stylelint.validate": ["css", "less", "postcss", "scss"],
 
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   // disable editor formatting, so eslint can handle it
   "[javascript]": {
     "editor.formatOnSave": false

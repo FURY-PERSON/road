@@ -3,9 +3,11 @@ import { AxiosError } from 'axios';
 
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { AuthTokens, User, userActions } from '@/entities/User';
+import { FeatureFlagsEntity } from '@/shared/types/toggleFeaturesFlags';
+import { setFeatureFlags } from '@/shared/constant/featureFlag';
 
 interface LoginResponse {
-  user: User;
+  user: User & { featureFlags: FeatureFlagsEntity };
   tokens: AuthTokens;
 }
 
@@ -27,8 +29,11 @@ export const loginByUsername = createAsyncThunk<User, void, ThunkConfig<string>>
         return rejectWithValue('User not found');
       }
 
+      setFeatureFlags(user.featureFlags);
+
       dispatch(userActions.setAuthData(tokens));
       dispatch(userActions.setUserData(user));
+
       return user;
     } catch (error) {
       if (error instanceof AxiosError) {
