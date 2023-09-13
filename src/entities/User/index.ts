@@ -6,3 +6,4 @@ export { getUserLogin } from './model/selectors/getUserLogin/getUserLogin';
 export { refreshAuthData } from './model/services/refreshAuthData/refreshAuthData';
 export { getUserRoleName } from './model/selectors/getUserRole/getUserRole';
 export { UsersList } from './ui/UsersList/UsersList';
+export { getUserInited } from './model/selectors/getUserInited/getUserInited';
