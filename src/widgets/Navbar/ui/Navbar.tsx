@@ -9,6 +9,8 @@ import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { Button } from '@/shared/ui/Button/Button';
 import { NotificationButton } from '@/features/NotificationButton';
 import { routes } from '@/shared/constant/router';
+import { HStack } from '@/shared/ui/Stack/HStack/HStack';
+import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
 
 import cls from './Navbar.module.scss';
 
@@ -46,16 +48,28 @@ export function Navbar(props: NavbarProps) {
   }
 
   return (
-    <header className={classNames(cls.Navbar, {}, [className])}>
-      <div className={cls.inner}>
-        <AppLink to={routes.main()}>{t('to main')}</AppLink>
+    <ToggleFeatures
+      feature="newDesign"
+      off={
+        <header className={classNames(cls.Navbar, {}, [className])}>
+          <div className={cls.inner}>
+            <AppLink to={routes.main()}>{t('to main')}</AppLink>
 
-        <div className={cls.right}>
-          <NotificationButton />
+            <div className={cls.right}>
+              <NotificationButton />
 
-          <Button onClick={onLogout}>{t('logout')}</Button>
-        </div>
-      </div>
-    </header>
+              <Button onClick={onLogout}>{t('logout')}</Button>
+            </div>
+          </div>
+        </header>
+      }
+      on={
+        <header className={classNames(cls.NavbarRedesigned, {}, [className])}>
+          <HStack gap={16} className={cls.actions}>
+            <NotificationButton />
+          </HStack>
+        </header>
+      }
+    />
   );
 }

@@ -24,10 +24,10 @@
   },
   "include": [
     "./config/jest/setupTest.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/**/*.ts",
-    "**/**/*.tsx"
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./src/**/**/*.ts",
+    "./src/**/**/*.tsx"
   ],
   "exclude": [
     "./cypress/**/*"

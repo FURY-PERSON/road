@@ -34,6 +34,13 @@ body {
   background: var(--bg-color);
 }
 
+.app_redesigned {
+  min-height: 100vh;
+  font: var(--font-m-redesigned);
+  color: var(--text-redesigned);
+  background: var(--bg-redesigned);
+}
+
 .content {
   display: flex;
   flex: 1;

@@ -9,6 +9,8 @@ import { Sidebar } from '@/widgets/Sidebar';
 import { PageLoader } from '@/widgets/PageLoader';
 import { getUserInited, refreshAuthData, userActions } from '@/entities/User';
 import { SvgLoader } from '@/shared/ui/SvgLoader';
+import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { MainLayout } from '@/shared/ui/MainLayout';
 
 import cls from './App.module.scss';
 
@@ -25,21 +27,44 @@ function App() {
   const userInited = useSelector(getUserInited);
 
   return (
-    <div className={classNames('app', {}, [])}>
-      <Suspense fallback={<PageLoader />}>
-        <Navbar />
-        <div className="content">
-          <Sidebar />
-          {userInited ? (
-            <AppRouter />
-          ) : (
-            <div className={cls.loader}>
-              <SvgLoader />
+    <ToggleFeatures
+      feature="newDesign"
+      off={
+        <div className={classNames('app', {}, [])}>
+          <Suspense fallback={<PageLoader />}>
+            <Navbar />
+            <div className="content">
+              <Sidebar />
+              {userInited ? (
+                <AppRouter />
+              ) : (
+                <div className={cls.loader}>
+                  <SvgLoader />
+                </div>
+              )}
             </div>
-          )}
+          </Suspense>
         </div>
-      </Suspense>
-    </div>
+      }
+      on={
+        <div className={classNames('app_redesigned', {}, [])}>
+          <Suspense fallback={<PageLoader />}>
+            {userInited ? (
+              <MainLayout
+                header={<Navbar />}
+                content={<AppRouter />}
+                sidebar={<Sidebar />}
+                toolbar={<div>123</div>}
+              />
+            ) : (
+              <div className={cls.loader}>
+                <SvgLoader />
+              </div>
+            )}
+          </Suspense>
+        </div>
+      }
+    />
   );
 }
 

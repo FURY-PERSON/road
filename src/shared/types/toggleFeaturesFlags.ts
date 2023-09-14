@@ -1,5 +1,6 @@
 export interface FeatureFlags {
   ratingCardOnMainPage?: boolean;
+  newDesign?: boolean;
 }
 
 export interface FeatureFlagsEntity {
