@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Button } from '@/shared/ui/Button/Button';
+import { Button } from '@/shared/ui/deprecated/Button/Button';
 import { updateProfile } from '@/features/EditableProfileCard/model/services/updateProfileData/updateProfileData';
 import { RoleGuard } from '@/features/RoleGuard';
 import { RoleName } from '@/entities/Role';

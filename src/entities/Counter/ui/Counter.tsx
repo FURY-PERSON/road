@@ -3,7 +3,7 @@ import { memo, FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Button } from '@/shared/ui/Button/Button';
+import { Button } from '@/shared/ui/deprecated/Button/Button';
 
 import { getCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
 import { counterActions } from '../model/slice/counter.slice';

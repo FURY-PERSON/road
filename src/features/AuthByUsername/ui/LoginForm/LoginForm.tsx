@@ -5,16 +5,16 @@ import { useSelector } from 'react-redux';
 import { loginActions } from '@/features/AuthByUsername/model/slice/login.slice';
 import { loginByUsername } from '@/features/AuthByUsername/model/services/loginByUsername/loginByUsername';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
-import { TextInput } from '@/shared/ui/TextInput/TextInput';
+import { Button, ButtonVariant } from '@/shared/ui/deprecated/Button/Button';
+import { TextInput } from '@/shared/ui/deprecated/TextInput/TextInput';
 import { getLoginState } from '@/features/AuthByUsername/model/selectors/getLoginState/getLoginState';
-import { Text, TextVariant } from '@/shared/ui/Text/Text';
+import { Text, TextVariant } from '@/shared/ui/deprecated/Text/Text';
 import {
   DynamicModuleLoader,
   ReducersList
 } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { AppLink } from '@/shared/ui/deprecated/AppLink/AppLink';
 import { routes } from '@/shared/constant/router';
 
 import { loginReducer } from '../../model/slice/login.slice';

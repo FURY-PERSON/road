@@ -3,7 +3,7 @@ import { memo, FC } from 'react';
 import { Theme, useTheme } from '@/shared/contexts/ThemeProvider';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import ThemeIcon from '@/shared/assets/icons/theme_icon.svg';
-import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
+import { Button, ButtonVariant } from '@/shared/ui/deprecated/Button/Button';
 
 import cls from './ThemeSwitcher.module.scss';
 

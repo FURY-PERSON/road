@@ -5,13 +5,13 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { NewsListVariant, NewsSort, NewsType } from '@/entities/News';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Select, SelectOption } from '@/shared/ui/Select/Select';
-import { TextInput } from '@/shared/ui/TextInput/TextInput';
-import { Card } from '@/shared/ui/Card/Card';
+import { Select, SelectOption } from '@/shared/ui/deprecated/Select/Select';
+import { TextInput } from '@/shared/ui/deprecated/TextInput/TextInput';
+import { Card } from '@/shared/ui/deprecated/Card/Card';
 import i18n from '@/shared/config/i18n/i18n';
 import { SortOrder } from '@/shared/types/sort';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
-import { TabItem, Tabs } from '@/shared/ui/Tabs/Tabs';
+import { TabItem, Tabs } from '@/shared/ui/deprecated/Tabs/Tabs';
 import { NewsViewSelector } from '@/features/NewsViewSelector';
 
 import { fetchNewsList } from '../../model/services/fetchNewsList/fetchNewsList';

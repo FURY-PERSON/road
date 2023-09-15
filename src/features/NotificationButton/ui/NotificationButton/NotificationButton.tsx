@@ -10,10 +10,10 @@ import {
   useGetNotifications
 } from '@/entities/Notification';
 import NotificationIcon from '@/shared/assets/icons/notification.svg';
-import { Popover } from '@/shared/ui/popups';
-import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
+import { Popover } from '@/shared/ui/deprecated/popups';
+import { Button, ButtonVariant } from '@/shared/ui/deprecated/Button/Button';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Drawer } from '@/shared/ui/Drawer/Drawer';
+import { Drawer } from '@/shared/ui/deprecated/Drawer/Drawer';
 
 import { getUnreadMessagesAmount } from '../../model/selectors/notificationButton';
 

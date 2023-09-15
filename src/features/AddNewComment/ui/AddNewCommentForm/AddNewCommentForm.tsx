@@ -2,10 +2,10 @@ import { memo, FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-import { Button } from '@/shared/ui/Button/Button';
-import { TextInput } from '@/shared/ui/TextInput/TextInput';
+import { Button } from '@/shared/ui/deprecated/Button/Button';
+import { TextInput } from '@/shared/ui/deprecated/TextInput/TextInput';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Text, TextVariant } from '@/shared/ui/Text/Text';
+import { Text, TextVariant } from '@/shared/ui/deprecated/Text/Text';
 
 import { addCommentFormLoading } from '../../model/selectors/addCommentFormLoading/addCommentFormLoading';
 import { addCommentFormText } from '../../model/selectors/addCommentFormText/addCommentFormText';

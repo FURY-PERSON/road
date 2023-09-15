@@ -1,9 +1,9 @@
 import { memo, FC, useCallback } from 'react';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Card, CardVariant } from '@/shared/ui/Card/Card';
-import { Text, TextSize } from '@/shared/ui/Text/Text';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { Card, CardVariant } from '@/shared/ui/deprecated/Card/Card';
+import { Text, TextSize } from '@/shared/ui/deprecated/Text/Text';
+import { AppLink } from '@/shared/ui/deprecated/AppLink/AppLink';
 
 import { Notification } from '../../model/types/notification';
 

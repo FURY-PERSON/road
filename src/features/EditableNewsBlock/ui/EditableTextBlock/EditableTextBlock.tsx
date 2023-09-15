@@ -2,11 +2,11 @@ import { memo, FC, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { TextInput } from '@/shared/ui/TextInput/TextInput';
-import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
-import { Text, TextSize } from '@/shared/ui/Text/Text';
-import { Card } from '@/shared/ui/Card/Card';
-import { Select, SelectOption } from '@/shared/ui/Select/Select';
+import { TextInput } from '@/shared/ui/deprecated/TextInput/TextInput';
+import { Button, ButtonVariant } from '@/shared/ui/deprecated/Button/Button';
+import { Text, TextSize } from '@/shared/ui/deprecated/Text/Text';
+import { Card } from '@/shared/ui/deprecated/Card/Card';
+import { Select, SelectOption } from '@/shared/ui/deprecated/Select/Select';
 
 import {
   EditableNewsBlockText,

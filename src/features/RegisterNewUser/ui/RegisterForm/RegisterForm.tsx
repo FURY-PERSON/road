@@ -9,11 +9,11 @@ import {
   ReducersList
 } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
-import { Select } from '@/shared/ui/Select/Select';
-import { Text, TextVariant } from '@/shared/ui/Text/Text';
-import { TextInput } from '@/shared/ui/TextInput/TextInput';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { Button, ButtonVariant } from '@/shared/ui/deprecated/Button/Button';
+import { Select } from '@/shared/ui/deprecated/Select/Select';
+import { Text, TextVariant } from '@/shared/ui/deprecated/Text/Text';
+import { TextInput } from '@/shared/ui/deprecated/TextInput/TextInput';
+import { AppLink } from '@/shared/ui/deprecated/AppLink/AppLink';
 import { routes } from '@/shared/constant/router';
 
 import { registerNewUser } from '../../model/services/registerNewUser/registerNewUser';

@@ -7,7 +7,7 @@ import { AddNewCommentFormAsync, sendNewsComment } from '@/features/AddNewCommen
 import { fetchCommentsByNewsId, NewsDetailsCommentList } from '@/features/NewsDetailsCommentList';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Page } from '@/widgets/Page/Page';
-import { Text } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/deprecated/Text/Text';
 import { NewsRecommendationList } from '@/features/NewsRecommendationList';
 import { NewsRatingAsync } from '@/features/NewsRating';
 

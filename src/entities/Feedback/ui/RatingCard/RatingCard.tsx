@@ -2,16 +2,16 @@ import { useTranslation } from 'react-i18next';
 import { memo, useCallback, useState } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
 
-import { Card } from '@/shared/ui/Card/Card';
-import { Text } from '@/shared/ui/Text/Text';
-import { StarRating } from '@/shared/ui/StarRating/StarRating';
-import { Modal } from '@/shared/ui/Modal/Modal';
-import { Button, ButtonSize } from '@/shared/ui/Button/Button';
-import { Drawer } from '@/shared/ui/Drawer/Drawer';
-import { TextInput } from '@/shared/ui/TextInput/TextInput';
-import { VStack } from '@/shared/ui/Stack/VStack/VStack';
+import { Card } from '@/shared/ui/deprecated/Card/Card';
+import { Text } from '@/shared/ui/deprecated/Text/Text';
+import { StarRating } from '@/shared/ui/deprecated/StarRating/StarRating';
+import { Modal } from '@/shared/ui/deprecated/Modal/Modal';
+import { Button, ButtonSize } from '@/shared/ui/deprecated/Button/Button';
+import { TextInput } from '@/shared/ui/deprecated/TextInput/TextInput';
+import { VStack } from '@/shared/ui/deprecated/Stack/VStack/VStack';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { HStack } from '@/shared/ui/Stack/HStack/HStack';
+import { HStack } from '@/shared/ui/deprecated/Stack/HStack/HStack';
+import { Drawer } from '@/shared/ui/deprecated/Drawer/Drawer';
 
 import cls from './RatingCard.module.scss';
 

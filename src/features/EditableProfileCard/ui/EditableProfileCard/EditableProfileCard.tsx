@@ -5,12 +5,12 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { SvgLoader } from '@/shared/ui/SvgLoader';
-import { Text, TextVariant } from '@/shared/ui/Text/Text';
+import { SvgLoader } from '@/shared/ui/deprecated/SvgLoader';
+import { Text, TextVariant } from '@/shared/ui/deprecated/Text/Text';
 import { RoleName } from '@/entities/Role';
-import { Select, SelectOption } from '@/shared/ui/Select/Select';
+import { Select, SelectOption } from '@/shared/ui/deprecated/Select/Select';
 import i18n from '@/shared/config/i18n/i18n';
-import { TextInput } from '@/shared/ui/TextInput/TextInput';
+import { TextInput } from '@/shared/ui/deprecated/TextInput/TextInput';
 import { RoleGuard } from '@/features/RoleGuard';
 
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';

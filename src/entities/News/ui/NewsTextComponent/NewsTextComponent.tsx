@@ -1,7 +1,7 @@
 import { memo, FC } from 'react';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Text, TextSize } from '@/shared/ui/Text/Text';
+import { Text, TextSize } from '@/shared/ui/deprecated/Text/Text';
 
 import { NewsTextBlock } from '../../model/types/news';
 

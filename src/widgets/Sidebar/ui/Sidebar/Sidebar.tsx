@@ -4,11 +4,11 @@ import { useSelector } from 'react-redux';
 import { LanguageSwitcher } from '@/features/LanguageSwitcher';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Button, ButtonSize, ButtonVariant } from '@/shared/ui/Button/Button';
+import { Button, ButtonSize, ButtonVariant } from '@/shared/ui/deprecated/Button/Button';
 import { RoleGuard } from '@/features/RoleGuard';
-import { VStack } from '@/shared/ui/Stack/VStack/VStack';
+import { VStack } from '@/shared/ui/deprecated/Stack/VStack/VStack';
 import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
-import { AppLogo } from '@/shared/ui/AppLogo';
+import { AppLogo } from '@/shared/ui/deprecated/AppLogo';
 
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { getSidebarItemList } from '../../model/selectors/getSidebarItemList/getSidebarItemList';

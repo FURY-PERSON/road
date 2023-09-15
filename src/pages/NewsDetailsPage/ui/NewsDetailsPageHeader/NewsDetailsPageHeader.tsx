@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
+import { AppLink } from '@/shared/ui/deprecated/AppLink/AppLink';
+import { Button, ButtonVariant } from '@/shared/ui/deprecated/Button/Button';
 import { getNewsDetailsData } from '@/entities/News';
 import { routes } from '@/shared/constant/router';
 

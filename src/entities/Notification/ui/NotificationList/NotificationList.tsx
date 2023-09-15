@@ -2,9 +2,9 @@ import { memo, FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { VStack } from '@/shared/ui/Stack/VStack/VStack';
-import { SvgLoader } from '@/shared/ui/SvgLoader';
-import { Text, TextVariant } from '@/shared/ui/Text/Text';
+import { VStack } from '@/shared/ui/deprecated/Stack/VStack/VStack';
+import { SvgLoader } from '@/shared/ui/deprecated/SvgLoader';
+import { Text, TextVariant } from '@/shared/ui/deprecated/Text/Text';
 
 import { Notification } from '../../model/types/notification';
 import { NotificationItem } from '../NotificationItem/NotificationItem';

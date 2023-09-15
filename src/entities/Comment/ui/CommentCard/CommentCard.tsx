@@ -2,8 +2,8 @@ import { memo, FC } from 'react';
 
 import { routes } from '@/shared/constant/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { Text, TextSize } from '@/shared/ui/Text/Text';
+import { AppLink } from '@/shared/ui/deprecated/AppLink/AppLink';
+import { Text, TextSize } from '@/shared/ui/deprecated/Text/Text';
 
 import { Comment } from '../../model/types/comment';
 

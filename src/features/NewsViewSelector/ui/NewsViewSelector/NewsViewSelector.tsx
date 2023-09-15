@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import { NewsListVariant } from '@/entities/News/model/types/news';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
+import { Button, ButtonVariant } from '@/shared/ui/deprecated/Button/Button';
 
 import { viewTypes } from '../../model/constants/newsViewSelector';
 

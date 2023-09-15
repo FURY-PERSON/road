@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Page } from '@/widgets/Page/Page';
 import { CreateAndEditNews } from '@/widgets/CreateAndEditNews';
-import { Text } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/deprecated/Text/Text';
 
 import cls from './NewsEditPage.module.scss';
 

@@ -3,13 +3,13 @@ import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useHover } from '@/shared/lib/hooks/useHover/useHover';
-import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
-import { Card } from '@/shared/ui/Card/Card';
-import { Text, TextSize } from '@/shared/ui/Text/Text';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { Button, ButtonVariant } from '@/shared/ui/deprecated/Button/Button';
+import { Card } from '@/shared/ui/deprecated/Card/Card';
+import { Text, TextSize } from '@/shared/ui/deprecated/Text/Text';
+import { AppLink } from '@/shared/ui/deprecated/AppLink/AppLink';
 import { routes } from '@/shared/constant/router';
-import { AppImage } from '@/shared/ui/AppImage/AppImage';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton/Skeleton';
+import { AppImage } from '@/shared/ui/deprecated/AppImage/AppImage';
 
 import { News, NewsListVariant } from '../../model/types/news';
 

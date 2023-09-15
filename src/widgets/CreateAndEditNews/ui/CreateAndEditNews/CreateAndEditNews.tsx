@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { SvgLoader } from '@/shared/ui/SvgLoader';
+import { SvgLoader } from '@/shared/ui/deprecated/SvgLoader';
 
 import { NewsTools } from '../NewsTools/NewsTools';
 import { initCreateAndEditNews } from '../../model/services/initCreateAndEditNews/initCreateAndEditNews';

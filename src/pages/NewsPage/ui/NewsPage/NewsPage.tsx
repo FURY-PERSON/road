@@ -7,7 +7,7 @@ import {
 } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Page } from '@/widgets/Page/Page';
-import { Text, TextVariant } from '@/shared/ui/Text/Text';
+import { Text, TextVariant } from '@/shared/ui/deprecated/Text/Text';
 
 import { getNewsPageError } from '../../model/selectors/getNewsPageError/getNewsPageError';
 import { fetchNextNewsPage } from '../../model/services/fetchNextNewsPage/fetchNextNewsPage';

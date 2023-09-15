@@ -2,9 +2,9 @@ import { memo, FC, HTMLAttributeAnchorTarget } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Card } from '@/shared/ui/Card/Card';
-import { Text, TextSize } from '@/shared/ui/Text/Text';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { Card } from '@/shared/ui/deprecated/Card/Card';
+import { Text, TextSize } from '@/shared/ui/deprecated/Text/Text';
+import { AppLink } from '@/shared/ui/deprecated/AppLink/AppLink';
 import { routes } from '@/shared/constant/router';
 
 import { User } from '../../model/types/user';

@@ -5,11 +5,11 @@ import { useNavigate } from 'react-router-dom';
 
 import { getUserData, userActions } from '@/entities/User';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { Button } from '@/shared/ui/Button/Button';
+import { AppLink } from '@/shared/ui/deprecated/AppLink/AppLink';
+import { Button } from '@/shared/ui/deprecated/Button/Button';
 import { NotificationButton } from '@/features/NotificationButton';
 import { routes } from '@/shared/constant/router';
-import { HStack } from '@/shared/ui/Stack/HStack/HStack';
+import { HStack } from '@/shared/ui/deprecated/Stack/HStack/HStack';
 import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
 
 import cls from './Navbar.module.scss';
