@@ -10,7 +10,7 @@ import { PageLoader } from '@/widgets/PageLoader';
 import { getUserInited, refreshAuthData, userActions } from '@/entities/User';
 import { SvgLoader } from '@/shared/ui/deprecated/SvgLoader';
 import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
-import { MainLayout } from '@/shared/ui/deprecated/MainLayout';
+import { MainLayout } from '@/shared/ui/redesigned/MainLayout';
 
 import cls from './App.module.scss';
 

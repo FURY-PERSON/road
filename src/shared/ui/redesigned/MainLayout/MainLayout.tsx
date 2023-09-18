@@ -12,10 +12,6 @@ interface MainLayoutProps {
   toolbar?: ReactElement;
 }
 
-/** 
- * old design. Use from redesign folder
-  @deprecated  
-*/
 export const MainLayout = memo((props: MainLayoutProps) => {
   const { className, content, toolbar, header, sidebar } = props;
 

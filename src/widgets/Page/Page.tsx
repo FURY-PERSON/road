@@ -60,7 +60,7 @@ export const Page: FC<PageProps> = (props) => {
         toggleFeatures({
           name: 'newDesign',
           on: () => cls.pageRedesigned,
-          off: () => cls.page
+          off: () => cls.Page
         }),
         {},
         [className]
