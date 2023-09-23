@@ -7,10 +7,6 @@ interface PortalProps {
 
 const defaultRoot = (document.querySelector('.app') ?? document.body) as HTMLDivElement;
 
-/** 
- * old design. Use from redesign folder
-  @deprecated  
-*/
 export const Portal: FC<PortalProps> = memo((props) => {
   const { children } = props;
 

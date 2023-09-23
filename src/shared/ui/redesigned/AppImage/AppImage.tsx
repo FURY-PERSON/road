@@ -10,10 +10,6 @@ interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   errorFallback?: JSX.Element;
 }
 
-/** 
- * old design. Use from redesign folder
-  @deprecated  
-*/
 export const AppImage: FC<AppImageProps> = memo((props) => {
   const { className, src, alt, fallback, errorFallback, ...otherProps } = props;
 

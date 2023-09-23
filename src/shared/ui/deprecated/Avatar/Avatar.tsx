@@ -3,7 +3,7 @@ import { memo, FC, useMemo, CSSProperties } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 
 import { Skeleton } from '../Skeleton/Skeleton';
-import { AppImage } from '../AppImage/AppImage';
+import { AppImage } from '../../redesigned/AppImage/AppImage';
 
 import cls from './Avatar.module.scss';
 

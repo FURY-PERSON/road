@@ -3,8 +3,8 @@ import React, { FC, ReactNode } from 'react';
 import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 
-import { Portal } from '../Portal/Portal';
-import { Overlay } from '../Overlay/Overlay';
+import { Portal } from '../../redesigned/Portal/Portal';
+import { Overlay } from '../../redesigned/Overlay/Overlay';
 
 import cls from './Modal.module.scss';
 

@@ -1,4 +1,4 @@
-import { DropdownDirection } from '../types/popup';
+import { DropdownDirection } from '../types/types';
 
 import cls from './popup.module.scss';
 

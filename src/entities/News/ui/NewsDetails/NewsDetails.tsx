@@ -9,7 +9,7 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitial
 import { Card } from '@/shared/ui/deprecated/Card/Card';
 import { AppLink } from '@/shared/ui/deprecated/AppLink/AppLink';
 import { routes } from '@/shared/constant/router';
-import { AppImage } from '@/shared/ui/deprecated/AppImage/AppImage';
+import { AppImage } from '@/shared/ui/redesigned/AppImage/AppImage';
 
 import { getNewsDetailsLoading } from '../../model/selectors/getNewsDetailsLoading/getNewsDetailsLoading';
 import { fetchNewsById } from '../../model/services/fetchNewsById/fetchNewsById';

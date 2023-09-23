@@ -3,28 +3,23 @@ import { ReactNode } from 'react';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 
+import { mapDirectionClass } from '../../styles/constants';
 import popupCls from '../../styles/popup.module.scss';
-import { mapDirectionClass } from '../../styles/consts';
-import { DropdownDirection } from '../../types/popup';
+import { DropdownDirection } from '../../types/types';
 
 import cls from './Popover.module.scss';
 
 interface PopoverProps {
   className?: string;
-  panelClassName?: string;
   direction?: DropdownDirection;
   trigger: ReactNode;
   children: ReactNode;
 }
 
-/** 
- * old design. Use from redesign folder
-  @deprecated  
-*/
 export function Popover(props: PopoverProps) {
-  const { className, trigger, direction = 'bottom right', children, panelClassName } = props;
+  const { className, trigger, direction = 'bottom right', children } = props;
 
-  const menuClasses = mapDirectionClass[direction];
+  const menuClasses = [mapDirectionClass[direction], popupCls.menu];
 
   return (
     <HPopover className={classNames(cls.Popover, {}, [className, popupCls.popup])}>
@@ -32,9 +27,7 @@ export function Popover(props: PopoverProps) {
         {trigger}
       </HPopover.Button>
 
-      <HPopover.Panel className={classNames(cls.panel, {}, [menuClasses, panelClassName])}>
-        {children}
-      </HPopover.Panel>
+      <HPopover.Panel className={classNames(cls.panel, {}, menuClasses)}>{children}</HPopover.Panel>
     </HPopover>
   );
 }

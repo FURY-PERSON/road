@@ -2,9 +2,11 @@ import { memo, FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { VStack } from '@/shared/ui/deprecated/Stack/VStack/VStack';
-import { SvgLoader } from '@/shared/ui/deprecated/SvgLoader';
-import { Text, TextVariant } from '@/shared/ui/deprecated/Text/Text';
+import { Text as TextDeprecated, TextVariant } from '@/shared/ui/deprecated/Text/Text';
+import { SvgLoader } from '@/shared/ui/redesigned/SvgLoader';
+import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { Text } from '@/shared/ui/redesigned/Text/Text';
+import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 
 import { Notification } from '../../model/types/notification';
 import { NotificationItem } from '../NotificationItem/NotificationItem';
@@ -35,7 +37,13 @@ export const NotificationList: FC<NotificationListProps> = memo((props) => {
   if (error) {
     return (
       <div className={classNames(cls.NotificationList, {}, [className, cls.loader])}>
-        <Text title={t('Notification fetching error')} variant={TextVariant.ERROR} />
+        <ToggleFeatures
+          feature="newDesign"
+          off={
+            <TextDeprecated title={t('Notification fetching error')} variant={TextVariant.ERROR} />
+          }
+          on={<Text title={t('Notification fetching error')} variant={TextVariant.ERROR} />}
+        />
       </div>
     );
   }

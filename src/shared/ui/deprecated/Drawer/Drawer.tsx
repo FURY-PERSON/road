@@ -4,8 +4,8 @@ import { useTheme } from '@/shared/contexts/ThemeProvider';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { AnimationProvider, useAnimationLibs } from '@/shared/lib/helpers/AnimationProvider';
 
-import { Overlay } from '../Overlay/Overlay';
-import { Portal } from '../Portal/Portal';
+import { Overlay } from '../../redesigned/Overlay/Overlay';
+import { Portal } from '../../redesigned/Portal/Portal';
 
 import cls from './Drawer.module.scss';
 

@@ -5,7 +5,7 @@ import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 
 import { Button, ButtonVariant } from '../Button/Button';
 import { Skeleton } from '../Skeleton/Skeleton';
-import { AppImage } from '../AppImage/AppImage';
+import { AppImage } from '../../redesigned/AppImage/AppImage';
 
 import cls from './ImageInput.module.scss';
 

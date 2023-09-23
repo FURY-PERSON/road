@@ -9,7 +9,7 @@ import { Text, TextSize } from '@/shared/ui/deprecated/Text/Text';
 import { AppLink } from '@/shared/ui/deprecated/AppLink/AppLink';
 import { routes } from '@/shared/constant/router';
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton/Skeleton';
-import { AppImage } from '@/shared/ui/deprecated/AppImage/AppImage';
+import { AppImage } from '@/shared/ui/redesigned/AppImage/AppImage';
 
 import { News, NewsListVariant } from '../../model/types/news';
 

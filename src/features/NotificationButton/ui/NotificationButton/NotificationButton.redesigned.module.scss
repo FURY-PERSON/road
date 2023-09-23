@@ -1,21 +1,11 @@
-.NotificationButton {
-
-}
-
-.popover {
-  width: 300px;
-  max-height: 400px;
-  overflow-y: auto;
-  background-color: var(--invert-bg-color);
-}
-
 .notificationButton {
   position: relative;
   margin-right: 12px;
 
   .notificationIcon {
-    fill: var(--invert-primary-color);
-    stroke: var(--primary-color);
+    width: 20px;
+    height: 20px;
+    color: var(--icon-redesigned);
   }
 
   .unreadAmount {
@@ -25,11 +15,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 14px;
-    height: 14px;
-    font-size: 8px;
-    color: var(--primary-color);
-    background-color: var(--bg-color);
+    width: 15px;
+    height: 15px;
+    font-size: 10px;
+    color: var(--light-bg-redesigned);
+    background-color: var(--icon-redesigned);
     border-radius: 50%;
   }
 }

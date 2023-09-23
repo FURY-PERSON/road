@@ -4,7 +4,7 @@ import { NewsImageBlock } from '@/entities/News/model/types/news';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Text, TextSize } from '@/shared/ui/deprecated/Text/Text';
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton/Skeleton';
-import { AppImage } from '@/shared/ui/deprecated/AppImage/AppImage';
+import { AppImage } from '@/shared/ui/redesigned/AppImage/AppImage';
 
 import cls from './NewsImageComponent.module.scss';
 

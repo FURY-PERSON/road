@@ -1,9 +1,12 @@
 import { memo, FC, useCallback } from 'react';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Card, CardVariant } from '@/shared/ui/deprecated/Card/Card';
-import { Text, TextSize } from '@/shared/ui/deprecated/Text/Text';
+import { Card as CardDeprecated, CardVariant } from '@/shared/ui/deprecated/Card/Card';
+import { Text as TextDeprecated, TextSize } from '@/shared/ui/deprecated/Text/Text';
 import { AppLink } from '@/shared/ui/deprecated/AppLink/AppLink';
+import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { Card } from '@/shared/ui/redesigned/Card';
+import { Text } from '@/shared/ui/redesigned/Text/Text';
 
 import { Notification } from '../../model/types/notification';
 
@@ -23,15 +26,27 @@ export const NotificationItem: FC<NotificationItemProps> = memo((props) => {
   }, [onClick, item]);
 
   const content = (
-    <Card
-      className={classNames(cls.NotificationItem, {}, [className])}
-      variant={CardVariant.OUTLINED}
-      onClick={onClickHandler}
-    >
-      <Text title={item.title} text={item.mainText} size={TextSize.M} />
+    <ToggleFeatures
+      feature="newDesign"
+      off={
+        <CardDeprecated
+          className={classNames(cls.NotificationItem, {}, [className])}
+          variant={CardVariant.OUTLINED}
+          onClick={onClickHandler}
+        >
+          <TextDeprecated title={item.title} text={item.mainText} size={TextSize.M} />
 
-      {!item.readed ? <div className={cls.unread} /> : null}
-    </Card>
+          {!item.readed ? <div className={cls.unread} /> : null}
+        </CardDeprecated>
+      }
+      on={
+        <Card className={classNames(cls.NotificationItem, {}, [className])}>
+          <Text size="M" title={item.title} text={item.mainText} />
+
+          {!item.readed ? <div className={cls.unread} /> : null}
+        </Card>
+      }
+    />
   );
 
   if (item.link) {
