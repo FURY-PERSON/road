@@ -11,6 +11,7 @@ import { Text } from '@/shared/ui/redesigned/Text/Text';
 import { Notification } from '../../model/types/notification';
 
 import cls from './NotificationItem.module.scss';
+import clsR from './NotificationItem.redesigned.module.scss';
 
 interface NotificationItemProps {
   className?: string;
@@ -40,10 +41,10 @@ export const NotificationItem: FC<NotificationItemProps> = memo((props) => {
         </CardDeprecated>
       }
       on={
-        <Card className={classNames(cls.NotificationItem, {}, [className])}>
+        <Card className={classNames(clsR.NotificationItem, {}, [className])}>
           <Text size="M" title={item.title} text={item.mainText} />
 
-          {!item.readed ? <div className={cls.unread} /> : null}
+          {!item.readed ? <div className={clsR.unread} /> : null}
         </Card>
       }
     />

@@ -98,7 +98,7 @@ export const NotificationButton: FC<NotificationButtonProps> = memo((props) => {
             items={data}
             isLoading={isLoading}
             onItemClick={onNotificationItemClick}
-            className={cls.notifications}
+            className={clsR.notifications}
           />
         </Popover>
       </BrowserView>
