@@ -33,7 +33,11 @@ export const Page: FC<PageProps> = (props) => {
   useInfinityScroll({
     callback: onScrollEnd,
     triggerRef: triggerRef,
-    wrapperRef: pageRef
+    wrapperRef: toggleFeatures({
+      name: 'newDesign',
+      off: () => pageRef,
+      on: () => undefined
+    })
   });
 
   const scroll = useSelector((state: StateSchema) => getPageSaveScroll(state, pathname));

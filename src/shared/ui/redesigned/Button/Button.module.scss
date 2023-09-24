@@ -10,6 +10,14 @@
   }
 }
 
+.filled {
+  padding: 8px 16px;
+  background: var(--light-bg-redesigned);
+  border: none;
+  border-radius: 34px;
+  outline: none;
+}
+
 .clear {
   padding: 0;
   background: none;
@@ -21,17 +29,6 @@
   color: var(--primary-color);
   background-color: transparent;
   border: 1px solid var(--primary-color);
-}
-
-.background {
-  color: var(--primary-color);
-  background-color: var(--bg-color);
-  border: none;
-}
-
-.backgroundInverted {
-  color: var(--invert-primary-color);
-  background-color: var(--invert-bg-color);
 }
 
 .small {

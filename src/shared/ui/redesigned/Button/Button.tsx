@@ -6,7 +6,7 @@ import { SvgLoader } from '../SvgLoader';
 
 import cls from './Button.module.scss';
 
-export type ButtonVariant = 'clear' | 'outline' | 'background' | 'backgroundInverted';
+export type ButtonVariant = 'clear' | 'outline' | 'filled';
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 

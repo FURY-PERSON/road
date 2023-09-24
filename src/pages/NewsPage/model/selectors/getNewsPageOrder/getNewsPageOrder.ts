@@ -1,3 +1,3 @@
 import { StateSchema } from '@/app/providers/StoreProvider';
 
-export const getNewsPageOrder = (state: StateSchema) => state.newsPage?.order;
+export const getNewsPageOrder = (state: StateSchema) => state.newsPage?.order || 'ASC';

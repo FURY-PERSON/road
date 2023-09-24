@@ -15,6 +15,14 @@
     background: var(--light-bg-redesigned);
 }
 
+.default {
+    border-radius: 12px;
+}
+
+.round {
+    border-radius: 40px;
+}
+
 .outlined {
     border: 1px solid var(--accent-redesigned);
 }

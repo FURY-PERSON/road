@@ -29,49 +29,6 @@ Outline.args = {
   variant: 'outline'
 };
 
-export const Background = Template.bind({});
-Background.args = {
-  children: 'children',
-  variant: 'background'
-};
-
-export const BackgroundInverted = Template.bind({});
-BackgroundInverted.args = {
-  children: 'children',
-  variant: 'backgroundInverted'
-};
-
-export const Square = Template.bind({});
-Square.args = {
-  children: '>',
-  variant: 'backgroundInverted',
-  square: true
-};
-
-export const SquareSmall = Template.bind({});
-SquareSmall.args = {
-  children: '>',
-  square: true,
-  variant: 'backgroundInverted',
-  size: 'small'
-};
-
-export const SquareMedium = Template.bind({});
-SquareMedium.args = {
-  children: '>',
-  square: true,
-  variant: 'backgroundInverted',
-  size: 'medium'
-};
-
-export const SquareLarge = Template.bind({});
-SquareLarge.args = {
-  children: '>',
-  square: true,
-  variant: 'backgroundInverted',
-  size: 'large'
-};
-
 export const Disabled = Template.bind({});
 Disabled.args = {
   children: 'children',
