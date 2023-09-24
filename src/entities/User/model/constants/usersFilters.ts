@@ -1,10 +1,10 @@
-export enum UsersSortFilter {
+export enum UsersSort {
   LOGIN = 'login',
   FIRST_NAME = 'firstName',
   LAST_NAME = 'lastName'
 }
 
-export enum UsersRolesFilter {
+export enum UsersRoles {
   ALL = 'all',
   ADMIN = 'admin',
   STUDENT = 'student',

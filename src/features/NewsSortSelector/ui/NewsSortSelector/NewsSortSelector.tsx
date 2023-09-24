@@ -13,6 +13,7 @@ import { ListBox } from '@/shared/ui/redesigned/popups';
 import { orderOptions, sortOrderOptions } from '../../model/constants/newsSortSelector';
 
 import cls from './NewsSortSelector.module.scss';
+import clsR from './NewsSortSelector.redesigned.module.scss';
 
 interface NewsSortSelectorProps {
   className?: string;
@@ -30,7 +31,7 @@ export const NewsSortSelector = memo((props: NewsSortSelectorProps) => {
     <ToggleFeatures
       feature="newDesign"
       on={
-        <div className={classNames(cls.ArticleSortSelectorRedesigned, {}, [className])}>
+        <div className={classNames(clsR.NewsSortSelector, {}, [className])}>
           <VStack gap={8}>
             <Text text={t('sort by')} />
             <ListBox<NewsSort> items={sortOrderOptions} value={sort} onChange={onChangeSort} />
@@ -39,7 +40,7 @@ export const NewsSortSelector = memo((props: NewsSortSelectorProps) => {
         </div>
       }
       off={
-        <div className={classNames(cls.ArticleSortSelector, {}, [className])}>
+        <div className={classNames(cls.NewsSortSelector, {}, [className])}>
           <Select<NewsSort>
             options={sortOrderOptions}
             label={t('order by')}

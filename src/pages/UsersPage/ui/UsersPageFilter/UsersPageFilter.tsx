@@ -11,11 +11,11 @@ import i18n from '@/shared/config/i18n/i18n';
 import { SortOrder } from '@/shared/types/sort';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { TabItem, Tabs } from '@/shared/ui/deprecated/Tabs/Tabs';
+import { UsersRoles, UsersSort } from '@/entities/User';
 
 import { usersPageActions } from '../../model/slice/usersPage.slice';
 import { fetchUsersList } from '../../model/services/fetchUsersList/fetchUsersList';
 import { getOrder, getRole, getSearch, getSort } from '../../model/selectors/usersPage';
-import { UsersRolesFilter, UsersSortFilter } from '../../model/types/usersPage';
 
 import cls from './UsersPageFilter.module.scss';
 
@@ -28,17 +28,17 @@ const orderOption: Array<SelectOption<SortOrder>> = [
   { value: 'DESC', content: i18n.t('descending') }
 ];
 
-const sortOption: Array<SelectOption<UsersSortFilter>> = [
-  { value: UsersSortFilter.FIRST_NAME, content: i18n.t('last name') },
-  { value: UsersSortFilter.LAST_NAME, content: i18n.t('first name') },
-  { value: UsersSortFilter.LOGIN, content: i18n.t('login') }
+const sortOption: Array<SelectOption<UsersSort>> = [
+  { value: UsersSort.FIRST_NAME, content: i18n.t('last name') },
+  { value: UsersSort.LAST_NAME, content: i18n.t('first name') },
+  { value: UsersSort.LOGIN, content: i18n.t('login') }
 ];
 
-const userRolesTabs: Array<TabItem<UsersRolesFilter>> = [
-  { value: UsersRolesFilter.ALL, content: i18n.t('all') },
-  { value: UsersRolesFilter.ADMIN, content: i18n.t('admin') },
-  { value: UsersRolesFilter.STUDENT, content: i18n.t('student') },
-  { value: UsersRolesFilter.WORKER, content: i18n.t('worker') }
+const userRolesTabs: Array<TabItem<UsersRoles>> = [
+  { value: UsersRoles.ALL, content: i18n.t('all') },
+  { value: UsersRoles.ADMIN, content: i18n.t('admin') },
+  { value: UsersRoles.STUDENT, content: i18n.t('student') },
+  { value: UsersRoles.WORKER, content: i18n.t('worker') }
 ];
 
 export const UsersPageFilter: FC<UsersPageFilterProps> = memo((props) => {
@@ -74,8 +74,8 @@ export const UsersPageFilter: FC<UsersPageFilterProps> = memo((props) => {
     [dispatch, debouncedRefetchUsers]
   );
 
-  const onChangeType = useCallback(
-    (value: UsersRolesFilter) => {
+  const onChangeRole = useCallback(
+    (value: UsersRoles) => {
       dispatch(usersPageActions.setRole(value));
       dispatch(usersPageActions.setPage(1));
       refetchUsers();
@@ -84,7 +84,7 @@ export const UsersPageFilter: FC<UsersPageFilterProps> = memo((props) => {
   );
 
   const onChangeSort = useCallback(
-    (value: UsersSortFilter) => {
+    (value: UsersSort) => {
       dispatch(usersPageActions.setSort(value));
       dispatch(usersPageActions.setPage(1));
       refetchUsers();
@@ -102,7 +102,7 @@ export const UsersPageFilter: FC<UsersPageFilterProps> = memo((props) => {
             label={t('order by')}
             options={orderOption}
           />
-          <Select<UsersSortFilter>
+          <Select<UsersSort>
             onChange={onChangeSort}
             value={sort}
             label={t('order by')}
@@ -115,11 +115,11 @@ export const UsersPageFilter: FC<UsersPageFilterProps> = memo((props) => {
         <TextInput value={search} onChange={onChangeSearch} placeholder="Search..." />
       </Card>
 
-      <Tabs<UsersRolesFilter>
+      <Tabs<UsersRoles>
         className={cls.type}
         tabs={userRolesTabs}
         value={role}
-        onTabClick={onChangeType}
+        onTabClick={onChangeRole}
       />
     </div>
   );
