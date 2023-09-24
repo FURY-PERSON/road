@@ -9,4 +9,8 @@
 
 .inner {
   cursor: pointer;
+
+  &:hover {
+    color: var(--accent-redesigned);
+  }
 }

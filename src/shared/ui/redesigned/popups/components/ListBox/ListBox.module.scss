@@ -4,6 +4,10 @@
   background: none;
   border: none;
   outline: none;
+
+  &:hover .arrow {
+    color: var(--accent-redesigned);
+  }
 }
 
 .options {
@@ -21,4 +25,9 @@
 
 .selected {
   background: var(--light-bg-redesigned);
+}
+
+.arrow {
+  width: 24px;
+  height: 24px;
 }

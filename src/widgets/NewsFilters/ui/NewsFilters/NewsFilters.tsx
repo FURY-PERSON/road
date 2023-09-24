@@ -9,6 +9,7 @@ import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 import { Input } from '@/shared/ui/redesigned/Input';
 import { NewsTypeTabs } from '@/features/NewsTypeTabs';
 import { NewsSortSelector } from '@/features/NewsSortSelector';
+import SearchIcon from '@/shared/assets/icons/search.svg';
 
 import cls from './NewsFilters.module.scss';
 
@@ -41,7 +42,12 @@ export const NewsFilters = memo((props: NewsFiltersProps) => {
   return (
     <Card className={classNames(cls.NewsFilters, {}, [className])} padding="24">
       <VStack gap={32}>
-        <Input onChange={onChangeSearch} value={search} placeholder={t('search') || undefined} />
+        <Input
+          addonLeft={<SearchIcon className={cls.searchIcon} />}
+          onChange={onChangeSearch}
+          value={search}
+          placeholder={t('search') || undefined}
+        />
         <NewsTypeTabs value={type} onChangeType={onChangeType} className={cls.tabs} />
         <NewsSortSelector
           order={order}

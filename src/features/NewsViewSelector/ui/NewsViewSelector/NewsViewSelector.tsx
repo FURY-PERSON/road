@@ -49,7 +49,7 @@ export const NewsViewSelector = memo((props: NewsViewSelectorProps) => {
                 <Button variant="clear">
                   <viewType.Icon
                     onClick={onClick(viewType.view)}
-                    className={classNames('', {
+                    className={classNames(clsR.icon, {
                       [clsR.notSelected]: viewType.view !== view
                     })}
                   />
