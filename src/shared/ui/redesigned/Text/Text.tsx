@@ -12,6 +12,8 @@ type TextElement = 'h2' | 'h3' | 'h4';
 
 interface TextProps {
   className?: string;
+  titleClassName?: string;
+  textClassName?: string;
   title?: string | null;
   text?: string | null;
   variant?: TextVariant;
@@ -33,6 +35,8 @@ export const Text: FC<TextProps> = memo((props) => {
     title,
     variant = 'primary',
     size = 'L',
+    titleClassName,
+    textClassName,
     'data-testid': dataTestId = 'Text'
   } = props;
 
@@ -41,13 +45,16 @@ export const Text: FC<TextProps> = memo((props) => {
   return (
     <div className={classNames(cls.Text, {}, [className, cls[variant], cls[size]])}>
       {title ? (
-        <TextElement data-testid={`${dataTestId}.title`} className={cls.title}>
+        <TextElement
+          data-testid={`${dataTestId}.title`}
+          className={classNames(cls.title, {}, [titleClassName])}
+        >
           {title}
         </TextElement>
       ) : null}
 
       {text ? (
-        <p data-testid={`${dataTestId}.text`} className={cls.text}>
+        <p data-testid={`${dataTestId}.text`} className={classNames(cls.text, {}, [textClassName])}>
           {text}
         </p>
       ) : null}

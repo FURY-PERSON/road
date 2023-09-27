@@ -63,12 +63,6 @@ JustifyBetween.args = {
   justify: 'between'
 };
 
-export const JustifyAround = Template.bind({});
-JustifyAround.args = {
-  children: children,
-  justify: 'around'
-};
-
 export const AlignStart = Template.bind({});
 AlignStart.args = {
   children: children,
@@ -97,18 +91,6 @@ export const DirectionColumn = Template.bind({});
 DirectionColumn.args = {
   children: children,
   direction: 'column'
-};
-
-export const DirectionRowReverse = Template.bind({});
-DirectionRowReverse.args = {
-  children: children,
-  direction: 'row-reverse'
-};
-
-export const DirectionColumnReverse = Template.bind({});
-DirectionColumnReverse.args = {
-  children: children,
-  direction: 'column-reverse'
 };
 
 export const Gap4 = Template.bind({});

@@ -13,7 +13,7 @@ import { mapDirectionClass } from '../../styles/constants';
 import cls from './ListBox.module.scss';
 
 export interface ListBoxItem<T extends string> {
-  value: string;
+  value: T;
   content: ReactNode;
   disabled?: boolean;
 }
@@ -26,7 +26,7 @@ interface ListBoxProps<T extends string> {
   onChange: (value: T) => void;
   readonly?: boolean;
   direction?: DropdownDirection;
-  label?: string;
+  label?: string | null;
 }
 
 export function ListBox<T extends string>(props: ListBoxProps<T>) {
@@ -48,8 +48,8 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
   }, [items, value]);
 
   return (
-    <HStack gap={4}>
-      {label && <span>{`${label}>`}</span>}
+    <HStack gap={8}>
+      {label && <span>{`${label}`}</span>}
       <HListBox
         disabled={readonly}
         as="div"

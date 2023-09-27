@@ -6,12 +6,18 @@ import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { SvgLoader } from '@/shared/ui/deprecated/SvgLoader';
-import { Text, TextVariant } from '@/shared/ui/deprecated/Text/Text';
+import { Text as TextDeprecated, TextVariant } from '@/shared/ui/deprecated/Text/Text';
 import { RoleName } from '@/entities/Role';
-import { Select, SelectOption } from '@/shared/ui/deprecated/Select/Select';
-import i18n from '@/shared/config/i18n/i18n';
+import { Select } from '@/shared/ui/deprecated/Select/Select';
 import { TextInput } from '@/shared/ui/deprecated/TextInput/TextInput';
 import { RoleGuard } from '@/features/RoleGuard';
+import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { Input } from '@/shared/ui/redesigned/Input';
+import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
+import { HStack } from '@/shared/ui/redesigned/Stack/HStack/HStack';
+import { Card } from '@/shared/ui/redesigned/Card';
+import { ListBox } from '@/shared/ui/redesigned/popups';
+import { Text } from '@/shared/ui/redesigned/Text/Text';
 
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
@@ -20,8 +26,8 @@ import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/get
 import { getProfileValidationErrors } from '../../model/selectors/getProfileValidationErrors/getProfileValidationErrors';
 import { fetchProfile } from '../../model/services/fetchProfileData/fetchProfileData';
 import { profileActions } from '../../model/slice/profile.slice';
-import { ProfileValidationError } from '../../model/types/editableProfileCard';
 import { ProfileCardHeader } from '../Header/ProfileCardHeader';
+import { errorMap, roleOptionsDeprecated } from '../../model/constants/editableProfileCard';
 
 import cls from './EditableProfileCard.module.scss';
 
@@ -29,18 +35,6 @@ interface EditableProfileCardProps {
   className?: string;
   login?: string;
 }
-
-const errorMap: Record<ProfileValidationError, string> = {
-  [ProfileValidationError.NO_DATA]: 'no data',
-  [ProfileValidationError.SERVER_ERROR]: 'server error',
-  [ProfileValidationError.USER_DATA]: 'incorrect user data'
-};
-
-const roleOptions: SelectOption<RoleName>[] = [
-  { value: RoleName.ADMIN, content: i18n.t('admin') },
-  { value: RoleName.WORKER, content: i18n.t('worker') },
-  { value: RoleName.STUDENT, content: i18n.t('student') }
-];
 
 export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) => {
   const { className, login } = props;
@@ -101,71 +95,151 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
   }
 
   return (
-    <div className={classNames(cls.EditableProfileCard, {}, [className])}>
-      <ProfileCardHeader />
+    <ToggleFeatures
+      feature="newDesign"
+      off={
+        <div className={classNames(cls.EditableProfileCard, {}, [className])}>
+          <ProfileCardHeader />
 
-      {validationErrors?.length
-        ? validationErrors.map((error) => (
-            <Text
-              data-testid="EditableProfileCard.error"
-              key={error}
-              variant={TextVariant.ERROR}
-              title={errorMap[error]}
-            />
-          ))
-        : null}
+          {validationErrors?.length
+            ? validationErrors.map((error) => (
+                <TextDeprecated
+                  data-testid="EditableProfileCard.error"
+                  key={error}
+                  variant={TextVariant.ERROR}
+                  title={errorMap[error]}
+                />
+              ))
+            : null}
 
-      <div>
-        <TextInput
-          data-testid="EditableProfileCard.loginInput"
-          label={t('login')}
-          readOnly
-          value={formData?.login}
-        />
-        <TextInput
-          data-testid="EditableProfileCard.firstNameInput"
-          label={t('first name')}
-          readOnly={readOnly}
-          value={formData?.firstName}
-          onChange={onChangeFirstName}
-        />
-        <TextInput
-          data-testid="EditableProfileCard.lastNameInput"
-          label={t('last name')}
-          readOnly={readOnly}
-          value={formData?.lastName}
-          onChange={onChangeLastName}
-        />
-
-        <RoleGuard roleNames={[RoleName.ADMIN]}>
-          <>
+          <div>
             <TextInput
-              data-testid="EditableProfileCard.phoneInput"
-              label={t('phone')}
-              readOnly={readOnly}
-              value={formData?.phone}
-              onChange={onChangePhone}
+              data-testid="EditableProfileCard.loginInput"
+              label={t('login')}
+              readOnly
+              value={formData?.login}
             />
             <TextInput
-              data-testid="EditableProfileCard.emailInput"
-              label={t('email')}
+              data-testid="EditableProfileCard.firstNameInput"
+              label={t('first name')}
               readOnly={readOnly}
-              value={formData?.email}
-              onChange={onChangeEmail}
+              value={formData?.firstName}
+              onChange={onChangeFirstName}
+            />
+            <TextInput
+              data-testid="EditableProfileCard.lastNameInput"
+              label={t('last name')}
+              readOnly={readOnly}
+              value={formData?.lastName}
+              onChange={onChangeLastName}
             />
 
-            <Select<RoleName>
-              readonly={readOnly}
-              options={roleOptions}
-              label={t('role')}
-              onChange={onChangeRole}
-              value={formData?.roleName}
-            />
-          </>
-        </RoleGuard>
+            <RoleGuard roleNames={[RoleName.ADMIN]}>
+              <>
+                <TextInput
+                  data-testid="EditableProfileCard.phoneInput"
+                  label={t('phone')}
+                  readOnly={readOnly}
+                  value={formData?.phone}
+                  onChange={onChangePhone}
+                />
+                <TextInput
+                  data-testid="EditableProfileCard.emailInput"
+                  label={t('email')}
+                  readOnly={readOnly}
+                  value={formData?.email}
+                  onChange={onChangeEmail}
+                />
 
-        {error ? <Text variant={TextVariant.ERROR} text={error} /> : null}
-      </div>
-    </div>
+                <Select<RoleName>
+                  readonly={readOnly}
+                  options={roleOptionsDeprecated}
+                  label={t('role')}
+                  onChange={onChangeRole}
+                  value={formData?.roleName}
+                />
+              </>
+            </RoleGuard>
+
+            {error ? <TextDeprecated variant={TextVariant.ERROR} text={error} /> : null}
+          </div>
+        </div>
+      }
+      on={
+        <Card padding="24" max className={className}>
+          <ProfileCardHeader />
+
+          {validationErrors?.length
+            ? validationErrors.map((error) => (
+                <Text
+                  data-testid="EditableProfileCard.error"
+                  key={error}
+                  variant="error"
+                  title={errorMap[error]}
+                />
+              ))
+            : null}
+
+          <VStack gap={32}>
+            <HStack gap={32} max>
+              <VStack gap={16} max align="start">
+                <Input
+                  data-testid="EditableProfileCard.loginInput"
+                  label={t('login')}
+                  value={formData?.login}
+                  readonly
+                />
+                <Input
+                  data-testid="EditableProfileCard.firstNameInput"
+                  label={t('first name')}
+                  value={formData?.firstName}
+                  readonly={readOnly}
+                  onChange={onChangeFirstName}
+                />
+                <Input
+                  data-testid="EditableProfileCard.lastNameInput"
+                  label={t('last name')}
+                  value={formData?.lastName}
+                  readonly={readOnly}
+                  onChange={onChangeLastName}
+                />
+              </VStack>
+
+              <VStack gap={16} max align="start">
+                <RoleGuard roleNames={[RoleName.ADMIN]}>
+                  <>
+                    <Input
+                      data-testid="EditableProfileCard.phoneInput"
+                      label={t('phone')}
+                      readonly={readOnly}
+                      value={formData?.phone}
+                      onChange={onChangePhone}
+                    />
+                    <Input
+                      data-testid="EditableProfileCard.emailInput"
+                      label={t('email')}
+                      readonly={readOnly}
+                      value={formData?.email}
+                      onChange={onChangeEmail}
+                    />
+
+                    <ListBox<RoleName>
+                      items={roleOptionsDeprecated}
+                      value={formData?.roleName}
+                      onChange={onChangeRole}
+                      direction="top right"
+                      readonly={readOnly}
+                      label={t('role')}
+                    />
+                  </>
+                </RoleGuard>
+              </VStack>
+            </HStack>
+          </VStack>
+
+          {error ? <Text variant="error" text={error} /> : null}
+        </Card>
+      }
+    />
   );
 });
