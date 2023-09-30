@@ -1,6 +1,8 @@
 import { memo, FC, HTMLAttributeAnchorTarget } from 'react';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 
 import { User } from '../../model/types/user';
 import { UsersListItem } from '../UsersListItem/UsersListItem';
@@ -19,12 +21,26 @@ export const UsersList: FC<UsersListProps> = memo((props) => {
   const { className, isLoading, users, target } = props;
 
   return (
-    <div className={classNames(cls.usersList, {}, [className])}>
-      {users?.map((item) => (
-        <UsersListItem key={item.id} target={target} user={item} className={cls.item} />
-      ))}
+    <ToggleFeatures
+      feature="newDesign"
+      off={
+        <div className={classNames(cls.UsersList, {}, [className])}>
+          {users?.map((item) => (
+            <UsersListItem key={item.id} target={target} user={item} className={cls.item} />
+          ))}
 
-      {isLoading ? new Array(8).fill(0).map((s, i) => <UsersListItemLoader key={i} />) : null}
-    </div>
+          {isLoading ? new Array(8).fill(0).map((s, i) => <UsersListItemLoader key={i} />) : null}
+        </div>
+      }
+      on={
+        <VStack wrap="wrap" max gap={16} className={classNames('', {}, [className])}>
+          {users?.map((item) => (
+            <UsersListItem key={item.id} target={target} user={item} className={cls.item} />
+          ))}
+
+          {isLoading ? new Array(8).fill(0).map((s, i) => <UsersListItemLoader key={i} />) : null}
+        </VStack>
+      }
+    />
   );
 });
