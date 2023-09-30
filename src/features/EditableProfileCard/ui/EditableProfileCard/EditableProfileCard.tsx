@@ -11,13 +11,14 @@ import { RoleName } from '@/entities/Role';
 import { Select } from '@/shared/ui/deprecated/Select/Select';
 import { TextInput } from '@/shared/ui/deprecated/TextInput/TextInput';
 import { RoleGuard } from '@/features/RoleGuard';
-import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 import { Input } from '@/shared/ui/redesigned/Input';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 import { HStack } from '@/shared/ui/redesigned/Stack/HStack/HStack';
 import { Card } from '@/shared/ui/redesigned/Card';
 import { ListBox } from '@/shared/ui/redesigned/popups';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
+import { FeatureFlagsSwitcher } from '@/features/FeatureFlagsSwitcher';
 
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
@@ -28,6 +29,7 @@ import { fetchProfile } from '../../model/services/fetchProfileData/fetchProfile
 import { profileActions } from '../../model/slice/profile.slice';
 import { ProfileCardHeader } from '../Header/ProfileCardHeader';
 import { errorMap, roleOptionsDeprecated } from '../../model/constants/editableProfileCard';
+import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 
 import cls from './EditableProfileCard.module.scss';
 
@@ -42,6 +44,7 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
   const { t } = useTranslation('profile');
 
   const formData = useSelector(getProfileForm);
+  const user = useSelector(getProfileData);
   const loading = useSelector(getProfileLoading);
   const error = useSelector(getProfileError);
   const validationErrors = useSelector(getProfileValidationErrors);
@@ -158,6 +161,8 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
                   onChange={onChangeRole}
                   value={formData?.roleName}
                 />
+
+                {user ? <FeatureFlagsSwitcher userLogin={user.login} /> : null}
               </>
             </RoleGuard>
 
@@ -203,6 +208,12 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
                   readonly={readOnly}
                   onChange={onChangeLastName}
                 />
+
+                <RoleGuard roleNames={[RoleName.ADMIN]}>
+                  {user ? (
+                    <FeatureFlagsSwitcher userLogin={user.login} className={cls.toggleFeature} />
+                  ) : null}
+                </RoleGuard>
               </VStack>
 
               <VStack gap={16} max align="start">

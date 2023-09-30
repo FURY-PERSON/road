@@ -3,7 +3,7 @@ import { memo, FC } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card/Card';
 import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton/Skeleton';
-import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 import { Card } from '@/shared/ui/redesigned/Card';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 import { HStack } from '@/shared/ui/redesigned/Stack/HStack/HStack';

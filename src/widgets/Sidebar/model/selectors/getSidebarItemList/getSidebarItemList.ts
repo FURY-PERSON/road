@@ -13,7 +13,7 @@ import i18n from '@/shared/config/i18n/i18n';
 import { getUserData } from '@/entities/User';
 import { RoleName } from '@/entities/Role';
 import { routes } from '@/shared/constant/router';
-import { toggleFeatures } from '@/shared/lib/helpers/toggleFeatureFlag/toggleFeatureFlag';
+import { toggleFeatures } from '@/shared/lib/helpers/features/helpers/toggleFeatureFlag';
 
 import { ISidebarItem } from '../../types/item';
 

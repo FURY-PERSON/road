@@ -8,7 +8,7 @@ import {
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Page } from '@/widgets/Page/Page';
 import { Text, TextVariant } from '@/shared/ui/deprecated/Text/Text';
-import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 import { StickyContentLayout } from '@/shared/ui/redesigned/layouts/StickyContentLayout';
 
 import { getNewsPageError } from '../../model/selectors/getNewsPageError/getNewsPageError';

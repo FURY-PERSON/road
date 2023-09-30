@@ -12,7 +12,7 @@ import {
   DynamicModuleLoader,
   ReducersList
 } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
-import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 import { StickyContentLayout } from '@/shared/ui/redesigned/layouts/StickyContentLayout';
 
 import { initUsersPage } from '../../model/services/initUsersPage/initUsersPage';
@@ -42,7 +42,7 @@ export const UsersPage: FC<UsersPageProps> = (props) => {
     dispatch(initUsersPage(searchParams));
   });
 
-  const news = useSelector(getUsers.selectAll);
+  const users = useSelector(getUsers.selectAll);
   const isLoading = useSelector(getLoading);
   const error = useSelector(getError);
 
@@ -66,7 +66,7 @@ export const UsersPage: FC<UsersPageProps> = (props) => {
           <div className={cls.inner}>
             <UsersPageFilter className={cls.filter} />
 
-            <UsersList className={cls.list} users={news} isLoading={isLoading} />
+            <UsersList className={cls.list} users={users} isLoading={isLoading} />
           </div>
         </Page>
       }
@@ -74,8 +74,8 @@ export const UsersPage: FC<UsersPageProps> = (props) => {
         <StickyContentLayout
           right={<FiltersContainer />}
           content={
-            <Page testId="NewsPage" onScrollEnd={loadNextPage} className={clsR.main}>
-              <UsersList className={clsR.list} users={news} isLoading={isLoading} />
+            <Page testId="UsersPage" onScrollEnd={loadNextPage} className={clsR.main}>
+              <UsersList className={clsR.list} users={users} isLoading={isLoading} />
             </Page>
           }
         />

@@ -6,7 +6,7 @@ import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card/Card';
 import { Text as TextDeprecated, TextSize } from '@/shared/ui/deprecated/Text/Text';
 import { AppLink as AppLinkDeprecated } from '@/shared/ui/deprecated/AppLink/AppLink';
 import { routes } from '@/shared/constant/router';
-import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 import { AppLink } from '@/shared/ui/redesigned/AppLink/AppLink';
 import { Card } from '@/shared/ui/redesigned/Card';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';

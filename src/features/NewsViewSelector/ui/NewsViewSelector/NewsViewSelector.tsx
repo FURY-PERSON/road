@@ -3,7 +3,7 @@ import { memo } from 'react';
 import { NewsListVariant } from '@/entities/News/model/types/news';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Button as ButtonDeprecated, ButtonVariant } from '@/shared/ui/deprecated/Button/Button';
-import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 import { Card } from '@/shared/ui/redesigned/Card';
 import { HStack } from '@/shared/ui/redesigned/Stack/HStack/HStack';
 import { Button } from '@/shared/ui/redesigned/Button/Button';

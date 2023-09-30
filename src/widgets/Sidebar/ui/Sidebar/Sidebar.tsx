@@ -7,7 +7,7 @@ import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Button, ButtonSize, ButtonVariant } from '@/shared/ui/deprecated/Button/Button';
 import { RoleGuard } from '@/features/RoleGuard';
 import { VStack as VStackDeprecated } from '@/shared/ui/deprecated/Stack/VStack/VStack';
-import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg';
 import { AppLogo } from '@/shared/ui/redesigned/AppLogo';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';

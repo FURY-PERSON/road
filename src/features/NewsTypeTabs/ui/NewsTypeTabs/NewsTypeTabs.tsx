@@ -2,7 +2,7 @@ import { memo, useCallback } from 'react';
 
 import { NewsType } from '@/entities/News';
 import { TabItem, Tabs } from '@/shared/ui/redesigned/Tabs';
-import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Tabs as TabsDeprecated } from '@/shared/ui/deprecated/Tabs/Tabs';
 

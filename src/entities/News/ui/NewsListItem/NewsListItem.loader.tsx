@@ -1,6 +1,6 @@
 import { memo, FC } from 'react';
 
-import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 
 import { NewsListVariant } from '../../model/types/news';
 

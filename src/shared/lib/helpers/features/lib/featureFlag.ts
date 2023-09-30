@@ -1,4 +1,4 @@
-import { FeatureFlags, FeatureFlagsEntity } from '../types/toggleFeaturesFlags';
+import { FeatureFlags, FeatureFlagsEntity } from '../types/featuresFlags';
 
 let featureFlags: FeatureFlags = {};
 
@@ -13,4 +13,8 @@ export function setFeatureFlags(newFeatureFlagsEntity?: FeatureFlagsEntity) {
 
 export function getFeatureFlag(flag: keyof FeatureFlags) {
   return featureFlags[flag];
+}
+
+export function getAllFeatureFlags() {
+  return { ...featureFlags };
 }

@@ -1,6 +1,6 @@
 import { memo, FC, HTMLAttributeAnchorTarget } from 'react';
 
-import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 
 import { News, NewsListVariant } from '../../model/types/news';
 

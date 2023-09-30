@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import i18n from '@/shared/config/i18n/i18n';
 import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button/Button';
-import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 import { Button } from '@/shared/ui/redesigned/Button/Button';
 
 import cls from './LanguageSwitcher.module.scss';

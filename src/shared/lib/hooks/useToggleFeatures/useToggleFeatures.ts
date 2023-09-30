@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 
-import { FeatureFlags } from '@/shared/types/toggleFeaturesFlags';
+import { FeatureFlags } from '@/shared/lib/helpers/features';
 
-import { toggleFeatures } from '../../helpers/toggleFeatureFlag/toggleFeatureFlag';
+import { toggleFeatures } from '../../helpers/features/helpers/toggleFeatureFlag';
 
 interface UseToggleFeaturesOptions<T> {
   name: keyof FeatureFlags;

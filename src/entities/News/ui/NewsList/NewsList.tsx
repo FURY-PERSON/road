@@ -1,7 +1,7 @@
 import { memo, FC, useMemo, HTMLAttributeAnchorTarget } from 'react';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 import { HStack } from '@/shared/ui/redesigned/Stack/HStack/HStack';
 
 import { News, NewsListVariant } from '../../model/types/news';

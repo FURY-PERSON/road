@@ -5,7 +5,7 @@ import { TestAsyncThunk } from '@/shared/lib/helpers/tests/TestAsyncThunk/TestAs
 import { ValidationError } from '../../types/error';
 import { RegisterForm } from '../../types/register.schema';
 import { registerNewUser } from './registerNewUser';
-import { setFeatureFlags } from '@/shared/constant/featureFlag';
+import { setFeatureFlags } from '@/shared/lib/helpers/features/lib/featureFlag';
 
 jest.mock('@/shared/constant/featureFlag')
 

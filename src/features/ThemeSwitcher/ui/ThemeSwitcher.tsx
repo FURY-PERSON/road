@@ -5,7 +5,7 @@ import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import ThemeIconDeprecated from '@/shared/assets/icons/theme_icon.svg';
 import { Button, ButtonVariant } from '@/shared/ui/deprecated/Button/Button';
 import ThemeIcon from '@/shared/assets/icons/theme.svg';
-import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 
 import cls from './ThemeSwitcher.module.scss';
 import clsR from './ThemeSwitcher.redesigned.module.scss';

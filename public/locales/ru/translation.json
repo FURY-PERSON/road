@@ -37,5 +37,14 @@
   "your rating": "ваш рейтинг",
   "rate news": "оцените новость",
   "leave your feedback about the news": "оставьте свой отзыв о новости",
-  "thanks for the feedback": "спасибо за отзыв"
+  "thanks for the feedback": "спасибо за отзыв",
+  "change design type": "Изменить тип интерфейса",
+  "new": "новый",
+  "old": "старый",
+  "on": "включено",
+  "off": "выключено",
+  "new design": "новый дизайн",
+  "rating card on main page": "карточка рейтинга на главной странице",
+  "counter": "счетчик",
+  "toggle features flags": "Переключить фичи"
 }

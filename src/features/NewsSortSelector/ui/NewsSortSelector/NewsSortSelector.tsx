@@ -4,7 +4,7 @@ import { memo } from 'react';
 import { NewsSort } from '@/entities/News';
 import { SortOrder } from '@/shared/types/sort';
 import { Select } from '@/shared/ui/deprecated/Select/Select';
-import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 import { Text } from '@/shared/ui/redesigned/Text/Text';

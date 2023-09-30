@@ -1,7 +1,7 @@
 import { memo, FC, HTMLAttributeAnchorTarget } from 'react';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/helpers/features';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 
 import { User } from '../../model/types/user';

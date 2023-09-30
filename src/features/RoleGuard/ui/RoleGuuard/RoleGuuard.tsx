@@ -5,7 +5,7 @@ import { getUserRoleName } from '@/entities/User';
 import { ForbiddenView } from '@/shared/ui/deprecated/ForbiddenView/ForbiddenView';
 
 interface RoleGuardProps {
-  children: JSX.Element;
+  children: JSX.Element | null;
   roleNames?: RoleName[];
   showForbidden?: boolean;
 }

@@ -8,7 +8,7 @@ import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button/Button
 import { updateProfile } from '@/features/EditableProfileCard/model/services/updateProfileData/updateProfileData';
 import { RoleGuard } from '@/features/RoleGuard';
 import { RoleName } from '@/entities/Role';
-import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 import { Button } from '@/shared/ui/redesigned/Button/Button';
 
 import { profileActions } from '../../model/slice/profile.slice';

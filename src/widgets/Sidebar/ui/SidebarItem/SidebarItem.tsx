@@ -2,7 +2,7 @@ import { memo, FC } from 'react';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { AppLink as AppLinkDeprecated } from '@/shared/ui/deprecated/AppLink/AppLink';
-import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 import { AppLink } from '@/shared/ui/redesigned/AppLink/AppLink';
 
 import { ISidebarItem } from '../../model/types/item';

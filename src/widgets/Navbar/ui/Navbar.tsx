@@ -10,7 +10,7 @@ import { Button } from '@/shared/ui/deprecated/Button/Button';
 import { NotificationButton } from '@/features/NotificationButton';
 import { routes } from '@/shared/constant/router';
 import { HStack } from '@/shared/ui/deprecated/Stack/HStack/HStack';
-import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 
 import cls from './Navbar.module.scss';
 

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Text as TextDeprecated, TextVariant } from '@/shared/ui/deprecated/Text/Text';
 import { SvgLoader } from '@/shared/ui/redesigned/SvgLoader';
-import { ToggleFeatures } from '@/shared/lib/helpers/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 

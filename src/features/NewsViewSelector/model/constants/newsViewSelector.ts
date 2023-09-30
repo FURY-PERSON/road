@@ -3,7 +3,7 @@ import GridIcon from '@/shared/assets/icons/grid.svg';
 import ListIcon from '@/shared/assets/icons/burger.svg';
 import TiledIcon from '@/shared/assets/icons/tile.svg';
 import { NewsListVariant } from '@/entities/News';
-import { toggleFeatures } from '@/shared/lib/helpers/toggleFeatureFlag/toggleFeatureFlag';
+import { toggleFeatures } from '@/shared/lib/helpers/features/helpers/toggleFeatureFlag';
 
 export const viewTypes = [
   {

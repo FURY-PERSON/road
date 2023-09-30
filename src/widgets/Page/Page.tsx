@@ -10,7 +10,7 @@ import { saveScrollActions } from '@/widgets/SaveScroll/model/slice/saveScroll.s
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { getPageSaveScroll } from '@/widgets/SaveScroll';
 import { StateSchema } from '@/app/providers/StoreProvider';
-import { toggleFeatures } from '@/shared/lib/helpers/toggleFeatureFlag/toggleFeatureFlag';
+import { toggleFeatures } from '@/shared/lib/helpers/features/helpers/toggleFeatureFlag';
 
 import cls from './Page.module.scss';
 
