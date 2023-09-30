@@ -1,4 +1,4 @@
-import { FC, ReactNode, HTMLAttributes } from 'react';
+import { ReactNode, HTMLAttributes } from 'react';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 
@@ -19,7 +19,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
  * old design. Use from redesign folder
   @deprecated  
 */
-export const Card: FC<CardProps> = (props) => {
+export const Card = (props: CardProps) => {
   const { className, children, variant = CardVariant.DEFAULT, ...otherProps } = props;
 
   return (

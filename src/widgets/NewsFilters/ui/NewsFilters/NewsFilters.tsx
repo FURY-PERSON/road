@@ -41,7 +41,7 @@ export const NewsFilters = memo((props: NewsFiltersProps) => {
 
   return (
     <Card className={classNames(cls.NewsFilters, {}, [className])} padding="24">
-      <VStack gap={32}>
+      <VStack gap={32} align="start">
         <Input
           addonLeft={<SearchIcon className={cls.searchIcon} />}
           onChange={onChangeSearch}

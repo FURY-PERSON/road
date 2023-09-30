@@ -1,8 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { News, NewsListVariant } from '../../model/types/news';
+import { News, NewsListVariant } from '../../../model/types/news';
 import Img from '@/shared/assets/tests/newsImage.jpeg';
 
-import { NewsListItem } from './NewsListItem';
+import { NewsListItem } from '../NewsListItem';
 
 export default {
   title: 'entities/NewsListItem',

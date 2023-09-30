@@ -1,4 +1,4 @@
-import { HTMLAttributes, memo, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 
@@ -24,7 +24,7 @@ const mapPaddingToClass: Record<CardPadding, string> = {
   '24': 'gap_24'
 };
 
-export const Card = memo((props: CardProps) => {
+export const Card = (props: CardProps) => {
   const {
     className,
     children,
@@ -50,4 +50,4 @@ export const Card = memo((props: CardProps) => {
       {children}
     </div>
   );
-});
+};

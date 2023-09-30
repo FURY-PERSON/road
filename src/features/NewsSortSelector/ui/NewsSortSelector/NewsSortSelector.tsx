@@ -32,7 +32,7 @@ export const NewsSortSelector = memo((props: NewsSortSelectorProps) => {
       feature="newDesign"
       on={
         <div className={classNames(clsR.NewsSortSelector, {}, [className])}>
-          <VStack gap={8}>
+          <VStack gap={8} align="start">
             <Text text={t('sort by')} />
             <ListBox<NewsSort> items={sortOrderOptions} value={sort} onChange={onChangeSort} />
             <ListBox<SortOrder> items={orderOptions} value={order} onChange={onChangeOrder} />

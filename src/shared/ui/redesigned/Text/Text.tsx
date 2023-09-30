@@ -18,7 +18,7 @@ interface TextProps {
   text?: string | null;
   variant?: TextVariant;
   size?: TextSize;
-
+  bold?: boolean;
   'data-testid'?: string;
 }
 
@@ -37,6 +37,7 @@ export const Text: FC<TextProps> = memo((props) => {
     size = 'L',
     titleClassName,
     textClassName,
+    bold,
     'data-testid': dataTestId = 'Text'
   } = props;
 
@@ -47,7 +48,7 @@ export const Text: FC<TextProps> = memo((props) => {
       {title ? (
         <TextElement
           data-testid={`${dataTestId}.title`}
-          className={classNames(cls.title, {}, [titleClassName])}
+          className={classNames(cls.title, { [cls.bold]: bold }, [titleClassName])}
         >
           {title}
         </TextElement>
