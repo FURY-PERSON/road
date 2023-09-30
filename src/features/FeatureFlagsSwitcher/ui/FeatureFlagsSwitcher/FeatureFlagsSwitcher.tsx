@@ -41,17 +41,23 @@ export const FeatureFlagsSwitcher = memo((props: FeatureFlagsSwitcherProps) => {
 
   const onChange = useCallback(
     (flagName: keyof FeatureFlags) => async (value: FeatureFlagValue) => {
+      const booleanValue = value === 'on';
+
+      const needToUpdate = booleanValue !== userFlags?.[flagName];
+
+      if (!needToUpdate) return;
+
       await dispatch(
         updateFeatureFlag({
           userLogin: userLogin,
-          active: value === 'on',
+          active: booleanValue,
           featureName: flagName,
           needReloadPage: currentUser?.login === userLogin
         })
       );
       loadFeaturedFlags();
     },
-    [currentUser, userLogin, loadFeaturedFlags]
+    [currentUser, userLogin, loadFeaturedFlags, userFlags]
   );
 
   if (loading) {
