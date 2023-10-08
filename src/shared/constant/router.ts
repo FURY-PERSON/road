@@ -1,6 +1,8 @@
 const getRouteMain = () => '/';
 const getRouteAbout = () => '/about';
 const getRouteUsers = () => '/user';
+const getRouteBlock = () => '/block';
+const getRouteBlockInfo = (blockId: string) => `/block/${blockId}`;
 const getRouteProfile = (login: string) => `/user/${login}`;
 const getRouteLogin = () => '/login';
 const getRouteRegister = () => '/register';
@@ -14,6 +16,8 @@ export const routes = {
   main: getRouteMain,
   about: getRouteAbout,
   users: getRouteUsers,
+  blocks: getRouteBlock,
+  blocksInfo: getRouteBlockInfo,
   profile: getRouteProfile,
   login: getRouteLogin,
   register: getRouteRegister,

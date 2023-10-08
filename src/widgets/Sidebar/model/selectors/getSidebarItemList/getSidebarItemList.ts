@@ -5,6 +5,7 @@ import PenIcon from '@/shared/assets/icons/pen.svg';
 import AboutIcon from '@/shared/assets/icons/Info.svg';
 import MainIcon from '@/shared/assets/icons/home.svg';
 import UsersIcon from '@/shared/assets/icons/users.svg';
+import BlocksIcon from '@/shared/assets/icons/kebab.svg';
 import AvatarIcon from '@/shared/assets/icons/avatar.svg';
 import BookIconDeprecated from '@/shared/assets/icons/book.svg';
 import ProfileIconDeprecated from '@/shared/assets/icons/profile.svg';
@@ -49,6 +50,12 @@ export const getSidebarItemList = createSelector<any, ISidebarItem[]>(getUserDat
           on: () => UsersIcon
         }),
         text: i18n.t('to users'),
+        roles: [RoleName.ADMIN]
+      },
+      {
+        path: routes.blocks(),
+        Icon: BlocksIcon,
+        text: i18n.t('to blocks'),
         roles: [RoleName.ADMIN]
       },
       {

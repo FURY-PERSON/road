@@ -23,7 +23,7 @@ interface ListBoxProps<T extends string> {
   className?: string;
   value?: T;
   defaultValue?: string;
-  onChange: (value: T) => void;
+  onChange?: (value: T) => void;
   readonly?: boolean;
   direction?: DropdownDirection;
   label?: string | null;

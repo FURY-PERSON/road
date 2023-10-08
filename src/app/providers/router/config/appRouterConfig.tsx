@@ -11,6 +11,7 @@ import { RegisterPage } from '@/pages/RegisterPage';
 import { routes } from '@/shared/constant/router';
 import { NewsEditPage } from '@/pages/NewsEditPage';
 import { UsersPage } from '@/pages/UsersPage';
+import { BlocksPage } from '@/pages/BlocksPage';
 
 import { RequireAuth } from '../ui/RequireAuth';
 
@@ -41,6 +42,14 @@ export const appRouteConfig: Array<RouteProps> = [
     element: (
       <RequireAuth>
         <UsersPage />
+      </RequireAuth>
+    )
+  },
+  {
+    path: routes.blocks(),
+    element: (
+      <RequireAuth>
+        <BlocksPage />
       </RequireAuth>
     )
   },

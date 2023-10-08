@@ -14,8 +14,8 @@ interface TextProps {
   className?: string;
   titleClassName?: string;
   textClassName?: string;
-  title?: string | null;
-  text?: string | null;
+  title?: string | number | null;
+  text?: string | number | null;
   variant?: TextVariant;
   size?: TextSize;
   bold?: boolean;
