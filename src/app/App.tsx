@@ -8,9 +8,9 @@ import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
 import { PageLoader } from '@/widgets/PageLoader';
 import { getUserInited, refreshAuthData, userActions } from '@/entities/User';
-import { SvgLoader } from '@/shared/ui/deprecated/SvgLoader';
 import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 import { MainLayout } from '@/shared/ui/redesigned/layouts/MainLayout';
+import { SvgLoader } from '@/shared/ui/redesigned/SvgLoader';
 
 import cls from './App.module.scss';
 
@@ -26,6 +26,14 @@ function App() {
 
   const userInited = useSelector(getUserInited);
 
+  if (!userInited) {
+    return (
+      <div className={cls.loader}>
+        <SvgLoader width={80} height={80} />
+      </div>
+    );
+  }
+
   return (
     <ToggleFeatures
       feature="newDesign"
@@ -35,13 +43,7 @@ function App() {
             <Navbar />
             <div className="content">
               <Sidebar />
-              {userInited ? (
-                <AppRouter />
-              ) : (
-                <div className={cls.loader}>
-                  <SvgLoader />
-                </div>
-              )}
+              <AppRouter />
             </div>
           </Suspense>
         </div>
@@ -49,18 +51,12 @@ function App() {
       on={
         <div className={classNames('app_redesigned', {}, [])}>
           <Suspense fallback={<PageLoader />}>
-            {userInited ? (
-              <MainLayout
-                header={<Navbar />}
-                content={<AppRouter />}
-                sidebar={<Sidebar />}
-                toolbar={<div>123</div>}
-              />
-            ) : (
-              <div className={cls.loader}>
-                <SvgLoader />
-              </div>
-            )}
+            <MainLayout
+              header={<Navbar />}
+              content={<AppRouter />}
+              sidebar={<Sidebar />}
+              toolbar={<div>123</div>}
+            />
           </Suspense>
         </div>
       }

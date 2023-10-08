@@ -12,7 +12,6 @@ export const initialForm: RegisterForm = {
   lastName: '',
   phone: '',
   password: '',
-  role: '',
   confirmPassword: ''
 };
 
