@@ -1,7 +1,7 @@
 import { memo, FC, Suspense } from 'react';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Modal } from '@/shared/ui/deprecated/Modal/Modal';
+import { Modal } from '@/shared/ui/redesigned/Modal/Modal';
 import { SvgLoader } from '@/shared/ui/deprecated/SvgLoader';
 
 import { LoginFormAsync } from '../LoginForm/LoginForm.async';

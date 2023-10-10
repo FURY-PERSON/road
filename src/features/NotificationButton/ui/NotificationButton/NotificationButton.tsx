@@ -14,7 +14,7 @@ import NotificationIcon from '@/shared/assets/icons/notificationRedesigned.svg';
 import { Popover } from '@/shared/ui/redesigned/popups';
 import { Button as ButtonDeprecated, ButtonVariant } from '@/shared/ui/deprecated/Button/Button';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Drawer } from '@/shared/ui/deprecated/Drawer/Drawer';
+import { Drawer } from '@/shared/ui/redesigned/Drawer/Drawer';
 import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 import { Button } from '@/shared/ui/redesigned/Button/Button';
 

@@ -4,8 +4,8 @@ import { useTheme } from '@/shared/contexts/ThemeProvider';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { AnimationProvider, useAnimationLibs } from '@/shared/lib/helpers/AnimationProvider';
 
-import { Overlay } from '../../redesigned/Overlay/Overlay';
-import { Portal } from '../../redesigned/Portal/Portal';
+import { Overlay } from '../Overlay/Overlay';
+import { Portal } from '../Portal/Portal';
 
 import cls from './Drawer.module.scss';
 
@@ -19,10 +19,6 @@ interface DrawerProps {
 
 const height = window.innerHeight - 100;
 
-/** 
- * old design. Use from redesign folder
-  @deprecated  
-*/
 export const DrawerContent = memo((props: DrawerProps) => {
   const { Spring, Gesture } = useAnimationLibs();
   const [{ y }, api] = Spring.useSpring(() => ({ y: height }));
