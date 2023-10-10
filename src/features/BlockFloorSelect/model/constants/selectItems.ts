@@ -14,13 +14,7 @@ export const floorList: Array<ListBoxItem<string>> = [
   { content: 8, value: '8' },
   { content: 9, value: '9' },
   { content: 10, value: '10' },
-  { content: 11, value: '11' },
-  { content: 12, value: '12' },
-  { content: 13, value: '13' },
-  { content: 14, value: '14' },
-  { content: 15, value: '15' },
-  { content: 16, value: '16' },
-  { content: 17, value: '17' }
+  { content: 11, value: '11' }
 ];
 
 export const orderOptions: Array<ListBoxItem<SortOrder>> = [

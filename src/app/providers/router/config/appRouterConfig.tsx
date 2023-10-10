@@ -12,6 +12,7 @@ import { routes } from '@/shared/constant/router';
 import { NewsEditPage } from '@/pages/NewsEditPage';
 import { UsersPage } from '@/pages/UsersPage';
 import { BlocksPage } from '@/pages/BlocksPage';
+import { BlockInfoPage } from '@/pages/BlockInfoPage';
 
 import { RequireAuth } from '../ui/RequireAuth';
 
@@ -50,6 +51,14 @@ export const appRouteConfig: Array<RouteProps> = [
     element: (
       <RequireAuth>
         <BlocksPage />
+      </RequireAuth>
+    )
+  },
+  {
+    path: routes.blocksInfo(':id'),
+    element: (
+      <RequireAuth>
+        <BlockInfoPage />
       </RequireAuth>
     )
   },
