@@ -65,7 +65,8 @@ export const getSidebarItemList = createSelector<any, ISidebarItem[]>(getUserDat
           off: () => ProfileIconDeprecated,
           on: () => AvatarIcon
         }),
-        text: i18n.t('to profile')
+        text: i18n.t('to profile'),
+        roles: [RoleName.STUDENT, RoleName.WORKER]
       },
       {
         path: routes.news(),

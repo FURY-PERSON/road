@@ -3,13 +3,18 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Text, TextSize, TextVariant } from '@/shared/ui/deprecated/Text/Text';
-import { Skeleton } from '@/shared/ui/deprecated/Skeleton/Skeleton';
+import { Text as TextDeprecated, TextSize, TextVariant } from '@/shared/ui/deprecated/Text/Text';
+import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton/Skeleton';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { Card } from '@/shared/ui/deprecated/Card/Card';
+import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card/Card';
 import { AppLink } from '@/shared/ui/deprecated/AppLink/AppLink';
 import { routes } from '@/shared/constant/router';
 import { AppImage } from '@/shared/ui/redesigned/AppImage/AppImage';
+import { ToggleFeatures } from '@/shared/lib/helpers/features';
+import { Text } from '@/shared/ui/redesigned/Text/Text';
+import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
 
 import { getNewsDetailsLoading } from '../../model/selectors/getNewsDetailsLoading/getNewsDetailsLoading';
 import { fetchNewsById } from '../../model/services/fetchNewsById/fetchNewsById';
@@ -21,6 +26,7 @@ import { NewsCodeBlockComponent } from '../NewsCodeBlockComponent/NewsCodeBlockC
 import { NewsImageComponent } from '../NewsImageComponent/NewsImageComponent';
 
 import cls from './NewsDetails.module.scss';
+import clsR from './NewsDetails.redesigned.module.scss';
 
 export interface NewsDetailsProps {
   className?: string;
@@ -41,7 +47,7 @@ const renderBlock = (block: NewsBlock) => {
 };
 
 export const NewsDetails: FC<NewsDetailsProps> = memo((props) => {
-  const { id } = props;
+  const { id, className } = props;
   const dispatch = useAppDispatch();
   const { t } = useTranslation('news');
 
@@ -61,13 +67,13 @@ export const NewsDetails: FC<NewsDetailsProps> = memo((props) => {
   if (isLoading) {
     return (
       <div className={cls.loading}>
-        <Skeleton className={cls.image} width="100%" height={230} />
-        <Skeleton className={cls.skeleton} width={300} height={32} />
-        <Skeleton className={cls.skeleton} width={600} height={24} />
-        <Skeleton className={cls.skeleton} width="100%" height={200} />
-        <Skeleton className={cls.skeleton} width="100%" height={200} />
-        <Skeleton className={cls.skeleton} width="100%" height={200} />
-        <Skeleton className={cls.skeleton} width="100%" height={200} />
+        <SkeletonDeprecated className={cls.image} width="100%" height={230} />
+        <SkeletonDeprecated className={cls.skeleton} width={300} height={32} />
+        <SkeletonDeprecated className={cls.skeleton} width={600} height={24} />
+        <SkeletonDeprecated className={cls.skeleton} width="100%" height={200} />
+        <SkeletonDeprecated className={cls.skeleton} width="100%" height={200} />
+        <SkeletonDeprecated className={cls.skeleton} width="100%" height={200} />
+        <SkeletonDeprecated className={cls.skeleton} width="100%" height={200} />
       </div>
     );
   }
@@ -75,7 +81,7 @@ export const NewsDetails: FC<NewsDetailsProps> = memo((props) => {
   if (error) {
     return (
       <div className={cls.error}>
-        <Text variant={TextVariant.ERROR} title={error} />
+        <TextDeprecated variant={TextVariant.ERROR} title={error} />
       </div>
     );
   }
@@ -83,45 +89,67 @@ export const NewsDetails: FC<NewsDetailsProps> = memo((props) => {
   if (!news) {
     return (
       <div className={cls.error}>
-        <Text variant={TextVariant.ERROR} title={t('can not find news')} />
+        <TextDeprecated variant={TextVariant.ERROR} title={t('can not find news')} />
       </div>
     );
   }
 
   return (
-    <>
-      <Card className={cls.card}>
-        {news.imageUrl ? (
+    <ToggleFeatures
+      feature="newDesign"
+      off={
+        <>
+          <CardDeprecated className={cls.card}>
+            {news.imageUrl ? (
+              <AppImage
+                className={cls.image}
+                src={news.imageUrl}
+                alt="news"
+                fallback={<SkeletonDeprecated width="100%" height={230} />}
+              />
+            ) : null}
+
+            <TextDeprecated
+              className={cls.title}
+              size={TextSize.XL}
+              title={news.title}
+              text={news.subTitle}
+            />
+            <TextDeprecated className={cls.mainText} size={TextSize.M} title={news.mainText} />
+
+            <div className={cls.section}>
+              <TextDeprecated className={cls.label} size={TextSize.M} title={t('author')} />
+              <AppLink to={routes.profile(news.author.login)}>
+                <TextDeprecated className={cls.title} size={TextSize.M} title={news.author.login} />
+              </AppLink>
+            </div>
+
+            <div className={cls.section}>
+              <TextDeprecated className={cls.label} size={TextSize.M} text={t('dorm')} />
+              <TextDeprecated className={cls.title} size={TextSize.M} text={news.dorm.name} />
+            </div>
+
+            <div className={cls.section}>
+              <TextDeprecated className={cls.label} size={TextSize.M} text={t('created at')} />
+              <TextDeprecated className={cls.title} size={TextSize.M} text={news.createdAt} />
+            </div>
+          </CardDeprecated>
+
+          {sortedBlocks?.map((block) => renderBlock(block))}
+        </>
+      }
+      on={
+        <VStack gap={16} max className={classNames(clsR.NewsDetails, {}, [className])}>
+          <Text title={news?.title} size="L" bold />
+          <Text title={news?.subTitle} size="M" />
           <AppImage
-            className={cls.image}
-            src={news.imageUrl}
-            alt="news"
-            fallback={<Skeleton width="100%" height={230} />}
+            fallback={<Skeleton width="100%" height={420} border="16px" />}
+            src={news?.imageUrl}
+            className={clsR.img}
           />
-        ) : null}
-
-        <Text className={cls.title} size={TextSize.XL} title={news.title} text={news.subTitle} />
-        <Text className={cls.mainText} size={TextSize.M} title={news.mainText} />
-
-        <div className={cls.section}>
-          <Text className={cls.label} size={TextSize.M} title={t('author')} />
-          <AppLink to={routes.profile(news.author.login)}>
-            <Text className={cls.title} size={TextSize.M} title={news.author.login} />
-          </AppLink>
-        </div>
-
-        <div className={cls.section}>
-          <Text className={cls.label} size={TextSize.M} text={t('dorm')} />
-          <Text className={cls.title} size={TextSize.M} text={news.dorm.name} />
-        </div>
-
-        <div className={cls.section}>
-          <Text className={cls.label} size={TextSize.M} text={t('created at')} />
-          <Text className={cls.title} size={TextSize.M} text={news.createdAt} />
-        </div>
-      </Card>
-
-      {sortedBlocks?.map((block) => renderBlock(block))}
-    </>
+          {news?.blocks.map(renderBlock)}
+        </VStack>
+      }
+    />
   );
 });

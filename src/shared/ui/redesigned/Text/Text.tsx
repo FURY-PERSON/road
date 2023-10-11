@@ -4,9 +4,9 @@ import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 
 import cls from './Text.module.scss';
 
-export type TextVariant = 'primary' | 'error' | 'accent';
+type TextVariant = 'primary' | 'error' | 'accent';
 
-export type TextSize = 'M' | 'L' | 'XL';
+type TextSize = 'M' | 'L' | 'XL';
 
 type TextElement = 'h2' | 'h3' | 'h4';
 
