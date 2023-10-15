@@ -26,7 +26,7 @@ export const sendNewsComment = createAsyncThunk<Comment, SendCommentProps, Thunk
 
       return response.data;
     } catch (error) {
-      if (error instanceof AxiosError<{ message: string }>) {
+      if (error instanceof AxiosError) {
         return thunkAPI.rejectWithValue(
           error.response?.data.message || error.response?.statusText || error.message
         );

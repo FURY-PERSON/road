@@ -6,6 +6,7 @@
 
   &:hover {
     color: var(--accent-redesigned);
+    border-color: var(--accent-redesigned);
     transition: transform 0.07s linear;
   }
 }
@@ -14,7 +15,7 @@
   padding: 8px 16px;
   background: var(--light-bg-redesigned);
   border: none;
-  border-radius: 34px;
+  border-radius: 32px;
   outline: none;
 }
 
@@ -29,6 +30,7 @@
   color: var(--primary-color);
   background-color: transparent;
   border: 1px solid var(--primary-color);
+  border-radius: 32px;
 }
 
 .small {

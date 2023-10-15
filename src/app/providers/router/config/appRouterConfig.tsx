@@ -95,7 +95,7 @@ export const appRouteConfig: Array<RouteProps> = [
     )
   },
   {
-    path: routes.newsDetails(':id'),
+    path: routes.newsCreate(),
     element: (
       <RequireAuth>
         <NewsEditPage />

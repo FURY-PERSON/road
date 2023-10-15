@@ -28,7 +28,7 @@ export const NewsDetailsCommentListContainer: FC<NewsDetailsCommentListProps> = 
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <div className={classNames(cls.NewsDetailsCommentList, {}, [className])} data-testId={testId}>
+      <div className={classNames(cls.NewsCommentList, {}, [className])} data-testId={testId}>
         <NewsDetailsCommentList {...props} />
       </div>
     </DynamicModuleLoader>

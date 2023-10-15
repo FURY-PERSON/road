@@ -20,6 +20,8 @@ export const LoginPage: FC<LoginPageProps> = (props) => {
 
   const onSuccessLogin = useCallback(() => {
     navigator(routes.main());
+
+    window.location.reload();
   }, [navigator]);
 
   return (

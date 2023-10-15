@@ -21,6 +21,7 @@ import { NewsDetailsContainer } from '../NewsDetailsContainer/NewsDetailsContain
 import { NewsAdditionalInfoContainer } from '../NewsAdditionalInfoContainer/NewsAdditionalInfoContainer';
 
 import cls from './NewsDetailsPage.module.scss';
+import clsR from './NewsDetailsPage.redesigned.module.scss';
 
 export const NewsDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -74,28 +75,24 @@ export const NewsDetailsPage = () => {
       on={
         <StickyContentLayout
           content={
-            <Page className={classNames(cls.ArticleDetailsPage, {}, [])}>
+            <Page className={classNames(clsR.main, {}, [])}>
               <VStack gap={16} max>
                 <NewsDetailsContainer newsId={id} />
 
-                <NewsRatingAsync className={cls.rating} newsId={id} />
+                <NewsRatingAsync newsId={id} />
 
-                <Text className={cls.commentsTitle} title={t('comments')} />
+                <Text title={t('comments')} />
                 <AddNewCommentFormAsync
                   onSendComment={onNewsCommentSend}
                   testId="NewsDetailsPage.AddNewCommentFormAsync"
                 />
                 <NewsDetailsCommentList
                   newsId={id}
-                  className={cls.comments}
                   testId="NewsDetailsPage.NewsDetailsCommentList"
                 />
 
-                <Text className={cls.recommendationsTitle} title={t('recommendations')} />
-                <NewsRecommendationList
-                  className={cls.recommendations}
-                  testId="NewsDetailsPage.NewsRecommendationList"
-                />
+                <Text title={t('recommendations')} />
+                <NewsRecommendationList testId="NewsDetailsPage.NewsRecommendationList" />
               </VStack>
             </Page>
           }
