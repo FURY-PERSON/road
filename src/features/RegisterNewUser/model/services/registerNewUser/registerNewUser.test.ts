@@ -7,7 +7,7 @@ import { RegisterForm } from '../../types/register.schema';
 import { registerNewUser } from './registerNewUser';
 import { setFeatureFlags } from '@/shared/lib/helpers/features/lib/featureFlag';
 
-jest.mock('@/shared/constant/featureFlag')
+jest.mock('@/shared/lib/helpers/features/lib/featureFlag')
 
 const form: RegisterForm = {
   confirmPassword: '12345',

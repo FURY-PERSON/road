@@ -27,3 +27,19 @@ export const routes = {
   newsEdit: getRouteNewsEdit,
   notFound: getRouteNotFound
 };
+
+export type RouteName = keyof typeof routes;
+
+export const AppRouteByPathPattern: Record<string, RouteName> = {
+  [routes.main()]: 'main',
+  [routes.about()]: 'about',
+  [routes.users()]: 'users',
+  [routes.blocks()]: 'blocks',
+  [routes.blocksInfo(':id')]: 'blocksInfo',
+  [routes.profile(':login')]: 'profile',
+  [routes.register()]: 'register',
+  [routes.news()]: 'news',
+  [routes.newsDetails(':id')]: 'newsDetails',
+  [routes.newsCreate()]: 'newsCreate',
+  [routes.newsEdit(':id')]: 'newsEdit'
+};

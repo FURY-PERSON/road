@@ -11,6 +11,7 @@ import { getUserInited, refreshAuthData, userActions } from '@/entities/User';
 import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 import { MainLayout } from '@/shared/ui/redesigned/layouts/MainLayout';
 import { SvgLoader } from '@/shared/ui/redesigned/SvgLoader';
+import { ScrollToolbar } from '@/widgets/ScrollToolbar';
 
 import cls from './App.module.scss';
 
@@ -28,7 +29,7 @@ function App() {
 
   if (!userInited) {
     return (
-      <div className={cls.loader}>
+      <div className={classNames('app_redesigned', {}, [cls.loader])}>
         <SvgLoader width={80} height={80} />
       </div>
     );
@@ -55,7 +56,7 @@ function App() {
               header={<Navbar />}
               content={<AppRouter />}
               sidebar={<Sidebar />}
-              toolbar={<div>123</div>}
+              toolbar={<ScrollToolbar />}
             />
           </Suspense>
         </div>
