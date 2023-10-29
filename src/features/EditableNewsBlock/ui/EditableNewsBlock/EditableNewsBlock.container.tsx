@@ -1,6 +1,7 @@
 import { memo, FC } from 'react';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { ToggleFeatures } from '@/shared/lib/helpers/features';
 
 import cls from './EditableNewsBlock.module.scss';
 import { EditableNewsBlockComponent, EditableNewsBlockComponentProps } from './EditableNewsBlock';
@@ -13,8 +14,14 @@ export const EditableNewsBlockContainer: FC<EditableNewsBlockContainerProps> = m
   const { className, ...otherProps } = props;
 
   return (
-    <div className={classNames(cls.EditableNewsBlock, {}, [className])}>
-      <EditableNewsBlockComponent {...otherProps} />
-    </div>
+    <ToggleFeatures
+      feature="newDesign"
+      off={
+        <div className={classNames(cls.EditableNewsBlock, {}, [className])}>
+          <EditableNewsBlockComponent {...otherProps} />
+        </div>
+      }
+      on={<EditableNewsBlockComponent {...otherProps} />}
+    />
   );
 });

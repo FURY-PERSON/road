@@ -9,6 +9,8 @@ import {
   EditableNewsBlockTextHandlers
 } from '@/features/EditableNewsBlock';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { ToggleFeatures } from '@/shared/lib/helpers/features';
+import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 
 import {
   createAndEditNewsActions,
@@ -130,18 +132,37 @@ export const NewsBlocks: FC<NewsBlocksProps> = memo((props) => {
   );
 
   return (
-    <div className={classNames(cls.NewsBlocks, {}, [className])}>
-      {sortedNewsBlocks.map((block) => (
-        <EditableNewsBlockComponent
-          item={block}
-          key={block.localId}
-          className={blockClassName}
-          maxSequenceNumber={newsBlocks.length}
-          codeBlockHandlers={codeBlockHandlers(block.localId)}
-          imageBlockHandlers={imageBlockHandlers(block.localId)}
-          textBlockHandlers={textBlockHandlers(block.localId)}
-        />
-      ))}
-    </div>
+    <ToggleFeatures
+      feature="newDesign"
+      off={
+        <div className={classNames(cls.NewsBlocks, {}, [className])}>
+          {sortedNewsBlocks.map((block) => (
+            <EditableNewsBlockComponent
+              item={block}
+              key={block.localId}
+              className={blockClassName}
+              maxSequenceNumber={newsBlocks.length}
+              codeBlockHandlers={codeBlockHandlers(block.localId)}
+              imageBlockHandlers={imageBlockHandlers(block.localId)}
+              textBlockHandlers={textBlockHandlers(block.localId)}
+            />
+          ))}
+        </div>
+      }
+      on={
+        <VStack gap={24} max>
+          {sortedNewsBlocks.map((block) => (
+            <EditableNewsBlockComponent
+              item={block}
+              key={block.localId}
+              maxSequenceNumber={newsBlocks.length}
+              codeBlockHandlers={codeBlockHandlers(block.localId)}
+              imageBlockHandlers={imageBlockHandlers(block.localId)}
+              textBlockHandlers={textBlockHandlers(block.localId)}
+            />
+          ))}
+        </VStack>
+      }
+    />
   );
 });

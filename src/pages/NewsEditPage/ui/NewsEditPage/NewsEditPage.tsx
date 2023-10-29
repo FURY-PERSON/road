@@ -4,8 +4,10 @@ import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Page } from '@/widgets/Page/Page';
-import { CreateAndEditNews } from '@/widgets/CreateAndEditNews';
+import { CreateAndEditNews, NewsTools } from '@/widgets/CreateAndEditNews';
 import { Text } from '@/shared/ui/deprecated/Text/Text';
+import { ToggleFeatures } from '@/shared/lib/helpers/features';
+import { StickyContentLayout } from '@/shared/ui/redesigned/layouts/StickyContentLayout';
 
 import cls from './NewsEditPage.module.scss';
 
@@ -21,10 +23,25 @@ export const NewsEditPage: FC<NewsEditPageProps> = memo((props) => {
   const isEdit = Boolean(id);
 
   return (
-    <Page className={classNames(cls.NewsEditPage, {}, [className])}>
-      <Text title={isEdit ? t('edit news') : t('create new')} />
+    <ToggleFeatures
+      feature="newDesign"
+      off={
+        <Page className={classNames(cls.NewsEditPage, {}, [className])}>
+          <Text title={isEdit ? t('edit news') : t('create new')} />
 
-      <CreateAndEditNews id={id} />
-    </Page>
+          <CreateAndEditNews id={id} />
+        </Page>
+      }
+      on={
+        <StickyContentLayout
+          right={<NewsTools />}
+          content={
+            <Page className={classNames(cls.NewsEditPage, {}, [className])}>
+              <CreateAndEditNews id={id} />
+            </Page>
+          }
+        />
+      }
+    />
   );
 });
