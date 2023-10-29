@@ -32,7 +32,7 @@
     "postinstall": "node ./scripts/clearNodeModulesCache.js",
     "remove-feature": "ts-node ./scripts/remove-feature.ts"
   },
-  "repository": {
+  "repository": { 
     "type": "git",
     "url": "git+https://github.com/FURY-PERSON/road.git"
   },

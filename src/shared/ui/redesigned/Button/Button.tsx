@@ -1,4 +1,4 @@
-import { memo, FC, ButtonHTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactNode, forwardRef, ForwardedRef } from 'react';
 
 import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
 
@@ -21,7 +21,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   addonRight?: ReactNode;
 }
 
-export const Button: FC<ButtonProps> = memo((props) => {
+export const Button = forwardRef((props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
   const {
     className,
     children,
@@ -47,6 +47,7 @@ export const Button: FC<ButtonProps> = memo((props) => {
       type="button"
       disabled={disabled}
       className={classNames(cls.Button, mods, [className, cls[variant], cls[size]])}
+      ref={ref}
     >
       <div className={cls.addonLeft}>{addonLeft}</div>
       {isLoading === true ? <SvgLoader /> : children}
