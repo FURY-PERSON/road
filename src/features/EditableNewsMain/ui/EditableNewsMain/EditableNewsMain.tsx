@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { TextInput as TextInputDeprecated } from '@/shared/ui/deprecated/TextInput/TextInput';
-import { ImageInput } from '@/shared/ui/deprecated/ImageInput/ImageInput';
+import { ImageInput as ImageInputDeprecated } from '@/shared/ui/deprecated/ImageInput/ImageInput';
 import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card/Card';
 import { Dorm } from '@/entities/Dorm';
 import { Select, SelectOption } from '@/shared/ui/deprecated/Select/Select';
@@ -13,6 +13,7 @@ import { Input } from '@/shared/ui/redesigned/Input';
 import { ListBox } from '@/shared/ui/redesigned/popups';
 import { ListBoxItem } from '@/shared/ui/redesigned/popups/components/ListBox/ListBox';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
+import { ImageInput } from '@/shared/ui/redesigned/ImageInput/ImageInput';
 
 import cls from './EditableNewsMain.module.scss';
 
@@ -94,7 +95,7 @@ export const EditableNewsMain: FC<EditableNewsMainProps> = memo((props) => {
             options={selectItemsDeprecated}
           />
 
-          <ImageInput
+          <ImageInputDeprecated
             className={cls.image}
             onImageChange={onImageChangeHandler}
             image={image}

@@ -10,6 +10,7 @@ import { ToggleFeatures } from '@/shared/lib/helpers/features';
 import { StickyContentLayout } from '@/shared/ui/redesigned/layouts/StickyContentLayout';
 
 import cls from './NewsEditPage.module.scss';
+import clsR from './NewsEditPage.redesigned.module.scss';
 
 interface NewsEditPageProps {
   className?: string;
@@ -36,7 +37,7 @@ export const NewsEditPage: FC<NewsEditPageProps> = memo((props) => {
         <StickyContentLayout
           right={<NewsTools />}
           content={
-            <Page className={classNames(cls.NewsEditPage, {}, [className])}>
+            <Page className={classNames(clsR.NewsEditPage, {}, [className])}>
               <CreateAndEditNews id={id} />
             </Page>
           }

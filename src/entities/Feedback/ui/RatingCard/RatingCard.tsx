@@ -75,15 +75,16 @@ export const RatingCard = memo((props: RatingCardProps) => {
         </>
       }
       on={
-        <>
+        <VStack gap={16} max>
           <Text title={feedbackTitle} />
+
           <Input
             data-testid="RatingCard.Input"
             value={feedback}
             onChange={setFeedback}
             placeholder={t('Ваш отзыв')}
           />
-        </>
+        </VStack>
       }
     />
   );
@@ -131,13 +132,15 @@ export const RatingCard = memo((props: RatingCardProps) => {
 
           <BrowserView>
             <Modal open={isModalOpen}>
-              <VStack gap={32}>
-                {modalContent}
-                <HStack gap={16} justify="end">
-                  <Button onClick={cancelHandle}>{t('close')}</Button>
-                  <Button onClick={acceptHandle}>{t('send')}</Button>
-                </HStack>
-              </VStack>
+              <Card padding="24">
+                <VStack gap={32}>
+                  {modalContent}
+                  <HStack gap={16} justify="end">
+                    <Button onClick={cancelHandle}>{t('close')}</Button>
+                    <Button onClick={acceptHandle}>{t('send')}</Button>
+                  </HStack>
+                </VStack>
+              </Card>
             </Modal>
           </BrowserView>
 
