@@ -3,6 +3,7 @@ import { News, NewsListVariant } from '../../model/types/news';
 import Img from '@/shared/assets/tests/newsImage.jpeg';
 
 import { NewsList } from './NewsList';
+import { FeaturesFlagsDecorator } from '@/shared/config/storybook/FeaturesFlagsDecorator';
 
 export default {
   title: 'entities/NewsList',
@@ -62,11 +63,22 @@ const news = new Array(4).fill(0).map(() => ({
 
 const Template: ComponentStory<typeof NewsList> = (args) => <NewsList {...args} />;
 
-export const variantList = Template.bind({});
-variantList.args = {
+
+const variantListArgs = {
   news: news as News[],
   variant: NewsListVariant.LIST
-};
+}
+export const variantList = Template.bind({});
+variantList.args = variantListArgs;
+
+export const variantListRedesigned = Template.bind({});
+variantListRedesigned.decorators = [FeaturesFlagsDecorator({
+  features: [
+    {name: 'newDesign', active: true}
+  ]
+})]
+variantListRedesigned.args = variantListArgs;
+
 
 export const variantBlock = Template.bind({});
 variantBlock.args = {
