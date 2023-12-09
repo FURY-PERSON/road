@@ -1,7 +1,9 @@
 import { memo, FC } from 'react';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Text, TextSize } from '@/shared/ui/Text/Text';
+import { Text as TextDeprecated, TextSize } from '@/shared/ui/deprecated/Text/Text';
+import { ToggleFeatures } from '@/shared/lib/helpers/features';
+import { Text } from '@/shared/ui/redesigned/Text/Text';
 
 import { NewsTextBlock } from '../../model/types/news';
 
@@ -17,10 +19,20 @@ export const NewsTextComponent: FC<NewsTextComponentProps> = memo((props) => {
 
   return (
     <div className={classNames(cls.NewsTextComponent, {}, [className])}>
-      {block.title ? <Text className={cls.title} title={block.title} size={TextSize.L} /> : null}
+      {block.title ? (
+        <ToggleFeatures
+          feature="newDesign"
+          off={<TextDeprecated className={cls.title} title={block.title} size={TextSize.L} />}
+          on={<Text className={cls.title} title={block.title} size="L" />}
+        />
+      ) : null}
 
       {block.paragraphs.map((paragraph, i) => (
-        <Text key={i} className={cls.paragraph} text={paragraph} />
+        <ToggleFeatures
+          feature="newDesign"
+          off={<TextDeprecated key={i} className={cls.paragraph} text={paragraph} />}
+          on={<Text key={i} className={cls.paragraph} text={paragraph} />}
+        />
       ))}
     </div>
   );

@@ -1,0 +1,86 @@
+.Button {
+  padding: 6px 15px;
+  color: var(--text-redesigned);
+  cursor: pointer;
+  transition: transform 0.07s linear;
+
+  &:hover {
+    color: var(--accent-redesigned);
+    border-color: var(--accent-redesigned);
+    transition: transform 0.07s linear;
+  }
+}
+
+.filled {
+  padding: 8px 16px;
+  background: var(--light-bg-redesigned);
+  border: none;
+  border-radius: 32px;
+  outline: none;
+}
+
+.clear {
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.outline {
+  color: var(--primary-color);
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  border-radius: 32px;
+}
+
+.small {
+  font: var(--font-m-redesigned);
+}
+
+.medium {
+  font: var(--font-l-redesigned);
+}
+
+.large {
+  font: var(--font-xl-redesigned);
+}
+
+.withAddon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 6px 12px;
+}
+
+.addonLeft,
+.addonRight {
+  display: flex;
+}
+
+.addonRight svg,
+.addonLeft svg {
+  color: var(--hint-redesigned);
+}
+
+.square {
+  padding: 0;
+
+  &.small {
+    width: var(--font-line-m);
+    height: var(--font-line-m);
+  }
+
+  &.medium {
+    width: var(--font-line-l);
+    height: var(--font-line-l);
+  }
+
+  &.large {
+    width: var(--font-line-xl);
+    height: var(--font-line-xl);
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+}

@@ -1,0 +1,22 @@
+.Code {
+  position: relative;
+  padding: 20px;
+  overflow-x: auto;
+  background: var(--light-bg-redesigned);
+  border: 1px solid var(--accent-redesigned);
+
+  > .copy {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    > .icon {
+      width: 42px;
+      height: 42px;
+      color: var(--accent-redesigned);
+    }
+  }
+
+  > .text {
+  }
+}

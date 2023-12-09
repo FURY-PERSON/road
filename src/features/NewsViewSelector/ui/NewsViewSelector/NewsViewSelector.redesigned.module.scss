@@ -1,0 +1,14 @@
+.NewsViewSelector {
+  .icon {
+    width: 20px;
+    height: 20px;
+
+    &:hover {
+      color: var(--accent-redesigned);
+    }
+  }
+
+  .notSelected {
+    color: var(--light-bg-redesigned);
+  }
+}

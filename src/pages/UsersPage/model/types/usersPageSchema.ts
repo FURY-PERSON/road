@@ -1,9 +1,7 @@
 import { EntityState } from '@reduxjs/toolkit';
 
-import { User } from '@/entities/User';
+import { User, UsersRoles, UsersSort } from '@/entities/User';
 import { SortOrder } from '@/shared/types/sort';
-
-import { UsersRolesFilter, UsersSortFilter } from './usersPage';
 
 export interface UsersPageSchema extends EntityState<User> {
   isLoading?: boolean;
@@ -18,8 +16,8 @@ export interface UsersPageSchema extends EntityState<User> {
   // filters
   order: SortOrder;
   search?: string;
-  sort: UsersSortFilter;
-  role: UsersRolesFilter;
+  sort: UsersSort;
+  role: UsersRoles;
 
   _inited?: boolean;
 }

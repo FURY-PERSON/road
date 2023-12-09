@@ -11,6 +11,8 @@ import { RegisterPage } from '@/pages/RegisterPage';
 import { routes } from '@/shared/constant/router';
 import { NewsEditPage } from '@/pages/NewsEditPage';
 import { UsersPage } from '@/pages/UsersPage';
+import { BlocksPage } from '@/pages/BlocksPage';
+import { BlockInfoPage } from '@/pages/BlockInfoPage';
 
 import { RequireAuth } from '../ui/RequireAuth';
 
@@ -45,6 +47,22 @@ export const appRouteConfig: Array<RouteProps> = [
     )
   },
   {
+    path: routes.blocks(),
+    element: (
+      <RequireAuth>
+        <BlocksPage />
+      </RequireAuth>
+    )
+  },
+  {
+    path: routes.blocksInfo(':id'),
+    element: (
+      <RequireAuth>
+        <BlockInfoPage />
+      </RequireAuth>
+    )
+  },
+  {
     path: routes.profile(':login'),
     element: (
       <RequireAuth>
@@ -69,7 +87,7 @@ export const appRouteConfig: Array<RouteProps> = [
     )
   },
   {
-    path: routes.newsCreate(),
+    path: routes.newsEdit(':id'),
     element: (
       <RequireAuth>
         <NewsEditPage />
@@ -77,7 +95,7 @@ export const appRouteConfig: Array<RouteProps> = [
     )
   },
   {
-    path: routes.newsDetails(':id'),
+    path: routes.newsCreate(),
     element: (
       <RequireAuth>
         <NewsEditPage />

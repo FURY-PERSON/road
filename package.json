@@ -29,9 +29,10 @@
     "generate:fsd": "node ./scripts/createSlice/index.js",
     "generate:dependency-graph": "npx depcruise src --include-only '^src' --output-type dot | dot -T svg > dependency-graph.svg",
     "check:code": "npx depcruise src",
-    "postinstall": "node ./scripts/clearNodeModulesCache.js"
+    "postinstall": "node ./scripts/clearNodeModulesCache.js",
+    "remove-feature": "ts-node ./scripts/remove-feature.ts"
   },
-  "repository": {
+  "repository": { 
     "type": "git",
     "url": "git+https://github.com/FURY-PERSON/road.git"
   },
@@ -122,7 +123,7 @@
     "stylelint-config-standard-scss": "^7.0.1",
     "stylelint-order": "^6.0.2",
     "translation-check": "^1.0.2",
-    "ts-morph": "^19.0.0",
+    "ts-morph": "^16.0.0",
     "ts-node": "^10.9.1",
     "type-fest": "^3.6.0",
     "typescript": "^4.9.5",

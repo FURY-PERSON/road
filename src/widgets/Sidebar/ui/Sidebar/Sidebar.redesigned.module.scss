@@ -1,0 +1,89 @@
+.Sidebar {
+  position: relative;
+  width: 220px;
+  height: 100%;
+  background: var(--light-bg-redesigned);
+  border-radius: 32px;
+
+  .appLogo {
+    height: 48px;
+    padding-top: 12px;
+  }
+
+  .items {
+    margin-top: 40px;
+  }
+
+  .collapseBtn {
+    position: absolute;
+    top: 50%;
+    right: -12px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 132px;
+    cursor: pointer;
+    transform: translateY(-50%);
+  }
+
+  .collapseBtnIcon {
+    width: 32px;
+    height: 32px;
+    color: var(--icon-redesigned);
+    transform: rotate(90deg);
+  }
+
+  .switchers {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .item {
+    padding: 0 16px;
+  }
+}
+
+.collapsed {
+  width: 64px;
+
+  .appLogo {
+    padding-top: 12px;
+  }
+
+  .switchers {
+    flex-direction: column;
+    gap: 2px;
+    align-items: center;
+  }
+
+  .items {
+    display: flex;
+    align-items: center;
+  }
+
+  .item {
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .lang {
+    margin-left: 0;
+  }
+
+  .collapseBtn {
+    right: -6px;
+    width: 32px;
+  }
+
+  .collapseBtnIcon {
+    transform: rotate(-90deg);
+  }
+}

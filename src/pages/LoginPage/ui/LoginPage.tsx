@@ -5,8 +5,10 @@ import { LoginForm } from '@/features/AuthByUsername';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Page } from '@/widgets/Page/Page';
 import { routes } from '@/shared/constant/router';
+import { ToggleFeatures } from '@/shared/lib/helpers/features';
 
 import cls from './LoginPage.module.scss';
+import clsR from './LoginPage.redesigned.module.scss';
 
 interface LoginPageProps {
   className?: string;
@@ -18,13 +20,27 @@ export const LoginPage: FC<LoginPageProps> = (props) => {
 
   const onSuccessLogin = useCallback(() => {
     navigator(routes.main());
+
+    window.location.reload();
   }, [navigator]);
 
   return (
-    <Page className={classNames(cls.loginPage, {}, [className])} testId="LoginPage">
-      <div className={cls.inner}>
-        <LoginForm onSuccess={onSuccessLogin} />
-      </div>
-    </Page>
+    <ToggleFeatures
+      feature="newDesign"
+      off={
+        <Page className={classNames(cls.loginPage, {}, [className])} testId="LoginPage">
+          <div className={cls.inner}>
+            <LoginForm onSuccess={onSuccessLogin} />
+          </div>
+        </Page>
+      }
+      on={
+        <Page className={classNames(clsR.loginPage, {}, [className])} testId="LoginPage">
+          <div className={clsR.inner}>
+            <LoginForm onSuccess={onSuccessLogin} />
+          </div>
+        </Page>
+      }
+    />
   );
 };

@@ -6,6 +6,7 @@ import {
   DynamicModuleLoader,
   ReducersList
 } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
+import { ToggleFeatures } from '@/shared/lib/helpers/features';
 
 import { AddNewCommentForm, AddNewCommentFormProps } from './AddNewCommentForm';
 import cls from './AddNewCommentForm.module.scss';
@@ -18,10 +19,20 @@ export const AddNewCommentFormContainer: FC<AddNewCommentFormProps> = memo((prop
   const { className } = props;
 
   return (
-    <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <div className={classNames(cls.AddNewCommentForm, {}, [className])}>
-        <AddNewCommentForm {...props} />
-      </div>
-    </DynamicModuleLoader>
+    <ToggleFeatures
+      feature="newDesign"
+      off={
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+          <div className={classNames(cls.AddNewCommentForm, {}, [className])}>
+            <AddNewCommentForm {...props} />
+          </div>
+        </DynamicModuleLoader>
+      }
+      on={
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+          <AddNewCommentForm {...props} />
+        </DynamicModuleLoader>
+      }
+    />
   );
 });

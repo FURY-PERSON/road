@@ -22,6 +22,16 @@
   }
 }
 
+.NavbarRedesigned {
+  padding: 16px;
+}
+
+.links,
+.actions {
+    margin-left: auto;
+}
+
+
 @media print {
   .Navbar {
     display: none;

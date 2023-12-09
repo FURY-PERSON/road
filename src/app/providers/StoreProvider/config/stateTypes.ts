@@ -21,6 +21,7 @@ import { UsersPageSchema } from '@/pages/UsersPage/model/types/usersPageSchema';
 import { rtkApi } from '@/shared/api/rtkApi';
 import { CreateAndEditNewsSchema } from '@/widgets/CreateAndEditNews/model/types/createAndEditNewsSchema';
 import { SaveScrollSchema } from '@/widgets/SaveScroll';
+import { BlocksPageSchema } from '@/pages/BlocksPage/model/types/blocksPageSchema';
 
 export interface StateSchema {
   counter: CounterSchema;
@@ -39,6 +40,7 @@ export interface StateSchema {
   newsRecommendationList?: NewsRecommendationListSchema;
   createAndEditNews?: CreateAndEditNewsSchema;
   usersPage?: UsersPageSchema;
+  blocksPage?: BlocksPageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

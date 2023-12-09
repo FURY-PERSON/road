@@ -1,0 +1,16 @@
+.Tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.selected {
+  padding: 8px 16px;
+}
+
+.inner {
+  cursor: pointer;
+
+  &:hover {
+    color: var(--accent-redesigned);
+  }
+}

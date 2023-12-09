@@ -1,0 +1,43 @@
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 32px;
+}
+
+.link {
+  text-transform: capitalize;
+}
+
+.collapsed {
+  padding: 0 8px;
+
+  .link {
+    display: none;
+    width: 0;
+    margin: 0;
+    opacity: 0;
+  }
+}
+
+.icon {
+  width: 26px;
+  height: 26px;
+  margin-right: 12px;
+  color: var(--icon-redesigned);
+}
+
+.active {
+  position: relative;
+  background: linear-gradient(89.97deg, rgb(29 89 255 / 30%) 1.15%, rgb(94 211 243 / 0%) 99.97%);
+
+  &::before {
+    position: absolute;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    content: '';
+    background: var(--accent-redesigned);
+  }
+}

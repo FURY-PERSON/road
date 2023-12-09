@@ -9,7 +9,7 @@ export interface RegisterForm {
   lastName?: string;
   phone?: string;
   password?: string;
-  role?: RoleName | '';
+  role?: RoleName;
   confirmPassword?: string;
 }
 

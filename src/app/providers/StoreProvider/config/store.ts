@@ -22,6 +22,7 @@ export function createReduxStore(initialState?: StateSchema, asyncReducers?: Red
   };
 
   const reducerManager = createReducerManager(rootReducers);
+
   const store = configureStore({
     reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
     devTools: __IS__DEV__,

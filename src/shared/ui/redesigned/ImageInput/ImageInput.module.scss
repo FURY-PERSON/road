@@ -1,0 +1,50 @@
+.ImageInput {
+}
+
+.img {
+  width: 100%;
+  max-height: 240px;
+  object-fit: contain;
+}
+
+.input {
+  width: 100%;
+  color: transparent;
+}
+
+.input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.input::before {
+  display: inline-block;
+  width: 100%;
+  padding: 6px 15px;
+  font: var(--font-m-redesigned);
+  color: var(--primary-color);
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  content: 'Select file';
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  border-radius: 32px;
+  outline: none;
+}
+
+.input:hover::before {
+  color: var(--accent-redesigned);
+  border-color: var(--accent-redesigned);
+  transition: transform 0.07s linear;
+}
+
+.input:active {
+  outline: 0;
+}
+
+.input:active::before {
+  color: var(--accent-redesigned);
+  border-color: var(--accent-redesigned);
+  transition: transform 0.07s linear;
+}

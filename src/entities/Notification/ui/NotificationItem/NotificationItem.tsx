@@ -1,13 +1,17 @@
 import { memo, FC, useCallback } from 'react';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Card, CardVariant } from '@/shared/ui/Card/Card';
-import { Text, TextSize } from '@/shared/ui/Text/Text';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { Card as CardDeprecated, CardVariant } from '@/shared/ui/deprecated/Card/Card';
+import { Text as TextDeprecated, TextSize } from '@/shared/ui/deprecated/Text/Text';
+import { AppLink } from '@/shared/ui/deprecated/AppLink/AppLink';
+import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
+import { Card } from '@/shared/ui/redesigned/Card';
+import { Text } from '@/shared/ui/redesigned/Text/Text';
 
 import { Notification } from '../../model/types/notification';
 
 import cls from './NotificationItem.module.scss';
+import clsR from './NotificationItem.redesigned.module.scss';
 
 interface NotificationItemProps {
   className?: string;
@@ -23,15 +27,27 @@ export const NotificationItem: FC<NotificationItemProps> = memo((props) => {
   }, [onClick, item]);
 
   const content = (
-    <Card
-      className={classNames(cls.NotificationItem, {}, [className])}
-      variant={CardVariant.OUTLINED}
-      onClick={onClickHandler}
-    >
-      <Text title={item.title} text={item.mainText} size={TextSize.M} />
+    <ToggleFeatures
+      feature="newDesign"
+      off={
+        <CardDeprecated
+          className={classNames(cls.NotificationItem, {}, [className])}
+          variant={CardVariant.OUTLINED}
+          onClick={onClickHandler}
+        >
+          <TextDeprecated title={item.title} text={item.mainText} size={TextSize.M} />
 
-      {!item.readed ? <div className={cls.unread} /> : null}
-    </Card>
+          {!item.readed ? <div className={cls.unread} /> : null}
+        </CardDeprecated>
+      }
+      on={
+        <Card className={classNames(clsR.NotificationItem, {}, [className])}>
+          <Text size="M" title={item.title} text={item.mainText} />
+
+          {!item.readed ? <div className={clsR.unread} /> : null}
+        </Card>
+      }
+    />
   );
 
   if (item.link) {

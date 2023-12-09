@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 
 import { PermissionName } from '@/entities/Permission';
 import { getUserPermissionsName } from '@/entities/User/model/selectors/getUserPermissionsName/getUserPermissionsName';
-import { ForbiddenView } from '@/shared/ui/ForbiddenView/ForbiddenView';
+import { ForbiddenView } from '@/shared/ui/deprecated/ForbiddenView/ForbiddenView';
 
 interface PermissionGuardProps {
   children: JSX.Element;

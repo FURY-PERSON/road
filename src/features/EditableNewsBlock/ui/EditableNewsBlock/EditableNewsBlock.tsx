@@ -1,6 +1,6 @@
 import { memo, FC } from 'react';
 
-import { Text } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/deprecated/Text/Text';
 
 import {
   EditableNewsBlock,

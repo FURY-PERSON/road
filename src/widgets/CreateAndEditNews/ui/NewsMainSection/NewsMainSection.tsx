@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { EditableNewsMain } from '@/features/EditableNewsMain';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { ToggleFeatures } from '@/shared/lib/helpers/features';
+import { Card } from '@/shared/ui/redesigned/Card';
 
 import { getDorms, getForm, getSelectedDorm } from '../../model/selectors/createAdnEditNews';
 import { createAndEditNewsActions } from '../../model/slice/createAndEditNews.slice';
@@ -64,21 +66,44 @@ export const NewsMainSection: FC<NewsMainSectionProps> = memo((props) => {
   );
 
   return (
-    <div className={classNames(cls.NewsMainSection, {}, [className])}>
-      <EditableNewsMain
-        title={form?.title}
-        subTitle={form?.subTitle}
-        image={form?.image}
-        mainText={form?.mainText}
-        dorms={dorms}
-        selectedDorm={selectedDorm}
-        onDormChange={onDormChange}
-        onImageChange={onImageChange}
-        onMainTextChange={onMainTextChange}
-        onSubTitleChange={onSubTitleChange}
-        onTitleChange={onTitleChange}
-        onRemoveImage={onImageRemove}
-      />
-    </div>
+    <ToggleFeatures
+      feature="newDesign"
+      off={
+        <div className={classNames(cls.NewsMainSection, {}, [className])}>
+          <EditableNewsMain
+            title={form?.title}
+            subTitle={form?.subTitle}
+            image={form?.image}
+            mainText={form?.mainText}
+            dorms={dorms}
+            selectedDorm={selectedDorm}
+            onDormChange={onDormChange}
+            onImageChange={onImageChange}
+            onMainTextChange={onMainTextChange}
+            onSubTitleChange={onSubTitleChange}
+            onTitleChange={onTitleChange}
+            onRemoveImage={onImageRemove}
+          />
+        </div>
+      }
+      on={
+        <Card fullWidth>
+          <EditableNewsMain
+            title={form?.title}
+            subTitle={form?.subTitle}
+            image={form?.image}
+            mainText={form?.mainText}
+            dorms={dorms}
+            selectedDorm={selectedDorm}
+            onDormChange={onDormChange}
+            onImageChange={onImageChange}
+            onMainTextChange={onMainTextChange}
+            onSubTitleChange={onSubTitleChange}
+            onTitleChange={onTitleChange}
+            onRemoveImage={onImageRemove}
+          />
+        </Card>
+      }
+    />
   );
 });

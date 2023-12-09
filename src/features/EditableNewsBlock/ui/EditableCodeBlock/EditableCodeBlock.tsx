@@ -2,10 +2,16 @@ import { memo, FC, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { TextInput } from '@/shared/ui/TextInput/TextInput';
-import { Card } from '@/shared/ui/Card/Card';
-import { Text, TextSize } from '@/shared/ui/Text/Text';
-import { Select, SelectOption } from '@/shared/ui/Select/Select';
+import { TextInput as TextInputDeprecated } from '@/shared/ui/deprecated/TextInput/TextInput';
+import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card/Card';
+import { Text as TextDeprecated, TextSize } from '@/shared/ui/deprecated/Text/Text';
+import { Select, SelectOption } from '@/shared/ui/deprecated/Select/Select';
+import { ToggleFeatures } from '@/shared/lib/helpers/features';
+import { Card } from '@/shared/ui/redesigned/Card';
+import { ListBox } from '@/shared/ui/redesigned/popups';
+import { Text } from '@/shared/ui/redesigned/Text/Text';
+import { Input } from '@/shared/ui/redesigned/Input';
+import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 
 import {
   EditableNewsBlockCode,
@@ -42,17 +48,44 @@ export const EditableCodeBlock: FC<EditableCodeBlockProps> = memo((props) => {
   );
 
   return (
-    <Card className={classNames(cls.EditableCodeBlock, {}, [className])}>
-      <Select
-        options={sequenceNumberOptions}
-        value={String(item.sequenceNumber)}
-        label={t('sequency number')}
-        onChange={onSequenceChange}
-      />
+    <ToggleFeatures
+      feature="newDesign"
+      off={
+        <CardDeprecated className={classNames(cls.EditableCodeBlock, {}, [className])}>
+          <Select
+            options={sequenceNumberOptions}
+            value={String(item.sequenceNumber)}
+            label={t('sequency number')}
+            onChange={onSequenceChange}
+          />
 
-      <Text size={TextSize.L} title={t('code block')} />
+          <TextDeprecated size={TextSize.L} title={t('code block')} />
 
-      <TextInput multiline className={cls.code} value={item?.code} onChange={onCodeChange} />
-    </Card>
+          <TextInputDeprecated
+            multiline
+            className={cls.code}
+            value={item?.code}
+            onChange={onCodeChange}
+          />
+        </CardDeprecated>
+      }
+      on={
+        <Card fullWidth>
+          <VStack gap={4} max>
+            <ListBox
+              items={sequenceNumberOptions}
+              value={String(item.sequenceNumber)}
+              label={t('sequency number')}
+              onChange={onSequenceChange}
+              direction="top right"
+            />
+
+            <Text size="M" title={t('code block')} />
+
+            <Input value={item?.code} onChange={onCodeChange} />
+          </VStack>
+        </Card>
+      }
+    />
   );
 });

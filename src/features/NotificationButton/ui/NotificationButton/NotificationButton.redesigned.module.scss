@@ -1,0 +1,32 @@
+.notificationButton {
+  position: relative;
+  margin-right: 12px;
+
+  .notificationIcon {
+    width: 20px;
+    height: 20px;
+    color: var(--icon-redesigned);
+  }
+
+  .unreadAmount {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    font-size: 10px;
+    color: var(--light-bg-redesigned);
+    background-color: var(--icon-redesigned);
+    border-radius: 50%;
+  }
+}
+
+.notifications {
+  width: 500px;
+  min-height: 150px;
+  max-height: 300px;
+  overflow-y: auto;
+}

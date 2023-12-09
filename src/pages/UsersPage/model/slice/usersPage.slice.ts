@@ -6,7 +6,7 @@ import { User } from '@/entities/User';
 
 import { fetchUsersList } from '../services/fetchUsersList/fetchUsersList';
 import { UsersPageSchema } from '../types/usersPageSchema';
-import { UsersRolesFilter, UsersSortFilter } from '../types/usersPage';
+import { UsersRoles, UsersSort } from '../../../../entities/User/model/constants/usersFilters';
 
 const defaultLimit = 12;
 
@@ -29,8 +29,8 @@ export const usersPageSlice = createSlice({
 
     order: 'ASC',
     search: '',
-    sort: UsersSortFilter.LOGIN,
-    role: UsersRolesFilter.ALL,
+    sort: UsersSort.LOGIN,
+    role: UsersRoles.ALL,
 
     _inited: false
   }),
@@ -47,10 +47,10 @@ export const usersPageSlice = createSlice({
     setLimit(state, action: PayloadAction<number>) {
       state.limit = action.payload;
     },
-    setRole(state, action: PayloadAction<UsersRolesFilter>) {
+    setRole(state, action: PayloadAction<UsersRoles>) {
       state.role = action.payload;
     },
-    setSort(state, action: PayloadAction<UsersSortFilter>) {
+    setSort(state, action: PayloadAction<UsersSort>) {
       state.sort = action.payload;
     }
   },

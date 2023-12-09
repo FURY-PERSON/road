@@ -2,7 +2,7 @@ import { memo, FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { RatingCard, useCreateNewsFeedback, useGetNewsFeedback } from '@/entities/Feedback';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton/Skeleton';
 
 export interface NewsRatingProps {
   className?: string;

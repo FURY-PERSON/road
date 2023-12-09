@@ -13,7 +13,7 @@ import {
   getSearch,
   getSort
 } from '../../selectors/usersPage';
-import { UsersRolesFilter } from '../../types/usersPage';
+import { UsersRoles } from '../../../../../entities/User/model/constants/usersFilters';
 
 interface FetchUsersListProps {
   page?: number;
@@ -58,7 +58,7 @@ export const fetchUsersList = createAsyncThunk<
         page: pageNum,
         orderBy: order,
         login: search,
-        role: role !== UsersRolesFilter.ALL ? role : undefined,
+        role: role !== UsersRoles.ALL ? role : undefined,
         sort
       }
     });

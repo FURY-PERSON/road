@@ -5,21 +5,29 @@ import { useSelector } from 'react-redux';
 import { loginActions } from '@/features/AuthByUsername/model/slice/login.slice';
 import { loginByUsername } from '@/features/AuthByUsername/model/services/loginByUsername/loginByUsername';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
-import { TextInput } from '@/shared/ui/TextInput/TextInput';
+import { Button as ButtonDeprecated, ButtonVariant } from '@/shared/ui/deprecated/Button/Button';
+import { TextInput } from '@/shared/ui/deprecated/TextInput/TextInput';
 import { getLoginState } from '@/features/AuthByUsername/model/selectors/getLoginState/getLoginState';
-import { Text, TextVariant } from '@/shared/ui/Text/Text';
+import { Text as TextDeprecated, TextVariant } from '@/shared/ui/deprecated/Text/Text';
 import {
   DynamicModuleLoader,
   ReducersList
 } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { AppLink as AppLinkDeprecated } from '@/shared/ui/deprecated/AppLink/AppLink';
 import { routes } from '@/shared/constant/router';
+import { ToggleFeatures } from '@/shared/lib/helpers/features';
+import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
+import { Input } from '@/shared/ui/redesigned/Input';
+import { Button } from '@/shared/ui/redesigned/Button/Button';
+import { AppLink } from '@/shared/ui/redesigned/AppLink/AppLink';
+import { Text } from '@/shared/ui/redesigned/Text/Text';
+import { Card } from '@/shared/ui/redesigned/Card';
 
 import { loginReducer } from '../../model/slice/login.slice';
 
 import cls from './LoginForm.module.scss';
+import clsR from './LoginForm.redesigned.module.scss';
 
 interface LoginFormProps {
   className?: string;
@@ -60,31 +68,73 @@ export const LoginForm: FC<LoginFormProps> = memo((props) => {
 
   return (
     <DynamicModuleLoader reducers={initialReducers}>
-      <div className={classNames(cls.LoginForm, {}, [className])}>
-        <Text title={t('auth form')} />
-        <TextInput onChange={onChangeUsername} value={login} className={cls.input} />
-        <TextInput
-          type="password"
-          onChange={onChangePassword}
-          value={password}
-          className={cls.input}
-        />
+      <ToggleFeatures
+        feature="newDesign"
+        off={
+          <div className={classNames(cls.LoginForm, {}, [className])}>
+            <TextDeprecated title={t('auth form')} />
+            <TextInput onChange={onChangeUsername} value={login} className={cls.input} />
+            <TextInput
+              type="password"
+              onChange={onChangePassword}
+              value={password}
+              className={cls.input}
+            />
 
-        {error ? <Text title={error} variant={TextVariant.ERROR} className={cls.error} /> : null}
+            {error ? (
+              <TextDeprecated title={error} variant={TextVariant.ERROR} className={cls.error} />
+            ) : null}
 
-        <Button
-          onClick={onLoginClick}
-          disabled={isLoading}
-          className={cls.button}
-          variant={ButtonVariant.OUTLINE}
-        >
-          {t('apply')}
-        </Button>
+            <ButtonDeprecated
+              onClick={onLoginClick}
+              disabled={isLoading}
+              className={cls.button}
+              variant={ButtonVariant.OUTLINE}
+            >
+              {t('apply')}
+            </ButtonDeprecated>
 
-        <AppLink className={cls.register} to={routes.register()}>
-          {`${t('do not have an account')}? ${t('register new')}`}
-        </AppLink>
-      </div>
+            <AppLinkDeprecated className={cls.register} to={routes.register()}>
+              {`${t('do not have an account')}? ${t('register new')}`}
+            </AppLinkDeprecated>
+          </div>
+        }
+        on={
+          <Card border="round" padding="24">
+            <VStack gap={16} className={clsR.LoginForm}>
+              <Input
+                onChange={onChangeUsername}
+                value={login}
+                className={clsR.input}
+                label={t('login')}
+              />
+              <Input
+                label={t('password')}
+                type="password"
+                onChange={onChangePassword}
+                value={password}
+                className={clsR.input}
+              />
+              {error ? (
+                <Text title={error} variant="error" size="M" className={clsR.error} />
+              ) : null}
+
+              <Button
+                onClick={onLoginClick}
+                disabled={isLoading}
+                className={clsR.button}
+                variant="outline"
+              >
+                {t('apply')}
+              </Button>
+
+              <AppLink className={clsR.register} to={routes.register()}>
+                {`${t('do not have an account')}? ${t('register new')}`}
+              </AppLink>
+            </VStack>
+          </Card>
+        }
+      />
     </DynamicModuleLoader>
   );
 });

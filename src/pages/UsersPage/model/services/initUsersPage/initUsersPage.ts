@@ -6,7 +6,7 @@ import { SortOrder } from '@/shared/types/sort';
 import { getInited } from '../../selectors/usersPage';
 import { usersPageActions } from '../../slice/usersPage.slice';
 import { fetchUsersList } from '../fetchUsersList/fetchUsersList';
-import { UsersRolesFilter, UsersSortFilter } from '../../types/usersPage';
+import { UsersRoles, UsersSort } from '../../../../../entities/User/model/constants/usersFilters';
 
 export const initUsersPage = createAsyncThunk<void, URLSearchParams, ThunkConfig<string>>(
   'users/initUsersPage',
@@ -19,8 +19,8 @@ export const initUsersPage = createAsyncThunk<void, URLSearchParams, ThunkConfig
       const limitFromUrl = data.get('limit') as number | null;
       const pageFromUrl = data.get('page') as number | null;
       const searchFromUrl = data.get('login');
-      const sortFromUrl = data.get('sort') as UsersSortFilter | null;
-      const roleFromUrl = data.get('role') as UsersRolesFilter | null;
+      const sortFromUrl = data.get('sort') as UsersSort | null;
+      const roleFromUrl = data.get('role') as UsersRoles | null;
 
       if (orderFromUrl) {
         dispatch(usersPageActions.setOrder(orderFromUrl));

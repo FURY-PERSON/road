@@ -4,9 +4,9 @@ import { AuthTokens, User, userActions } from '@/entities/User';
 import { TestAsyncThunk } from '@/shared/lib/helpers/tests/TestAsyncThunk/TestAsyncThunk';
 import { LoginSchema } from '../../types/login.schema';
 import { loginByUsername } from './loginByUsername';
-import { setFeatureFlags } from '@/shared/constant/featureFlag';
+import { setFeatureFlags } from '@/shared/lib/helpers/features/lib/featureFlag';
 
-jest.mock('@/shared/constant/featureFlag')
+jest.mock('@/shared/lib/helpers/features/lib/featureFlag')
 
 const tokens: AuthTokens = {
   accessToken: 'asdasd',

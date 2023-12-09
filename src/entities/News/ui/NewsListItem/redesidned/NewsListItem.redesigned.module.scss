@@ -1,0 +1,41 @@
+
+.block {
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 240px;
+    height: 320px;
+    overflow: hidden;
+  }
+
+  .img {
+    width: 100%;
+    object-fit: cover;
+    min-height: 140px;
+    max-height: 140px;
+  }
+
+  .info {
+    height: 100%;
+    padding: 8px 8px 16px;
+  }
+
+  .footer {
+    justify-content: flex-end;
+    height: 100%;
+  }
+}
+
+.list {
+  .img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+  }
+
+  .textBlock {
+    height: 72px;
+    overflow: hidden;
+  }
+}

@@ -37,5 +37,16 @@
   "your rating": "your rating",
   "rate news": "rate news",
   "leave your feedback about the news": "leave your feedback about the news",
-  "thanks for the feedback": "thanks for the feedback"
+  "thanks for the feedback": "thanks for the feedback",
+  "change design type": "change design type",
+  "new": "new",
+  "old": "old",
+  "on": "on",
+  "off": "off",
+  "new design": "new design",
+  "rating card on main page": "rating card on main page",
+  "counter": "counter",
+  "toggle features flags": "Toggle features flags",
+  "block number": "block number",
+  "to blocks": "to blocks"
 }

@@ -7,3 +7,6 @@ export { refreshAuthData } from './model/services/refreshAuthData/refreshAuthDat
 export { getUserRoleName } from './model/selectors/getUserRole/getUserRole';
 export { UsersList } from './ui/UsersList/UsersList';
 export { getUserInited } from './model/selectors/getUserInited/getUserInited';
+export { UsersSort, UsersRoles } from './model/constants/usersFilters';
+export { useGetUser, refetchUser } from './api/userApi';
+export { getUserFeatureFlags } from './services/getUserFeatureFlags';

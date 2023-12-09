@@ -7,13 +7,21 @@ import { AddNewCommentFormAsync, sendNewsComment } from '@/features/AddNewCommen
 import { fetchCommentsByNewsId, NewsDetailsCommentList } from '@/features/NewsDetailsCommentList';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Page } from '@/widgets/Page/Page';
-import { Text } from '@/shared/ui/Text/Text';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text/Text';
 import { NewsRecommendationList } from '@/features/NewsRecommendationList';
 import { NewsRatingAsync } from '@/features/NewsRating';
+import { ToggleFeatures } from '@/shared/lib/helpers/features';
+import { StickyContentLayout } from '@/shared/ui/redesigned/layouts/StickyContentLayout';
+import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { Text } from '@/shared/ui/redesigned/Text/Text';
 
 import { NewsDetailsPageHeader } from '../NewsDetailsPageHeader/NewsDetailsPageHeader';
+import { NewsDetailsContainer } from '../NewsDetailsContainer/NewsDetailsContainer';
+import { NewsAdditionalInfoContainer } from '../NewsAdditionalInfoContainer/NewsAdditionalInfoContainer';
 
 import cls from './NewsDetailsPage.module.scss';
+import clsR from './NewsDetailsPage.redesigned.module.scss';
 
 export const NewsDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -36,29 +44,61 @@ export const NewsDetailsPage = () => {
   }
 
   return (
-    <Page className={cls.main} testId="NewsDetailsPage">
-      <NewsDetailsPageHeader />
+    <ToggleFeatures
+      feature="newDesign"
+      off={
+        <Page className={cls.main} testId="NewsDetailsPage">
+          <NewsDetailsPageHeader />
 
-      <NewsDetails id={id} />
+          <NewsDetails id={id} />
 
-      <NewsRatingAsync className={cls.rating} newsId={id} />
+          <NewsRatingAsync className={cls.rating} newsId={id} />
 
-      <Text className={cls.commentsTitle} title={t('comments')} />
-      <AddNewCommentFormAsync
-        onSendComment={onNewsCommentSend}
-        testId="NewsDetailsPage.AddNewCommentFormAsync"
-      />
-      <NewsDetailsCommentList
-        newsId={id}
-        className={cls.comments}
-        testId="NewsDetailsPage.NewsDetailsCommentList"
-      />
+          <TextDeprecated className={cls.commentsTitle} title={t('comments')} />
+          <AddNewCommentFormAsync
+            onSendComment={onNewsCommentSend}
+            testId="NewsDetailsPage.AddNewCommentFormAsync"
+          />
+          <NewsDetailsCommentList
+            newsId={id}
+            className={cls.comments}
+            testId="NewsDetailsPage.NewsDetailsCommentList"
+          />
 
-      <Text className={cls.recommendationsTitle} title={t('recommendations')} />
-      <NewsRecommendationList
-        className={cls.recommendations}
-        testId="NewsDetailsPage.NewsRecommendationList"
-      />
-    </Page>
+          <TextDeprecated className={cls.recommendationsTitle} title={t('recommendations')} />
+          <NewsRecommendationList
+            className={cls.recommendations}
+            testId="NewsDetailsPage.NewsRecommendationList"
+          />
+        </Page>
+      }
+      on={
+        <StickyContentLayout
+          content={
+            <Page className={classNames(clsR.main, {}, [])}>
+              <VStack gap={16} max>
+                <NewsDetailsContainer newsId={id} />
+
+                <NewsRatingAsync newsId={id} />
+
+                <Text title={t('comments')} />
+                <AddNewCommentFormAsync
+                  onSendComment={onNewsCommentSend}
+                  testId="NewsDetailsPage.AddNewCommentFormAsync"
+                />
+                <NewsDetailsCommentList
+                  newsId={id}
+                  testId="NewsDetailsPage.NewsDetailsCommentList"
+                />
+
+                <Text title={t('recommendations')} />
+                <NewsRecommendationList testId="NewsDetailsPage.NewsRecommendationList" />
+              </VStack>
+            </Page>
+          }
+          right={<NewsAdditionalInfoContainer />}
+        />
+      }
+    />
   );
 };

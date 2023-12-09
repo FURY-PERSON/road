@@ -9,15 +9,19 @@ import {
   markNotificationAsRead,
   useGetNotifications
 } from '@/entities/Notification';
-import NotificationIcon from '@/shared/assets/icons/notification.svg';
-import { Popover } from '@/shared/ui/popups';
-import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
+import NotificationIconDeprecated from '@/shared/assets/icons/notification.svg';
+import NotificationIcon from '@/shared/assets/icons/notificationRedesigned.svg';
+import { Popover } from '@/shared/ui/redesigned/popups';
+import { Button as ButtonDeprecated, ButtonVariant } from '@/shared/ui/deprecated/Button/Button';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Drawer } from '@/shared/ui/Drawer/Drawer';
+import { Drawer } from '@/shared/ui/redesigned/Drawer/Drawer';
+import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
+import { Button } from '@/shared/ui/redesigned/Button/Button';
 
 import { getUnreadMessagesAmount } from '../../model/selectors/notificationButton';
 
 import cls from './NotificationButton.module.scss';
+import clsR from './NotificationButton.redesigned.module.scss';
 
 interface NotificationButtonProps {
   className?: string;
@@ -51,17 +55,35 @@ export const NotificationButton: FC<NotificationButtonProps> = memo((props) => {
   }, [setDrawerOpened]);
 
   const trigger = (
-    <Button
-      className={cls.notificationButton}
-      onClick={onButtonClick}
-      variant={ButtonVariant.CLEAR}
-    >
-      <NotificationIcon className={cls.notificationIcon} />
+    <ToggleFeatures
+      feature="newDesign"
+      off={
+        <ButtonDeprecated
+          className={cls.notificationButton}
+          onClick={onButtonClick}
+          variant={ButtonVariant.CLEAR}
+        >
+          <NotificationIconDeprecated className={cls.notificationIcon} />
 
-      {unreadNotificationsAmount ? (
-        <div className={cls.unreadAmount}>{unreadNotificationsAmount}</div>
-      ) : null}
-    </Button>
+          {unreadNotificationsAmount ? (
+            <div className={cls.unreadAmount}>{unreadNotificationsAmount}</div>
+          ) : null}
+        </ButtonDeprecated>
+      }
+      on={
+        <Button
+          className={clsR.notificationButton}
+          onClick={onButtonClick}
+          variant={ButtonVariant.CLEAR}
+        >
+          <NotificationIcon className={clsR.notificationIcon} />
+
+          {unreadNotificationsAmount ? (
+            <div className={clsR.unreadAmount}>{unreadNotificationsAmount}</div>
+          ) : null}
+        </Button>
+      }
+    />
   );
 
   return (
@@ -70,13 +92,13 @@ export const NotificationButton: FC<NotificationButtonProps> = memo((props) => {
         <Popover
           direction="bottom left"
           className={classNames(cls.NotificationButton, {}, [className])}
-          panelClassName={cls.popover}
           trigger={trigger}
         >
           <NotificationList
             items={data}
             isLoading={isLoading}
             onItemClick={onNotificationItemClick}
+            className={clsR.notifications}
           />
         </Popover>
       </BrowserView>

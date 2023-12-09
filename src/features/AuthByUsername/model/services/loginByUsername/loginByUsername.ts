@@ -3,8 +3,8 @@ import { AxiosError } from 'axios';
 
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { AuthTokens, User, userActions } from '@/entities/User';
-import { FeatureFlagsEntity } from '@/shared/types/toggleFeaturesFlags';
-import { setFeatureFlags } from '@/shared/constant/featureFlag';
+import { FeatureFlagsEntity } from '@/shared/lib/helpers/features';
+import { setFeatureFlags } from '@/shared/lib/helpers/features/lib/featureFlag';
 
 interface LoginResponse {
   user: User & { featureFlags: FeatureFlagsEntity };

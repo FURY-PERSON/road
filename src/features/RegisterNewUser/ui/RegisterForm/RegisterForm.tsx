@@ -9,23 +9,32 @@ import {
   ReducersList
 } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
-import { Select } from '@/shared/ui/Select/Select';
-import { Text, TextVariant } from '@/shared/ui/Text/Text';
-import { TextInput } from '@/shared/ui/TextInput/TextInput';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { Button as ButtonDeprecated, ButtonVariant } from '@/shared/ui/deprecated/Button/Button';
+import { Select } from '@/shared/ui/deprecated/Select/Select';
+import { Text as TextDeprecated, TextVariant } from '@/shared/ui/deprecated/Text/Text';
+import { TextInput } from '@/shared/ui/deprecated/TextInput/TextInput';
+import { AppLink as AppLinkDeprecated } from '@/shared/ui/deprecated/AppLink/AppLink';
 import { routes } from '@/shared/constant/router';
+import { Card } from '@/shared/ui/redesigned/Card';
+import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
+import { ToggleFeatures } from '@/shared/lib/helpers/features';
+import { Text } from '@/shared/ui/redesigned/Text/Text';
+import { Input } from '@/shared/ui/redesigned/Input';
+import { ListBox } from '@/shared/ui/redesigned/popups';
+import { Button } from '@/shared/ui/redesigned/Button/Button';
+import { AppLink } from '@/shared/ui/redesigned/AppLink/AppLink';
 
 import { registerNewUser } from '../../model/services/registerNewUser/registerNewUser';
 import { registerActions, registerReducer } from '../../model/slice/register.slice';
 import { getRegisterForm } from '../../model/selectors/getRegisterForm/getRegisterForm';
-import { rolesList } from '../../model/const/item';
+import { rolesList, rolesListDeprecated } from '../../model/const/item';
 import { getRegisterLoading } from '../../model/selectors/getRegisterLoading/getRegisterLoading';
 import { getRegisterValidationError } from '../../model/selectors/getRegisterValidationError/getRegisterValidationError';
 import { getRegisterError } from '../../model/selectors/getRegisterError/getRegisterError';
-import { ValidationError } from '../../model/types/error';
+import { errorMap } from '../../model/const/error';
 
 import cls from './RegisterForm.module.scss';
+import clsR from './RegisterForm.redesigned.module.scss';
 
 interface RegisterFormProps {
   className?: string;
@@ -34,13 +43,6 @@ interface RegisterFormProps {
 
 const initialReducers: ReducersList = {
   registerForm: registerReducer
-};
-
-const errorMap: Record<ValidationError, string> = {
-  [ValidationError.NO_DATA]: 'no data',
-  [ValidationError.SERVER_ERROR]: 'server error',
-  [ValidationError.USER_DATA]: 'incorrect user data',
-  [ValidationError.PASSWORD_MATCH]: 'passwords do not match'
 };
 
 export const RegisterForm: FC<RegisterFormProps> = (props) => {
@@ -120,86 +122,168 @@ export const RegisterForm: FC<RegisterFormProps> = (props) => {
 
   return (
     <DynamicModuleLoader reducers={initialReducers}>
-      <div className={classNames(cls.registerForm, {}, [className])}>
-        <Text title={t('register')} />
-        <TextInput
-          label={t('first name')}
-          placeholder={t('enter first name')}
-          onChange={onChangeFirstName}
-          value={firstName}
-          className={cls.input}
-        />
-        <TextInput
-          label={t('last name')}
-          placeholder={t('enter last name')}
-          onChange={onChangeLastName}
-          value={lastName}
-          className={cls.input}
-        />
-        <TextInput
-          label={t('login')}
-          placeholder={t('enter login')}
-          onChange={onChangeLogin}
-          value={login}
-          className={cls.input}
-        />
-        <TextInput
-          label={t('password')}
-          placeholder={t('enter password')}
-          onChange={onChangePassword}
-          value={password}
-          className={cls.input}
-        />
-        <TextInput
-          label={t('confirm password')}
-          placeholder={t('confirm password')}
-          onChange={onChangeConfirmPassword}
-          value={confirmPassword}
-          className={cls.input}
-        />
-        <TextInput
-          label={t('email')}
-          placeholder={t('enter email')}
-          onChange={onChangeEmail}
-          value={email}
-          className={cls.input}
-        />
-        <TextInput
-          label={t('phone')}
-          placeholder={t('enter phone number')}
-          onChange={onChangePhone}
-          value={phone}
-          className={cls.input}
-        />
+      <ToggleFeatures
+        feature="newDesign"
+        off={
+          <div className={classNames(cls.registerForm, {}, [className])}>
+            <TextDeprecated title={t('register')} />
+            <TextInput
+              label={t('first name')}
+              placeholder={t('enter first name')}
+              onChange={onChangeFirstName}
+              value={firstName}
+              className={cls.input}
+            />
+            <TextInput
+              label={t('last name')}
+              placeholder={t('enter last name')}
+              onChange={onChangeLastName}
+              value={lastName}
+              className={cls.input}
+            />
+            <TextInput
+              label={t('login')}
+              placeholder={t('enter login')}
+              onChange={onChangeLogin}
+              value={login}
+              className={cls.input}
+            />
+            <TextInput
+              label={t('password')}
+              placeholder={t('enter password')}
+              onChange={onChangePassword}
+              value={password}
+              className={cls.input}
+            />
+            <TextInput
+              label={t('confirm password')}
+              placeholder={t('confirm password')}
+              onChange={onChangeConfirmPassword}
+              value={confirmPassword}
+              className={cls.input}
+            />
+            <TextInput
+              label={t('email')}
+              placeholder={t('enter email')}
+              onChange={onChangeEmail}
+              value={email}
+              className={cls.input}
+            />
+            <TextInput
+              label={t('phone')}
+              placeholder={t('enter phone number')}
+              onChange={onChangePhone}
+              value={phone}
+              className={cls.input}
+            />
 
-        <Select
-          onChange={onChangeRole}
-          value={role}
-          options={rolesList}
-          label={t('select your role')}
-        />
+            <Select
+              onChange={onChangeRole}
+              value={role}
+              options={rolesListDeprecated}
+              label={t('select your role')}
+            />
 
-        {validationError?.length
-          ? validationError.map((error) => (
-              <Text key={error} variant={TextVariant.ERROR} title={errorMap[error]} />
-            ))
-          : null}
+            {validationError?.length
+              ? validationError.map((error) => (
+                  <TextDeprecated key={error} variant={TextVariant.ERROR} title={errorMap[error]} />
+                ))
+              : null}
 
-        {error ? <Text title={error} variant={TextVariant.ERROR} className={cls.error} /> : null}
+            {error ? (
+              <TextDeprecated title={error} variant={TextVariant.ERROR} className={cls.error} />
+            ) : null}
 
-        <Button
-          onClick={onLoginClick}
-          disabled={isLoading}
-          className={cls.button}
-          variant={ButtonVariant.OUTLINE}
-        >
-          {t('apply')}
-        </Button>
+            <ButtonDeprecated
+              onClick={onLoginClick}
+              disabled={isLoading}
+              className={cls.button}
+              variant={ButtonVariant.OUTLINE}
+            >
+              {t('apply')}
+            </ButtonDeprecated>
 
-        <AppLink className={cls.login} to={routes.login()}>
-          {`${t('already have account')}? ${t('login')}`}
-        </AppLink>
-      </div>
+            <AppLinkDeprecated className={cls.login} to={routes.login()}>
+              {`${t('already have account')}? ${t('login')}`}
+            </AppLinkDeprecated>
+          </div>
+        }
+        on={
+          <Card border="round" padding="24">
+            <VStack gap={16} className={clsR.registerForm}>
+              <Text title={t('register')} />
+              <Input
+                label={t('first name')}
+                placeholder={t('enter first name')}
+                onChange={onChangeFirstName}
+                value={firstName}
+              />
+              <Input
+                label={t('last name')}
+                placeholder={t('enter last name')}
+                onChange={onChangeLastName}
+                value={lastName}
+              />
+              <Input
+                label={t('login')}
+                placeholder={t('enter login')}
+                onChange={onChangeLogin}
+                value={login}
+              />
+              <Input
+                label={t('password')}
+                placeholder={t('enter password')}
+                onChange={onChangePassword}
+                value={password}
+              />
+              <Input
+                label={t('confirm password')}
+                placeholder={t('confirm password')}
+                onChange={onChangeConfirmPassword}
+                value={confirmPassword}
+              />
+              <Input
+                label={t('email')}
+                placeholder={t('enter email')}
+                onChange={onChangeEmail}
+                value={email}
+              />
+              <Input
+                label={t('phone')}
+                placeholder={t('enter phone number')}
+                onChange={onChangePhone}
+                value={phone}
+              />
+
+              <ListBox<RoleName>
+                onChange={onChangeRole}
+                value={role}
+                items={rolesList}
+                label={t('select your role')}
+              />
+
+              {validationError?.length
+                ? validationError.map((error) => (
+                    <Text key={error} variant="error" title={errorMap[error]} />
+                  ))
+                : null}
+
+              {error ? <Text title={error} variant="error" size="M" /> : null}
+
+              <Button
+                onClick={onLoginClick}
+                disabled={isLoading}
+                className={clsR.button}
+                variant="outline"
+              >
+                {t('apply')}
+              </Button>
+
+              <AppLink to={routes.login()}>{`${t('already have account')}? ${t('login')}`}</AppLink>
+            </VStack>
+          </Card>
+        }
+      />
     </DynamicModuleLoader>
   );
 };
