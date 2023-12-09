@@ -2,7 +2,7 @@
 
 ## Description
 
-Road - Front-end part of dorm-management system. Back-end part you can find [here.](https://github.com/FURY-PERSON/road)
+Road - Front-end part of dorm-management system. Back-end part you can find [here.](https://github.com/FURY-PERSON/bds)
 
 This project is developed using [React.js](https://react.dev/) and implements the [feature slices design](https://feature-sliced.design/) methodology. Using in project feature flags approach. [See all flags.](src/shared/lib/helpers/features/lib/featureFlag.ts). The app supports internationalization, themes, roles features. In the app there are two designs - old and new. You can switch it via admin panel.
 
