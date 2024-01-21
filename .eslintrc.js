@@ -100,6 +100,7 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'import/extensions': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
     'no-unused-vars': 'off', // or "@typescript-eslint/no-unused-vars": "off",
     'unused-imports/no-unused-imports': 'warn',
     'unused-imports/no-unused-vars': [

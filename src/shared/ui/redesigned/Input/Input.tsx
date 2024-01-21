@@ -72,7 +72,7 @@ export const Input = memo((props: InputProps) => {
   };
 
   const input = (
-    <div className={classNames(cls.InputWrapper, mods, [className, cls[size]])}>
+    <label className={classNames(cls.InputWrapper, mods, [className, cls[size]])}>
       <div className={cls.addonLeft}>{addonLeft}</div>
       <input
         ref={ref}
@@ -87,7 +87,7 @@ export const Input = memo((props: InputProps) => {
         {...otherProps}
       />
       <div className={cls.addonRight}>{addonRight}</div>
-    </div>
+    </label>
   );
 
   if (label) {
