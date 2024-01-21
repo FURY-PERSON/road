@@ -1,4 +1,4 @@
-export function formateDate(d: Date | string) {
+export function getDateWithTime(d: Date | string) {
   const date = typeof d === 'string' ? new Date(d) : d;
 
   return `${date.getFullYear()}/${`00${date.getMonth() + 1}`.slice(

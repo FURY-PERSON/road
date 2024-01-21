@@ -11,7 +11,7 @@ import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
 import { AppLink } from '@/shared/ui/redesigned/AppLink/AppLink';
 import { Button } from '@/shared/ui/redesigned/Button/Button';
 import { routes } from '@/shared/constant/router';
-import { formateDate } from '@/shared/lib/helpers/date/date';
+import { getDateWithTime } from '@/shared/lib/helpers/date/getDateWithTime';
 
 import { News, NewsBlockType, NewsListVariant, NewsTextBlock } from '../../../model/types/news';
 
@@ -42,7 +42,7 @@ export const NewsListItem = memo((props: NewsListItemProps) => {
         <VStack max gap={16}>
           <HStack gap={8} max>
             <Text bold text={news.author.login} />
-            <Text text={formateDate(news.createdAt)} />
+            <Text text={getDateWithTime(news.createdAt)} />
           </HStack>
 
           <Text title={news.title} bold />
@@ -87,7 +87,7 @@ export const NewsListItem = memo((props: NewsListItemProps) => {
           <Text text={news.title} className={cls.title} size="L" />
           <VStack gap={4} className={cls.footer} max>
             <HStack justify="between" max>
-              <Text text={formateDate(news.createdAt)} className={cls.date} size="M" />
+              <Text text={getDateWithTime(news.createdAt)} className={cls.date} size="M" />
             </HStack>
 
             <HStack gap={4}>

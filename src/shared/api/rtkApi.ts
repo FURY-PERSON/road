@@ -20,6 +20,6 @@ export const rtkApi = createApi({
       return headers;
     }
   }),
-  tagTypes: ['notifications', 'newsFeedback', 'user'],
+  tagTypes: ['notifications', 'newsFeedback', 'user', 'block', 'blockSanitaryVisits', 'room'],
   endpoints: (builder) => ({})
 });

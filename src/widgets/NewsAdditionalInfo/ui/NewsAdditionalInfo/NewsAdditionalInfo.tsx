@@ -6,7 +6,7 @@ import { Text } from '@/shared/ui/redesigned/Text/Text';
 import { Button } from '@/shared/ui/redesigned/Button/Button';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { News } from '@/entities/News';
-import { formateDate } from '@/shared/lib/helpers/date/date';
+import { getDateWithTime } from '@/shared/lib/helpers/date/getDateWithTime';
 
 import cls from './NewsAdditionalInfo.module.scss';
 
@@ -25,7 +25,7 @@ export const NewsAdditionalInfo = memo((props: NewsAdditionalInfoProps) => {
     <VStack gap={32} className={classNames(cls.NewsAdditionalInfo, {}, [className])}>
       <VStack gap={8}>
         <Text text={news.author.login} bold />
-        <Text text={formateDate(news.createdAt)} />
+        <Text text={getDateWithTime(news.createdAt)} />
       </VStack>
 
       {canEdit ? (
