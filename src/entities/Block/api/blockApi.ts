@@ -19,6 +19,18 @@ const blockApi = rtkApi.injectEndpoints({
       })
     }),
 
+    createBlockSanitaryVisit: build.mutation<SanitaryVisit, { blockId: string; date: string }>({
+      invalidatesTags: ['blockSanitaryVisits'],
+      query: (args) => ({
+        url: 'block/sanitaryVisit',
+        method: 'POST',
+        body: {
+          blockId: args.blockId,
+          date: args.date
+        }
+      })
+    }),
+
     updateBlockSanitaryVisitMark: build.mutation<SanitaryVisit, { markId: string; mark?: number }>({
       invalidatesTags: ['blockSanitaryVisits'],
       query: (args) => ({
@@ -38,5 +50,8 @@ export const refetchBlockInfo = blockApi.util.invalidateTags(['block']);
 
 export const useGetBlockSanitaryVisits = blockApi.useGetBlockSanitaryVisitsQuery;
 export const refetchBlockSAnitaryVisits = blockApi.util.invalidateTags(['blockSanitaryVisits']);
+
+export const useBlockSanitaryVisitMutation = blockApi.useCreateBlockSanitaryVisitMutation;
+export const createBlockSanitaryVisit = blockApi.endpoints.createBlockSanitaryVisit.initiate;
 
 export const useBlockSanitaryVisitMarkMutation = blockApi.useUpdateBlockSanitaryVisitMarkMutation;

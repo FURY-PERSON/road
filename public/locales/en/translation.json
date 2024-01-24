@@ -48,5 +48,8 @@
   "counter": "counter",
   "toggle features flags": "Toggle features flags",
   "block number": "block number",
-  "to blocks": "to blocks"
+  "to blocks": "to blocks",
+  "create new visit": "create new visit",
+  "visit date": "visit date",
+  "block id": "block id"
 }

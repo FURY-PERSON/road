@@ -22,6 +22,7 @@ import { rtkApi } from '@/shared/api/rtkApi';
 import { CreateAndEditNewsSchema } from '@/widgets/CreateAndEditNews/model/types/createAndEditNewsSchema';
 import { SaveScrollSchema } from '@/widgets/SaveScroll';
 import { BlocksPageSchema } from '@/pages/BlocksPage/model/types/blocksPageSchema';
+import { AddSanitaryVisitSchema } from '@/features/AddSanitaryVisitForm/model/types/addSanitaryVisit.schema';
 
 export interface StateSchema {
   counter: CounterSchema;
@@ -41,6 +42,7 @@ export interface StateSchema {
   createAndEditNews?: CreateAndEditNewsSchema;
   usersPage?: UsersPageSchema;
   blocksPage?: BlocksPageSchema;
+  addSanitaryVisit?: AddSanitaryVisitSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

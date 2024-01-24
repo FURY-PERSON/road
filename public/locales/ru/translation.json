@@ -48,5 +48,8 @@
   "counter": "счетчик",
   "toggle features flags": "Переключить фичи",
   "block number": "номер блока",
-  "to blocks": "к блокам"
+  "to blocks": "к блокам",
+  "create new visit": "создать новый визит",
+  "visit date": "дата визита",
+  "block id": "id блока"
 }

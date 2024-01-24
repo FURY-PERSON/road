@@ -5,7 +5,9 @@ export {
   useGetBlockInfo,
   refetchBlockSAnitaryVisits,
   useGetBlockSanitaryVisits,
-  useBlockSanitaryVisitMarkMutation
+  useBlockSanitaryVisitMarkMutation,
+  createBlockSanitaryVisit,
+  useBlockSanitaryVisitMutation
 } from './api/blockApi';
 export type { SanitaryVisit, SanitaryVisitMark } from './model/types/sanitaryVisit';
 export { BlockSanitaryEntity } from './model/constants/sanitaryVisit';

@@ -1,10 +1,13 @@
-import { memo, FC } from 'react';
+import { memo, FC, useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useGetBlockSanitaryVisits } from '@/entities/Block';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
 import { HStack } from '@/shared/ui/redesigned/Stack/HStack/HStack';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
+import { AddSanitaryVisitModal } from '@/features/AddSanitaryVisitForm';
+import { Button } from '@/shared/ui/redesigned/Button/Button';
 
 import { Skeleton } from '../Skeleton/Skeleton';
 import { MarkCell } from '../MarkCell/MarkCell';
@@ -21,7 +24,19 @@ interface BlockSanitaryConditionProps {
 export const BlockSanitaryCondition: FC<BlockSanitaryConditionProps> = memo((props) => {
   const { className, blockId } = props;
 
+  const { t } = useTranslation();
+
   const { data, isLoading, error } = useGetBlockSanitaryVisits({ blockId: blockId });
+
+  const [openModal, setOpenModal] = useState(false);
+
+  const onModalClose = useCallback(() => {
+    setOpenModal(false);
+  }, []);
+
+  const onCreateNewVisitClick = useCallback(() => {
+    setOpenModal(true);
+  }, []);
 
   const loading = isLoading;
 
@@ -34,24 +49,32 @@ export const BlockSanitaryCondition: FC<BlockSanitaryConditionProps> = memo((pro
   }
 
   return (
-    <HStack className={classNames(cls.BlockSanitaryCondition, {}, [className])}>
-      <VStack>
-        <div className={cls.emptyCell} />
+    <VStack className={classNames(cls.BlockSanitaryCondition, {}, [className])} gap={16}>
+      <HStack>
+        <VStack>
+          <div className={cls.emptyCell} />
 
-        {data?.[0]?.marks.map((mark) => <FieldNameCell key={mark.type} name={mark.name} />)}
-      </VStack>
-
-      {data?.map((visit) => (
-        <VStack key={visit.id}>
-          <DateCell dateString={visit.date} />
-
-          <VStack>
-            {visit.marks.map((mark) => (
-              <MarkCell key={mark.id} mark={mark} editable />
-            ))}
-          </VStack>
+          {data?.[0]?.marks.map((mark) => <FieldNameCell key={mark.type} name={mark.name} />)}
         </VStack>
-      ))}
-    </HStack>
+
+        {data?.map((visit) => (
+          <VStack key={visit.id}>
+            <DateCell dateString={visit.date} />
+
+            <VStack>
+              {visit.marks.map((mark) => (
+                <MarkCell key={mark.id} mark={mark} editable />
+              ))}
+            </VStack>
+          </VStack>
+        ))}
+      </HStack>
+
+      <Button onClick={onCreateNewVisitClick} variant="filled">
+        {t('create new visit')}
+      </Button>
+
+      <AddSanitaryVisitModal open={openModal} onClose={onModalClose} blockId={blockId} />
+    </VStack>
   );
 });
