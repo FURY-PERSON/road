@@ -24,7 +24,7 @@ export const MarkCell: FC<MarkCellProps> = memo((props) => {
     }
 
     if (newValue === '') {
-      setValue(undefined);
+      setValue(null);
       return;
     }
 

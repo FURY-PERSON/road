@@ -49,7 +49,10 @@
   "toggle features flags": "Toggle features flags",
   "block number": "block number",
   "to blocks": "to blocks",
+  "to my block": "to my block",
   "create new visit": "create new visit",
   "visit date": "visit date",
-  "block id": "block id"
+  "block id": "block id",
+  "Evarage": "Evarage",
+  "Block info": "Block info"
 }

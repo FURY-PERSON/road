@@ -8,8 +8,10 @@ import {
   ReducersList
 } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
 import { Page } from '@/widgets/Page/Page';
+import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 
-import { ProfilePageParam } from '../model/types';
+import { ProfilePageParam } from '../../model/types';
+import { UserBlock } from '../UserBlock/UserBlock';
 
 import cls from './ProfilePage.module.scss';
 
@@ -29,7 +31,10 @@ export const ProfilePage: FC<ProfilePageProps> = memo((props) => {
   return (
     <DynamicModuleLoader removeAfterUnmount reducers={moduleReducer}>
       <Page className={classNames(cls.ProfilePage, {}, [className])} testId="ProfilePage">
-        <EditableProfileCard login={login} />
+        <VStack gap={32}>
+          <EditableProfileCard login={login} />
+          <UserBlock login={login} />
+        </VStack>
       </Page>
     </DynamicModuleLoader>
   );

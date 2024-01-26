@@ -49,7 +49,10 @@
   "toggle features flags": "Переключить фичи",
   "block number": "номер блока",
   "to blocks": "к блокам",
+  "to my block": "к моему блоку",
   "create new visit": "создать новый визит",
   "visit date": "дата визита",
-  "block id": "id блока"
+  "block id": "id блока",
+  "Evarage": " Средняя",
+  "Block info": "Информация о блоке"
 }

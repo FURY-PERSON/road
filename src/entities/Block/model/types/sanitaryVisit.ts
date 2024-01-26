@@ -6,7 +6,7 @@ export interface SanitaryVisitMark {
   id: string;
   type: BlockSanitaryEntity;
   name: string;
-  mark?: number;
+  mark: number | null;
 }
 
 export interface SanitaryVisit {

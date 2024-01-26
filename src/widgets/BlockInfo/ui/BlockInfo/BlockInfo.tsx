@@ -1,4 +1,5 @@
 import { memo, FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useGetBlockInfo } from '@/entities/Block';
@@ -7,6 +8,7 @@ import { HStack } from '@/shared/ui/redesigned/Stack/HStack/HStack';
 import { BlockSanitaryCondition } from '@/features/BlockSanitaryCondition';
 import { RoomWithTenants } from '@/features/RoomWithTenants';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
+import { Card } from '@/shared/ui/redesigned/Card';
 
 import { Skeleton } from '../Skeleton/Skeleton';
 
@@ -19,6 +21,8 @@ interface BlockInfoProps {
 
 export const BlockInfo: FC<BlockInfoProps> = memo((props) => {
   const { className, blockId } = props;
+
+  const { t } = useTranslation('translation');
 
   const { data, isLoading, isFetching, error } = useGetBlockInfo({ blockId: blockId });
 
@@ -33,12 +37,16 @@ export const BlockInfo: FC<BlockInfoProps> = memo((props) => {
   }
 
   return (
-    <VStack className={classNames(cls.BlockInfo, {}, [className])}>
-      <HStack>
-        {data?.rooms.map((room) => <RoomWithTenants key={room.id} roomId={room.id} />)}
-      </HStack>
+    <Card padding="24" max className={classNames(cls.BlockInfo, {}, [className])}>
+      <VStack gap={32}>
+        <Text title={`${t('Block info')}: ${data?.number}`} />
 
-      <BlockSanitaryCondition blockId={blockId} />
-    </VStack>
+        <HStack>
+          {data?.rooms.map((room) => <RoomWithTenants key={room.id} roomId={room.id} />)}
+        </HStack>
+
+        <BlockSanitaryCondition blockId={blockId} />
+      </VStack>
+    </Card>
   );
 });

@@ -27,7 +27,7 @@ export const NewsTextComponent: FC<NewsTextComponentProps> = memo((props) => {
         />
       ) : null}
 
-      {block.paragraphs.map((paragraph, i) => (
+      {block.paragraphs?.map((paragraph, i) => (
         <ToggleFeatures
           feature="newDesign"
           off={<TextDeprecated key={i} className={cls.paragraph} text={paragraph} />}

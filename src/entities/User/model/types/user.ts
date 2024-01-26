@@ -1,3 +1,4 @@
+import { Block } from '@/entities/Block';
 import { Permission } from '@/entities/Permission';
 import { Role } from '@/entities/Role';
 
@@ -10,6 +11,7 @@ export interface User {
   email?: string;
   role: Role;
   permissions: Permission[];
+  block?: Block;
 }
 
 export interface AuthTokens {

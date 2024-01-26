@@ -56,7 +56,7 @@ export const NewsListItem = memo((props: NewsListItemProps) => {
           />
 
           {textBlock?.paragraphs && (
-            <Text className={cls.textBlock} text={textBlock.paragraphs.slice(0, 2).join(' ')} />
+            <Text className={cls.textBlock} text={textBlock.paragraphs?.slice(0, 2).join(' ')} />
           )}
 
           <HStack max justify="between">

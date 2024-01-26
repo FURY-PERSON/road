@@ -19,9 +19,10 @@ export class EditableNewsTextBlockDto implements EditableNewsBlockText {
     this.type = NewsBlockType.TEXT;
     this.title = newsBlock.title || '';
     this.sequenceNumber = newsBlock.sequenceNumber;
-    this.paragraphs = newsBlock.paragraphs.map((paragraph) => ({
-      localId: getUniqueId(),
-      text: paragraph
-    }));
+    this.paragraphs =
+      newsBlock.paragraphs?.map((paragraph) => ({
+        localId: getUniqueId(),
+        text: paragraph
+      })) || [];
   }
 }

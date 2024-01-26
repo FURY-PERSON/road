@@ -31,7 +31,10 @@ const blockApi = rtkApi.injectEndpoints({
       })
     }),
 
-    updateBlockSanitaryVisitMark: build.mutation<SanitaryVisit, { markId: string; mark?: number }>({
+    updateBlockSanitaryVisitMark: build.mutation<
+      SanitaryVisit,
+      { markId: string; mark: number | null }
+    >({
       invalidatesTags: ['blockSanitaryVisits'],
       query: (args) => ({
         url: `block/sanitaryMark/${args.markId}`,

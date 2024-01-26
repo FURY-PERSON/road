@@ -17,6 +17,23 @@ const profile: User = {
     name: RoleName.ADMIN,
     description: ''
   },
+  block: {
+    "id": "09c10e70-d095-4f1f-91b8-1d8c39b4a23d",
+    "number": "415",
+    "floor": 4,
+    "dorm": {
+      "id": "f92c9a02-b3f5-463e-9e58-7df4e0988601",
+      "name": "DORM 12",
+      "address": "DORM 12",
+      "phone": "+375445288343",
+      "email": "Dorm@gmail.com",
+      "imageName": "6fd0a59a-9f6b-47ac-bf6d-6ca76a14ed64.jpg",
+      "imageUrl": "http://localhost:3005/6fd0a59a-9f6b-47ac-bf6d-6ca76a14ed64.jpg"
+    },
+    "rooms": [],
+    "tenants": [
+    ]
+  },
   permissions: [],
   email: 'email@gmail.com',
   phone: '+375443655611'

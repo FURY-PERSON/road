@@ -18,7 +18,7 @@ import { toggleFeatures } from '@/shared/lib/helpers/features/helpers/toggleFeat
 
 import { ISidebarItem } from '../../types/item';
 
-export const getSidebarItemList = createSelector<any, ISidebarItem[]>(getUserData, (userData) => {
+export const getSidebarItemList = createSelector(getUserData, (userData) => {
   const items: ISidebarItem[] = [
     {
       path: routes.main(),
@@ -57,6 +57,12 @@ export const getSidebarItemList = createSelector<any, ISidebarItem[]>(getUserDat
         Icon: BlocksIcon,
         text: i18n.t('to blocks'),
         roles: [RoleName.ADMIN]
+      },
+      {
+        path: routes.blocksInfo(userData.block?.id || ''),
+        Icon: BlocksIcon,
+        text: i18n.t('to my block'),
+        roles: [RoleName.STUDENT]
       },
       {
         path: routes.profile(userData.login),

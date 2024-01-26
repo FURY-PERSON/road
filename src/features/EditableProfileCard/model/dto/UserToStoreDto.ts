@@ -1,5 +1,6 @@
 import { User } from '@/entities/User';
 import { RoleName } from '@/entities/Role';
+import { Block } from '@/entities/Block';
 
 import { EditableUser } from '../types/editableProfileCard';
 
@@ -18,6 +19,8 @@ export class UserToStoreDto implements EditableUser {
 
   roleName: RoleName;
 
+  block?: Block;
+
   constructor(user: User) {
     this.firstName = user.firstName;
     this.id = user.id;
@@ -26,5 +29,6 @@ export class UserToStoreDto implements EditableUser {
     this.login = user.login;
     this.email = user.email;
     this.roleName = user.role.name;
+    this.block = user.block;
   }
 }
