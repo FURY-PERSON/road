@@ -41,11 +41,11 @@ export const BlockInfo: FC<BlockInfoProps> = memo((props) => {
       <VStack gap={32}>
         <Text title={`${t('Block info')}: ${data?.number}`} />
 
-        <HStack>
+        <BlockSanitaryCondition blockId={blockId} />
+
+        <HStack gap={32} max>
           {data?.rooms.map((room) => <RoomWithTenants key={room.id} roomId={room.id} />)}
         </HStack>
-
-        <BlockSanitaryCondition blockId={blockId} />
       </VStack>
     </Card>
   );

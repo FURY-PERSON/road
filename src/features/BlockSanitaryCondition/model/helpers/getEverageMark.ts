@@ -6,7 +6,6 @@ export const getEverageMark = (visits: SanitaryVisit[]) => {
 
   visits.forEach((visit) => {
     visit.marks.forEach((visitMark) => {
-      console.log('visitMark.mark ', visitMark.mark);
       if (visitMark.mark !== null) {
         mark += visitMark.mark;
         marksAmount++;

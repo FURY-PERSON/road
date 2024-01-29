@@ -10,3 +10,4 @@ export { getUserInited } from './model/selectors/getUserInited/getUserInited';
 export { UsersSort, UsersRoles } from './model/constants/usersFilters';
 export { useGetUser, refetchUser } from './api/userApi';
 export { getUserFeatureFlags } from './services/getUserFeatureFlags';
+export { UserCard } from './ui/UserCard/UserCard';

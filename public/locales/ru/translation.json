@@ -54,5 +54,9 @@
   "visit date": "дата визита",
   "block id": "id блока",
   "Evarage": " Средняя",
-  "Block info": "Информация о блоке"
+  "Block info": "Информация о блоке",
+  "Room info": "Информация о комнате",
+  "Add tenant": "Добавить жильца",
+  "room id": "id комнаты",
+  "tenant login": "логин жильца"
 }

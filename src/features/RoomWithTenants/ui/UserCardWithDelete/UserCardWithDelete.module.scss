@@ -1,0 +1,13 @@
+.UserCardWithDelete {
+  border-bottom: 1px solid var(--accent-redesigned);
+}
+
+.userCard {
+}
+
+.delete {
+  top: -12px;
+  right: -28px;
+  color: var(--cancel-redesigned);
+  cursor: pointer;
+}

@@ -1,2 +1,2 @@
 export type { Room } from './model/types/room';
-export { refetchRoomInfo, useGetRoomInfo } from './api/roomApi';
+export { refetchRoomInfo, useGetRoomInfo, addUserToRoom, deleteUserFromRoom } from './api/roomApi';

@@ -54,5 +54,9 @@
   "visit date": "visit date",
   "block id": "block id",
   "Evarage": "Evarage",
-  "Block info": "Block info"
+  "Block info": "Block info",
+  "Room info": "Room info",
+  "Add tenant": "Add tenant",
+  "room id": "room id",
+  "tenant login": "user login"
 }

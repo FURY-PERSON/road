@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AxiosError } from 'axios';
 
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { SanitaryVisit, createBlockSanitaryVisit } from '@/entities/Block';
@@ -28,13 +27,8 @@ export const createSanitaryVisit = createAsyncThunk<SanitaryVisit, void, ThunkCo
       ).unwrap();
 
       return response;
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        return rejectWithValue(
-          error.response?.data.message || error.response?.statusText || error.message
-        );
-      }
-      return rejectWithValue('Unexpected login error');
+    } catch (error: any) {
+      return rejectWithValue(String(error?.data?.message) || 'Can not create sanitary visit');
     }
   }
 );
