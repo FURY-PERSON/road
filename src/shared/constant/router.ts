@@ -10,6 +10,7 @@ const getRouteNews = () => '/news';
 const getRouteNewsDetails = (id: string) => `/news/${id}`;
 const getRouteNewsCreate = () => '/news/create';
 const getRouteNewsEdit = (id: string) => `/news/${id}/edit`;
+const getRouteSettlementRequest = () => '/settlement/request';
 const getRouteNotFound = () => '*';
 
 export const routes = {
@@ -25,6 +26,7 @@ export const routes = {
   newsDetails: getRouteNewsDetails,
   newsCreate: getRouteNewsCreate,
   newsEdit: getRouteNewsEdit,
+  settlementRequest: getRouteSettlementRequest,
   notFound: getRouteNotFound
 };
 
@@ -41,5 +43,6 @@ export const AppRouteByPathPattern: Record<string, RouteName> = {
   [routes.news()]: 'news',
   [routes.newsDetails(':id')]: 'newsDetails',
   [routes.newsCreate()]: 'newsCreate',
+  [routes.settlementRequest()]: 'settlementRequest',
   [routes.newsEdit(':id')]: 'newsEdit'
 };
