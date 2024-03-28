@@ -1,1 +1,1 @@
-export { RequestSettlementForm as SettlementRequestForm } from './ui/RequestSettlementForm/RequestSettlementForm';
+export { RequestSettlementFormContainer as RequestSettlementForm } from './ui/RequestSettlementForm/RequestSettlementForm.container';

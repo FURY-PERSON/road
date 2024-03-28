@@ -1,12 +1,12 @@
 import { memo } from 'react';
 
-import { SettlementRequestForm } from '@/features/RequestSettlement';
+import { RequestSettlementForm } from '@/features/RequestSettlement';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 
-export const SettlementRequestPage = memo((props) => {
+export const SettlementRequestPage = memo(() => {
   return (
     <VStack>
-      <SettlementRequestForm />
+      <RequestSettlementForm />
     </VStack>
   );
 });

@@ -1,6 +1,9 @@
 import { Benefit } from '@/entities/Benefit';
+import { Dorm } from '@/entities/Dorm';
 
 export interface RequestSettlementSchema {
   benefits: Benefit[];
-  targetDormId?: string | null;
+  targetDorm?: Dorm | null;
+
+  dorms?: Dorm[];
 }

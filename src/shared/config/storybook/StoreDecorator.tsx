@@ -12,6 +12,7 @@ import { newsPageReducer } from '@/pages/NewsPage/model/slice/newsPage.slice';
 import { usersPageReducer } from '@/pages/UsersPage/model/slice/usersPage.slice';
 import { ReducersList } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
 import { createAndEditNewsReducer } from '@/widgets/CreateAndEditNews/model/slice/createAndEditNews.slice';
+import { requestSettlementReducer } from '@/features/RequestSettlement/model/slice/requestSettlement.slice';
 
 const defaultAsyncReducers: ReducersList = {
   loginForm: loginReducer,
@@ -23,6 +24,7 @@ const defaultAsyncReducers: ReducersList = {
   newsPage: newsPageReducer,
   newsRecommendationList: newsRecommendationListReducer,
   createAndEditNews: createAndEditNewsReducer,
+  requestSettlementForm: requestSettlementReducer,
   usersPage: usersPageReducer
 };
 
