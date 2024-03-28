@@ -24,6 +24,7 @@ import { SaveScrollSchema } from '@/widgets/SaveScroll';
 import { BlocksPageSchema } from '@/pages/BlocksPage/model/types/blocksPageSchema';
 import { AddSanitaryVisitSchema } from '@/features/AddSanitaryVisitForm/model/types/addSanitaryVisit.schema';
 import { AddNewTenantToRoomSchema } from '@/features/AddNewTenantToRoomForm/model/types/addNewTenantToRoom.schema';
+import { RequestSettlementSchema } from '@/features/RequestSettlement/model/types/requestSettlement.schema';
 
 export interface StateSchema {
   counter: CounterSchema;
@@ -45,6 +46,7 @@ export interface StateSchema {
   blocksPage?: BlocksPageSchema;
   addSanitaryVisit?: AddSanitaryVisitSchema;
   addNewTenantToRoom?: AddNewTenantToRoomSchema;
+  requestSettlementForm?: RequestSettlementSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
