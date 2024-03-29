@@ -1,0 +1,17 @@
+.checkbox {
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+    padding: 10px;
+    border-color: var(--accent-redesigned);
+  }
+  
+  .checkbox label {
+    margin-left: 5px; 
+    cursor: pointer; 
+  }
+  
+  .checkbox input[type="checkbox"] {
+    margin-right: 5px;
+    pointer-events: none;
+  }
