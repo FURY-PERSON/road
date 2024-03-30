@@ -1,3 +1,5 @@
+import decamelizeKeys from 'decamelize-keys';
+
 import { rtkApi } from '@/shared/api/rtkApi';
 
 import { SettlementRequest } from '../models/types/settlementRequest';
@@ -8,9 +10,7 @@ const settlementRequestApi = rtkApi.injectEndpoints({
       query: (args) => ({
         url: 'settlement/requests',
         method: 'POST',
-        body: {
-          target_dorm_id: args.targetDormId
-        }
+        body: decamelizeKeys(args)
       })
     })
   })

@@ -8,6 +8,7 @@ import UsersIcon from '@/shared/assets/icons/users.svg';
 import BlocksIcon from '@/shared/assets/icons/kebab.svg';
 import AvatarIcon from '@/shared/assets/icons/avatar.svg';
 import CalendarIcon from '@/shared/assets/icons/calendar-20-20.svg';
+import BookListIcon from '@/shared/assets/icons/about-20-20.svg';
 import BookIconDeprecated from '@/shared/assets/icons/book.svg';
 import ProfileIconDeprecated from '@/shared/assets/icons/profile.svg';
 import NewsIconDeprecated from '@/shared/assets/icons/news.svg';
@@ -98,6 +99,12 @@ export const getSidebarItemList = createSelector(getUserData, (userData) => {
         path: routes.settlementRequest(),
         Icon: CalendarIcon,
         text: i18n.t('request settlement')
+      },
+      {
+        path: routes.settlementProcess(),
+        Icon: BookListIcon,
+        text: i18n.t('manage settlement'),
+        roles: [RoleName.ADMIN]
       }
     );
   }
