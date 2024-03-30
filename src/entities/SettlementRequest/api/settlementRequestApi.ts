@@ -9,7 +9,7 @@ const settlementRequestApi = rtkApi.injectEndpoints({
         url: 'settlement/requests',
         method: 'POST',
         body: {
-          targetDormId: args.targetDormId
+          target_dorm_id: args.targetDormId
         }
       })
     })

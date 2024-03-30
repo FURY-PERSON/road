@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { ThunkConfig } from '@/app/providers/StoreProvider';
-import { setBenefits } from '@/entities/Benefit';
 import { createSettlementRequest } from '@/entities/SettlementRequest';
+import { setBenefits } from '@/entities/Benefit';
 
 import { getBenefits, getStudentId, getTargetDorm } from '../../selectors/selectors';
 
