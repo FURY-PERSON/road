@@ -1,0 +1,12 @@
+services:
+  nginx:
+    image: nginx:stable-alpine
+    environment:
+      BACKEND_URL: ${BACKEND_URL:-http://host.docker.internal:3000}
+      SETTLEMENT_BACKEND_URL: ${SETTLEMENT_BACKEND_URL:-http://host.docker.internal:8000}
+    ports:
+      - "${API_PORT:-3005}:80"
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
+    volumes:
+      - ./nginx.conf:/etc/nginx/templates/default.conf.template:ro
