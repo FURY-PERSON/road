@@ -8,6 +8,10 @@ interface GetUserArgs {
 
 const userApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({
+    getUsers: build.query<User[], void>({
+      providesTags: ['user'],
+      query: () => '/users'
+    }),
     getUserById: build.query<User, GetUserArgs>({
       providesTags: ['user'],
       query: ({ login }) => ({
@@ -17,6 +21,8 @@ const userApi = rtkApi.injectEndpoints({
   }),
   overrideExisting: false
 });
+
+export const useGetAllUsers = userApi.useGetUsersQuery;
 
 export const useGetUser = userApi.useGetUserByIdQuery;
 export const refetchUser = userApi.util.invalidateTags(['user']);

@@ -7,6 +7,7 @@ import {
 } from '@/entities/SettlementProcess';
 import { Button } from '@/shared/ui/redesigned/Button/Button';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
+import { StudentSettlementList } from '@/entities/StudentSettlement';
 
 import { SettlementProcessStateToolbar } from './SettlementProcessStateToolbar';
 
@@ -24,8 +25,9 @@ export const ManageSettlementProcessForm = memo(() => {
     );
   }
   return (
-    <VStack>
+    <VStack gap={32}>
       <SettlementProcessStateToolbar process={activeProcess} />
+      <StudentSettlementList settlementProcessState={activeProcess.state} />
     </VStack>
   );
 });

@@ -9,7 +9,7 @@ const settlementProcessApi = rtkApi.injectEndpoints({
       query: () => 'settlement/processes/active'
     }),
     startProcess: build.mutation<void, void>({
-      invalidatesTags: ['settlementProcess'],
+      invalidatesTags: ['settlementProcess', 'studentSettlement'],
       query: () => ({
         url: 'settlement/processes',
         method: 'POST'
@@ -19,7 +19,7 @@ const settlementProcessApi = rtkApi.injectEndpoints({
       SettlementProcess,
       { processId: string; state: SettlementProcessState }
     >({
-      invalidatesTags: ['settlementProcess'],
+      invalidatesTags: ['settlementProcess', 'studentSettlement'],
       query: (args) => ({
         url: `settlement/processes/${args.processId}`,
         method: 'PATCH',
