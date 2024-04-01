@@ -58,5 +58,6 @@
   "Room info": "Информация о комнате",
   "Add tenant": "Добавить жильца",
   "room id": "id комнаты",
-  "tenant login": "логин жильца"
+  "tenant login": "логин жильца",
+  "request settlement": "Запрос заселения"
 }
