@@ -1,3 +1,7 @@
 {
-    "start process": "создать процесс"
+    "settlement process management": "Управление заселением",
+    "start process": "создать процесс",
+    "assign dorms": "распределить общежития",
+    "allocate rooms": "распределить по комнатам",
+    "finish": "завершить"
 }

@@ -6,19 +6,26 @@ import {
   useStartSettlementProcessMutation
 } from '@/entities/SettlementProcess';
 import { Button } from '@/shared/ui/redesigned/Button/Button';
+import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
+
+import { SettlementProcessStateToolbar } from './SettlementProcessStateToolbar';
 
 export const ManageSettlementProcessForm = memo(() => {
   const { t } = useTranslation('process');
 
-  const { data: activeProcess } = useGetActiveSettlementProcess();
+  const { data: activeProcess, isError } = useGetActiveSettlementProcess();
   const [startProcess] = useStartSettlementProcessMutation();
 
-  if (!activeProcess) {
+  if (!activeProcess || isError) {
     return (
       <Button variant="filled" onClick={() => startProcess()}>
         {t('create process')}
       </Button>
     );
   }
-  return <>{JSON.stringify(activeProcess)}</>;
+  return (
+    <VStack>
+      <SettlementProcessStateToolbar process={activeProcess} />
+    </VStack>
+  );
 });

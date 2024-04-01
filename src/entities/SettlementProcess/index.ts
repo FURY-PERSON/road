@@ -1,6 +1,6 @@
 export type { SettlementProcess } from './models/types/settlementProcess';
 export {
-  setSettlementProcessState,
+  useSetSettlementProcessStateMutation,
   useGetActiveSettlementProcess,
   useStartSettlementProcessMutation
 } from './api/settlementProcessApi';

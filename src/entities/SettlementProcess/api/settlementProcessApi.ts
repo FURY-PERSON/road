@@ -33,6 +33,6 @@ const settlementProcessApi = rtkApi.injectEndpoints({
 
 export const useGetActiveSettlementProcess = settlementProcessApi.useGetActiveQuery;
 
-export const setSettlementProcessState = settlementProcessApi.endpoints.setState.initiate;
+export const useSetSettlementProcessStateMutation = settlementProcessApi.useSetStateMutation;
 
 export const useStartSettlementProcessMutation = settlementProcessApi.useStartProcessMutation;
