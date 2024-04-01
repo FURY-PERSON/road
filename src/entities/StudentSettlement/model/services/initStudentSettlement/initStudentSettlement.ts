@@ -3,22 +3,34 @@ import { AxiosError } from 'axios';
 
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { Dorm } from '@/entities/Dorm';
+import { getBlocks } from '@/entities/Block';
 
-export const initStudentSettlement = createAsyncThunk<{ dorms: Dorm[] }, void, ThunkConfig<string>>(
-  'news/initStudentSettlement',
-  async (_, thunkAPI) => {
-    const { extra, rejectWithValue } = thunkAPI;
-    try {
-      const dorms = (await extra.api.get<Dorm[]>('dorm')).data;
+import { RoomWithDormId } from '../../types/studentSettlement.schema';
 
-      if (!dorms) {
-        return rejectWithValue('dorms not found');
-      }
+export const initStudentSettlement = createAsyncThunk<
+  { dorms: Dorm[]; rooms: RoomWithDormId[] },
+  void,
+  ThunkConfig<string>
+>('news/initStudentSettlement', async (_, thunkAPI) => {
+  const { extra, rejectWithValue, dispatch } = thunkAPI;
+  try {
+    const dorms = (await extra.api.get<Dorm[]>('dorm')).data;
+    const blocks = await dispatch(getBlocks()).unwrap();
 
-      return { dorms };
-    } catch (error) {
-      const typedError = error as AxiosError;
-      return thunkAPI.rejectWithValue(typedError.response?.statusText || typedError.message);
+    if (!dorms) {
+      return rejectWithValue('dorms not found');
     }
+    if (!blocks) {
+      return rejectWithValue('blocks not found');
+    }
+
+    const rooms = blocks.flatMap((block) =>
+      block.rooms.map((room) => ({ ...room, dormId: block.dorm.id }))
+    );
+
+    return { dorms, rooms };
+  } catch (error) {
+    const typedError = error as AxiosError;
+    return thunkAPI.rejectWithValue(typedError.response?.statusText || typedError.message);
   }
-);
+});

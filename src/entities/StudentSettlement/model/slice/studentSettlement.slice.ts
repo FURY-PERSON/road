@@ -12,6 +12,7 @@ export const studentSettlementSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(initStudentSettlement.fulfilled, (state, action) => {
       state.dorms = action.payload.dorms;
+      state.rooms = action.payload.rooms;
     });
   }
 });

@@ -5,6 +5,11 @@ import { SanitaryVisit } from '../model/types/sanitaryVisit';
 
 const blockApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({
+    getBlocks: build.query<Block[], void>({
+      providesTags: ['block'],
+      query: () => '/block'
+    }),
+
     getBlockInfo: build.query<Block, { blockId: string }>({
       providesTags: ['block'],
       query: (args) => ({
@@ -47,6 +52,8 @@ const blockApi = rtkApi.injectEndpoints({
   }),
   overrideExisting: false
 });
+
+export const getBlocks = blockApi.endpoints.getBlocks.initiate;
 
 export const useGetBlockInfo = blockApi.useGetBlockInfoQuery;
 export const refetchBlockInfo = blockApi.util.invalidateTags(['block']);
