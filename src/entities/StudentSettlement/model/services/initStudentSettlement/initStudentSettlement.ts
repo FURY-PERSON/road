@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
+import camelcaseKeys from 'camelcase-keys';
 
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { Dorm } from '@/entities/Dorm';
@@ -25,8 +26,11 @@ export const initStudentSettlement = createAsyncThunk<
     }
 
     const rooms = blocks.flatMap((block) =>
-      block.rooms.map((room) => ({ ...room, dormId: block.dorm.id }))
-    );
+      block.rooms.map((room) => ({
+        ...camelcaseKeys(room as Record<string, any>),
+        dormId: block.dorm.id
+      }))
+    ) as RoomWithDormId[];
 
     return { dorms, rooms };
   } catch (error) {

@@ -14,6 +14,7 @@ import {
   useUpdateStudentSettlementMutation
 } from '../../api/studentSettlementApi';
 import { DormSwitch } from '../DormSwitch/DormSwitch';
+import { RoomSwitch } from '../RoomSwitch/RoomSwitch';
 
 import cls from './StudentSettlementCard.module.scss';
 
@@ -47,6 +48,12 @@ export const StudentSettlementCard: FC<StudentSettlementCardProps> = memo((props
           settlementProcessState={settlementProcessState}
           initialDormId={settlementInfo.dormId}
           onChange={(dormId) => updateSettlement({ studentId: settlementInfo.student.id, dormId })}
+        />
+        <RoomSwitch
+          settlementProcessState={settlementProcessState}
+          dormId={settlementInfo.dormId}
+          initialRoomId={settlementInfo.roomId}
+          onChange={(roomId) => updateSettlement({ studentId: settlementInfo.student.id, roomId })}
         />
         <Button
           className={cls.rejectButton}

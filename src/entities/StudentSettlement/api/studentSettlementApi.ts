@@ -1,4 +1,5 @@
 import decamelizeKeys from 'decamelize-keys';
+import camelcaseKeys from 'camelcase-keys';
 
 import { rtkApi } from '@/shared/api/rtkApi';
 
@@ -14,7 +15,8 @@ const studentSettlementApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({
     getStudentSettlements: build.query<StudentSettlement[], void>({
       providesTags: ['studentSettlement'],
-      query: () => 'settlement/students'
+      query: () => 'settlement/students',
+      transformResponse: (body: any) => body.map((obj) => camelcaseKeys(obj))
     }),
     updateStudentSettlement: build.mutation<void, StudentSettlementUpdate>({
       invalidatesTags: ['studentSettlement'],

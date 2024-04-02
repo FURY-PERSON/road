@@ -1,4 +1,4 @@
-import { FC, memo, useMemo, useState } from 'react';
+import { FC, memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
@@ -20,10 +20,12 @@ export const DormSwitch: FC<DormSwitchProps> = memo((props) => {
 
   const dorms = useSelector(getDorms);
 
-  const initialDorm = useMemo(
-    () => dorms?.find((dorm) => dorm.id === initialDormId),
-    [dorms, initialDormId]
+  const getDormById = useCallback(
+    (dormId: string | null) => dorms?.find((dorm) => dorm.id === dormId),
+    [dorms]
   );
+
+  const initialDorm = useMemo(() => getDormById(initialDormId), [getDormById, initialDormId]);
 
   const [currentDorm, setCurrentDorm] = useState(initialDorm);
 
@@ -32,13 +34,15 @@ export const DormSwitch: FC<DormSwitchProps> = memo((props) => {
     [dorms]
   );
 
+  useEffect(() => setCurrentDorm(getDormById(initialDormId)), [getDormById, initialDormId]);
+
   return (
     <ListBox<string>
       readonly={settlementProcessState !== SettlementProcessState.DORMS_ASSIGNED}
       value={currentDorm?.id}
       items={selectItems}
       onChange={(dormId) => {
-        setCurrentDorm(dorms?.find((dorm) => dorm.id === dormId));
+        setCurrentDorm(getDormById(dormId));
         onChange(dormId);
       }}
       label={t('dorm')}
