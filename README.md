@@ -28,6 +28,16 @@ Project has developed for studying purposes to learn: Feature slised design, Web
   npm run start:dev:project
 ```
 
+### Development with backend
+
+- To interact with backends you need to run nginx proxy:
+
+```bash
+  docker compose up -d
+```
+
+You can configure `BACKEND_URL` and `SETTLEMENT_BACKEND_URL` variables.
+
 ### Build Scripts
 - Generate bundle with dev env.
 ```bash
