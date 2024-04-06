@@ -8,50 +8,66 @@ import { Button } from '@/shared/ui/redesigned/Button/Button';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { ListBox } from '@/shared/ui/redesigned/popups';
-import { ScientificWorkType } from '@/entities/ScientificWork';
+import { RebukeType } from '@/entities/Rebuke';
 
 import { useForm } from '../../model/hooks/useForm';
-import { scentificWorksList } from '../../model/constants/scientificWorksList';
+import { rebukesList } from '../../model/constants/rebukesList';
 
 import cls from './Form.module.scss';
 
 interface FormProps {
   className?: string;
   onSuccess?: () => void;
-  scientificWorkId: string;
+  rebukeId: string;
   login?: string;
 }
 
 export const Form: FC<FormProps> = memo((props) => {
-  const { className, onSuccess, login, scientificWorkId } = props;
+  const { className, onSuccess, login, rebukeId } = props;
 
   const { t } = useTranslation();
 
-  const { title, setTitle, type, setType, date, setDate, submit, loading, error } = useForm(
-    scientificWorkId,
-    login,
-    onSuccess
-  );
+  const {
+    note,
+    setNote,
+    type,
+    setType,
+    startDate,
+    endDate,
+    setEndDate,
+    setStartDate,
+    submit,
+    loading,
+    error
+  } = useForm(rebukeId, login, onSuccess);
 
   return (
     <Card border="round" padding="24" max className={classNames(cls.Form, {}, [className])}>
       <VStack gap={16}>
-        <Text variant="accent" title={t('Edit scientific work')} />
+        <Text variant="accent" title={t('Edit rebuke')} />
 
-        <Input onChange={setTitle} value={title} className={cls.input} label={t('work title')} />
+        <Input onChange={setNote} value={note} className={cls.input} label={t('rebuke note')} />
 
-        <ListBox<ScientificWorkType>
+        <ListBox<RebukeType>
           onChange={setType}
           value={type}
-          items={scentificWorksList}
-          label={t('work type')}
+          items={rebukesList}
+          label={t('rebuke type')}
         />
 
         <Input
-          label={t('date of work')}
+          label={t('rebuke start date')}
           type="date"
-          onChange={setDate}
-          value={date}
+          onChange={setStartDate}
+          value={startDate}
+          className={cls.input}
+        />
+
+        <Input
+          label={t('rebuke end date')}
+          type="date"
+          onChange={setEndDate}
+          value={endDate}
           className={cls.input}
         />
 

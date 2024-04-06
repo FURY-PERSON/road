@@ -19,7 +19,7 @@ import { ScientificWorkActionPanel } from '../ScientificWorkActionPanel/Scientif
 
 import cls from './UserScientificWork.module.scss';
 
-export interface UserScientificWorkProps {
+interface UserScientificWorkProps {
   className?: string;
   login?: string;
 }

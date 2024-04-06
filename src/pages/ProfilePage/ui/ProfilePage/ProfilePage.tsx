@@ -10,6 +10,8 @@ import {
 } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
 import { Page } from '@/widgets/Page/Page';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
+import { HStack } from '@/shared/ui/redesigned/Stack/HStack/HStack';
+import { UserRebuke } from '@/widgets/UserRebuke';
 
 import { ProfilePageParam } from '../../model/types';
 import { UserBlock } from '../UserBlock/UserBlock';
@@ -35,7 +37,10 @@ export const ProfilePage: FC<ProfilePageProps> = memo((props) => {
         <VStack gap={32}>
           <EditableProfileCard login={login} />
           <UserBlock login={login} />
-          <UserScientificWork login={login} />
+          <HStack gap={8} max>
+            <UserScientificWork login={login} />
+            <UserRebuke login={login} />
+          </HStack>
         </VStack>
       </Page>
     </DynamicModuleLoader>

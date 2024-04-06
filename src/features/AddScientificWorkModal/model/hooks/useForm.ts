@@ -31,6 +31,8 @@ export const useForm = (login?: string, onSuccess?: () => void) => {
       return;
     }
 
+    setError('');
+
     addScientificWork({
       login: login,
       title: title,

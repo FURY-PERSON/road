@@ -1,0 +1,15 @@
+.Form {
+  width: 100%;
+  max-width: 520px;
+
+  > .input {
+  }
+
+  > .button {
+    margin-left: auto;
+  }
+
+  > .error {
+    color: var(--dark-bg-redesigned)
+  }
+}

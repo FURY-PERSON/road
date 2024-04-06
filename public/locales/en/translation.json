@@ -68,5 +68,18 @@
   "date of work": "date of work",
   "olympiad": "Olympiad",
   "publication": "Publication",
-  "no scientific work": "no scientific work :("
+  "no scientific work": "no scientific work :(",
+  "Edit scientific work": "Edit scientific work",
+  "Add scientific work": "Add scientific work",
+
+  "rebuke": "Rebuke",
+  "rebuke note": "rebuke note",
+  "rebuke type": "rebuke type",
+  "rebuke start date": "rebuke start date",
+  "rebuke end date": "rebuke end date",
+  "normal": "Normal",
+  "strong": "Strong",
+  "no rebukes": "no rebukes :)",
+  "Edit rebuke": "Edit rebuke",
+  "Add rebuke": "Add rebuke"
 }

@@ -68,5 +68,18 @@
   "date of work": "Дата работы",
   "olympiad": "Олимпиада",
   "publication": "Публикация",
-  "no scientific work": "Нет научных работ :("
+  "no scientific work": "Нет научных работ :(",
+  "Edit scientific work": "Изменение научной работы",
+  "Add scientific work": "Добавление научной работы",
+
+  "rebuke": "Выговор",
+  "rebuke note": "Описание выговора",
+  "rebuke type": "Тип выговора",
+  "rebuke start date": "Дата начала выговора",
+  "rebuke end date": "Дата конца выговора",
+  "normal": "Нормально",
+  "strong": "Плохо",
+  "no rebukes": "Нет выговоров :)",
+  "Edit rebuke": "Изменение выговора",
+  "Add rebuke": "Добавление выговора"
 }

@@ -6,25 +6,25 @@ import { RoleName } from '@/entities/Role';
 import PenIcon from '@/shared/assets/icons/pen.svg';
 import CrossIcon from '@/shared/assets/icons/cross.svg';
 
-import cls from './ScientificWorkActionPanel.module.scss';
+import cls from './RebukeActionPanel.module.scss';
 
-interface ScientificWorkActionPanelProps {
+interface RebukeActionPanelProps {
   id: string;
-  openEditScientificWork: (id: string) => () => void;
-  deleteScientificWork: (id: string) => () => void;
+  openEditRebuke: (id: string) => () => void;
+  deleteRebuke: (id: string) => () => void;
 }
 
-export const ScientificWorkActionPanel: FC<ScientificWorkActionPanelProps> = memo((props) => {
-  const { openEditScientificWork, deleteScientificWork, id } = props;
+export const RebukeActionPanel: FC<RebukeActionPanelProps> = memo((props) => {
+  const { openEditRebuke, deleteRebuke, id } = props;
 
   return (
     <RoleGuard roleNames={[RoleName.ADMIN, RoleName.WORKER]}>
       <>
-        <Button className={cls.editButton} onClick={openEditScientificWork(id)}>
+        <Button className={cls.editButton} onClick={openEditRebuke(id)}>
           <PenIcon className={cls.editIcon} />
         </Button>
 
-        <Button className={cls.deleteButton} onClick={deleteScientificWork(id)}>
+        <Button className={cls.deleteButton} onClick={deleteRebuke(id)}>
           <CrossIcon className={cls.deleteIcon} />
         </Button>
       </>

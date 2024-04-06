@@ -49,6 +49,8 @@ export const useForm = (scientificWorkId: string, login?: string, onSuccess?: ()
       return;
     }
 
+    setError('');
+
     updateScientificWork({
       id: scientificWorkId,
       login: login,

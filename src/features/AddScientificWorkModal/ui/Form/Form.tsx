@@ -34,6 +34,8 @@ export const Form: FC<FormProps> = memo((props) => {
   return (
     <Card border="round" padding="24" max className={classNames(cls.Form, {}, [className])}>
       <VStack gap={16}>
+        <Text variant="accent" title={t('Add scientific work')} />
+
         <Input onChange={setTitle} value={title} className={cls.input} label={t('work title')} />
 
         <ListBox<ScientificWorkType>

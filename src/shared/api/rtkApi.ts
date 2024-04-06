@@ -27,7 +27,8 @@ export const rtkApi = createApi({
     'block',
     'blockSanitaryVisits',
     'room',
-    'scientificWork'
+    'scientificWork',
+    'rebuke'
   ],
   endpoints: (builder) => ({})
 });
