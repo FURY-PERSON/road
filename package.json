@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev:front": "webpack serve --env port=3000 mode=development",
+    "start:dev:front": "webpack serve --env port=3000 mode=development apiUrl=http://localhost:3005/api settlementApiUrl=http://snoochieboochies.lol:33333/api",
     "start:dev:vite:front": "vite",
     "start:dev:project": "concurrently \"npm run start:dev:front\" \"npm run mock-server:start\"",
-    "build:prod": "webpack --env mode=production",
+    "build:prod": "webpack --env mode=production apiUrl=http://host.docker.internal:3001 settlementApiUrl=http://snoochieboochies.lol:33333/api",
     "build:dev": "webpack --env mode=development",
     "lint:ts:check": "eslint '**/*.{ts,tsx}'",
     "lint:ts:fix": "eslint '**/*.{ts,tsx}' --fix",
