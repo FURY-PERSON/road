@@ -1,6 +1,7 @@
 import { memo, FC } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { UserScientificWork } from '@/widgets/UserScientificWork';
 import { EditableProfileCard, profileReducer } from '@/features/EditableProfileCard';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import {
@@ -34,6 +35,7 @@ export const ProfilePage: FC<ProfilePageProps> = memo((props) => {
         <VStack gap={32}>
           <EditableProfileCard login={login} />
           <UserBlock login={login} />
+          <UserScientificWork login={login} />
         </VStack>
       </Page>
     </DynamicModuleLoader>

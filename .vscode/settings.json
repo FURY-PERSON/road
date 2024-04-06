@@ -15,5 +15,6 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "jestrunner.configPath": "config/jest/jest.config.ts"
+  "jestrunner.configPath": "config/jest/jest.config.ts",
+  "i18next.i18nPaths": "/Users/lolitachernikova/Documents/GitHub/road/public/locales,/Users/lolitachernikova/Documents/GitHub/road/src/shared/config/i18n"
 }

@@ -60,5 +60,13 @@
   "room id": "id комнаты",
   "tenant login": "логин жильца",
   "request settlement": "Запрос заселения",
-  "manage settlement": "Управление заселением"
+  "manage settlement": "Управление заселением",
+
+  "scientific works": "Научная работа",
+  "work title": "Название работы",
+  "work type": "Тип работы",
+  "date of work": "Дата работы",
+  "olympiad": "Олимпиада",
+  "publication": "Публикация",
+  "no scientific work": "Нет научных работ :("
 }

@@ -60,5 +60,13 @@
   "room id": "room id",
   "tenant login": "user login",
   "request settlement": "request settlement",
-  "manage settlement": "manage settlement"
+  "manage settlement": "manage settlement",
+
+  "scientific work": "Scientific work",
+  "work title": "work title",
+  "work type": "work type",
+  "date of work": "date of work",
+  "olympiad": "Olympiad",
+  "publication": "Publication",
+  "no scientific work": "no scientific work :("
 }

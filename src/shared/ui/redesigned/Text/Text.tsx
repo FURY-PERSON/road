@@ -44,7 +44,7 @@ export const Text: FC<TextProps> = memo((props) => {
   const TextElement = textElementMap[size];
 
   return (
-    <div className={classNames(cls.Text, {}, [className, cls[variant], cls[size]])}>
+    <div className={classNames(cls.Text, {}, [cls[variant], cls[size], className])}>
       {title ? (
         <TextElement
           data-testid={`${dataTestId}.title`}

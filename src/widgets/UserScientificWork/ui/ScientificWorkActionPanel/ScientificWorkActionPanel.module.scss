@@ -1,0 +1,24 @@
+.editButton {
+  position: absolute;
+  top: 12px;
+  right: 40px;
+  margin-right: 12px;
+
+  > .editIcon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.deleteButton {
+  position: absolute;
+  top: 12px;
+  right: 8px;
+  margin-right: 12px;
+
+  > .deleteIcon {
+    width: 28px;
+    height: 28px;
+    color: var(--cancel-redesigned);
+  }
+}

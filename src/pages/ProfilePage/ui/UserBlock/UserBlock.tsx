@@ -25,7 +25,7 @@ export const UserBlock: FC<UserBlockProps> = memo((props) => {
 
   return (
     <RoleGuard roleNames={[RoleName.ADMIN, RoleName.WORKER]}>
-      <VStack gap={32}>
+      <VStack max gap={32}>
         <BlockInfo blockId={user.block.id} />
       </VStack>
     </RoleGuard>
