@@ -1,10 +1,10 @@
 import decamelizeKeys from 'decamelize-keys';
 
-import { rtkApi } from '@/shared/api/rtkApi';
+import { settlementRtkApi } from '@/shared/api/rtkApi';
 
 import { SettlementRequest } from '../models/types/settlementRequest';
 
-const settlementRequestApi = rtkApi.injectEndpoints({
+const settlementRequestApi = settlementRtkApi.injectEndpoints({
   endpoints: (build) => ({
     createSettlementRequest: build.mutation<void, SettlementRequest>({
       invalidatesTags: ['studentSettlement'],

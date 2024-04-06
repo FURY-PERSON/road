@@ -1,7 +1,7 @@
 import decamelizeKeys from 'decamelize-keys';
 import camelcaseKeys from 'camelcase-keys';
 
-import { rtkApi } from '@/shared/api/rtkApi';
+import { settlementRtkApi } from '@/shared/api/rtkApi';
 
 import { StudentSettlement } from '../model/types/studentSettelement';
 
@@ -11,7 +11,7 @@ interface StudentSettlementUpdate {
   roomId?: string;
 }
 
-const studentSettlementApi = rtkApi.injectEndpoints({
+const studentSettlementApi = settlementRtkApi.injectEndpoints({
   endpoints: (build) => ({
     getStudentSettlements: build.query<StudentSettlement[], void>({
       providesTags: ['studentSettlement'],

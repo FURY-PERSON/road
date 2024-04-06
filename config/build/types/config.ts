@@ -14,6 +14,7 @@ export interface BuildEnv {
   port: number;
   analyze: boolean;
   apiUrl: string;
+  settlementApiUrl: string;
 }
 
 export interface BuildOption {
@@ -23,5 +24,6 @@ export interface BuildOption {
   port: number;
   analyze: boolean;
   apiUrl: string;
+  settlementApiUrl: string;
   project: 'storybook' | 'main' | 'jest';
 }

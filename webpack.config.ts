@@ -20,6 +20,7 @@ export default function (env: BuildEnv): webpack.Configuration {
   const port = env.port || 3000;
   const analyze = env.analyze || false;
   const apiUrl = env.apiUrl || 'http://localhost:3005/api';
+  const settlementApiUrl = env.settlementApiUrl || 'http://localhost:80/api';
 
   return buildWebpackConfig({
     mode,
@@ -28,6 +29,7 @@ export default function (env: BuildEnv): webpack.Configuration {
     port,
     analyze,
     apiUrl,
+    settlementApiUrl,
     project: 'main'
   });
 }

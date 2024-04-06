@@ -6,11 +6,13 @@ import { BuildOption } from '../types/config';
 export function buildDefinePlugin({
   isDev,
   apiUrl,
-  project
-}: Pick<BuildOption, 'isDev' | 'apiUrl' | 'project'>) {
+  project,
+  settlementApiUrl
+}: Pick<BuildOption, 'isDev' | 'apiUrl' | 'project' | 'settlementApiUrl'>) {
   return new webpack.DefinePlugin({
     __IS__DEV__: JSON.stringify(isDev),
     __API__: JSON.stringify(apiUrl),
+    __SETTLEMENT_API__: JSON.stringify(settlementApiUrl),
     __PROJECT__: JSON.stringify(project)
   });
 }

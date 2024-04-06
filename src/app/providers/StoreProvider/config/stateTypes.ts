@@ -18,7 +18,7 @@ import { NewsRecommendationListSchema } from '@/features/NewsRecommendationList'
 import { RegisterSchema } from '@/features/RegisterNewUser/model/types/register.schema';
 import { NewsPageSchema } from '@/pages/NewsPage/model/types/newsPageSchema';
 import { UsersPageSchema } from '@/pages/UsersPage/model/types/usersPageSchema';
-import { rtkApi } from '@/shared/api/rtkApi';
+import { rtkApi, settlementRtkApi } from '@/shared/api/rtkApi';
 import { CreateAndEditNewsSchema } from '@/widgets/CreateAndEditNews/model/types/createAndEditNewsSchema';
 import { SaveScrollSchema } from '@/widgets/SaveScroll';
 import { BlocksPageSchema } from '@/pages/BlocksPage/model/types/blocksPageSchema';
@@ -32,6 +32,7 @@ export interface StateSchema {
   user: UserSchema;
   saveScroll: SaveScrollSchema;
   [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
+  [settlementRtkApi.reducerPath]: ReturnType<typeof settlementRtkApi.reducer>;
 
   // async reducers
   loginForm?: LoginSchema;

@@ -1,8 +1,8 @@
-import { rtkApi } from '@/shared/api/rtkApi';
+import { settlementRtkApi } from '@/shared/api/rtkApi';
 
 import { Benefit } from '../models/types/benefit';
 
-const benefitApi = rtkApi.injectEndpoints({
+const benefitApi = settlementRtkApi.injectEndpoints({
   endpoints: (build) => ({
     setBenefits: build.mutation<void, { studentId: string; benefits: Benefit[] }>({
       query: (args) => ({

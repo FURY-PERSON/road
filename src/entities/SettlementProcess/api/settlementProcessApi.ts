@@ -1,8 +1,8 @@
-import { rtkApi } from '@/shared/api/rtkApi';
+import { settlementRtkApi } from '@/shared/api/rtkApi';
 
 import { SettlementProcess, SettlementProcessState } from '../models/types/settlementProcess';
 
-const settlementProcessApi = rtkApi.injectEndpoints({
+const settlementProcessApi = settlementRtkApi.injectEndpoints({
   endpoints: (build) => ({
     getActive: build.query<SettlementProcess, void>({
       providesTags: ['settlementProcess'],

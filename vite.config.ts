@@ -10,6 +10,7 @@ export default defineConfig({
   define: {
     __IS__DEV__: JSON.stringify(true),
     __API__: JSON.stringify('http://localhost:3005/api'),
+    __SETTLEMENT_API__: JSON.stringify('http://localhost:80/api'),
     __PROJECT__: JSON.stringify('frontend')
   },
   css: {

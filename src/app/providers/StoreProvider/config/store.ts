@@ -6,7 +6,7 @@ import { userReducer } from '@/entities/User';
 import { api } from '@/shared/api/api';
 import { ReducersList } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
 import { saveScrollReducer } from '@/widgets/SaveScroll';
-import { rtkApi } from '@/shared/api/rtkApi';
+import { rtkApi, settlementRtkApi } from '@/shared/api/rtkApi';
 
 import { createReducerManager } from './reducerManager';
 import { StateSchema } from './stateTypes';
@@ -18,7 +18,8 @@ export function createReduxStore(initialState?: StateSchema, asyncReducers?: Red
     counter: counterReducer,
     user: userReducer,
     saveScroll: saveScrollReducer,
-    [rtkApi.reducerPath]: rtkApi.reducer
+    [rtkApi.reducerPath]: rtkApi.reducer,
+    [settlementRtkApi.reducerPath]: settlementRtkApi.reducer
   };
 
   const reducerManager = createReducerManager(rootReducers);
@@ -34,7 +35,7 @@ export function createReduxStore(initialState?: StateSchema, asyncReducers?: Red
             api
           }
         }
-      }).concat(rtkApi.middleware)
+      }).concat(rtkApi.middleware, settlementRtkApi.middleware)
   });
 
   // @ts-ignore
