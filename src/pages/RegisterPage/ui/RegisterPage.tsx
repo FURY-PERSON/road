@@ -20,6 +20,8 @@ export const RegisterPage: FC<RegisterPageProps> = (props) => {
 
   const onSuccessRegister = useCallback(() => {
     navigator(routes.main());
+
+    window.location.reload();
   }, [navigator]);
 
   return (

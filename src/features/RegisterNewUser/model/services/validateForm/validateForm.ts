@@ -1,3 +1,5 @@
+import { RoleName } from '@/entities/Role';
+
 import { ValidationError } from '../../types/error';
 import { RegisterForm } from '../../types/register.schema';
 
@@ -9,7 +11,18 @@ export const validateForm = (form?: RegisterForm): ValidationError[] => {
     return Array.from(errors);
   }
 
-  const { firstName, lastName, confirmPassword, email, login, password, phone, role } = form;
+  const {
+    firstName,
+    lastName,
+    confirmPassword,
+    email,
+    login,
+    password,
+    phone,
+    role,
+    mark,
+    studyingForm
+  } = form;
 
   if (!firstName) {
     errors.add(ValidationError.USER_DATA);
@@ -45,6 +58,10 @@ export const validateForm = (form?: RegisterForm): ValidationError[] => {
 
   if (password !== confirmPassword) {
     errors.add(ValidationError.PASSWORD_MATCH);
+  }
+
+  if (role === RoleName.STUDENT && (!studyingForm || !mark || !Number(mark))) {
+    errors.add(ValidationError.USER_DATA);
   }
 
   return Array.from(errors);

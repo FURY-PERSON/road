@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { RoleName } from '@/entities/Role';
+import { UserStudyingForm } from '@/entities/User';
 
 import { registerNewUser } from '../services/registerNewUser/registerNewUser';
 import { RegisterForm, RegisterSchema } from '../types/register.schema';
@@ -12,7 +13,8 @@ export const initialForm: RegisterForm = {
   lastName: '',
   phone: '',
   password: '',
-  confirmPassword: ''
+  confirmPassword: '',
+  mark: 1
 };
 
 export const initialState: RegisterSchema = {
@@ -50,6 +52,12 @@ export const registerSlice = createSlice({
     },
     setEmail(state, action: PayloadAction<string>) {
       state.form.email = action.payload;
+    },
+    setMark(state, action: PayloadAction<number>) {
+      state.form.mark = action.payload;
+    },
+    setStudyingForm(state, action: PayloadAction<UserStudyingForm>) {
+      state.form.studyingForm = action.payload;
     }
   },
   extraReducers: (builder) => {

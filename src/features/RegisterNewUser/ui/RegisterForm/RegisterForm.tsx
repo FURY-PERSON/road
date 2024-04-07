@@ -1,4 +1,4 @@
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
@@ -10,7 +10,7 @@ import {
 } from '@/shared/lib/helpers/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button as ButtonDeprecated, ButtonVariant } from '@/shared/ui/deprecated/Button/Button';
-import { Select } from '@/shared/ui/deprecated/Select/Select';
+import { Select, SelectOption } from '@/shared/ui/deprecated/Select/Select';
 import { Text as TextDeprecated, TextVariant } from '@/shared/ui/deprecated/Text/Text';
 import { TextInput } from '@/shared/ui/deprecated/TextInput/TextInput';
 import { AppLink as AppLinkDeprecated } from '@/shared/ui/deprecated/AppLink/AppLink';
@@ -23,11 +23,12 @@ import { Input } from '@/shared/ui/redesigned/Input';
 import { ListBox } from '@/shared/ui/redesigned/popups';
 import { Button } from '@/shared/ui/redesigned/Button/Button';
 import { AppLink } from '@/shared/ui/redesigned/AppLink/AppLink';
+import { UserStudyingForm } from '@/entities/User';
+import { ListBoxItem } from '@/shared/ui/redesigned/popups/components/ListBox/ListBox';
 
 import { registerNewUser } from '../../model/services/registerNewUser/registerNewUser';
 import { registerActions, registerReducer } from '../../model/slice/register.slice';
 import { getRegisterForm } from '../../model/selectors/getRegisterForm/getRegisterForm';
-import { rolesList, rolesListDeprecated } from '../../model/const/item';
 import { getRegisterLoading } from '../../model/selectors/getRegisterLoading/getRegisterLoading';
 import { getRegisterValidationError } from '../../model/selectors/getRegisterValidationError/getRegisterValidationError';
 import { getRegisterError } from '../../model/selectors/getRegisterError/getRegisterError';
@@ -50,8 +51,18 @@ export const RegisterForm: FC<RegisterFormProps> = (props) => {
   const { t } = useTranslation('auth');
   const dispatch = useAppDispatch();
 
-  const { firstName, confirmPassword, email, lastName, login, password, phone, role } =
-    useSelector(getRegisterForm);
+  const {
+    firstName,
+    confirmPassword,
+    email,
+    lastName,
+    login,
+    password,
+    phone,
+    role,
+    mark,
+    studyingForm
+  } = useSelector(getRegisterForm);
 
   const isLoading = useSelector(getRegisterLoading);
   const validationError = useSelector(getRegisterValidationError);
@@ -106,9 +117,23 @@ export const RegisterForm: FC<RegisterFormProps> = (props) => {
     [dispatch]
   );
 
+  const onChangeMark = useCallback(
+    (value: string) => {
+      dispatch(registerActions.setMark(Number(value)));
+    },
+    [dispatch]
+  );
+
   const onChangeRole = useCallback(
     (role: string) => {
       dispatch(registerActions.setRole(role as RoleName));
+    },
+    [dispatch]
+  );
+
+  const onChangeStudyingForm = useCallback(
+    (studyingForm: string) => {
+      dispatch(registerActions.setStudyingForm(studyingForm as UserStudyingForm));
     },
     [dispatch]
   );
@@ -119,6 +144,40 @@ export const RegisterForm: FC<RegisterFormProps> = (props) => {
       onSuccess?.();
     }
   }, [dispatch, onSuccess]);
+
+  const rolesListDeprecated: Array<SelectOption<RoleName>> = useMemo(
+    () => [
+      { content: t('worker'), value: RoleName.WORKER },
+      { content: t('student'), value: RoleName.STUDENT },
+      { content: t('admin'), value: RoleName.ADMIN }
+    ],
+    [t]
+  );
+
+  const rolesList: Array<ListBoxItem<RoleName>> = useMemo(
+    () => [
+      { content: t('worker'), value: RoleName.WORKER },
+      { content: t('student'), value: RoleName.STUDENT },
+      { content: t('admin'), value: RoleName.ADMIN }
+    ],
+    [t]
+  );
+
+  const budgetListDeprecated: Array<SelectOption<UserStudyingForm>> = useMemo(
+    () => [
+      { content: t('budget'), value: UserStudyingForm.Budget },
+      { content: t('paid'), value: UserStudyingForm.Paid }
+    ],
+    [t]
+  );
+
+  const budgetList: Array<ListBoxItem<UserStudyingForm>> = useMemo(
+    () => [
+      { content: t('budget'), value: UserStudyingForm.Budget },
+      { content: t('paid'), value: UserStudyingForm.Paid }
+    ],
+    [t]
+  );
 
   return (
     <DynamicModuleLoader reducers={initialReducers}>
@@ -183,6 +242,25 @@ export const RegisterForm: FC<RegisterFormProps> = (props) => {
               options={rolesListDeprecated}
               label={t('select your role')}
             />
+
+            {role === RoleName.STUDENT ? (
+              <Select
+                onChange={onChangeStudyingForm}
+                value={studyingForm}
+                options={budgetListDeprecated}
+                label={t('select studying form')}
+              />
+            ) : null}
+
+            {role === RoleName.STUDENT ? (
+              <TextInput
+                label={t('average mark')}
+                placeholder={t('enter average mark')}
+                onChange={onChangeMark}
+                value={String(mark)}
+                className={cls.input}
+              />
+            ) : null}
 
             {validationError?.length
               ? validationError.map((error) => (
@@ -261,6 +339,25 @@ export const RegisterForm: FC<RegisterFormProps> = (props) => {
                 items={rolesList}
                 label={t('select your role')}
               />
+
+              {role === RoleName.STUDENT ? (
+                <ListBox<UserStudyingForm>
+                  onChange={onChangeStudyingForm}
+                  value={studyingForm}
+                  items={budgetList}
+                  label={t('select studying form')}
+                />
+              ) : null}
+
+              {role === RoleName.STUDENT ? (
+                <Input
+                  label={t('average mark')}
+                  placeholder={t('enter average mark')}
+                  onChange={onChangeMark}
+                  value={String(mark)}
+                  className={cls.input}
+                />
+              ) : null}
 
               {validationError?.length
                 ? validationError.map((error) => (

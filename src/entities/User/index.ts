@@ -11,3 +11,4 @@ export { UsersSort, UsersRoles } from './model/constants/usersFilters';
 export { useGetUser, refetchUser } from './api/userApi';
 export { getUserFeatureFlags } from './services/getUserFeatureFlags';
 export { UserCard } from './ui/UserCard/UserCard';
+export { UserStudyingForm } from './model/constants/user';

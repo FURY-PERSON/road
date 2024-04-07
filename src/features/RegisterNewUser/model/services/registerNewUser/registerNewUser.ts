@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 
 import { ThunkConfig } from '@/app/providers/StoreProvider';
-import { AuthTokens, User, userActions } from '@/entities/User';
+import { AuthTokens, User, UserStudyingForm, userActions } from '@/entities/User';
 import { setFeatureFlags } from '@/shared/lib/helpers/features/lib/featureFlag';
 import { FeatureFlagsEntity } from '@/shared/lib/helpers/features';
 
@@ -35,7 +35,10 @@ export const registerNewUser = createAsyncThunk<
       login: form?.login,
       password: form?.password,
       email: form?.email,
-      roleName: form?.role
+      roleName: form?.role,
+      averageMark: Number(form?.mark) ? form?.mark : undefined,
+      course: 1,
+      budget: form?.studyingForm === UserStudyingForm.Budget
     });
     const { user, tokens } = response.data;
 
