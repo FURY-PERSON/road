@@ -31,13 +31,6 @@ export const createNews = (news: CreateNewsProps) => {
 
   formData.append('blocks', JSON.stringify([]));
 
-  /*   if (form?.image) {
-    const imageFetch = await fetch(form.image);
-    const blobFile = await imageFetch.blob();
-    formData.append('image', new Blob([blobFile]));
-  }
- */
-
   cy.request({
     method: 'POST',
     url: 'http://localhost:3005/api/news',

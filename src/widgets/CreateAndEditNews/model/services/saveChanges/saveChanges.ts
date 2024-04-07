@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 
 import { ThunkConfig } from '@/app/providers/StoreProvider';
-import { News, NewsType } from '@/entities/News';
+import { News, NewsBlockType, NewsImageBlock, NewsType } from '@/entities/News';
 
 import { getForm, getItem } from '../../selectors/createAdnEditNews';
 import { getCreateAndEditNews } from '../../slice/createAndEditNews.slice';
@@ -31,10 +31,29 @@ export const saveChanges = createAsyncThunk<News, string | undefined, ThunkConfi
         formData.append('blocks', JSON.stringify(stateBlocksToServer(blocks)));
       }
 
+      const imageBlocks = blocks
+        .filter((block) => block.type === NewsBlockType.IMAGE)
+        .map((block: any) => block) as NewsImageBlock[];
+
+      if (imageBlocks.length) {
+        const blobImagesPromise = imageBlocks.map(async (block) => {
+          const imageFetch = await fetch(block.image);
+          const blobFile = await imageFetch.blob();
+
+          return { blobFile, sequenceNumber: block.sequenceNumber };
+        });
+
+        const blobImages = await Promise.all(blobImagesPromise);
+
+        blobImages.forEach((blobImage) => {
+          formData.append(String(blobImage.sequenceNumber), new Blob([blobImage.blobFile]));
+        });
+      }
+
       if (form?.image) {
         const imageFetch = await fetch(form.image);
         const blobFile = await imageFetch.blob();
-        formData.append('image', new Blob([blobFile]));
+        formData.append('mainImage', new Blob([blobFile]));
       }
 
       if (newsId) {
@@ -56,6 +75,7 @@ export const saveChanges = createAsyncThunk<News, string | undefined, ThunkConfi
       ).data;
     } catch (error) {
       const typedError = error as AxiosError;
+      alert(typedError.response?.statusText || typedError.message);
       return thunkAPI.rejectWithValue(typedError.response?.statusText || typedError.message);
     }
   }
