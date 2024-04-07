@@ -5,5 +5,8 @@
   "last name": "last name",
   "phone": "phone",
   "email": "email",
-  "role": "role"
+  "role": "role",
+  "student": "student",
+  "worker": "worker",
+  "admin": "admin"
 }

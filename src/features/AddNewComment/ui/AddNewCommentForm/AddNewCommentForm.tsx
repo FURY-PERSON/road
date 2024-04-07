@@ -87,7 +87,7 @@ export const AddNewCommentForm: FC<AddNewCommentFormProps> = memo((props) => {
           >
             <Input
               className={clsR.input}
-              placeholder={t('Введите текст комментария')}
+              placeholder={t('Enter comment')}
               value={commentText}
               data-testid="AddNewCommentForm.commentInput"
               onChange={onCommentTextChange}
@@ -97,7 +97,7 @@ export const AddNewCommentForm: FC<AddNewCommentFormProps> = memo((props) => {
               onClick={onSendClick}
               variant="outline"
             >
-              {t('Отправить')}
+              {t('send')}
             </Button>
           </HStack>
         </Card>

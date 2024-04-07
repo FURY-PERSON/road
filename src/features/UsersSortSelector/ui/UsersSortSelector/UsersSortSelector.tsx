@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 
 import { UsersSort } from '@/entities/User';
 import { SortOrder } from '@/shared/types/sort';
@@ -7,8 +7,7 @@ import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
 import { ListBox } from '@/shared/ui/redesigned/popups';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-
-import { orderOptions, sortOptions } from '../../model/constants/usersSortSelector';
+import { SelectOption } from '@/shared/ui/deprecated/Select/Select';
 
 import cls from './UsersSortSelector.module.scss';
 
@@ -23,6 +22,23 @@ interface UsersSortSelectorProps {
 export const UsersSortSelector = memo((props: UsersSortSelectorProps) => {
   const { className, onChangeOrder, onChangeSort, order, sort } = props;
   const { t } = useTranslation();
+
+  const orderOptions: Array<SelectOption<SortOrder>> = useMemo(
+    () => [
+      { value: 'ASC', content: t('ascending') },
+      { value: 'DESC', content: t('descending') }
+    ],
+    [t]
+  );
+
+  const sortOptions: Array<SelectOption<UsersSort>> = useMemo(
+    () => [
+      { value: UsersSort.FIRST_NAME, content: t('last name') },
+      { value: UsersSort.LAST_NAME, content: t('first name') },
+      { value: UsersSort.LOGIN, content: t('login') }
+    ],
+    [t]
+  );
 
   return (
     <div className={classNames(cls.UsersSortSelector, {}, [className])}>

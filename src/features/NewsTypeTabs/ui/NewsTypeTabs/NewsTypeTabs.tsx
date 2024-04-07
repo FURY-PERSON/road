@@ -1,12 +1,11 @@
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { NewsType } from '@/entities/News';
 import { TabItem, Tabs } from '@/shared/ui/redesigned/Tabs';
 import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Tabs as TabsDeprecated } from '@/shared/ui/deprecated/Tabs/Tabs';
-
-import { newsTypeTabs } from '../../model/constants/newsTypeTabs';
 
 interface NewsTypeTabsProps {
   className?: string;
@@ -16,6 +15,8 @@ interface NewsTypeTabsProps {
 
 export const NewsTypeTabs = memo((props: NewsTypeTabsProps) => {
   const { className, value, onChangeType } = props;
+
+  const { t } = useTranslation();
 
   const onTabClick = useCallback(
     (tab: TabItem<NewsType>) => {
@@ -29,6 +30,14 @@ export const NewsTypeTabs = memo((props: NewsTypeTabsProps) => {
       onChangeType(tab);
     },
     [onChangeType]
+  );
+
+  const newsTypeTabs: Array<TabItem<NewsType>> = useMemo(
+    () => [
+      { value: NewsType.ALL, content: t('all') },
+      { value: NewsType.WARNING, content: t('warning') }
+    ],
+    [t]
   );
 
   return (

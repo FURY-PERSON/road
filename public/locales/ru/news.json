@@ -28,5 +28,6 @@
   "created at": "создано",
   "first name": "имя",
   "last name": "фамилия",
-  "can not find news": "новость не найдена"
+  "can not find news": "новость не найдена",
+  "comments": "комменатрии"
 }

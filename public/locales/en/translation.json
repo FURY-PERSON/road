@@ -61,8 +61,12 @@
   "tenant login": "user login",
   "request settlement": "request settlement",
   "manage settlement": "manage settlement",
+  "floor not selected": "floor not selected",
+  "search": "search",
+  "comments": "comments",
+  "Enter comment": "Enter comment",
 
-  "scientific work": "Scientific work",
+  "scientific work": "Scientific works",
   "work title": "work title",
   "work type": "work type",
   "date of work": "date of work",
@@ -72,7 +76,7 @@
   "Edit scientific work": "Edit scientific work",
   "Add scientific work": "Add scientific work",
 
-  "rebuke": "Rebuke",
+  "rebuke": "Rebukes",
   "rebuke note": "rebuke note",
   "rebuke type": "rebuke type",
   "rebuke start date": "rebuke start date",

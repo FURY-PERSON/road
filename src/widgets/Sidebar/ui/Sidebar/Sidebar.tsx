@@ -1,5 +1,6 @@
 import { memo, FC, useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import { LanguageSwitcher } from '@/features/LanguageSwitcher';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
@@ -26,7 +27,9 @@ export const Sidebar: FC<SidebarProps> = memo((props) => {
   const { className } = props;
   const [collapsed, serCollapsed] = useState(false);
 
-  const sidebarItemList = useSelector(getSidebarItemList);
+  const { t } = useTranslation();
+
+  const sidebarItemList = useSelector(getSidebarItemList(t));
 
   const onToggle = useCallback(() => {
     serCollapsed((value) => !value);

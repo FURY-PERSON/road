@@ -15,8 +15,8 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    lng: SupportedLanguages.EN,
-    fallbackLng: SupportedLanguages.EN,
+    lng: SupportedLanguages.RU,
+    fallbackLng: SupportedLanguages.RU,
     saveMissing: true,
     debug: !!__IS__DEV__,
 

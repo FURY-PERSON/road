@@ -20,94 +20,95 @@ import { toggleFeatures } from '@/shared/lib/helpers/features/helpers/toggleFeat
 
 import { ISidebarItem } from '../../types/item';
 
-export const getSidebarItemList = createSelector(getUserData, (userData) => {
-  const items: ISidebarItem[] = [
-    {
-      path: routes.main(),
-      Icon: toggleFeatures({
-        name: 'newDesign',
-        off: () => MainIcon,
-        on: () => MainIcon
-      }),
-      text: i18n.t('to main')
-    },
-    {
-      path: routes.about(),
-      Icon: toggleFeatures({
-        name: 'newDesign',
-        off: () => BookIconDeprecated,
-        on: () => AboutIcon
-      }),
-      text: i18n.t('to about')
-    }
-  ];
-
-  if (userData) {
-    items.push(
+export const getSidebarItemList = (t) =>
+  createSelector(getUserData, (userData) => {
+    const items: ISidebarItem[] = [
       {
-        path: routes.users(),
+        path: routes.main(),
         Icon: toggleFeatures({
           name: 'newDesign',
-          off: () => ProfileIconDeprecated,
-          on: () => UsersIcon
+          off: () => MainIcon,
+          on: () => MainIcon
         }),
-        text: i18n.t('to users'),
-        roles: [RoleName.ADMIN]
+        text: i18n.t('to main')
       },
       {
-        path: routes.blocks(),
-        Icon: BlocksIcon,
-        text: i18n.t('to blocks'),
-        roles: [RoleName.ADMIN]
-      },
-      {
-        path: routes.blocksInfo(userData.block?.id || ''),
-        Icon: BlocksIcon,
-        text: i18n.t('to my block'),
-        roles: [RoleName.STUDENT]
-      },
-      {
-        path: routes.profile(userData.login),
+        path: routes.about(),
         Icon: toggleFeatures({
           name: 'newDesign',
-          off: () => ProfileIconDeprecated,
-          on: () => AvatarIcon
+          off: () => BookIconDeprecated,
+          on: () => AboutIcon
         }),
-        text: i18n.t('to profile'),
-        roles: [RoleName.STUDENT, RoleName.WORKER]
-      },
-      {
-        path: routes.news(),
-        Icon: toggleFeatures({
-          name: 'newDesign',
-          off: () => NewsIconDeprecated,
-          on: () => ArticleIcon
-        }),
-        text: i18n.t('to news')
-      },
-      {
-        path: routes.newsCreate(),
-        Icon: toggleFeatures({
-          name: 'newDesign',
-          off: () => NewsIconDeprecated,
-          on: () => PenIcon
-        }),
-        text: i18n.t('create news'),
-        roles: [RoleName.ADMIN]
-      },
-      {
-        path: routes.settlementRequest(),
-        Icon: CalendarIcon,
-        text: i18n.t('request settlement')
-      },
-      {
-        path: routes.settlementProcess(),
-        Icon: BookListIcon,
-        text: i18n.t('manage settlement'),
-        roles: [RoleName.ADMIN]
+        text: i18n.t('to about')
       }
-    );
-  }
+    ];
 
-  return items;
-});
+    if (userData) {
+      items.push(
+        {
+          path: routes.users(),
+          Icon: toggleFeatures({
+            name: 'newDesign',
+            off: () => ProfileIconDeprecated,
+            on: () => UsersIcon
+          }),
+          text: i18n.t('to users'),
+          roles: [RoleName.ADMIN]
+        },
+        {
+          path: routes.blocks(),
+          Icon: BlocksIcon,
+          text: i18n.t('to blocks'),
+          roles: [RoleName.ADMIN]
+        },
+        {
+          path: routes.blocksInfo(userData.block?.id || ''),
+          Icon: BlocksIcon,
+          text: i18n.t('to my block'),
+          roles: [RoleName.STUDENT]
+        },
+        {
+          path: routes.profile(userData.login),
+          Icon: toggleFeatures({
+            name: 'newDesign',
+            off: () => ProfileIconDeprecated,
+            on: () => AvatarIcon
+          }),
+          text: i18n.t('to profile'),
+          roles: [RoleName.STUDENT, RoleName.WORKER]
+        },
+        {
+          path: routes.news(),
+          Icon: toggleFeatures({
+            name: 'newDesign',
+            off: () => NewsIconDeprecated,
+            on: () => ArticleIcon
+          }),
+          text: i18n.t('to news')
+        },
+        {
+          path: routes.newsCreate(),
+          Icon: toggleFeatures({
+            name: 'newDesign',
+            off: () => NewsIconDeprecated,
+            on: () => PenIcon
+          }),
+          text: i18n.t('create news'),
+          roles: [RoleName.ADMIN]
+        },
+        {
+          path: routes.settlementRequest(),
+          Icon: CalendarIcon,
+          text: i18n.t('request settlement')
+        },
+        {
+          path: routes.settlementProcess(),
+          Icon: BookListIcon,
+          text: i18n.t('manage settlement'),
+          roles: [RoleName.ADMIN]
+        }
+      );
+    }
+
+    return items;
+  });

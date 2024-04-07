@@ -1,4 +1,4 @@
-import { memo, FC, useCallback } from 'react';
+import { memo, FC, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
@@ -8,7 +8,7 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitial
 import { SvgLoader } from '@/shared/ui/deprecated/SvgLoader';
 import { Text as TextDeprecated, TextVariant } from '@/shared/ui/deprecated/Text/Text';
 import { RoleName } from '@/entities/Role';
-import { Select } from '@/shared/ui/deprecated/Select/Select';
+import { Select, SelectOption } from '@/shared/ui/deprecated/Select/Select';
 import { TextInput } from '@/shared/ui/deprecated/TextInput/TextInput';
 import { RoleGuard } from '@/features/RoleGuard';
 import { ToggleFeatures } from '@/shared/lib/helpers/features/components/ToggleFeatures/ToggleFeatures';
@@ -28,7 +28,7 @@ import { getProfileValidationErrors } from '../../model/selectors/getProfileVali
 import { fetchProfile } from '../../model/services/fetchProfileData/fetchProfileData';
 import { profileActions } from '../../model/slice/profile.slice';
 import { ProfileCardHeader } from '../Header/ProfileCardHeader';
-import { errorMap, roleOptionsDeprecated } from '../../model/constants/editableProfileCard';
+import { errorMap } from '../../model/constants/editableProfileCard';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 
 import cls from './EditableProfileCard.module.scss';
@@ -87,6 +87,15 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
       dispatch(profileActions.setRole(value));
     },
     [dispatch]
+  );
+
+  const roleOptionsDeprecated: SelectOption<RoleName>[] = useMemo(
+    () => [
+      { value: RoleName.ADMIN, content: t('admin') },
+      { value: RoleName.WORKER, content: t('worker') },
+      { value: RoleName.STUDENT, content: t('student') }
+    ],
+    [t]
   );
 
   if (loading) {
