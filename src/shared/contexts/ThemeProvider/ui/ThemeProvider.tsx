@@ -6,7 +6,7 @@ interface ThemeProviderProps {
   children?: ReactNode;
 }
 
-const defaultTheme = (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) || Theme.Light;
+const defaultTheme = (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) || Theme.Dark;
 
 export const ThemeProvider = (props: ThemeProviderProps) => {
   const { children } = props;

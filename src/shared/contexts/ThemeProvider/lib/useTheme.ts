@@ -17,7 +17,7 @@ export const useTheme = (): IUseTheme => {
   };
 
   return {
-    theme: theme || Theme.Light,
+    theme: theme || Theme.Dark,
     toggleTheme: toggle
   };
 };

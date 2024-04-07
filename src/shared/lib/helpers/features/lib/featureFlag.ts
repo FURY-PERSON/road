@@ -1,6 +1,8 @@
 import { FeatureFlags, FeatureFlagsEntity } from '../types/featuresFlags';
 
-let featureFlags: FeatureFlags = {};
+let featureFlags: FeatureFlags = {
+  newDesign: true
+};
 
 export function setFeatureFlags(newFeatureFlagsEntity?: FeatureFlagsEntity) {
   if (newFeatureFlagsEntity) {
