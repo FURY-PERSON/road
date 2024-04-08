@@ -85,5 +85,15 @@
   "strong": "Плохо",
   "no rebukes": "Нет выговоров :)",
   "Edit rebuke": "Изменение выговора",
-  "Add rebuke": "Добавление выговора"
+  "Add rebuke": "Добавление выговора",
+
+  "settlement processes": "Процессы заселения",
+  "process state": "Статус",
+  "process start date": "Дата начала",
+  "process finish date": "Дата завершения",
+
+  "finished": "Процесс завершен",
+  "started": "Процесс начат",
+  "rooms allocated": "Комнаты распределены",
+  "dorms assigned": "Общежития назначены"
 }

@@ -7,7 +7,7 @@ import MainIcon from '@/shared/assets/icons/home.svg';
 import UsersIcon from '@/shared/assets/icons/users.svg';
 import BlocksIcon from '@/shared/assets/icons/kebab.svg';
 import AvatarIcon from '@/shared/assets/icons/avatar.svg';
-import CalendarIcon from '@/shared/assets/icons/calendar-20-20.svg';
+import CalendarIcon from '@/shared/assets/icons/calendar.svg';
 import BookListIcon from '@/shared/assets/icons/about-20-20.svg';
 import BookIconDeprecated from '@/shared/assets/icons/book.svg';
 import ProfileIconDeprecated from '@/shared/assets/icons/profile.svg';
@@ -94,7 +94,7 @@ export const getSidebarItemList = (t) =>
             on: () => PenIcon
           }),
           text: i18n.t('create news'),
-          roles: [RoleName.ADMIN]
+          roles: [RoleName.ADMIN, RoleName.WORKER]
         },
         {
           path: routes.settlementRequest(),

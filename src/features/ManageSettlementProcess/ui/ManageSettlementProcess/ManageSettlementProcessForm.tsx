@@ -1,33 +1,48 @@
-import { memo } from 'react';
+import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import {
   useGetActiveSettlementProcess,
-  useStartSettlementProcessMutation
+  useCreateSettlementProcess
 } from '@/entities/SettlementProcess';
 import { Button } from '@/shared/ui/redesigned/Button/Button';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
-import { StudentSettlementList } from '@/entities/StudentSettlement';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 
-import { SettlementProcessStateToolbar } from './SettlementProcessStateToolbar';
+import { SettlementProcessStateToolbar } from '../SettlementProcessStateToolbar/SettlementProcessStateToolbar';
 
-export const ManageSettlementProcessForm = memo(() => {
+import cls from './ManageSettlementProcessForm.module.scss';
+
+interface ManageSettlementProcessFormProps {
+  className?: string;
+}
+
+export const ManageSettlementProcessForm: FC<ManageSettlementProcessFormProps> = memo((props) => {
+  const { className } = props;
+
   const { t } = useTranslation('process');
 
   const { data: activeProcess, isError } = useGetActiveSettlementProcess();
-  const [startProcess] = useStartSettlementProcessMutation();
+  const [startProcess] = useCreateSettlementProcess();
 
   if (!activeProcess || isError) {
     return (
-      <Button variant="filled" onClick={() => startProcess()}>
-        {t('create process')}
-      </Button>
+      <VStack gap={32} className={classNames(cls.ManageSettlementProcessForm, {}, [className])}>
+        <Button
+          variant="filled"
+          onClick={() => startProcess()}
+          className={classNames(cls.ManageSettlementProcessForm, {}, [className])}
+        >
+          {t('create process')}
+        </Button>
+      </VStack>
     );
   }
+
   return (
-    <VStack gap={32}>
-      <SettlementProcessStateToolbar process={activeProcess} />
-      <StudentSettlementList settlementProcessState={activeProcess.state} />
-    </VStack>
+    <SettlementProcessStateToolbar
+      process={activeProcess}
+      className={classNames(cls.ManageSettlementProcessForm, {}, [className])}
+    />
   );
 });

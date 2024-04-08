@@ -85,5 +85,15 @@
   "strong": "Strong",
   "no rebukes": "no rebukes :)",
   "Edit rebuke": "Edit rebuke",
-  "Add rebuke": "Add rebuke"
+  "Add rebuke": "Add rebuke",
+
+  "settlement processes": "settlement processes",
+  "process state": "state",
+  "process start date": "start date",
+  "process finish date": "finish date",
+
+  "finished": "finished",
+  "started": "started",
+  "rooms allocated": "rooms allocated",
+  "dorms assigned": "dorms assigned"
 }

@@ -1,10 +1,10 @@
 {
-    "settlement process management": "Управление заселением",
-    "create process": "создать процесс",
-    "assign dorms": "распределить общежития",
-    "allocate rooms": "распределить по комнатам",
-    "finish": "завершить",
-    "reject": "отклонить",
-    "dorm": "общежитие",
-    "room": "комната"
+  "settlement process management": "Управление заселением",
+  "create process": "создать процесс",
+  "assign dorms": "распределить общежития",
+  "allocate rooms": "распределить по комнатам",
+  "finish": "завершить",
+  "reject": "отклонить",
+  "dorm": "общежитие",
+  "room": "комната"
 }

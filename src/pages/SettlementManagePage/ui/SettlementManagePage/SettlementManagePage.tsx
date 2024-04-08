@@ -1,12 +1,21 @@
 import { memo } from 'react';
 
-import { ManageSettlementProcessForm } from '@/features/ManageSettlementProcess/ui/ManageSettlementProcess/ManageSettlementProcessForm';
-import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
+import { SettlementProcesses } from '@/features/SettlementProcesses';
+import { StickyContentLayout } from '@/shared/ui/redesigned/layouts/StickyContentLayout';
+import { Page } from '@/widgets/Page';
+import { ManageSettlementProcessForm } from '@/features/ManageSettlementProcess';
+
+import cls from './SettlementManagePage.module.scss';
 
 export const SettlementManagePage = memo(() => {
   return (
-    <VStack>
-      <ManageSettlementProcessForm />
-    </VStack>
+    <StickyContentLayout
+      right={<ManageSettlementProcessForm className={cls.ManageSettlementProcessForm} />}
+      content={
+        <Page testId="SettlementManagePage">
+          <SettlementProcesses />
+        </Page>
+      }
+    />
   );
 });

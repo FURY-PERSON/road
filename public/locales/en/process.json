@@ -1,10 +1,10 @@
 {
-    "settlement process management": "Settlement process management",
-    "create process": "create process",
-    "assign dorms": "assign dorms",
-    "allocate rooms": "allocate rooms",
-    "finish": "finish",
-    "reject": "reject",
-    "dorm": "dorm",
-    "room": "room"
+  "settlement process management": "Settlement process management",
+  "create process": "create process",
+  "assign dorms": "assign dorms",
+  "allocate rooms": "allocate rooms",
+  "finish": "finish",
+  "reject": "reject",
+  "dorm": "dorm",
+  "room": "room"
 }

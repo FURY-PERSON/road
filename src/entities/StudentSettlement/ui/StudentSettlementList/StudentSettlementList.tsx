@@ -2,7 +2,7 @@ import { FC, memo, useMemo } from 'react';
 
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 import { useGetAllUsers } from '@/entities/User/api/userApi';
-import { SettlementProcessState } from '@/entities/SettlementProcess/models/types/settlementProcess';
+import { SettlementProcessState } from '@/entities/SettlementProcess/@x/StudentSettlement';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 

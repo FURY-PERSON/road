@@ -3,26 +3,29 @@ import { useTranslation } from 'react-i18next';
 
 import {
   SettlementProcess,
-  useSetSettlementProcessStateMutation
+  useUpdateSettlementProcessState,
+  SettlementProcessState
 } from '@/entities/SettlementProcess';
 import { Card } from '@/shared/ui/redesigned/Card';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
-import { HStack } from '@/shared/ui/redesigned/Stack/HStack/HStack';
 import { Button } from '@/shared/ui/redesigned/Button/Button';
-import { SettlementProcessState } from '@/entities/SettlementProcess/models/types/settlementProcess';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+
+import cls from './SettlementProcessStateToolbar.module.scss';
 
 interface SettlementProcessStateToolbarProps {
+  className?: string;
   process: SettlementProcess;
 }
 
 export const SettlementProcessStateToolbar: FC<SettlementProcessStateToolbarProps> = memo(
   (props) => {
-    const { process } = props;
+    const { process, className } = props;
 
     const { t } = useTranslation('process');
 
-    const [setProcessState] = useSetSettlementProcessStateMutation();
+    const [setProcessState] = useUpdateSettlementProcessState();
 
     const onStateChanged = useCallback(
       (newState: SettlementProcessState) => () =>
@@ -31,10 +34,10 @@ export const SettlementProcessStateToolbar: FC<SettlementProcessStateToolbarProp
     );
 
     return (
-      <Card>
+      <Card className={classNames(cls.SettlementProcessStateToolbar, {}, [className])}>
         <VStack gap={24}>
           <Text text={t('settlement process management')} />
-          <HStack gap={16}>
+          <VStack gap={16}>
             <Button
               disabled={process.state !== SettlementProcessState.STARTED}
               onClick={onStateChanged(SettlementProcessState.DORMS_ASSIGNED)}
@@ -52,7 +55,7 @@ export const SettlementProcessStateToolbar: FC<SettlementProcessStateToolbarProp
             <Button onClick={onStateChanged(SettlementProcessState.FINISHED)} variant="outline">
               {t('finish')}
             </Button>
-          </HStack>
+          </VStack>
         </VStack>
       </Card>
     );

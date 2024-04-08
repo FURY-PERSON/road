@@ -1,21 +1,29 @@
+import camelcaseKeys from 'camelcase-keys';
+
 import { settlementRtkApi } from '@/shared/api/rtkApi';
 
-import { SettlementProcess, SettlementProcessState } from '../models/types/settlementProcess';
+import { SettlementProcess } from '../model/types/settlementProcess';
+import { SettlementProcessState } from '../model/constants/settlementProcess';
 
 const settlementProcessApi = settlementRtkApi.injectEndpoints({
   endpoints: (build) => ({
-    getActive: build.query<SettlementProcess, void>({
+    getSettlementProcesses: build.query<SettlementProcess[], void>({
+      providesTags: ['settlementProcess'],
+      query: () => 'settlement/processes',
+      transformResponse: (body: any) => body.map((obj) => camelcaseKeys(obj)).reverse()
+    }),
+    getActiveSettlementProcess: build.query<SettlementProcess, void>({
       providesTags: ['settlementProcess'],
       query: () => 'settlement/processes/active'
     }),
-    startProcess: build.mutation<void, void>({
+    createSettlementProcess: build.mutation<void, void>({
       invalidatesTags: ['settlementProcess', 'studentSettlement'],
       query: () => ({
         url: 'settlement/processes',
         method: 'POST'
       })
     }),
-    setState: build.mutation<
+    updateSettlementProccessState: build.mutation<
       SettlementProcess,
       { processId: string; state: SettlementProcessState }
     >({
@@ -31,8 +39,12 @@ const settlementProcessApi = settlementRtkApi.injectEndpoints({
   })
 });
 
-export const useGetActiveSettlementProcess = settlementProcessApi.useGetActiveQuery;
+export const useGetSettlementProcesses = settlementProcessApi.useGetSettlementProcessesQuery;
 
-export const useSetSettlementProcessStateMutation = settlementProcessApi.useSetStateMutation;
+export const useGetActiveSettlementProcess =
+  settlementProcessApi.useGetActiveSettlementProcessQuery;
 
-export const useStartSettlementProcessMutation = settlementProcessApi.useStartProcessMutation;
+export const useUpdateSettlementProcessState =
+  settlementProcessApi.useUpdateSettlementProccessStateMutation;
+
+export const useCreateSettlementProcess = settlementProcessApi.useCreateSettlementProcessMutation;

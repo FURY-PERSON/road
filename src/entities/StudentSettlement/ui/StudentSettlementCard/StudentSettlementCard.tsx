@@ -6,7 +6,7 @@ import { HStack } from '@/shared/ui/redesigned/Stack/HStack/HStack';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
 import { User } from '@/entities/User';
 import { Button } from '@/shared/ui/redesigned/Button/Button';
-import { SettlementProcessState } from '@/entities/SettlementProcess/models/types/settlementProcess';
+import { SettlementProcessState } from '@/entities/SettlementProcess/@x/StudentSettlement';
 
 import { StudentSettlement } from '../../model/types/studentSettelement';
 import {
