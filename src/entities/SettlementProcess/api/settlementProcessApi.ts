@@ -5,12 +5,22 @@ import { settlementRtkApi } from '@/shared/api/rtkApi';
 import { SettlementProcess } from '../model/types/settlementProcess';
 import { SettlementProcessState } from '../model/constants/settlementProcess';
 
+interface GetSettlementProcessById {
+  id: string;
+}
+
 const settlementProcessApi = settlementRtkApi.injectEndpoints({
   endpoints: (build) => ({
     getSettlementProcesses: build.query<SettlementProcess[], void>({
       providesTags: ['settlementProcess'],
       query: () => 'settlement/processes',
       transformResponse: (body: any) => body.map((obj) => camelcaseKeys(obj)).reverse()
+    }),
+    getSettlementProcessById: build.query<SettlementProcess, GetSettlementProcessById>({
+      providesTags: ['settlementProcess'],
+      query: () => 'settlement/processes',
+      transformResponse: (body: any, _, args) =>
+        body.map((obj) => camelcaseKeys(obj)).filter((item) => item.id === args.id)[0]
     }),
     getActiveSettlementProcess: build.query<SettlementProcess, void>({
       providesTags: ['settlementProcess'],
@@ -40,6 +50,8 @@ const settlementProcessApi = settlementRtkApi.injectEndpoints({
 });
 
 export const useGetSettlementProcesses = settlementProcessApi.useGetSettlementProcessesQuery;
+
+export const useGetSettlementProcessById = settlementProcessApi.useGetSettlementProcessByIdQuery;
 
 export const useGetActiveSettlementProcess =
   settlementProcessApi.useGetActiveSettlementProcessQuery;

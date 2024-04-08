@@ -11,7 +11,8 @@ const getRouteNewsDetails = (id: string) => `/news/${id}`;
 const getRouteNewsCreate = () => '/news/create';
 const getRouteNewsEdit = (id: string) => `/news/${id}/edit`;
 const getRouteSettlementRequest = () => '/settlement/request';
-const getRouteSettlementProcess = () => '/settlement/process';
+const getRouteSettlementProcessesInfo = () => '/settlement/processes';
+const getRouteSettlementProcess = (id: string) => `/settlement/process/${id}`;
 const getRouteNotFound = () => '*';
 
 export const routes = {
@@ -28,6 +29,7 @@ export const routes = {
   newsCreate: getRouteNewsCreate,
   newsEdit: getRouteNewsEdit,
   settlementRequest: getRouteSettlementRequest,
+  settlementProcessesInfo: getRouteSettlementProcessesInfo,
   settlementProcess: getRouteSettlementProcess,
   notFound: getRouteNotFound
 };
@@ -46,6 +48,7 @@ export const AppRouteByPathPattern: Record<string, RouteName> = {
   [routes.newsDetails(':id')]: 'newsDetails',
   [routes.newsCreate()]: 'newsCreate',
   [routes.settlementRequest()]: 'settlementRequest',
-  [routes.settlementProcess()]: 'settlementProcess',
+  [routes.settlementProcessesInfo()]: 'settlementProcessesInfo',
+  [routes.settlementProcess(':id')]: 'settlementProcess',
   [routes.newsEdit(':id')]: 'newsEdit'
 };

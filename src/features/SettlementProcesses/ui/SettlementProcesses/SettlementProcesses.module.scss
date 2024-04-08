@@ -10,10 +10,16 @@
     margin-top: 24px;
   }
 
-  .card {
-    position: relative;
-    padding: 24px;
-    border: 1px solid var(--accent-redesigned);
-    border-radius: 20px; 
+  .cardLink {
+      width: 100%;
+
+    > .card {
+      position: relative;
+      padding: 24px;
+      border: 1px solid var(--accent-redesigned);
+      border-radius: 20px; 
+    }
   }
+
+  
 }

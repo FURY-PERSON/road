@@ -15,6 +15,7 @@ import { BlocksPage } from '@/pages/BlocksPage';
 import { BlockInfoPage } from '@/pages/BlockInfoPage';
 import { SettlementRequestPage } from '@/pages/SettlementRequestPage';
 import { SettlementManagePage } from '@/pages/SettlementManagePage';
+import { SettlementProcessPage } from '@/pages/SettlementProcessPage/ui/SettlementProcessPage/SettlementProcessPage';
 
 import { RequireAuth } from '../ui/RequireAuth';
 
@@ -113,10 +114,18 @@ export const appRouteConfig: Array<RouteProps> = [
     )
   },
   {
-    path: routes.settlementProcess(),
+    path: routes.settlementProcessesInfo(),
     element: (
       <RequireAuth>
         <SettlementManagePage />
+      </RequireAuth>
+    )
+  },
+  {
+    path: routes.settlementProcess(':id'),
+    element: (
+      <RequireAuth>
+        <SettlementProcessPage />
       </RequireAuth>
     )
   },

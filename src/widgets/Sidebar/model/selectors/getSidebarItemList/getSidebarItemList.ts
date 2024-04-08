@@ -102,7 +102,7 @@ export const getSidebarItemList = (t) =>
           text: i18n.t('request settlement')
         },
         {
-          path: routes.settlementProcess(),
+          path: routes.settlementProcessesInfo(),
           Icon: BookListIcon,
           text: i18n.t('manage settlement'),
           roles: [RoleName.ADMIN]

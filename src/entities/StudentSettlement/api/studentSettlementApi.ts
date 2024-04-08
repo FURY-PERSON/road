@@ -5,6 +5,10 @@ import { settlementRtkApi } from '@/shared/api/rtkApi';
 
 import { StudentSettlement } from '../model/types/studentSettelement';
 
+interface GetStudentSettlementsByProcessArgs {
+  processId: string;
+}
+
 interface StudentSettlementUpdate {
   studentId: string;
   dormId?: string;
@@ -16,6 +20,14 @@ const studentSettlementApi = settlementRtkApi.injectEndpoints({
     getStudentSettlements: build.query<StudentSettlement[], void>({
       providesTags: ['studentSettlement'],
       query: () => 'settlement/students',
+      transformResponse: (body: any) => body.map((obj) => camelcaseKeys(obj))
+    }),
+    getStudentSettlementsByProcess: build.query<
+      StudentSettlement[],
+      GetStudentSettlementsByProcessArgs
+    >({
+      providesTags: ['studentSettlement'],
+      query: (args) => `settlement/processes/${args.processId}/students`,
       transformResponse: (body: any) => body.map((obj) => camelcaseKeys(obj))
     }),
     updateStudentSettlement: build.mutation<void, StudentSettlementUpdate>({
@@ -37,6 +49,9 @@ const studentSettlementApi = settlementRtkApi.injectEndpoints({
 });
 
 export const useGetStudentSettlements = studentSettlementApi.useGetStudentSettlementsQuery;
+
+export const useGetStudentSettlementsByProcess =
+  studentSettlementApi.useGetStudentSettlementsByProcessQuery;
 
 export const { useRejectStudentSettlementMutation, useUpdateStudentSettlementMutation } =
   studentSettlementApi;

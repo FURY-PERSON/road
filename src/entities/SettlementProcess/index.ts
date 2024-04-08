@@ -3,7 +3,8 @@ export {
   useUpdateSettlementProcessState,
   useGetActiveSettlementProcess,
   useCreateSettlementProcess,
-  useGetSettlementProcesses
+  useGetSettlementProcesses,
+  useGetSettlementProcessById
 } from './api/settlementProcessApi';
 export { SettlementProcessState } from './model/constants/settlementProcess';
 

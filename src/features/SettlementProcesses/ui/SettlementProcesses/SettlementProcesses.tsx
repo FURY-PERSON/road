@@ -7,6 +7,8 @@ import { Card } from '@/shared/ui/redesigned/Card';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
 import { SvgLoader } from '@/shared/ui/redesigned/SvgLoader';
+import { AppLink } from '@/shared/ui/redesigned/AppLink/AppLink';
+import { routes } from '@/shared/constant/router';
 
 import { useSettlementProcesses } from '../../model/hooks/useSettlementProcesses';
 
@@ -42,7 +44,9 @@ export const SettlementProcesses: FC<SettlementProcessesProps> = (props) => {
 
         <VStack gap={16} max>
           {settlementProcesses?.map((item) => (
-            <SettlementProcessCard key={item.id} item={item} className={cls.card} />
+            <AppLink to={routes.settlementProcess(item.id)} className={cls.cardLink}>
+              <SettlementProcessCard key={item.id} item={item} className={cls.card} />
+            </AppLink>
           ))}
         </VStack>
       </VStack>
