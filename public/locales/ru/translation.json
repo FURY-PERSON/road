@@ -88,6 +88,8 @@
   "Add rebuke": "Добавление выговора",
 
   "settlement processes": "Процессы заселения",
+  "settlement process": "Процесс заселения",
+  "student settlements list": "Список студенческих заявок на заселение",
   "process state": "Статус",
   "process start date": "Дата начала",
   "process finish date": "Дата завершения",
@@ -98,5 +100,8 @@
   "dorms assigned": "Общежития назначены",
 
   "last name": "фамилия",
-  "first name": "имя"
+  "first name": "имя",
+
+  "no items": "ничего не найдено",
+  "create process": "Создать процесс"
 }

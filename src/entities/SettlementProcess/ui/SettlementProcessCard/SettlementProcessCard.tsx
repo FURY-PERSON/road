@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
@@ -6,7 +6,7 @@ import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
 
 import { SettlementProcess } from '../../model/types/settlementProcess';
-import { settlementProcessTypeMap } from '../../model/constants/settlementProcess';
+import { SettlementProcessState } from '../../@x/StudentSettlement';
 
 import cls from './SettlementProcessCard.module.scss';
 
@@ -20,6 +20,15 @@ export const SettlementProcessCard: FC<SettlementProcessCardProps> = (props) => 
 
   const { t } = useTranslation();
 
+  const settlementProcessTypeMap: Record<SettlementProcessState, string> = useMemo(() => {
+    return {
+      [SettlementProcessState.DORMS_ASSIGNED]: t('dorms assigned'),
+      [SettlementProcessState.FINISHED]: t('finished'),
+      [SettlementProcessState.ROOMS_ALLOCATED]: t('rooms allocated'),
+      [SettlementProcessState.STARTED]: t('started')
+    };
+  }, [t]);
+
   return (
     <VStack gap={8} max className={classNames(cls.SettlementProcessCard, {}, [className])}>
       <Text
@@ -28,6 +37,7 @@ export const SettlementProcessCard: FC<SettlementProcessCardProps> = (props) => 
         text={settlementProcessTypeMap[item.state]}
         variant="accent"
         titleClassName={cls.title}
+        textClassName={cls.title}
       />
       <Text
         size="M"

@@ -87,7 +87,9 @@
   "Edit rebuke": "Edit rebuke",
   "Add rebuke": "Add rebuke",
 
-  "settlement processes": "settlement processes",
+  "settlement processes": "Settlement processes",
+  "settlement process": "Settlement process",
+  "student settlements list": "Student settlements list",
   "process state": "state",
   "process start date": "start date",
   "process finish date": "finish date",
@@ -98,5 +100,8 @@
   "dorms assigned": "dorms assigned",
 
   "last name": "last name",
-  "first name": "first name"
+  "first name": "first name",
+
+  "no items": "no items",
+  "create process": "create process"
 }

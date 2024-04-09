@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { FC, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
-import { StudentSettlementCard } from '@/entities/StudentSettlement/ui/StudentSettlementCard/StudentSettlementCard';
-import { SettlementProcessState } from '@/entities/SettlementProcess';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
 import { SvgLoader } from '@/shared/ui/redesigned/SvgLoader';
+import { StudentSettlement, StudentSettlementCard } from '@/entities/StudentSettlement';
 
 import { useStudentSettlementByProcess } from '../../model/hooks/useStudentSettlementByProcess';
 
@@ -19,7 +19,26 @@ interface StudentSettlementByProcessProps {
 export const StudentSettlementByProcess: FC<StudentSettlementByProcessProps> = (props) => {
   const { className, settlementProcessId } = props;
 
-  const { studentSettlements, loading, error } = useStudentSettlementByProcess(settlementProcessId);
+  const { t } = useTranslation();
+  const { studentSettlements, loading, error, settlementProcess, users } =
+    useStudentSettlementByProcess(settlementProcessId);
+
+  const getStudentSettlement = useCallback(
+    (item: StudentSettlement) => {
+      if (!settlementProcess?.state) return null;
+
+      const user = users?.filter((user) => user.id === item.student.id)[0];
+
+      return (
+        <StudentSettlementCard
+          settlementInfo={item}
+          settlementProcessState={settlementProcess?.state}
+          user={user}
+        />
+      );
+    },
+    [settlementProcess?.state, users]
+  );
 
   if (loading) {
     return <SvgLoader />;
@@ -30,18 +49,13 @@ export const StudentSettlementByProcess: FC<StudentSettlementByProcessProps> = (
   }
 
   return (
-    <VStack className={classNames(cls.SettlementProcessInfo, {}, [className])}>
-      <Text title="Student settlements list" />
+    <VStack gap={8} className={classNames(cls.SettlementProcessInfo, {}, [className])}>
+      <Text title={t('student settlements list')} />
 
       {studentSettlements?.length ? (
-        studentSettlements?.map((item) => (
-          <StudentSettlementCard
-            settlementInfo={item}
-            settlementProcessState={SettlementProcessState.FINISHED}
-          />
-        ))
+        studentSettlements?.map((item) => getStudentSettlement(item))
       ) : (
-        <Text text="no items" variant="accent" />
+        <Text text={t('no items')} variant="accent" />
       )}
     </VStack>
   );
