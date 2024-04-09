@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { RoleName } from '@/entities/Role';
+import { UserStudyingForm } from '@/entities/User';
 
 import { fetchProfile } from '../services/fetchProfileData/fetchProfileData';
 import { updateProfile } from '../services/updateProfileData/updateProfileData';
@@ -43,6 +44,15 @@ export const profileSlice = createSlice({
     },
     setEmail(state, action: PayloadAction<string>) {
       state.form.email = action.payload;
+    },
+    setCourse(state, action: PayloadAction<number | undefined>) {
+      state.form.course = action.payload;
+    },
+    setAverageMark(state, action: PayloadAction<number | undefined>) {
+      state.form.averageMark = action.payload;
+    },
+    setEducationForm(state, action: PayloadAction<UserStudyingForm>) {
+      state.form.budget = action.payload === UserStudyingForm.Budget;
     }
   },
   extraReducers: (builder) => {

@@ -8,5 +8,10 @@
   "role": "роль",
   "student": "студент",
   "worker": "рабочий",
-  "admin": "админ"
+  "admin": "админ",
+  "budget": "бюджет",
+  "paid": "платное",
+  "studying form": "форма обучения",
+  "course": "курс",
+  "average mark": "средняя оценка"
 }

@@ -12,6 +12,9 @@ export interface User {
   role: Role;
   permissions: Permission[];
   block?: Block;
+  course?: number;
+  budget?: boolean;
+  averageMark?: number;
 }
 
 export interface AuthTokens {

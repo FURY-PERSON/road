@@ -8,5 +8,10 @@
   "role": "role",
   "student": "student",
   "worker": "worker",
-  "admin": "admin"
+  "admin": "admin",
+  "budget": "budget",
+  "paid": "paid",
+  "studying form": "studying form",
+  "course": "course",
+  "average mark": "average mark"
 }

@@ -1,4 +1,4 @@
-import { memo, FC, useCallback } from 'react';
+import { memo, FC, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
@@ -7,7 +7,6 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { Select, SelectOption } from '@/shared/ui/deprecated/Select/Select';
 import { TextInput } from '@/shared/ui/deprecated/TextInput/TextInput';
 import { Card } from '@/shared/ui/deprecated/Card/Card';
-import i18n from '@/shared/config/i18n/i18n';
 import { SortOrder } from '@/shared/types/sort';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { TabItem, Tabs } from '@/shared/ui/deprecated/Tabs/Tabs';
@@ -23,24 +22,6 @@ interface UsersPageFilterProps {
   className?: string;
 }
 
-const orderOption: Array<SelectOption<SortOrder>> = [
-  { value: 'ASC', content: i18n.t('ascending') },
-  { value: 'DESC', content: i18n.t('descending') }
-];
-
-const sortOption: Array<SelectOption<UsersSort>> = [
-  { value: UsersSort.FIRST_NAME, content: i18n.t('last name') },
-  { value: UsersSort.LAST_NAME, content: i18n.t('first name') },
-  { value: UsersSort.LOGIN, content: i18n.t('login') }
-];
-
-const userRolesTabs: Array<TabItem<UsersRoles>> = [
-  { value: UsersRoles.ALL, content: i18n.t('all') },
-  { value: UsersRoles.ADMIN, content: i18n.t('admin') },
-  { value: UsersRoles.STUDENT, content: i18n.t('student') },
-  { value: UsersRoles.WORKER, content: i18n.t('worker') }
-];
-
 export const UsersPageFilter: FC<UsersPageFilterProps> = memo((props) => {
   const { className } = props;
   const dispatch = useAppDispatch();
@@ -49,6 +30,33 @@ export const UsersPageFilter: FC<UsersPageFilterProps> = memo((props) => {
   const role = useSelector(getRole);
   const sort = useSelector(getSort);
   const { t } = useTranslation();
+
+  const orderOption: Array<SelectOption<SortOrder>> = useMemo(
+    () => [
+      { value: 'ASC', content: t('ascending') },
+      { value: 'DESC', content: t('descending') }
+    ],
+    [t]
+  );
+
+  const sortOption: Array<SelectOption<UsersSort>> = useMemo(
+    () => [
+      { value: UsersSort.FIRST_NAME, content: t('last name') },
+      { value: UsersSort.LAST_NAME, content: t('first name') },
+      { value: UsersSort.LOGIN, content: t('login') }
+    ],
+    [t]
+  );
+
+  const userRolesTabs: Array<TabItem<UsersRoles>> = useMemo(
+    () => [
+      { value: UsersRoles.ALL, content: t('all') },
+      { value: UsersRoles.ADMIN, content: t('admin') },
+      { value: UsersRoles.STUDENT, content: t('student') },
+      { value: UsersRoles.WORKER, content: t('worker') }
+    ],
+    [t]
+  );
 
   const refetchUsers = useCallback(() => {
     dispatch(fetchUsersList({ replace: true }));

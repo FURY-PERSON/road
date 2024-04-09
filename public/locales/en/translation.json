@@ -95,5 +95,8 @@
   "finished": "finished",
   "started": "started",
   "rooms allocated": "rooms allocated",
-  "dorms assigned": "dorms assigned"
+  "dorms assigned": "dorms assigned",
+
+  "last name": "last name",
+  "first name": "first name"
 }

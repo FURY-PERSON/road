@@ -8,13 +8,25 @@ export const validateProfileForm = (profile?: Partial<EditableUser>): ProfileVal
     return Array.from(errors);
   }
 
-  const { firstName, lastName } = profile;
+  const { firstName, lastName, averageMark, budget, course } = profile;
 
   if (!firstName) {
     errors.add(ProfileValidationError.USER_DATA);
   }
 
   if (!lastName) {
+    errors.add(ProfileValidationError.USER_DATA);
+  }
+
+  if (!averageMark || averageMark > 10) {
+    errors.add(ProfileValidationError.USER_DATA);
+  }
+
+  if (budget === undefined) {
+    errors.add(ProfileValidationError.USER_DATA);
+  }
+
+  if (!course || course > 6) {
     errors.add(ProfileValidationError.USER_DATA);
   }
 

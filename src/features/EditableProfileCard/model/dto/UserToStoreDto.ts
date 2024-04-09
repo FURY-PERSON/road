@@ -21,6 +21,12 @@ export class UserToStoreDto implements EditableUser {
 
   block?: Block;
 
+  averageMark?: number;
+
+  course?: number;
+
+  budget?: boolean;
+
   constructor(user: User) {
     this.firstName = user.firstName;
     this.id = user.id;
@@ -30,5 +36,8 @@ export class UserToStoreDto implements EditableUser {
     this.email = user.email;
     this.roleName = user.role.name;
     this.block = user.block;
+    this.averageMark = user.averageMark;
+    this.course = user.course;
+    this.budget = user.budget;
   }
 }

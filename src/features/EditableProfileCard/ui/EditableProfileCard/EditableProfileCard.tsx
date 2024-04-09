@@ -19,6 +19,7 @@ import { Card } from '@/shared/ui/redesigned/Card';
 import { ListBox } from '@/shared/ui/redesigned/popups';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
 import { FeatureFlagsSwitcher } from '@/features/FeatureFlagsSwitcher';
+import { UserStudyingForm, getUserRoleName } from '@/entities/User';
 
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
@@ -49,6 +50,8 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
   const error = useSelector(getProfileError);
   const validationErrors = useSelector(getProfileValidationErrors);
   const readOnly = useSelector(getProfileReadonly);
+
+  const userRoleName = useSelector(getUserRoleName);
 
   useInitialEffect(() => {
     dispatch(fetchProfile({ login: login }));
@@ -89,11 +92,54 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
     [dispatch]
   );
 
+  const onChangeAverageMark = useCallback(
+    (value: string) => {
+      if (value === '') {
+        dispatch(profileActions.setAverageMark(undefined));
+        return;
+      }
+
+      if (!Number(value)) return;
+
+      dispatch(profileActions.setAverageMark(Number(value)));
+    },
+    [dispatch]
+  );
+
+  const onChangeCorse = useCallback(
+    (value: string) => {
+      if (value === '') {
+        dispatch(profileActions.setCourse(undefined));
+        return;
+      }
+
+      if (!Number(value)) return;
+
+      dispatch(profileActions.setCourse(Number(value)));
+    },
+    [dispatch]
+  );
+
+  const onChangeStudyingForm = useCallback(
+    (value: string) => {
+      dispatch(profileActions.setEducationForm(value as UserStudyingForm));
+    },
+    [dispatch]
+  );
+
   const roleOptionsDeprecated: SelectOption<RoleName>[] = useMemo(
     () => [
       { value: RoleName.ADMIN, content: t('admin') },
       { value: RoleName.WORKER, content: t('worker') },
       { value: RoleName.STUDENT, content: t('student') }
+    ],
+    [t]
+  );
+
+  const studyingFormsDeprecated: SelectOption<UserStudyingForm>[] = useMemo(
+    () => [
+      { value: UserStudyingForm.Budget, content: t('budget') },
+      { value: UserStudyingForm.Paid, content: t('paid') }
     ],
     [t]
   );
@@ -146,33 +192,57 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
               onChange={onChangeLastName}
             />
 
+            <TextInput
+              data-testid="EditableProfileCard.phoneInput"
+              label={t('phone')}
+              readOnly={readOnly || userRoleName !== RoleName.ADMIN}
+              value={formData?.phone}
+              onChange={onChangePhone}
+            />
+            <TextInput
+              data-testid="EditableProfileCard.emailInput"
+              label={t('email')}
+              readOnly={readOnly || userRoleName !== RoleName.ADMIN}
+              value={formData?.email}
+              onChange={onChangeEmail}
+            />
+
+            <TextInput
+              data-testid="EditableProfileCard.averageMark"
+              label={t('average mark')}
+              readOnly={readOnly || userRoleName !== RoleName.ADMIN}
+              value={formData?.averageMark !== undefined ? String(formData.averageMark) : ''}
+              onChange={onChangeAverageMark}
+              type="number"
+            />
+
+            <TextInput
+              data-testid="EditableProfileCard.course"
+              label={t('course')}
+              readOnly={readOnly || userRoleName !== RoleName.ADMIN}
+              value={formData?.course !== undefined ? String(formData.course) : ''}
+              onChange={onChangeCorse}
+              type="number"
+            />
+
+            <Select<UserStudyingForm>
+              readonly={readOnly || userRoleName !== RoleName.ADMIN}
+              options={studyingFormsDeprecated}
+              label={t('studying form')}
+              onChange={onChangeStudyingForm}
+              value={formData?.budget ? UserStudyingForm.Budget : UserStudyingForm.Paid}
+            />
+
+            <Select<RoleName>
+              readonly={readOnly || userRoleName !== RoleName.ADMIN}
+              options={roleOptionsDeprecated}
+              label={t('role')}
+              onChange={onChangeRole}
+              value={formData?.roleName}
+            />
+
             <RoleGuard roleNames={[RoleName.ADMIN]}>
-              <>
-                <TextInput
-                  data-testid="EditableProfileCard.phoneInput"
-                  label={t('phone')}
-                  readOnly={readOnly}
-                  value={formData?.phone}
-                  onChange={onChangePhone}
-                />
-                <TextInput
-                  data-testid="EditableProfileCard.emailInput"
-                  label={t('email')}
-                  readOnly={readOnly}
-                  value={formData?.email}
-                  onChange={onChangeEmail}
-                />
-
-                <Select<RoleName>
-                  readonly={readOnly}
-                  options={roleOptionsDeprecated}
-                  label={t('role')}
-                  onChange={onChangeRole}
-                  value={formData?.roleName}
-                />
-
-                {user ? <FeatureFlagsSwitcher userLogin={user.login} /> : null}
-              </>
+              {user ? <FeatureFlagsSwitcher userLogin={user.login} /> : null}
             </RoleGuard>
 
             {error ? <TextDeprecated variant={TextVariant.ERROR} text={error} /> : null}
@@ -226,33 +296,55 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
               </VStack>
 
               <VStack gap={16} max align="start">
-                <RoleGuard roleNames={[RoleName.ADMIN]}>
-                  <>
-                    <Input
-                      data-testid="EditableProfileCard.phoneInput"
-                      label={t('phone')}
-                      readonly={readOnly}
-                      value={formData?.phone}
-                      onChange={onChangePhone}
-                    />
-                    <Input
-                      data-testid="EditableProfileCard.emailInput"
-                      label={t('email')}
-                      readonly={readOnly}
-                      value={formData?.email}
-                      onChange={onChangeEmail}
-                    />
+                <Input
+                  data-testid="EditableProfileCard.phoneInput"
+                  label={t('phone')}
+                  readonly={readOnly || userRoleName !== RoleName.ADMIN}
+                  value={formData?.phone}
+                  onChange={onChangePhone}
+                />
+                <Input
+                  data-testid="EditableProfileCard.emailInput"
+                  label={t('email')}
+                  readonly={readOnly || userRoleName !== RoleName.ADMIN}
+                  value={formData?.email}
+                  onChange={onChangeEmail}
+                />
 
-                    <ListBox<RoleName>
-                      items={roleOptionsDeprecated}
-                      value={formData?.roleName}
-                      onChange={onChangeRole}
-                      direction="top right"
-                      readonly={readOnly}
-                      label={t('role')}
-                    />
-                  </>
-                </RoleGuard>
+                <Input
+                  data-testid="EditableProfileCard.averageMark"
+                  label={t('average mark')}
+                  readonly={readOnly || userRoleName !== RoleName.ADMIN}
+                  value={formData?.averageMark !== undefined ? String(formData.averageMark) : ''}
+                  onChange={onChangeAverageMark}
+                  type="number"
+                />
+
+                <Input
+                  data-testid="EditableProfileCard.course"
+                  label={t('course')}
+                  readonly={readOnly || userRoleName !== RoleName.ADMIN}
+                  value={formData?.course !== undefined ? String(formData.course) : ''}
+                  onChange={onChangeCorse}
+                  type="number"
+                />
+
+                <ListBox<UserStudyingForm>
+                  readonly={readOnly || userRoleName !== RoleName.ADMIN}
+                  items={studyingFormsDeprecated}
+                  label={t('studying form')}
+                  onChange={onChangeStudyingForm}
+                  value={formData?.budget ? UserStudyingForm.Budget : UserStudyingForm.Paid}
+                />
+
+                <ListBox<RoleName>
+                  items={roleOptionsDeprecated}
+                  value={formData?.roleName}
+                  onChange={onChangeRole}
+                  direction="top right"
+                  readonly={readOnly || userRoleName !== RoleName.ADMIN}
+                  label={t('role')}
+                />
               </VStack>
             </HStack>
           </VStack>
