@@ -9,6 +9,10 @@ interface GetStudentSettlementsByProcessArgs {
   processId: string;
 }
 
+interface GetStudentSettlementByStudentIdArgs {
+  studentId: string;
+}
+
 interface StudentSettlementUpdate {
   studentId: string;
   dormId?: string;
@@ -21,6 +25,13 @@ const studentSettlementApi = settlementRtkApi.injectEndpoints({
       providesTags: ['studentSettlement'],
       query: () => 'settlement/students',
       transformResponse: (body: any) => body.map((obj) => camelcaseKeys(obj))
+    }),
+    getStudentSettlementByStudentId: build.query<
+      StudentSettlement,
+      GetStudentSettlementByStudentIdArgs
+    >({
+      providesTags: ['studentSettlement'],
+      query: (args) => `settlement/students/${args.studentId}`
     }),
     getStudentSettlementsByProcess: build.query<
       StudentSettlement[],
@@ -49,6 +60,9 @@ const studentSettlementApi = settlementRtkApi.injectEndpoints({
 });
 
 export const useGetStudentSettlements = studentSettlementApi.useGetStudentSettlementsQuery;
+
+export const useGetStudentSettlementByStudentId =
+  studentSettlementApi.useGetStudentSettlementByStudentIdQuery;
 
 export const useGetStudentSettlementsByProcess =
   studentSettlementApi.useGetStudentSettlementsByProcessQuery;

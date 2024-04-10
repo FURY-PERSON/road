@@ -37,13 +37,14 @@ export function CheckBox<T extends string>(props: CheckboxProps<T>) {
       {label && <legend>{`${label}`}</legend>}
       {items.map((item) => (
         <div key={item.value}>
-          <label htmlFor={item.value}>
+          <label htmlFor={item.value} className={cls.label}>
             <input
               type="checkbox"
               id={item.value}
               value={item.value}
               checked={checkedValues.includes(item.value)}
               onChange={handleChange}
+              className={cls.checkboxInput}
             />
             {item.content}
           </label>

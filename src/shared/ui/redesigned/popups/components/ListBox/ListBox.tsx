@@ -27,6 +27,7 @@ interface ListBoxProps<T extends string> {
   readonly?: boolean;
   direction?: DropdownDirection;
   label?: string | null;
+  labelClassName?: string;
 }
 
 export function ListBox<T extends string>(props: ListBoxProps<T>) {
@@ -38,7 +39,8 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
     onChange,
     readonly,
     direction = 'bottom right',
-    label
+    label,
+    labelClassName
   } = props;
 
   const optionsClasses = [mapDirectionClass[direction], popupCls.menu];
@@ -49,7 +51,7 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
 
   return (
     <HStack gap={8} align="center">
-      {label && <span>{`${label}`}</span>}
+      {label && <span className={labelClassName}>{label}</span>}
       <HListBox
         disabled={readonly}
         as="div"

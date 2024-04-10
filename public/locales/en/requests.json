@@ -1,11 +1,14 @@
 {
-    "target dorm": "target dorm",
-    "benefits": "benefits",
-    "disabled_person": "disabled person",
-    "chernobyl": "Chernobyl",
-    "orphan": "orphan",
-    "talented": "talented",
-    "foreigner": "foreigner",
-    "save request": "save request",
-    "settlement request": "Settlement request"
+  "select target dorm": "Select target dorm",
+  "benefits": "benefits",
+  "disabled_person": "disabled person",
+  "chernobyl": "Chernobyl",
+  "orphan": "orphan",
+  "talented": "talented",
+  "foreigner": "foreigner",
+  "save request": "save request",
+  "settlement request": "Settlement request",
+  "you can not send a requent to settlement, because you are not a student": "You can not send a requent to settlement, because you are not a student",
+  "your settlement requent has been sent successfully": "Your settlement requent has been sent successfully",
+  "there is currently no active settlement process": "There is currently no active settlement process. Try again."
 }

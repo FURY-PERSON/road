@@ -55,14 +55,16 @@ export const StudentSettlementCard: FC<StudentSettlementCardProps> = memo((props
           initialRoomId={settlementInfo.roomId}
           onChange={(roomId) => updateSettlement({ studentId: settlementInfo.student.id, roomId })}
         />
-        <Button
-          className={cls.rejectButton}
-          variant="outline"
-          disabled={settlementInfo.rejected}
-          onClick={() => rejectSettlement(settlementInfo.student.id)}
-        >
-          {t('reject')}
-        </Button>
+        {settlementProcessState !== SettlementProcessState.FINISHED ? (
+          <Button
+            className={cls.rejectButton}
+            variant="outline"
+            disabled={settlementInfo.rejected}
+            onClick={() => rejectSettlement(settlementInfo.student.id)}
+          >
+            {t('reject')}
+          </Button>
+        ) : null}
       </HStack>
     </Card>
   );

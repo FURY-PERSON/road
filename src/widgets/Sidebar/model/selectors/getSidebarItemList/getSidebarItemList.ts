@@ -43,6 +43,23 @@ export const getSidebarItemList = (t) =>
       }
     ];
 
+    if (userData?.block) {
+      items.push({
+        path: routes.blocksInfo(userData.block.id),
+        Icon: BlocksIcon,
+        text: i18n.t('to my block'),
+        roles: [RoleName.STUDENT]
+      });
+    }
+
+    if (userData?.role.name === RoleName.STUDENT) {
+      items.push({
+        path: routes.settlementRequest(),
+        Icon: CalendarIcon,
+        text: i18n.t('request settlement')
+      });
+    }
+
     if (userData) {
       items.push(
         {
@@ -60,12 +77,6 @@ export const getSidebarItemList = (t) =>
           Icon: BlocksIcon,
           text: i18n.t('to blocks'),
           roles: [RoleName.ADMIN]
-        },
-        {
-          path: routes.blocksInfo(userData.block?.id || ''),
-          Icon: BlocksIcon,
-          text: i18n.t('to my block'),
-          roles: [RoleName.STUDENT]
         },
         {
           path: routes.profile(userData.login),
@@ -95,11 +106,6 @@ export const getSidebarItemList = (t) =>
           }),
           text: i18n.t('create news'),
           roles: [RoleName.ADMIN, RoleName.WORKER]
-        },
-        {
-          path: routes.settlementRequest(),
-          Icon: CalendarIcon,
-          text: i18n.t('request settlement')
         },
         {
           path: routes.settlementProcessesInfo(),

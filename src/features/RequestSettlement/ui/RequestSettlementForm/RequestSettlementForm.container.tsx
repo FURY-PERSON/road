@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { FC, memo } from 'react';
 
 import {
   DynamicModuleLoader,
@@ -7,16 +7,16 @@ import {
 
 import { requestSettlementReducer } from '../../model/slice/requestSettlement.slice';
 
-import { RequestSettlementForm } from './RequestSettlementForm';
+import { RequestSettlementForm, RequestSettlementFormProps } from './RequestSettlementForm';
 
 const reducers: ReducersList = {
   requestSettlementForm: requestSettlementReducer
 };
 
-export const RequestSettlementFormContainer = memo(() => {
+export const RequestSettlementFormContainer: FC<RequestSettlementFormProps> = memo((props) => {
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <RequestSettlementForm />
+      <RequestSettlementForm {...props} />
     </DynamicModuleLoader>
   );
 });

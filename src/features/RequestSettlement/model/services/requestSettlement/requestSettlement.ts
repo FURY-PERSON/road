@@ -27,6 +27,11 @@ export const requestSettlement = createAsyncThunk<void, void, ThunkConfig<string
       await dispatch(setBenefits({ studentId, benefits })).unwrap();
       await dispatch(createSettlementRequest({ targetDormId: targetDorm?.id })).unwrap();
     } catch (error: any) {
+      alert(
+        `settlement request failed. ${
+          String(error?.data?.message) || 'Can not create settlement request'
+        }`
+      );
       return rejectWithValue(String(error?.data?.message) || 'Can not create settlement request');
     }
   }

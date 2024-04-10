@@ -5,6 +5,11 @@
   border: none;
   outline: none;
 
+  .arrow {
+    width: 24px;
+    height: 24px;
+  }
+
   &:hover .arrow {
     color: var(--accent-redesigned);
   }
@@ -28,7 +33,4 @@
   background: var(--light-bg-redesigned);
 }
 
-.arrow {
-  width: 24px;
-  height: 24px;
-}
+
