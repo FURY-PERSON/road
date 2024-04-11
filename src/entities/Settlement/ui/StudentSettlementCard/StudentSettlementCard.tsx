@@ -6,15 +6,15 @@ import { HStack } from '@/shared/ui/redesigned/Stack/HStack/HStack';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
 import { User } from '@/entities/User';
 import { Button } from '@/shared/ui/redesigned/Button/Button';
-import { SettlementProcessState } from '@/entities/SettlementProcess/@x/StudentSettlement';
 
-import { StudentSettlement } from '../../model/types/studentSettelement';
+import { StudentSettlement } from '../../model/types/studentSettlement';
 import {
-  useRejectStudentSettlementMutation,
-  useUpdateStudentSettlementMutation
+  useRejectStudentSettlement,
+  useUpdateStudentSettlement
 } from '../../api/studentSettlementApi';
 import { DormSwitch } from '../DormSwitch/DormSwitch';
 import { RoomSwitch } from '../RoomSwitch/RoomSwitch';
+import { SettlementProcessState } from '../../model/constants/settlementProcess';
 
 import cls from './StudentSettlementCard.module.scss';
 
@@ -29,8 +29,8 @@ export const StudentSettlementCard: FC<StudentSettlementCardProps> = memo((props
 
   const { t } = useTranslation('process');
 
-  const [updateSettlement] = useUpdateStudentSettlementMutation();
-  const [rejectSettlement] = useRejectStudentSettlementMutation();
+  const [updateSettlement] = useUpdateStudentSettlement();
+  const [rejectSettlement] = useRejectStudentSettlement();
 
   const userText = useMemo(
     () => (user ? `${user.lastName} ${user.firstName}` : settlementInfo.student.id),

@@ -1,13 +1,13 @@
-import { FC, memo } from 'react';
+import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { SettlementProcessState } from '@/entities/SettlementProcess';
 import { Card } from '@/shared/ui/redesigned/Card';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
 import { Button } from '@/shared/ui/redesigned/Button/Button';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { HStack } from '@/shared/ui/redesigned/Stack/HStack/HStack';
+import { SettlementProcessState } from '@/entities/Settlement';
 
 import { useSettlementProcessStateToolbar } from '../../model/hooks/useSettlementProcessStateToolbar';
 
@@ -26,6 +26,25 @@ export const SettlementProcessStateToolbar: FC<SettlementProcessStateToolbarProp
     const { activeProcess, changeProcessState, showToolbar } =
       useSettlementProcessStateToolbar(processId);
 
+    const onAssignDormsClick = useCallback(() => {
+      changeProcessState(SettlementProcessState.DORMS_ASSIGNED);
+    }, [changeProcessState]);
+
+    const onAllocatRoomsClick = useCallback(() => {
+      changeProcessState(SettlementProcessState.ROOMS_ALLOCATED);
+    }, [changeProcessState]);
+
+    const onFinishClick = useCallback(() => {
+      // eslint-disable-next-line no-restricted-globals, no-alert
+      const isChangeStatus = confirm(
+        t('are you sure you want to finish the settlement process?') || ''
+      );
+
+      if (isChangeStatus) {
+        changeProcessState(SettlementProcessState.FINISHED);
+      }
+    }, [changeProcessState, t]);
+
     if (!showToolbar) {
       return null;
     }
@@ -37,19 +56,19 @@ export const SettlementProcessStateToolbar: FC<SettlementProcessStateToolbarProp
           <HStack gap={16}>
             <Button
               disabled={activeProcess?.state !== SettlementProcessState.STARTED}
-              onClick={changeProcessState(SettlementProcessState.DORMS_ASSIGNED)}
+              onClick={onAssignDormsClick}
               variant="outline"
             >
               {t('assign dorms')}
             </Button>
             <Button
               disabled={activeProcess?.state !== SettlementProcessState.DORMS_ASSIGNED}
-              onClick={changeProcessState(SettlementProcessState.ROOMS_ALLOCATED)}
+              onClick={onAllocatRoomsClick}
               variant="outline"
             >
               {t('allocate rooms')}
             </Button>
-            <Button onClick={changeProcessState(SettlementProcessState.FINISHED)} variant="outline">
+            <Button onClick={onFinishClick} variant="outline">
               {t('finish')}
             </Button>
           </HStack>

@@ -2,10 +2,10 @@ import { FC, memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-import { SettlementProcessState } from '@/entities/SettlementProcess/@x/StudentSettlement';
 import { ListBox } from '@/shared/ui/redesigned/popups';
 
 import { getRooms } from '../../model/selectors/selectors';
+import { SettlementProcessState } from '../../model/constants/settlementProcess';
 
 interface RoomSwitchProps {
   settlementProcessState: SettlementProcessState;

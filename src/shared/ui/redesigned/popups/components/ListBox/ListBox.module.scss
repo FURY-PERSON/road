@@ -18,6 +18,8 @@
 .options {
   position: absolute;
   z-index: 10000;
+  max-height: 200px;
+  overflow-y: auto;
   background: var(--dark-bg-redesigned);
   border-radius: 12px;
   box-shadow: 4px 4px 8px var(--dark-bg-redesigned);

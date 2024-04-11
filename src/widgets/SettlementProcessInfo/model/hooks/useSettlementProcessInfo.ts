@@ -1,4 +1,4 @@
-import { useGetSettlementProcessById } from '@/entities/SettlementProcess';
+import { useGetSettlementProcessById } from '@/entities/Settlement';
 
 export const useSettlementProcessInfo = (id: string) => {
   const {

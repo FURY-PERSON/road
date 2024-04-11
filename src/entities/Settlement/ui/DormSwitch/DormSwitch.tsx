@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { ListBox } from '@/shared/ui/redesigned/popups';
-import { SettlementProcessState } from '@/entities/SettlementProcess/@x/StudentSettlement';
 
 import { getDorms } from '../../model/selectors/selectors';
+import { SettlementProcessState } from '../../model/constants/settlementProcess';
 
 interface DormSwitchProps {
   settlementProcessState: SettlementProcessState;

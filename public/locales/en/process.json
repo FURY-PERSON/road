@@ -6,5 +6,7 @@
   "finish": "finish",
   "reject": "reject",
   "dorm": "dorm",
-  "room": "room"
+  "room": "room",
+
+  "are you sure you want to finish the settlement process?": "Are you sure you want to finish the settlement process?"
 }

@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { SettlementProcessCard, SettlementProcessState } from '@/entities/SettlementProcess';
+import { SettlementProcessCard, SettlementProcessState } from '@/entities/Settlement';
 import { SvgLoader } from '@/shared/ui/redesigned/SvgLoader';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';

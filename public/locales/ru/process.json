@@ -6,5 +6,7 @@
   "finish": "завершить",
   "reject": "отклонить",
   "dorm": "общежитие",
-  "room": "комната"
+  "room": "комната",
+
+  "are you sure you want to finish the settlement process?": "Вы уверены, что хотите завершить процесс заселения?"
 }

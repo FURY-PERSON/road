@@ -25,7 +25,7 @@ import { BlocksPageSchema } from '@/pages/BlocksPage/model/types/blocksPageSchem
 import { AddSanitaryVisitSchema } from '@/features/AddSanitaryVisitForm/model/types/addSanitaryVisit.schema';
 import { AddNewTenantToRoomSchema } from '@/features/AddNewTenantToRoomForm/model/types/addNewTenantToRoom.schema';
 import { RequestSettlementSchema } from '@/features/RequestSettlement/model/types/requestSettlement.schema';
-import { StudentSettlementSchema } from '@/entities/StudentSettlement/model/types/studentSettlement.schema';
+import { StudentSettlementSchema } from '@/entities/Settlement/model/types/studentSettlement.schema';
 
 export interface StateSchema {
   counter: CounterSchema;

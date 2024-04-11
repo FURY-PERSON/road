@@ -3,7 +3,7 @@ import camelcaseKeys from 'camelcase-keys';
 
 import { settlementRtkApi } from '@/shared/api/rtkApi';
 
-import { StudentSettlement } from '../model/types/studentSettelement';
+import { StudentSettlement } from '../model/types/studentSettlement';
 
 interface GetStudentSettlementsByProcessArgs {
   processId: string;
@@ -67,5 +67,6 @@ export const useGetStudentSettlementByStudentId =
 export const useGetStudentSettlementsByProcess =
   studentSettlementApi.useGetStudentSettlementsByProcessQuery;
 
-export const { useRejectStudentSettlementMutation, useUpdateStudentSettlementMutation } =
-  studentSettlementApi;
+export const useRejectStudentSettlement = studentSettlementApi.useRejectStudentSettlementMutation;
+
+export const useUpdateStudentSettlement = studentSettlementApi.useUpdateStudentSettlementMutation;

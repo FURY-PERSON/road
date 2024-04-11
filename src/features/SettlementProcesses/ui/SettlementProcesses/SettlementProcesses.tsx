@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { SettlementProcessCard } from '@/entities/SettlementProcess';
+import { SettlementProcessCard } from '@/entities/Settlement';
 import { Card } from '@/shared/ui/redesigned/Card';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
@@ -44,8 +44,8 @@ export const SettlementProcesses: FC<SettlementProcessesProps> = (props) => {
 
         <VStack gap={16} max>
           {settlementProcesses?.map((item) => (
-            <AppLink to={routes.settlementProcess(item.id)} className={cls.cardLink}>
-              <SettlementProcessCard key={item.id} item={item} className={cls.card} />
+            <AppLink to={routes.settlementProcess(item.id)} className={cls.cardLink} key={item.id}>
+              <SettlementProcessCard item={item} className={cls.card} />
             </AppLink>
           ))}
         </VStack>

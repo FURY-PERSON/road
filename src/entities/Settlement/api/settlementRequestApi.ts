@@ -2,7 +2,7 @@ import decamelizeKeys from 'decamelize-keys';
 
 import { settlementRtkApi } from '@/shared/api/rtkApi';
 
-import { SettlementRequest } from '../models/types/settlementRequest';
+import { SettlementRequest } from '../model/types/settlementRequest';
 
 const settlementRequestApi = settlementRtkApi.injectEndpoints({
   endpoints: (build) => ({

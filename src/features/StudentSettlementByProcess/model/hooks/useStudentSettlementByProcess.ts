@@ -1,16 +1,6 @@
-import { useGetSettlementProcessById } from '@/entities/SettlementProcess';
-import { useGetStudentSettlementsByProcess } from '@/entities/StudentSettlement';
-import { useGetAllUsers } from '@/entities/User';
+import { useGetSettlementProcessById } from '@/entities/Settlement';
 
 export const useStudentSettlementByProcess = (settlementProcessId: string) => {
-  const {
-    data: studentSettlements,
-    isLoading: studentSettlementsLoading,
-    isFetching: studentSettlementsFetching,
-    error: studentSettlementsError
-  } = useGetStudentSettlementsByProcess({
-    processId: settlementProcessId
-  });
   const {
     data: settlementProcess,
     isLoading: settlementProcessLoading,
@@ -18,20 +8,12 @@ export const useStudentSettlementByProcess = (settlementProcessId: string) => {
     error: settlementProcessError
   } = useGetSettlementProcessById({ id: settlementProcessId });
 
-  const { data: users } = useGetAllUsers();
+  const loading = settlementProcessLoading || settlementProcessFetching;
 
-  const loading =
-    studentSettlementsLoading ||
-    studentSettlementsFetching ||
-    settlementProcessLoading ||
-    settlementProcessFetching;
-
-  const error = studentSettlementsError && settlementProcessError;
+  const error = settlementProcessError;
 
   return {
-    studentSettlements,
     settlementProcess,
-    users,
     loading,
     error
   };

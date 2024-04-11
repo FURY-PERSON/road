@@ -4,7 +4,7 @@ import {
   SettlementProcessState,
   useGetActiveSettlementProcess,
   useUpdateSettlementProcessState
-} from '@/entities/SettlementProcess';
+} from '@/entities/Settlement';
 
 export const useSettlementProcessStateToolbar = (processId: string) => {
   const {
@@ -16,14 +16,16 @@ export const useSettlementProcessStateToolbar = (processId: string) => {
   const [setProcessState] = useUpdateSettlementProcessState();
 
   const changeProcessState = useCallback(
-    (newState: SettlementProcessState) => () => {
+    (newState: SettlementProcessState) => {
       if (!activeProcess?.id) return;
       return setProcessState({ processId: activeProcess?.id, state: newState });
     },
     [activeProcess?.id, setProcessState]
   );
 
+  const loading = activeProcessLoading;
+  const error = activeProcessError;
   const showToolbar = processId === activeProcess?.id;
 
-  return { activeProcess, changeProcessState, showToolbar };
+  return { activeProcess, changeProcessState, showToolbar, loading, error };
 };

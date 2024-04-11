@@ -28,6 +28,7 @@ interface ListBoxProps<T extends string> {
   direction?: DropdownDirection;
   label?: string | null;
   labelClassName?: string;
+  listClassName?: string;
 }
 
 export function ListBox<T extends string>(props: ListBoxProps<T>) {
@@ -40,10 +41,11 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
     readonly,
     direction = 'bottom right',
     label,
-    labelClassName
+    labelClassName,
+    listClassName
   } = props;
 
-  const optionsClasses = [mapDirectionClass[direction], popupCls.menu];
+  const optionsClasses = [mapDirectionClass[direction], popupCls.menu, listClassName];
 
   const selectedItem = useMemo(() => {
     return items?.find((item) => item.value === value);

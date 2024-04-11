@@ -14,10 +14,12 @@ import { Button } from '@/shared/ui/redesigned/Button/Button';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { getUserData } from '@/entities/User';
-import { useGetStudentSettlementByStudentId } from '@/entities/StudentSettlement';
 import { RoleName } from '@/entities/Role';
 import { SvgLoader } from '@/shared/ui/redesigned/SvgLoader';
-import { useGetActiveSettlementProcess } from '@/entities/SettlementProcess';
+import {
+  useGetActiveSettlementProcess,
+  useGetStudentSettlementByStudentId
+} from '@/entities/Settlement';
 
 import { getDorms, getTargetDorm } from '../../model/selectors/selectors';
 import { initRequestSettlement } from '../../model/services/initRequestSettlement/initRequestSettlement';

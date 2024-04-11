@@ -1,9 +1,6 @@
 import { useCallback } from 'react';
 
-import {
-  useCreateSettlementProcess,
-  useGetActiveSettlementProcess
-} from '@/entities/SettlementProcess';
+import { useCreateSettlementProcess, useGetActiveSettlementProcess } from '@/entities/Settlement';
 
 export const useStartSettlementProcess = () => {
   const { data: activeProcess, isLoading, isFetching, error } = useGetActiveSettlementProcess();

@@ -4,9 +4,20 @@ import { settlementRtkApi } from '@/shared/api/rtkApi';
 
 import { SettlementProcess } from '../model/types/settlementProcess';
 import { SettlementProcessState } from '../model/constants/settlementProcess';
+import { StudentSettlement } from '../model/types/studentSettlement';
+import { transformStudentSettlementsToSettlementResult } from '../model/helpers/transformStudentSettlementsToStudentSettlementByDorm';
 
 interface GetSettlementProcessById {
   id: string;
+}
+
+interface UpdateSettlementProccessStateArgs {
+  processId: string;
+  state: SettlementProcessState;
+}
+
+interface ApplySettlementProccessState {
+  studentSettlement: StudentSettlement[];
 }
 
 const settlementProcessApi = settlementRtkApi.injectEndpoints({
@@ -14,7 +25,7 @@ const settlementProcessApi = settlementRtkApi.injectEndpoints({
     getSettlementProcesses: build.query<SettlementProcess[], void>({
       providesTags: ['settlementProcess'],
       query: () => 'settlement/processes',
-      transformResponse: (body: any) => body.map((obj) => camelcaseKeys(obj)).reverse()
+      transformResponse: (body: any) => body.map((obj) => camelcaseKeys(obj))
     }),
     getSettlementProcessById: build.query<SettlementProcess, GetSettlementProcessById>({
       providesTags: ['settlementProcess'],
@@ -35,7 +46,7 @@ const settlementProcessApi = settlementRtkApi.injectEndpoints({
     }),
     updateSettlementProccessState: build.mutation<
       SettlementProcess,
-      { processId: string; state: SettlementProcessState }
+      UpdateSettlementProccessStateArgs
     >({
       invalidatesTags: ['settlementProcess', 'studentSettlement'],
       query: (args) => ({
@@ -43,6 +54,16 @@ const settlementProcessApi = settlementRtkApi.injectEndpoints({
         method: 'PATCH',
         body: {
           state: args.state
+        }
+      })
+    }),
+    applySettlementProccess: build.mutation<void, ApplySettlementProccessState>({
+      invalidatesTags: ['settlementProcess', 'studentSettlement'],
+      query: (args) => ({
+        url: '',
+        method: 'PATCH',
+        body: {
+          settlement: transformStudentSettlementsToSettlementResult(args.studentSettlement)
         }
       })
     })
@@ -60,3 +81,5 @@ export const useUpdateSettlementProcessState =
   settlementProcessApi.useUpdateSettlementProccessStateMutation;
 
 export const useCreateSettlementProcess = settlementProcessApi.useCreateSettlementProcessMutation;
+
+export const useApplySettlementProccess = settlementProcessApi.useApplySettlementProccessMutation;

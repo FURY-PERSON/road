@@ -6,7 +6,7 @@ import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
 
 import { SettlementProcess } from '../../model/types/settlementProcess';
-import { SettlementProcessState } from '../../@x/StudentSettlement';
+import { SettlementProcessState } from '../../model/constants/settlementProcess';
 
 import cls from './SettlementProcessCard.module.scss';
 
