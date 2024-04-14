@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import { RebukeType, useGetRebukeById, useUpdateRebuke } from '@/entities/Rebuke';
-
-import { getFormattedDate } from '../helpers/getFormattedDate';
+import { getFormattedDate } from '@/shared/lib/helpers/date/getFormattedDate';
 
 export const useForm = (rebukeId: string, login?: string, onSuccess?: () => void) => {
   const { data: rebuke, isLoading: rebukeLoading } = useGetRebukeById({

@@ -18,11 +18,14 @@ export const LoginPage: FC<LoginPageProps> = (props) => {
   const { className } = props;
   const navigator = useNavigate();
 
-  const onSuccessLogin = useCallback(() => {
-    navigator(routes.main());
+  const onSuccessLogin = useCallback(
+    (userLogin: string) => {
+      navigator(routes.profile(userLogin));
 
-    window.location.reload();
-  }, [navigator]);
+      window.location.reload();
+    },
+    [navigator]
+  );
 
   return (
     <ToggleFeatures

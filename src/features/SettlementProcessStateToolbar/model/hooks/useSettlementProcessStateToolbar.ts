@@ -2,8 +2,10 @@ import { useCallback } from 'react';
 
 import {
   SettlementProcessState,
+  useApplySettlementProccess,
   useGetActiveSettlementProcess,
-  useUpdateSettlementProcessState
+  useUpdateSettlementProcessState,
+  useGetStudentSettlementsByProcess
 } from '@/entities/Settlement';
 
 export const useSettlementProcessStateToolbar = (processId: string) => {
@@ -13,7 +15,14 @@ export const useSettlementProcessStateToolbar = (processId: string) => {
     error: activeProcessError
   } = useGetActiveSettlementProcess();
 
+  const {
+    data: studentSettlement,
+    isLoading: studentSettlementLoading,
+    error: studentSettlementError
+  } = useGetStudentSettlementsByProcess({ processId });
+
   const [setProcessState] = useUpdateSettlementProcessState();
+  const [applySettlementProccess] = useApplySettlementProccess();
 
   const changeProcessState = useCallback(
     (newState: SettlementProcessState) => {
@@ -23,9 +32,17 @@ export const useSettlementProcessStateToolbar = (processId: string) => {
     [activeProcess?.id, setProcessState]
   );
 
-  const loading = activeProcessLoading;
-  const error = activeProcessError;
+  const loading = activeProcessLoading || studentSettlementLoading;
+  const error = activeProcessError || studentSettlementError;
   const showToolbar = processId === activeProcess?.id;
 
-  return { activeProcess, changeProcessState, showToolbar, loading, error };
+  return {
+    activeProcess,
+    studentSettlement,
+    changeProcessState,
+    showToolbar,
+    loading,
+    error,
+    applySettlementProccess
+  };
 };

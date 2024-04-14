@@ -9,14 +9,16 @@ export {
   useGetActiveSettlementProcess,
   useCreateSettlementProcess,
   useGetSettlementProcesses,
-  useGetSettlementProcessById
+  useGetSettlementProcessById,
+  useApplySettlementProccess
 } from './api/settlementProcessApi';
 
 export { createSettlementRequest } from './api/settlementRequestApi';
 
 export {
   useRejectStudentSettlement,
-  useGetStudentSettlementByStudentId
+  useGetStudentSettlementByStudentId,
+  useGetStudentSettlementsByProcess
 } from './api/studentSettlementApi';
 
 export { SettlementProcessCard } from './ui/SettlementProcessCard/SettlementProcessCard';

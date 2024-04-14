@@ -5,10 +5,10 @@
   "unexpected error": "Unexpected error",
   "reload the page": "Reload the page",
   "toggle": "Toggle",
-  "to main": "To main",
-  "to about": "To about",
-  "to profile": "to profile",
-  "to news": "to news",
+  "to main": "Main",
+  "to about": "About us",
+  "to profile": "Profile",
+  "to news": "News",
   "apply": "apply",
   "login": "login",
   "logout": "logout",
@@ -48,8 +48,9 @@
   "counter": "counter",
   "toggle features flags": "Toggle features flags",
   "block number": "block number",
-  "to blocks": "to blocks",
-  "to my block": "to my block",
+  "to blocks": "Blocks",
+  "to dorms": "Dorms",
+  "to my block": "My block",
   "create new visit": "create new visit",
   "visit date": "visit date",
   "block id": "block id",
@@ -103,5 +104,10 @@
   "first name": "first name",
 
   "no items": "no items",
-  "create process": "create process"
+  "create process": "create process",
+
+  "dorm": "Dorm",
+  "address": "Address",
+  "email": "Email",
+  "phone": "Phone number"
 }

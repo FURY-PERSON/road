@@ -16,6 +16,7 @@ import { BlockInfoPage } from '@/pages/BlockInfoPage';
 import { SettlementRequestPage } from '@/pages/SettlementRequestPage';
 import { SettlementManagePage } from '@/pages/SettlementManagePage';
 import { SettlementProcessPage } from '@/pages/SettlementProcessPage/ui/SettlementProcessPage/SettlementProcessPage';
+import { DormsPage } from '@/pages/DormsPage';
 
 import { RequireAuth } from '../ui/RequireAuth';
 
@@ -50,10 +51,18 @@ export const appRouteConfig: Array<RouteProps> = [
     )
   },
   {
-    path: routes.blocks(),
+    path: routes.blocks(':dormId'),
     element: (
       <RequireAuth>
         <BlocksPage />
+      </RequireAuth>
+    )
+  },
+  {
+    path: routes.dorms(),
+    element: (
+      <RequireAuth>
+        <DormsPage />
       </RequireAuth>
     )
   },

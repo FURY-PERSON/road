@@ -47,6 +47,21 @@ export const blocksPageSlice = createSlice({
     },
     setFloor(state, action: PayloadAction<string | undefined>) {
       state.floor = action.payload;
+    },
+    reset() {
+      return blocksAdapter.getInitialState<BlocksPageSchema>({
+        entities: {},
+        ids: [],
+        hasMore: false,
+        limit: defaultLimit,
+        page: 1,
+
+        order: 'ASC',
+        number: '',
+        floor: 'none',
+
+        _inited: false
+      });
     }
   },
   extraReducers: (builder) => {

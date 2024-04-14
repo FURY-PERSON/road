@@ -5,9 +5,10 @@ import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { addQueryParams } from '@/shared/lib/helpers/url/addQueryParam';
 import { Block } from '@/entities/Block';
 
-import { getApiLimit, getApiPage, getOrder, getFloor, getNumber } from '../../selectors/blocksPAge';
+import { getApiLimit, getApiPage, getOrder, getFloor, getNumber } from '../../selectors/blocksPage';
 
 interface FetchListProps {
+  dormId: string;
   page?: number;
   replace?: boolean; // use in slice
 }
@@ -23,7 +24,7 @@ export const fetchList = createAsyncThunk<FetchListResponse, FetchListProps, Thu
   async (data, thunkAPI) => {
     const { extra, rejectWithValue, getState } = thunkAPI;
 
-    const { page: pageProps } = data;
+    const { page: pageProps, dormId } = data;
     const order = getOrder(getState());
     const number = getNumber(getState());
     const pageState = getApiPage(getState());
@@ -42,7 +43,7 @@ export const fetchList = createAsyncThunk<FetchListResponse, FetchListProps, Thu
         floor: String(floor)
       });
 
-      const response = await extra.api.get<Block[]>('block', {
+      const response = await extra.api.get<Block[]>(`block/dorm/${dormId}`, {
         params: {
           limit,
           page: pageNum,

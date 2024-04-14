@@ -31,7 +31,7 @@ import clsR from './LoginForm.redesigned.module.scss';
 
 interface LoginFormProps {
   className?: string;
-  onSuccess: () => void;
+  onSuccess: (userLogin: string) => void;
 }
 
 const initialReducers: ReducersList = {
@@ -61,10 +61,10 @@ export const LoginForm: FC<LoginFormProps> = memo((props) => {
 
   const onLoginClick = useCallback(async () => {
     const result = await dispatch(loginByUsername());
-    if (result.meta.requestStatus === 'fulfilled') {
-      onSuccess();
+    if (result.meta.requestStatus === 'fulfilled' && login) {
+      onSuccess(login);
     }
-  }, [dispatch, onSuccess]);
+  }, [dispatch, login, onSuccess]);
 
   return (
     <DynamicModuleLoader reducers={initialReducers}>

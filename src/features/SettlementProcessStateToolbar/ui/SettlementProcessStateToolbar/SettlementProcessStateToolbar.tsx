@@ -23,8 +23,15 @@ export const SettlementProcessStateToolbar: FC<SettlementProcessStateToolbarProp
     const { className, processId } = props;
 
     const { t } = useTranslation('process');
-    const { activeProcess, changeProcessState, showToolbar } =
-      useSettlementProcessStateToolbar(processId);
+    const {
+      activeProcess,
+      studentSettlement,
+      changeProcessState,
+      showToolbar,
+      applySettlementProccess,
+      error,
+      loading
+    } = useSettlementProcessStateToolbar(processId);
 
     const onAssignDormsClick = useCallback(() => {
       changeProcessState(SettlementProcessState.DORMS_ASSIGNED);
@@ -40,10 +47,13 @@ export const SettlementProcessStateToolbar: FC<SettlementProcessStateToolbarProp
         t('are you sure you want to finish the settlement process?') || ''
       );
 
+      if (!studentSettlement) return;
+
       if (isChangeStatus) {
         changeProcessState(SettlementProcessState.FINISHED);
+        applySettlementProccess({ studentSettlement });
       }
-    }, [changeProcessState, t]);
+    }, [applySettlementProccess, changeProcessState, studentSettlement, t]);
 
     if (!showToolbar) {
       return null;

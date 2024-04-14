@@ -5,10 +5,10 @@
   "unexpected error": "Неожиданная ошибка",
   "reload the page": "Перезагрузить страницу",
   "toggle": "Переключить",
-  "to main": "На главную",
-  "to about": "На страницу о нас",
-  "to profile": "На страницу профиля",
-  "to news": "новости",
+  "to main": "Главная",
+  "to about": "О нас",
+  "to profile": "Профиль",
+  "to news": "Новости",
   "apply": "принять",
   "login": "Логин",
   "logout": "выйти",
@@ -49,7 +49,8 @@
   "toggle features flags": "Переключить фичи",
   "block number": "номер блока",
   "to blocks": "к блокам",
-  "to my block": "к моему блоку",
+  "to dorms": "к общежитиям",
+  "to my block": "Мой блок",
   "create new visit": "создать новый визит",
   "visit date": "дата визита",
   "block id": "id блока",
@@ -103,5 +104,10 @@
   "first name": "имя",
 
   "no items": "ничего не найдено",
-  "create process": "Создать процесс"
+  "create process": "Создать процесс",
+
+  "dorm": "Общежитие",
+  "address": "Адрес",
+  "email": "Электронная почта",
+  "phone": "Номер телефона"
 }

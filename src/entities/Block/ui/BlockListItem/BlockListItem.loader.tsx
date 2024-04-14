@@ -19,15 +19,13 @@ export const BlockListItemLoader: FC<BlockListItemLoaderProps> = memo((props) =>
       <Card border="round" padding="16">
         <VStack gap={16} max>
           <HStack max justify="between">
-            <Skeleton width={120} height={24} />
-            <Skeleton width={120} height={18} />
+            <Skeleton width={120} height={16} />
+            <Skeleton width={120} height={12} />
           </HStack>
 
-          <Skeleton width={330} height={18} />
-
           <HStack gap={16}>
-            <Skeleton width={64} height={18} />
-            <Skeleton width={120} height={18} />
+            <Skeleton width={64} height={12} />
+            <Skeleton width={120} height={12} />
           </HStack>
         </VStack>
       </Card>

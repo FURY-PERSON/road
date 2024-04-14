@@ -25,6 +25,7 @@ export const rtkApi = createApi({
     'newsFeedback',
     'user',
     'block',
+    'dorm',
     'blockSanitaryVisits',
     'room',
     'scientificWork',

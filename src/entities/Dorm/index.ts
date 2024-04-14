@@ -1,2 +1,3 @@
 export type { Dorm } from './model/types/dorm';
-export { fetchDorms } from './model/services/fetchDorms/fetchDorms';
+export { useGetDorms } from './api/dormApi';
+export { DormCard } from './ui/DormCard/DormCard';

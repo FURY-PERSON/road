@@ -22,46 +22,18 @@ import { ISidebarItem } from '../../types/item';
 
 export const getSidebarItemList = (t) =>
   createSelector(getUserData, (userData) => {
-    const items: ISidebarItem[] = [
-      {
-        path: routes.main(),
-        Icon: toggleFeatures({
-          name: 'newDesign',
-          off: () => MainIcon,
-          on: () => MainIcon
-        }),
-        text: i18n.t('to main')
-      },
-      {
-        path: routes.about(),
-        Icon: toggleFeatures({
-          name: 'newDesign',
-          off: () => BookIconDeprecated,
-          on: () => AboutIcon
-        }),
-        text: i18n.t('to about')
-      }
-    ];
-
-    if (userData?.block) {
-      items.push({
-        path: routes.blocksInfo(userData.block.id),
-        Icon: BlocksIcon,
-        text: i18n.t('to my block'),
-        roles: [RoleName.STUDENT]
-      });
-    }
-
-    if (userData?.role.name === RoleName.STUDENT) {
-      items.push({
-        path: routes.settlementRequest(),
-        Icon: CalendarIcon,
-        text: i18n.t('request settlement')
-      });
-    }
-
+    const items: ISidebarItem[] = [];
     if (userData) {
       items.push(
+        {
+          path: routes.profile(userData.login),
+          Icon: toggleFeatures({
+            name: 'newDesign',
+            off: () => ProfileIconDeprecated,
+            on: () => AvatarIcon
+          }),
+          text: i18n.t('to profile')
+        },
         {
           path: routes.users(),
           Icon: toggleFeatures({
@@ -73,21 +45,12 @@ export const getSidebarItemList = (t) =>
           roles: [RoleName.ADMIN]
         },
         {
-          path: routes.blocks(),
-          Icon: BlocksIcon,
-          text: i18n.t('to blocks'),
+          path: routes.dorms(),
+          Icon: MainIcon,
+          text: i18n.t('to dorms'),
           roles: [RoleName.ADMIN]
         },
-        {
-          path: routes.profile(userData.login),
-          Icon: toggleFeatures({
-            name: 'newDesign',
-            off: () => ProfileIconDeprecated,
-            on: () => AvatarIcon
-          }),
-          text: i18n.t('to profile'),
-          roles: [RoleName.STUDENT, RoleName.WORKER]
-        },
+
         {
           path: routes.news(),
           Icon: toggleFeatures({
@@ -115,6 +78,33 @@ export const getSidebarItemList = (t) =>
         }
       );
     }
+
+    if (userData?.block) {
+      items.push({
+        path: routes.blocksInfo(userData.block.id),
+        Icon: BlocksIcon,
+        text: i18n.t('to my block'),
+        roles: [RoleName.STUDENT]
+      });
+    }
+
+    if (userData?.role.name === RoleName.STUDENT) {
+      items.push({
+        path: routes.settlementRequest(),
+        Icon: CalendarIcon,
+        text: i18n.t('request settlement')
+      });
+    }
+
+    items.push({
+      path: routes.about(),
+      Icon: toggleFeatures({
+        name: 'newDesign',
+        off: () => BookIconDeprecated,
+        on: () => AboutIcon
+      }),
+      text: i18n.t('to about')
+    });
 
     return items;
   });

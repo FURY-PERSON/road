@@ -5,8 +5,7 @@ import {
   useGetScientificWorkById,
   useUpdateScientificWork
 } from '@/entities/ScientificWork';
-
-import { getFormattedDate } from '../helpers/getFormattedDate';
+import { getFormattedDate } from '@/shared/lib/helpers/date/getFormattedDate';
 
 export const useForm = (scientificWorkId: string, login?: string, onSuccess?: () => void) => {
   const { data: scientificWork, isLoading: scientificWorkLoading } = useGetScientificWorkById({

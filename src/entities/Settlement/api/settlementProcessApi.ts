@@ -1,6 +1,6 @@
 import camelcaseKeys from 'camelcase-keys';
 
-import { settlementRtkApi } from '@/shared/api/rtkApi';
+import { rtkApi, settlementRtkApi } from '@/shared/api/rtkApi';
 
 import { SettlementProcess } from '../model/types/settlementProcess';
 import { SettlementProcessState } from '../model/constants/settlementProcess';
@@ -16,7 +16,7 @@ interface UpdateSettlementProccessStateArgs {
   state: SettlementProcessState;
 }
 
-interface ApplySettlementProccessState {
+interface ApplySettlementProccessArgs {
   studentSettlement: StudentSettlement[];
 }
 
@@ -56,12 +56,17 @@ const settlementProcessApi = settlementRtkApi.injectEndpoints({
           state: args.state
         }
       })
-    }),
-    applySettlementProccess: build.mutation<void, ApplySettlementProccessState>({
-      invalidatesTags: ['settlementProcess', 'studentSettlement'],
+    })
+  })
+});
+
+const settlementApi = rtkApi.injectEndpoints({
+  endpoints: (build) => ({
+    applySettlementProccess: build.mutation<void, ApplySettlementProccessArgs>({
+      invalidatesTags: ['dorm', 'block'],
       query: (args) => ({
-        url: '',
-        method: 'PATCH',
+        url: 'settlement/apply-settlement',
+        method: 'POST',
         body: {
           settlement: transformStudentSettlementsToSettlementResult(args.studentSettlement)
         }
@@ -82,4 +87,4 @@ export const useUpdateSettlementProcessState =
 
 export const useCreateSettlementProcess = settlementProcessApi.useCreateSettlementProcessMutation;
 
-export const useApplySettlementProccess = settlementProcessApi.useApplySettlementProccessMutation;
+export const useApplySettlementProccess = settlementApi.useApplySettlementProccessMutation;

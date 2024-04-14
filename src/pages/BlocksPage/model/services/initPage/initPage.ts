@@ -3,22 +3,31 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { SortOrder } from '@/shared/types/sort';
 
-import { getInited } from '../../selectors/blocksPAge';
+import { getInited } from '../../selectors/blocksPage';
 import { blocksPageActions } from '../../slice/blocksPage.slice';
 import { fetchList } from '../fetchList/fetchList';
 
-export const initPage = createAsyncThunk<void, URLSearchParams, ThunkConfig<string>>(
+interface InitPageProps {
+  searchParams: URLSearchParams;
+  dormId?: string;
+}
+
+export const initPage = createAsyncThunk<void, InitPageProps, ThunkConfig<string>>(
   'block/initPage',
   async (data, thunkAPI) => {
     const { getState, dispatch } = thunkAPI;
 
+    const { dormId, searchParams } = data;
+
+    if (!dormId) return;
+
     const inited = getInited(getState());
     if (!inited) {
-      const orderFromUrl = data.get('order') as SortOrder;
-      const limitFromUrl = data.get('limit') as number | null;
-      const pageFromUrl = data.get('page') as number | null;
-      const floorFromUrl = data.get('floor') as string | 'none' | null;
-      const numberFromUrl = data.get('number') as string | null;
+      const orderFromUrl = searchParams.get('order') as SortOrder;
+      const limitFromUrl = searchParams.get('limit') as number | null;
+      const pageFromUrl = searchParams.get('page') as number | null;
+      const floorFromUrl = searchParams.get('floor') as string | 'none' | null;
+      const numberFromUrl = searchParams.get('number') as string | null;
 
       if (orderFromUrl) {
         dispatch(blocksPageActions.setOrder(orderFromUrl));
@@ -36,7 +45,7 @@ export const initPage = createAsyncThunk<void, URLSearchParams, ThunkConfig<stri
         dispatch(blocksPageActions.setFloor(floorFromUrl));
       }
 
-      dispatch(fetchList({ page: 1 }));
+      dispatch(fetchList({ dormId, page: 1 }));
     }
   }
 );

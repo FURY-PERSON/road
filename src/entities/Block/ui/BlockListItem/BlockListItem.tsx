@@ -1,5 +1,4 @@
 import { memo, FC, HTMLAttributeAnchorTarget } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { routes } from '@/shared/constant/router';
 import { AppLink } from '@/shared/ui/redesigned/AppLink/AppLink';
@@ -7,6 +6,7 @@ import { Card } from '@/shared/ui/redesigned/Card';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 import { HStack } from '@/shared/ui/redesigned/Stack/HStack/HStack';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 
 import { Block } from '../../model/types/block';
 
@@ -21,10 +21,12 @@ interface BlockListItemProps {
 export const BlockListItem: FC<BlockListItemProps> = memo((props) => {
   const { className, block, target = '_self' } = props;
 
-  const { t } = useTranslation('block');
-
   return (
-    <AppLink target={target} to={routes.blocksInfo(block.id)} className={cls.BlockListItem}>
+    <AppLink
+      target={target}
+      to={routes.blocksInfo(block.id)}
+      className={classNames(cls.BlockListItem, {}, [className])}
+    >
       <Card border="round" padding="16">
         <VStack gap={4} max>
           <HStack align="center" gap={24}>

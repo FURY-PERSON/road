@@ -6,16 +6,17 @@ import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { SortOrder } from '@/shared/types/sort';
 import { BlocksFilters } from '@/widgets/BlocksFilters';
 
-import { getOrder, getFloor, getNumber } from '../../model/selectors/blocksPAge';
+import { getOrder, getFloor, getNumber } from '../../model/selectors/blocksPage';
 import { fetchList } from '../../model/services/fetchList/fetchList';
 import { blocksPageActions } from '../../model/slice/blocksPage.slice';
 
 interface FiltersContainerProps {
   className?: string;
+  dormId: string;
 }
 
 export const FiltersContainer = memo((props: FiltersContainerProps) => {
-  const { className } = props;
+  const { className, dormId } = props;
 
   const dispatch = useAppDispatch();
   const order = useSelector(getOrder);
@@ -23,8 +24,8 @@ export const FiltersContainer = memo((props: FiltersContainerProps) => {
   const floor = useSelector(getFloor);
 
   const refetchBlocks = useCallback(() => {
-    dispatch(fetchList({ replace: true }));
-  }, [dispatch]);
+    dispatch(fetchList({ dormId, replace: true }));
+  }, [dispatch, dormId]);
 
   const debouncedRefetchBlocks = useDebounce(refetchBlocks, 500);
 

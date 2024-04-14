@@ -1,7 +1,8 @@
 const getRouteMain = () => '/';
 const getRouteAbout = () => '/about';
 const getRouteUsers = () => '/user';
-const getRouteBlock = () => '/block';
+const getRouteBlock = (dormId: string) => `/dorm/${dormId}/block`;
+const getRouteDorms = () => '/dorms';
 const getRouteBlockInfo = (blockId: string) => `/block/${blockId}`;
 const getRouteProfile = (login: string) => `/user/${login}`;
 const getRouteLogin = () => '/login';
@@ -20,6 +21,7 @@ export const routes = {
   about: getRouteAbout,
   users: getRouteUsers,
   blocks: getRouteBlock,
+  dorms: getRouteDorms,
   blocksInfo: getRouteBlockInfo,
   profile: getRouteProfile,
   login: getRouteLogin,
@@ -40,7 +42,8 @@ export const AppRouteByPathPattern: Record<string, RouteName> = {
   [routes.main()]: 'main',
   [routes.about()]: 'about',
   [routes.users()]: 'users',
-  [routes.blocks()]: 'blocks',
+  [routes.blocks(':dormId')]: 'blocks',
+  [routes.dorms()]: 'dorms',
   [routes.blocksInfo(':id')]: 'blocksInfo',
   [routes.profile(':login')]: 'profile',
   [routes.register()]: 'register',

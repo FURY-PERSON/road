@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
+import { getFormattedDate } from '@/shared/lib/helpers/date/getFormattedDate';
 
 import { SettlementProcess } from '../../model/types/settlementProcess';
 import { SettlementProcessState } from '../../model/constants/settlementProcess';
@@ -42,14 +43,14 @@ export const SettlementProcessCard: FC<SettlementProcessCardProps> = (props) => 
       <Text
         size="M"
         title={`${t('process start date')}:`}
-        text={String(item.startDate)}
+        text={getFormattedDate(item.startDate)}
         titleClassName={cls.title}
       />
       {item.finishDate ? (
         <Text
           size="M"
           title={`${t('process finish date')}:`}
-          text={String(item.finishDate)}
+          text={getFormattedDate(item.finishDate)}
           titleClassName={cls.title}
         />
       ) : null}

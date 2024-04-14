@@ -25,7 +25,9 @@ export const BlocksList: FC<BlocksListProps> = memo((props) => {
         <BlockListItem key={item.id} target={target} block={item} className={cls.item} />
       ))}
 
-      {isLoading ? new Array(8).fill(0).map((s, i) => <BlockListItemLoader key={i} />) : null}
+      {isLoading
+        ? new Array(4).fill(0).map((_, index) => <BlockListItemLoader key={index} />)
+        : null}
     </VStack>
   );
 });
