@@ -33,23 +33,32 @@ export function buildCssLoader(isDev: boolean) {
 
 export function buildSvgLoader() {
   return {
-    test: /\.svg$/,
-    use: [
+    oneOf: [
       {
-        loader: '@svgr/webpack',
-        options: {
-          icon: true,
-          svgoConfig: {
-            plugins: [
-              {
-                name: 'convertColors',
-                params: {
-                  currentColor: true
-                }
+        test: /\.svg$/,
+        exclude: /catLoader\.svg$/,
+        use: [
+          {
+            loader: '@svgr/webpack',
+            options: {
+              icon: true,
+              svgoConfig: {
+                plugins: [
+                  {
+                    name: 'convertColors',
+                    params: {
+                      currentColor: true
+                    }
+                  }
+                ]
               }
-            ]
+            }
           }
-        }
+        ]
+      },
+      {
+        test: /catLoader\.svg$/,
+        use: ['@svgr/webpack']
       }
     ]
   };

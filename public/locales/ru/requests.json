@@ -1,10 +1,10 @@
 {
   "select target dorm": "Выберите целевое общежитие",
   "benefits": "льготы",
-  "disabled_person": "инвалид",
-  "chernobyl": "Чернобыль",
+  "disabled_person": "инвалидность",
+  "chernobyl": "Чернобыльское удостоверение",
   "orphan": "сирота",
-  "talented": "талант",
+  "talented": "Награды (спорт, образование)",
   "foreigner": "иностранец",
   "save request": "сохранить заявку",
   "settlement request": "Заявка на заселение",

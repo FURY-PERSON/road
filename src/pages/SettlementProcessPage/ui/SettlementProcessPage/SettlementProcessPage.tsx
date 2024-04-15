@@ -13,7 +13,7 @@ export const SettlementProcessPage = memo(() => {
   if (!id) return null;
 
   return (
-    <VStack gap={32}>
+    <VStack gap={32} align="center" justify="center">
       <SettlementProcessInfo processId={id} />
       <StudentSettlementByProcess settlementProcessId={id} />
     </VStack>

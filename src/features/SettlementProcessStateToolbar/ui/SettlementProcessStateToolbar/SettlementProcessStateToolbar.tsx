@@ -8,6 +8,7 @@ import { Button } from '@/shared/ui/redesigned/Button/Button';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { HStack } from '@/shared/ui/redesigned/Stack/HStack/HStack';
 import { SettlementProcessState } from '@/entities/Settlement';
+import { SvgLoader } from '@/shared/ui/redesigned/SvgLoader';
 
 import { useSettlementProcessStateToolbar } from '../../model/hooks/useSettlementProcessStateToolbar';
 
@@ -57,6 +58,14 @@ export const SettlementProcessStateToolbar: FC<SettlementProcessStateToolbarProp
 
     if (!showToolbar) {
       return null;
+    }
+
+    if (loading) {
+      return <SvgLoader width={80} height={80} />;
+    }
+
+    if (error) {
+      return <Text text={String(error)} variant="error" />;
     }
 
     return (

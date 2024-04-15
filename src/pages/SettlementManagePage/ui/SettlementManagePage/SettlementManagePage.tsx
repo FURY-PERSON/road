@@ -16,6 +16,7 @@ export const SettlementManagePage = memo(() => {
           <SettlementProcesses />
         </Page>
       }
+      className={cls.SettlementManagePage}
     />
   );
 });

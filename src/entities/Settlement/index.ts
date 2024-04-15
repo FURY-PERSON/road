@@ -18,7 +18,8 @@ export { createSettlementRequest } from './api/settlementRequestApi';
 export {
   useRejectStudentSettlement,
   useGetStudentSettlementByStudentId,
-  useGetStudentSettlementsByProcess
+  useGetStudentSettlementsByProcess,
+  useGetStudentInfoById
 } from './api/studentSettlementApi';
 
 export { SettlementProcessCard } from './ui/SettlementProcessCard/SettlementProcessCard';

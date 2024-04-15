@@ -9,3 +9,4 @@ export {
 export { ScientificWorkType } from './model/constants/scientificWork';
 
 export { ScientificWorkCard } from './ui/ScientificWorkCard/ScientificWorkCard';
+export type { ScientificWork } from './model/types/scientificWork';

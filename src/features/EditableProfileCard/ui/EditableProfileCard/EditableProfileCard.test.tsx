@@ -28,7 +28,8 @@ const profile: User = {
       "phone": "+375445288343",
       "email": "Dorm@gmail.com",
       "imageName": "6fd0a59a-9f6b-47ac-bf6d-6ca76a14ed64.jpg",
-      "imageUrl": "http://localhost:3005/6fd0a59a-9f6b-47ac-bf6d-6ca76a14ed64.jpg"
+      "imageUrl": "http://localhost:3005/6fd0a59a-9f6b-47ac-bf6d-6ca76a14ed64.jpg",
+      "reputationBound": 100
     },
     "rooms": [],
     "tenants": [

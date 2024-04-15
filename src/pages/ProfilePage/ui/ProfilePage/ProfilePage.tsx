@@ -16,7 +16,7 @@ import { UserRebuke } from '@/widgets/UserRebuke';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
 
 import { ProfilePageParam } from '../../model/types';
-import { UserBlock } from '../UserBlock/UserBlock';
+import { UserDorm } from '../UserDorm/UserDorm';
 
 import cls from './ProfilePage.module.scss';
 
@@ -38,9 +38,10 @@ export const ProfilePage: FC<ProfilePageProps> = memo((props) => {
     <DynamicModuleLoader removeAfterUnmount reducers={moduleReducer}>
       <Page className={classNames(cls.ProfilePage, {}, [className])} testId="ProfilePage">
         <Text title={`${t('to profile')}: ${login}`} variant="accent" className={cls.title} />
+
         <VStack gap={32}>
           <EditableProfileCard login={login} />
-          <UserBlock login={login} />
+          <UserDorm login={login} />
           <HStack gap={8} max>
             <UserScientificWork login={login} />
             <UserRebuke login={login} />

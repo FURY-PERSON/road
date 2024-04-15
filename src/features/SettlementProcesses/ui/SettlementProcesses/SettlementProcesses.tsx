@@ -26,11 +26,7 @@ export const SettlementProcesses: FC<SettlementProcessesProps> = (props) => {
   const { settlementProcesses, loading, error } = useSettlementProcesses();
 
   if (loading) {
-    return (
-      <div className={classNames(cls.loader, {}, [className])}>
-        <SvgLoader />
-      </div>
-    );
+    return <SvgLoader width={80} height={80} className={cls.loader} />;
   }
 
   if (error) {

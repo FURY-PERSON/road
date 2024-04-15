@@ -37,12 +37,13 @@ const settlementProcessApi = settlementRtkApi.injectEndpoints({
       providesTags: ['settlementProcess'],
       query: () => 'settlement/processes/active'
     }),
-    createSettlementProcess: build.mutation<void, void>({
+    createSettlementProcess: build.mutation<SettlementProcess, void>({
       invalidatesTags: ['settlementProcess', 'studentSettlement'],
       query: () => ({
         url: 'settlement/processes',
         method: 'POST'
-      })
+      }),
+      transformResponse: (body: any) => camelcaseKeys(body)
     }),
     updateSettlementProccessState: build.mutation<
       SettlementProcess,

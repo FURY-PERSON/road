@@ -23,12 +23,16 @@ export const SettlementProcessInfo: FC<SettlementProcessInfoProps> = (props) => 
   const { t } = useTranslation();
   const { settlementProcess, loading, error } = useSettlementProcessInfo(processId);
 
-  if (!settlementProcess || loading) {
-    return <SvgLoader />;
+  if (loading) {
+    return <SvgLoader className={cls.loader} />;
   }
 
   if (error) {
     return <Text variant="error" text={String(error)} />;
+  }
+
+  if (!settlementProcess) {
+    return <Text variant="error" text={t('unexpected error')} />;
   }
 
   return (

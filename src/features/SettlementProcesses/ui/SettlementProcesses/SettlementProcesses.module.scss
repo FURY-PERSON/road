@@ -1,17 +1,6 @@
 .SettlementProcesses {
-  > .loader {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  > .error {
-    margin-top: 24px;
-  }
-
   .cardLink {
-      width: 100%;
+    width: 100%;
 
     > .card {
       position: relative;
@@ -20,4 +9,15 @@
       border-radius: 20px; 
     }
   }
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.error {
+  margin-top: 24px;
 }

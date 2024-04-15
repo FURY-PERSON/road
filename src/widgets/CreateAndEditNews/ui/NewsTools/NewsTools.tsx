@@ -26,7 +26,7 @@ interface NewsToolsProps {
 
 export const NewsTools: FC<NewsToolsProps> = memo((props) => {
   const { className, id } = props;
-  const { t, i18n } = useTranslation('news');
+  const { t } = useTranslation('news');
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 

@@ -4,6 +4,11 @@ import camelcaseKeys from 'camelcase-keys';
 import { settlementRtkApi } from '@/shared/api/rtkApi';
 
 import { StudentSettlement } from '../model/types/studentSettlement';
+import { StudentInfo } from '../model/types/student';
+
+interface GetStudentInfoByIdArgs {
+  studentId: string;
+}
 
 interface GetStudentSettlementsByProcessArgs {
   processId: string;
@@ -21,6 +26,11 @@ interface StudentSettlementUpdate {
 
 const studentSettlementApi = settlementRtkApi.injectEndpoints({
   endpoints: (build) => ({
+    getStudentInfoById: build.query<StudentInfo, GetStudentInfoByIdArgs>({
+      providesTags: ['studentSettlement', 'settlementProcess'],
+      query: (args) => `students/${args.studentId}`,
+      transformResponse: (body: any) => camelcaseKeys(body)
+    }),
     getStudentSettlements: build.query<StudentSettlement[], void>({
       providesTags: ['studentSettlement'],
       query: () => 'settlement/students',
@@ -58,6 +68,8 @@ const studentSettlementApi = settlementRtkApi.injectEndpoints({
     })
   })
 });
+
+export const useGetStudentInfoById = studentSettlementApi.useGetStudentInfoByIdQuery;
 
 export const useGetStudentSettlements = studentSettlementApi.useGetStudentSettlementsQuery;
 

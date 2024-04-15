@@ -101,6 +101,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'import/extensions': 'off',
     'jsx-a11y/label-has-associated-control': 'off',
+    '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
     'no-unused-vars': 'off', // or "@typescript-eslint/no-unused-vars": "off",
     'unused-imports/no-unused-imports': 'warn',
     'unused-imports/no-unused-vars': [

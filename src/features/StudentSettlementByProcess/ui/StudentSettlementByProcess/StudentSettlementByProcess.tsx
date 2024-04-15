@@ -21,7 +21,7 @@ export const StudentSettlementByProcess: FC<StudentSettlementByProcessProps> = (
   const { loading, error, settlementProcess } = useStudentSettlementByProcess(settlementProcessId);
 
   if (loading) {
-    return <SvgLoader />;
+    return <SvgLoader className={cls.loader} />;
   }
 
   if (error) {

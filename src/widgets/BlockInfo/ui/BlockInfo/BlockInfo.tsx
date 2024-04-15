@@ -9,6 +9,7 @@ import { BlockSanitaryCondition } from '@/features/BlockSanitaryCondition';
 import { RoomWithTenants } from '@/features/RoomWithTenants';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 import { Card } from '@/shared/ui/redesigned/Card';
+import { DormCard } from '@/entities/Dorm';
 
 import { Skeleton } from '../Skeleton/Skeleton';
 
@@ -22,7 +23,7 @@ interface BlockInfoProps {
 export const BlockInfo: FC<BlockInfoProps> = memo((props) => {
   const { className, blockId } = props;
 
-  const { t } = useTranslation('translation');
+  const { t } = useTranslation();
 
   const { data, isLoading, isFetching, error } = useGetBlockInfo({ blockId: blockId });
 
@@ -39,6 +40,8 @@ export const BlockInfo: FC<BlockInfoProps> = memo((props) => {
   return (
     <Card padding="24" max className={classNames(cls.BlockInfo, {}, [className])}>
       <VStack gap={32}>
+        {data?.dorm ? <DormCard item={data.dorm} /> : null}
+
         <Text title={`${t('Block info')}: ${data?.number}`} />
 
         <BlockSanitaryCondition blockId={blockId} />

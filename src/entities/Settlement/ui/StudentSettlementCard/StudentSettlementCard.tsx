@@ -37,13 +37,29 @@ export const StudentSettlementCard: FC<StudentSettlementCardProps> = memo((props
     [user, settlementInfo.student]
   );
 
+  if (settlementInfo.rejected) {
+    return (
+      <Card fullWidth padding="8">
+        <HStack gap={32} align="center">
+          <div className={cls.reputation}>
+            <Text text={settlementInfo.student.reputation} size="L" />
+          </div>
+          <Text text={userText} />
+
+          <Text text="rejected" variant="error" />
+        </HStack>
+      </Card>
+    );
+  }
+
   return (
-    <Card fullWidth>
-      <HStack gap={32} align="center" justify="between">
+    <Card fullWidth padding="8">
+      <HStack gap={32} align="center">
         <div className={cls.reputation}>
           <Text text={settlementInfo.student.reputation} size="L" />
         </div>
         <Text text={userText} />
+
         <DormSwitch
           settlementProcessState={settlementProcessState}
           initialDormId={settlementInfo.dormId}
@@ -55,6 +71,7 @@ export const StudentSettlementCard: FC<StudentSettlementCardProps> = memo((props
           initialRoomId={settlementInfo.roomId}
           onChange={(roomId) => updateSettlement({ studentId: settlementInfo.student.id, roomId })}
         />
+
         {settlementProcessState !== SettlementProcessState.FINISHED ? (
           <Button
             className={cls.rejectButton}

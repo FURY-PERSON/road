@@ -4,6 +4,7 @@ export interface Dorm {
   address: string;
   phone: string;
   email: string;
+  reputationBound: number;
   imageName?: string;
   imageUrl?: string;
 }

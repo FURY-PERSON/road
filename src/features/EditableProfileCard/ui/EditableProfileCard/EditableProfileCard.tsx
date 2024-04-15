@@ -20,6 +20,7 @@ import { ListBox } from '@/shared/ui/redesigned/popups';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
 import { FeatureFlagsSwitcher } from '@/features/FeatureFlagsSwitcher';
 import { UserStudyingForm, getUserRoleName } from '@/entities/User';
+import { useGetStudentInfoById } from '@/entities/Settlement';
 
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
@@ -50,8 +51,12 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
   const error = useSelector(getProfileError);
   const validationErrors = useSelector(getProfileValidationErrors);
   const readOnly = useSelector(getProfileReadonly);
-
   const userRoleName = useSelector(getUserRoleName);
+
+  const { data: studentInfo, isLoading: studentInfoLoading } = useGetStudentInfoById(
+    { studentId: user?.id! },
+    { skip: !user?.id }
+  );
 
   useInitialEffect(() => {
     dispatch(fetchProfile({ login: login }));
@@ -106,7 +111,7 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
     [dispatch]
   );
 
-  const onChangeCorse = useCallback(
+  const onChangeCourse = useCallback(
     (value: string) => {
       if (value === '') {
         dispatch(profileActions.setCourse(undefined));
@@ -144,7 +149,7 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
     [t]
   );
 
-  if (loading) {
+  if (loading || studentInfoLoading) {
     return (
       <div className={cls.loader}>
         <SvgLoader />
@@ -221,7 +226,7 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
               label={t('course')}
               readOnly={readOnly || userRoleName !== RoleName.ADMIN}
               value={formData?.course !== undefined ? String(formData.course) : ''}
-              onChange={onChangeCorse}
+              onChange={onChangeCourse}
               type="number"
             />
 
@@ -244,6 +249,10 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
             <RoleGuard roleNames={[RoleName.ADMIN]}>
               {user ? <FeatureFlagsSwitcher userLogin={user.login} /> : null}
             </RoleGuard>
+
+            {studentInfo ? (
+              <Text text={`Reputation : ${studentInfo.reputation}`} className={cls.reputation} />
+            ) : null}
 
             {error ? <TextDeprecated variant={TextVariant.ERROR} text={error} /> : null}
           </div>
@@ -325,7 +334,7 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
                   label={t('course')}
                   readonly={readOnly || userRoleName !== RoleName.ADMIN}
                   value={formData?.course !== undefined ? String(formData.course) : ''}
-                  onChange={onChangeCorse}
+                  onChange={onChangeCourse}
                   type="number"
                 />
 
@@ -348,6 +357,16 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
               </VStack>
             </HStack>
           </VStack>
+
+          <RoleGuard roleNames={[RoleName.ADMIN, RoleName.WORKER]}>
+            {studentInfo ? (
+              <Text
+                text={`Reputation : ${studentInfo.reputation}`}
+                variant="accent"
+                className={cls.reputation}
+              />
+            ) : null}
+          </RoleGuard>
 
           {error ? <Text variant="error" text={error} /> : null}
         </Card>

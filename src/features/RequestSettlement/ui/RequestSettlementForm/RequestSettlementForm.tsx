@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useMemo } from 'react';
+import { FC, memo, useCallback, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
@@ -18,6 +18,7 @@ import { RoleName } from '@/entities/Role';
 import { SvgLoader } from '@/shared/ui/redesigned/SvgLoader';
 import {
   useGetActiveSettlementProcess,
+  useGetStudentInfoById,
   useGetStudentSettlementByStudentId
 } from '@/entities/Settlement';
 
@@ -42,21 +43,28 @@ export const RequestSettlementForm: FC<RequestSettlementFormProps> = memo((props
   const dorms = useSelector(getDorms);
   const user = useSelector(getUserData);
 
-  const {
-    data: studentSettlement,
-    isLoading: studentSettlementLoading,
-    isFetching: studentSettlementFetching
-  } = useGetStudentSettlementByStudentId({ studentId: user!.id! }, { skip: !user?.id });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { data: studentSettlement, isLoading: studentSettlementLoading } =
+    useGetStudentSettlementByStudentId({ studentId: user?.id! }, { skip: !user?.id });
+
+  const { data: activeSettlementProcess, isLoading: activeSettlementProcessLoading } =
+    useGetActiveSettlementProcess();
 
   const {
-    data: activeSettlementProcess,
-    isLoading: activeSettlementProcessLoading,
-    isFetching: activeSettlementProcessFetching
-  } = useGetActiveSettlementProcess();
+    data: studentInfo,
+    isLoading: studentInfoLoading,
+    isFetching: studentInfoError
+  } = useGetStudentInfoById({ studentId: user?.id! }, { skip: !user?.id });
 
   const selectItems: ListBoxItem<string>[] | undefined = useMemo(
-    () => dorms?.map((dorm) => ({ value: dorm.id, content: dorm.name })),
-    [dorms]
+    () =>
+      dorms
+        ?.filter(
+          (dorm) => studentInfo?.reputation && studentInfo?.reputation >= dorm.reputationBound
+        )
+        ?.map((dorm) => ({ value: dorm.id, content: dorm.name })),
+    [dorms, studentInfo]
   );
 
   const onTargetDormChange = useCallback(
@@ -78,7 +86,9 @@ export const RequestSettlementForm: FC<RequestSettlementFormProps> = memo((props
   );
 
   const onApplyClick = useCallback(() => {
+    setIsLoading(true);
     dispatch(requestSettlement());
+    setIsLoading(false);
   }, [dispatch]);
 
   useInitialEffect(() => {
@@ -93,34 +103,39 @@ export const RequestSettlementForm: FC<RequestSettlementFormProps> = memo((props
   if (user?.role.name !== RoleName.STUDENT) {
     return (
       <Text
-        text={t('you can not send a requent to settlement, because you are not a student')}
+        title={t('you can not send a requent to settlement, because you are not a student')}
         variant="accent"
       />
     );
   }
 
   const loading =
-    studentSettlementLoading ||
-    studentSettlementFetching ||
-    activeSettlementProcessLoading ||
-    activeSettlementProcessFetching;
+    isLoading || studentSettlementLoading || activeSettlementProcessLoading || studentInfoLoading;
+  const error = studentInfoError;
 
   if (loading) {
-    return <SvgLoader />;
+    return <SvgLoader width={80} height={80} />;
   }
 
   if (studentSettlement) {
-    return <Text text={t('your settlement requent has been sent successfully')} variant="accent" />;
+    return (
+      <Text title={t('your settlement requent has been sent successfully')} variant="accent" />
+    );
   }
 
   if (!activeSettlementProcess) {
-    return <Text text={t('there is currently no active settlement process')} variant="accent" />;
+    return <Text title={t('there is currently no active settlement process')} variant="accent" />;
+  }
+
+  if (error) {
+    return <Text title={String(error)} variant="error" />;
   }
 
   return (
     <Card fullWidth padding="24" className={classNames(cls.RequestSettlementForm, {}, [className])}>
-      <VStack gap={16}>
-        <Text size="XL" text={t('settlement request')} variant="accent" />
+      <Text size="XL" title={t('settlement request')} variant="accent" className={cls.title} />
+
+      <VStack gap={32}>
         <ListBox<string>
           value={targetDorm?.id}
           onChange={onTargetDormChange}
@@ -134,8 +149,8 @@ export const RequestSettlementForm: FC<RequestSettlementFormProps> = memo((props
           label={t('benefits')}
           className={cls.ckheckboxContainer}
         />
-        <Button onClick={onApplyClick} variant="filled">
-          {t('save request')}
+        <Button onClick={onApplyClick} variant="filled" size="medium" className={cls.button}>
+          <Text text={t('save request')} textClassName={cls.buttonText} />
         </Button>
       </VStack>
     </Card>

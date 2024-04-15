@@ -1,10 +1,10 @@
 {
   "select target dorm": "Select target dorm",
   "benefits": "benefits",
-  "disabled_person": "disabled person",
-  "chernobyl": "Chernobyl",
+  "disabled_person": "disability",
+  "chernobyl": "Chernobyl ticket",
   "orphan": "orphan",
-  "talented": "talented",
+  "talented": "Awards (sports, education)",
   "foreigner": "foreigner",
   "save request": "save request",
   "settlement request": "Settlement request",
