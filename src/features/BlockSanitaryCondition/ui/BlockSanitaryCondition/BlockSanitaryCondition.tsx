@@ -7,7 +7,7 @@ import { useGetBlockSanitaryVisits } from '@/entities/Block';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
 import { HStack } from '@/shared/ui/redesigned/Stack/HStack/HStack';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
-import { AddSanitaryVisitModal } from '@/features/AddSanitaryVisitForm';
+import { AddSanitaryVisitModal } from '@/features/AddSanitaryVisitForm/@x/BlockSanitaryCondition';
 import { Button } from '@/shared/ui/redesigned/Button/Button';
 import { getUserRoleName } from '@/entities/User';
 import { RoleName } from '@/entities/Role';
@@ -17,7 +17,7 @@ import { Skeleton } from '../Skeleton/Skeleton';
 import { MarkCell } from '../MarkCell/MarkCell';
 import { DateCell } from '../DateCell/DateCell';
 import { FieldNameCell } from '../FieldNameCell/FieldNameCell';
-import { getEverageMark } from '../../model/helpers/getEverageMark';
+import { getAverageMark } from '../../model/helpers/getAverageMark';
 
 import cls from './BlockSanitaryCondition.module.scss';
 
@@ -31,7 +31,7 @@ export const BlockSanitaryCondition: FC<BlockSanitaryConditionProps> = memo((pro
 
   const { t } = useTranslation('translation');
 
-  const { data, isLoading, error } = useGetBlockSanitaryVisits({ blockId: blockId });
+  const { data: visits, isLoading, error } = useGetBlockSanitaryVisits({ blockId: blockId });
 
   const useRole = useSelector(getUserRoleName);
 
@@ -57,25 +57,27 @@ export const BlockSanitaryCondition: FC<BlockSanitaryConditionProps> = memo((pro
 
   return (
     <VStack className={classNames(cls.BlockSanitaryCondition, {}, [className])} gap={16}>
-      <HStack className={cls.table}>
-        <VStack>
-          <div className={cls.emptyCell} />
+      {visits?.length ? (
+        <HStack className={cls.table}>
+          <VStack>
+            <div className={cls.emptyCell} />
 
-          {data?.[0]?.marks.map((mark) => <FieldNameCell key={mark.type} name={mark.name} />)}
-        </VStack>
-
-        {data?.map((visit) => (
-          <VStack key={visit.id}>
-            <DateCell dateString={visit.date} />
-
-            <VStack>
-              {visit.marks.map((mark) => (
-                <MarkCell key={mark.id} mark={mark} editable={useRole !== RoleName.STUDENT} />
-              ))}
-            </VStack>
+            {visits?.[0]?.marks.map((mark) => <FieldNameCell key={mark.type} name={mark.name} />)}
           </VStack>
-        ))}
-      </HStack>
+
+          {visits?.map((visit) => (
+            <VStack key={visit.id}>
+              <DateCell dateString={visit.date} />
+
+              <VStack>
+                {visit.marks.map((mark) => (
+                  <MarkCell key={mark.id} mark={mark} editable={useRole !== RoleName.STUDENT} />
+                ))}
+              </VStack>
+            </VStack>
+          ))}
+        </HStack>
+      ) : null}
 
       <HStack gap={32} align="center">
         <RoleGuard roleNames={[RoleName.ADMIN, RoleName.WORKER]}>
@@ -84,8 +86,8 @@ export const BlockSanitaryCondition: FC<BlockSanitaryConditionProps> = memo((pro
           </Button>
         </RoleGuard>
 
-        {data?.length ? (
-          <Text title={`${t('Evarage')}: ${getEverageMark(data).toFixed(2)}`} />
+        {visits?.length ? (
+          <Text title={`${t('Average')}: ${getAverageMark(visits).toFixed(2)}`} />
         ) : null}
       </HStack>
 

@@ -12,6 +12,7 @@ import {
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button } from '@/shared/ui/redesigned/Button/Button';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 
 import { getError, getLoading, getSelectedUserLogin } from '../../model/selectors/selectors';
 import {
@@ -60,7 +61,7 @@ export const Form: FC<FormProps> = memo((props) => {
 
   return (
     <DynamicModuleLoader reducers={initialReducers}>
-      <Card border="round" padding="24" className={cls.Form}>
+      <Card border="round" padding="24" className={classNames(cls.Form, {}, [className])}>
         <VStack gap={16}>
           <Input
             label={t('tenant login')}

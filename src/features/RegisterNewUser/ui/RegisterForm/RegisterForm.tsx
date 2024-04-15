@@ -1,6 +1,7 @@
 import { FC, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { RoleName } from '@/entities/Role';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
@@ -50,6 +51,7 @@ export const RegisterForm: FC<RegisterFormProps> = (props) => {
   const { className, onSuccess } = props;
   const { t } = useTranslation('auth');
   const dispatch = useAppDispatch();
+  const navigator = useNavigate();
 
   const {
     firstName,
@@ -140,10 +142,13 @@ export const RegisterForm: FC<RegisterFormProps> = (props) => {
 
   const onLoginClick = useCallback(async () => {
     const result = await dispatch(registerNewUser());
-    if (result.meta.requestStatus === 'fulfilled') {
+
+    if (result.meta.requestStatus === 'fulfilled' && login) {
+      navigator(routes.profile(login));
+
       onSuccess?.();
     }
-  }, [dispatch, onSuccess]);
+  }, [dispatch, login, navigator, onSuccess]);
 
   const rolesListDeprecated: Array<SelectOption<RoleName>> = useMemo(
     () => [

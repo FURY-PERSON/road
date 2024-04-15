@@ -28,7 +28,7 @@ export const UserCard: FC<UserCardProps> = memo((props) => {
     <AppLink
       target={target}
       to={routes.profile(user.login)}
-      className={classNames(cls.UsersListItem, {}, [className])}
+      className={classNames(cls.UserCard, {}, [className])}
     >
       <Card border="round" padding="0">
         <VStack gap={4} max>

@@ -14,6 +14,9 @@ import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
 import { HStack } from '@/shared/ui/redesigned/Stack/HStack/HStack';
 import { UserRebuke } from '@/widgets/UserRebuke';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
+import { useGetUserByLogin } from '@/entities/User';
+import { SvgLoader } from '@/shared/ui/redesigned/SvgLoader';
+import { RoleName } from '@/entities/Role';
 
 import { ProfilePageParam } from '../../model/types';
 import { UserDorm } from '../UserDorm/UserDorm';
@@ -34,6 +37,16 @@ export const ProfilePage: FC<ProfilePageProps> = memo((props) => {
   const { login } = useParams<ProfilePageParam>();
   const { t } = useTranslation();
 
+  const { data: user, isLoading, error } = useGetUserByLogin({ login: login! }, { skip: !login });
+
+  if (isLoading) {
+    return <SvgLoader />;
+  }
+
+  if (error) {
+    return <Text text={`${t('user fetching error')}: ${String(error)}`} />;
+  }
+
   return (
     <DynamicModuleLoader removeAfterUnmount reducers={moduleReducer}>
       <Page className={classNames(cls.ProfilePage, {}, [className])} testId="ProfilePage">
@@ -42,10 +55,12 @@ export const ProfilePage: FC<ProfilePageProps> = memo((props) => {
         <VStack gap={32}>
           <EditableProfileCard login={login} />
           <UserDorm login={login} />
-          <HStack gap={8} max>
-            <UserScientificWork login={login} />
-            <UserRebuke login={login} />
-          </HStack>
+          {user?.role.name === RoleName.STUDENT ? (
+            <HStack gap={8} max>
+              <UserScientificWork login={login} />
+              <UserRebuke login={login} />
+            </HStack>
+          ) : null}
         </VStack>
       </Page>
     </DynamicModuleLoader>

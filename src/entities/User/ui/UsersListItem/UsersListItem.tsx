@@ -56,10 +56,13 @@ export const UsersListItem: FC<UsersListItemProps> = memo((props) => {
       }
       on={
         <AppLink target={target} to={routes.profile(user.login)} className={cls.UsersListItem}>
-          <Card border="round" padding="16">
-            <VStack gap={4} max>
+          <Card border="round" padding="16" className={cls.card}>
+            <VStack max>
               <HStack max justify="between">
-                <Text title={user.login} size="M" />
+                <HStack gap={8}>
+                  <Text title={`${t('login')}: `} size="M" />
+                  <Text title={user.login} size="M" />
+                </HStack>
                 <Text text={user.email} size="M" />
               </HStack>
 

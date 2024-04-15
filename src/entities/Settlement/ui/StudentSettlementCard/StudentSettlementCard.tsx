@@ -46,7 +46,7 @@ export const StudentSettlementCard: FC<StudentSettlementCardProps> = memo((props
           </div>
           <Text text={userText} />
 
-          <Text text="rejected" variant="error" />
+          <Text text={t('rejected')} variant="error" />
         </HStack>
       </Card>
     );

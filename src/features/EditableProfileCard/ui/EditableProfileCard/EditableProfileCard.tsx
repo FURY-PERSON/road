@@ -251,7 +251,10 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
             </RoleGuard>
 
             {studentInfo ? (
-              <Text text={`Reputation : ${studentInfo.reputation}`} className={cls.reputation} />
+              <Text
+                text={`${t('reputation')} : ${studentInfo.reputation}`}
+                className={cls.reputation}
+              />
             ) : null}
 
             {error ? <TextDeprecated variant={TextVariant.ERROR} text={error} /> : null}
@@ -361,7 +364,7 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
           <RoleGuard roleNames={[RoleName.ADMIN, RoleName.WORKER]}>
             {studentInfo ? (
               <Text
-                text={`Reputation : ${studentInfo.reputation}`}
+                text={`${t('reputation')} : ${studentInfo.reputation}`}
                 variant="accent"
                 className={cls.reputation}
               />

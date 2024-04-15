@@ -48,6 +48,18 @@ export const NotificationList: FC<NotificationListProps> = memo((props) => {
     );
   }
 
+  if (!items?.length) {
+    return (
+      <VStack
+        align="center"
+        justify="center"
+        className={classNames(cls.NotificationList, {}, [className])}
+      >
+        <Text text={t('no items')} variant="accent" />
+      </VStack>
+    );
+  }
+
   return (
     <VStack gap={16} className={classNames(cls.NotificationList, {}, [className])}>
       {items?.map((notification) => (

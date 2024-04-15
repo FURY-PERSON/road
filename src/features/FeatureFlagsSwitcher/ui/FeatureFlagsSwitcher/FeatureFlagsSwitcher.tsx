@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next';
-import { memo, useCallback, useState } from 'react';
+import { memo, useCallback, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getUserData, getUserFeatureFlags } from '@/entities/User';
 import { ListBox } from '@/shared/ui/redesigned/popups';
-import { FeatureFlags, featuresNameMap, updateFeatureFlag } from '@/shared/lib/helpers/features';
+import { FeatureFlags, updateFeatureFlag } from '@/shared/lib/helpers/features';
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { VStack } from '@/shared/ui/redesigned/Stack/VStack/VStack';
@@ -57,8 +57,17 @@ export const FeatureFlagsSwitcher = memo((props: FeatureFlagsSwitcherProps) => {
       );
       loadFeaturedFlags();
     },
-    [currentUser, userLogin, loadFeaturedFlags, userFlags]
+    [userFlags, dispatch, userLogin, currentUser?.login, loadFeaturedFlags]
   );
+
+  const featuresNameMap: Record<keyof FeatureFlags, string> = useMemo(() => {
+    return {
+      newDesign: t('new design'),
+      ratingCardOnMainPage: t('rating card on main page'),
+      counter: t('counter'),
+      test: 'test'
+    };
+  }, [t]);
 
   if (loading) {
     return (

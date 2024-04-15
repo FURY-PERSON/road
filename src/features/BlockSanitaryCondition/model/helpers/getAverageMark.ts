@@ -1,6 +1,6 @@
 import { SanitaryVisit } from '@/entities/Block';
 
-export const getEverageMark = (visits: SanitaryVisit[]) => {
+export const getAverageMark = (visits: SanitaryVisit[]) => {
   let mark = 0;
   let marksAmount = 0;
 
@@ -12,6 +12,10 @@ export const getEverageMark = (visits: SanitaryVisit[]) => {
       }
     });
   });
+
+  if (marksAmount === 0) {
+    return 0;
+  }
 
   return mark / marksAmount;
 };
