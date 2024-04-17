@@ -102,8 +102,8 @@ export const NewsDetails: FC<NewsDetailsProps> = memo((props) => {
           <CardDeprecated className={cls.card}>
             {news.imageUrl ? (
               <AppImage
-                src={`${__API__}/static/${news.imageUrl}`}
                 className={cls.image}
+                src={news.imageUrl}
                 alt="news"
                 fallback={<SkeletonDeprecated width="100%" height={230} />}
               />

@@ -23,7 +23,7 @@ export const NewsImageComponent: FC<NewsImageComponentProps> = memo((props) => {
     <div className={classNames(cls.NewsImageComponent, {}, [className])}>
       <AppImage
         className={cls.img}
-        src={`${__API__}/static/${block.image}`}
+        src={block.image}
         alt="news"
         fallback={
           <ToggleFeatures
