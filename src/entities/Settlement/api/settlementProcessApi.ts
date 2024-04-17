@@ -68,9 +68,7 @@ const settlementApi = rtkApi.injectEndpoints({
       query: (args) => ({
         url: 'settlement/apply-settlement',
         method: 'POST',
-        body: {
-          settlement: transformStudentSettlementsToSettlementResult(args.studentSettlement)
-        }
+        body: transformStudentSettlementsToSettlementResult(args.studentSettlement)
       })
     })
   })
