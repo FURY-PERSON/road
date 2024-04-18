@@ -66,7 +66,7 @@ const settlementApi = rtkApi.injectEndpoints({
     applySettlementProccess: build.mutation<void, ApplySettlementProccessArgs>({
       invalidatesTags: ['dorm', 'block'],
       query: (args) => ({
-        url: 'settlement/apply-settlement',
+        url: 'dorm-settlement/apply-settlement',
         method: 'POST',
         body: transformStudentSettlementsToSettlementResult(args.studentSettlement)
       })
