@@ -7,6 +7,8 @@ import { HStack } from '@/shared/ui/redesigned/Stack/HStack/HStack';
 import { Text } from '@/shared/ui/redesigned/Text/Text';
 import DormIcon from '@/shared/assets/icons/home.svg';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { RoleGuard } from '@/features/RoleGuard';
+import { RoleName } from '@/entities/Role';
 
 import { Dorm } from '../../model/types/dorm';
 
@@ -36,6 +38,10 @@ export const DormCard: FC<DormCardProps> = memo((props) => {
             <Text text={`${t('address')}: ${item.address}`} size="M" />
             <Text text={`${t('phone')}: ${item.phone}`} size="M" />
             <Text text={`${t('email')}: ${item.email}`} size="M" />
+
+            <RoleGuard roleNames={[RoleName.ADMIN, RoleName.WORKER]}>
+              <Text text={`${t('Reputation bound')}: ${item.reputationBound}`} size="M" />
+            </RoleGuard>
           </VStack>
         </HStack>
       </VStack>
