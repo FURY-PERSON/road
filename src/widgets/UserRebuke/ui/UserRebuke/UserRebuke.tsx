@@ -52,11 +52,13 @@ export const UserRebuke: FC<UserRebukeProps> = memo((props) => {
       <VStack gap={16} max>
         {userRebukes?.map((item) => (
           <RebukeCard item={item} className={cls.card}>
-            <RebukeActionPanel
-              id={item.id}
-              openEditRebuke={openEditRebuke}
-              deleteRebuke={deleteRebuke}
-            />
+            <RoleGuard roleNames={[RoleName.ADMIN]}>
+              <RebukeActionPanel
+                id={item.id}
+                openEditRebuke={openEditRebuke}
+                deleteRebuke={deleteRebuke}
+              />
+            </RoleGuard>
           </RebukeCard>
         ))}
       </VStack>
@@ -79,7 +81,7 @@ export const UserRebuke: FC<UserRebukeProps> = memo((props) => {
         {getContent()}
       </VStack>
 
-      <RoleGuard roleNames={[RoleName.ADMIN, RoleName.WORKER]}>
+      <RoleGuard roleNames={[RoleName.ADMIN]}>
         <Button className={cls.addButton} onClick={openAddRebuke}>
           <PlusIcon className={cls.addIcon} />
         </Button>

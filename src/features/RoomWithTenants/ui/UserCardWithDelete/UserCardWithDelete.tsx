@@ -30,7 +30,7 @@ export const UserCardWithDelete: FC<UserCardWithDeleteProps> = memo((props) => {
     } catch (error) {
       alert(error);
     }
-  }, [tenant]);
+  }, [roomId, tenant.login]);
 
   return (
     <HStack className={classNames(cls.UserCardWithDelete, {}, [className])} max justify="between">

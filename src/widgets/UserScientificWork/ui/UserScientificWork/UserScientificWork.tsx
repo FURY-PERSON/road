@@ -52,11 +52,13 @@ export const UserScientificWork: FC<UserScientificWorkProps> = memo((props) => {
       <VStack gap={16} max>
         {userScientificWorks?.map((item) => (
           <ScientificWorkCard item={item} className={cls.card}>
-            <ScientificWorkActionPanel
-              id={item.id}
-              openEditScientificWork={openEditScientificWork}
-              deleteScientificWork={deleteScientificWork}
-            />
+            <RoleGuard roleNames={[RoleName.ADMIN]}>
+              <ScientificWorkActionPanel
+                id={item.id}
+                openEditScientificWork={openEditScientificWork}
+                deleteScientificWork={deleteScientificWork}
+              />
+            </RoleGuard>
           </ScientificWorkCard>
         ))}
       </VStack>
@@ -79,7 +81,7 @@ export const UserScientificWork: FC<UserScientificWorkProps> = memo((props) => {
         {getContent()}
       </VStack>
 
-      <RoleGuard roleNames={[RoleName.ADMIN, RoleName.WORKER]}>
+      <RoleGuard roleNames={[RoleName.ADMIN]}>
         <Button className={cls.addButton} onClick={openAddScientificWork}>
           <PlusIcon className={cls.addIcon} />
         </Button>

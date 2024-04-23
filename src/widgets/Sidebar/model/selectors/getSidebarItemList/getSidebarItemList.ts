@@ -48,7 +48,7 @@ export const getSidebarItemList = (t) =>
           path: routes.dorms(),
           Icon: MainIcon,
           text: i18n.t('to dorms'),
-          roles: [RoleName.ADMIN]
+          roles: [RoleName.ADMIN, RoleName.WORKER]
         },
 
         {
