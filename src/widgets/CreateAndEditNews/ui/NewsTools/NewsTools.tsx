@@ -41,11 +41,11 @@ export const NewsTools: FC<NewsToolsProps> = memo((props) => {
       {
         label: t('Add text block')!,
         onClick: () => dispatch(createAndEditNewsActions.addBlock(NewsBlockType.TEXT))
-      },
-      {
+      }
+      /* {
         label: t('Add code block')!,
         onClick: () => dispatch(createAndEditNewsActions.addBlock(NewsBlockType.CODE))
-      }
+      } */
     ];
 
     if (edit) {
