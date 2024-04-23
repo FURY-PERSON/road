@@ -14,7 +14,7 @@
   "text block": "text block",
   "image block": "image block",
   "image subtitle": "image subtitle",
-  "edit news": "edit news",
+  "edit news": "edit announcement",
   "create new": "create new",
   "Add image block": "Add image block",
   "Add text block": "Add text block",
@@ -28,5 +28,6 @@
   "created at": "created at",
   "first name": "first name",
   "last name": "last name",
-  "can not find news": "can not find news"
+  "can not find news": "can not find orders and announcments",
+  "recommendations": "recommendations"
 }

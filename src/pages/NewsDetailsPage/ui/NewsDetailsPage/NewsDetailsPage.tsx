@@ -79,7 +79,7 @@ export const NewsDetailsPage = () => {
               <VStack gap={16} max>
                 <NewsDetailsContainer newsId={id} />
 
-                <NewsRatingAsync newsId={id} />
+                {/* <NewsRatingAsync newsId={id} /> */}
 
                 <Text title={t('comments')} />
                 <AddNewCommentFormAsync
@@ -91,8 +91,8 @@ export const NewsDetailsPage = () => {
                   testId="NewsDetailsPage.NewsDetailsCommentList"
                 />
 
-                <Text title={t('recommendations')} />
-                <NewsRecommendationList testId="NewsDetailsPage.NewsRecommendationList" />
+                {/* <Text title={t('recommendations')} />
+                <NewsRecommendationList testId="NewsDetailsPage.NewsRecommendationList" /> */}
               </VStack>
             </Page>
           }
